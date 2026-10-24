@@ -180,11 +180,89 @@ function serveStatic(req, res, url) {
   });
 }
 
-http.createServer(async (req, res) => {
+const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://x');
   if (req.method === 'OPTIONS') return send(res, 204, {});
   if (!url.pathname.startsWith('/api/')) return serveStatic(req, res, url);
   const ip = req.headers['x-forwarded-for'] ? String(req.headers['x-forwarded-for']).split(',')[0].trim() : req.socket.remoteAddress;
   if (limited(ip)) return send(res, 429, { error: 'slow down' });
   try { await api(req, res, url); } catch (e) { send(res, 400, { error: 'bad request' }); }
-}).listen(PORT, () => console.log('Cloud Islands: http://localhost:' + PORT));
+});
+
+/* ---------- realtime room over WebSocket: positions, chat, swings, PvP ---------- */
+// Messages from a client: {t:'pres',p} and {t:'emit',e,d}.
+// Messages to clients: hello, join, pres, leave, emit {e,d,from}.
+const peers = new Map();
+const EVENTS = new Set(['chat', 'sw', 'hit', 'ko']);
+function frame(str) {
+  const data = Buffer.from(str, 'utf8'), n = data.length;
+  const head = n < 126 ? Buffer.from([0x81, n]) : n < 65536 ? Buffer.from([0x81, 126, n >> 8, n & 255]) : Buffer.concat([Buffer.from([0x81, 127, 0, 0, 0, 0]), Buffer.from([(n >>> 24) & 255, (n >>> 16) & 255, (n >>> 8) & 255, n & 255])]);
+  return Buffer.concat([head, data]);
+}
+const wsSend = (c, obj) => { if (!c.sock.destroyed) c.sock.write(frame(JSON.stringify(obj))); };
+const broadcast = (obj, except) => { const f = frame(JSON.stringify(obj)); for (const c of peers.values()) if (c !== except && !c.sock.destroyed) c.sock.write(f); };
+
+function onRoomMessage(c, text) {
+  let m; try { m = JSON.parse(text); } catch (e) { return; }
+  if (m.t === 'pres' && m.p && typeof m.p === 'object') {
+    if (text.length > 2048) return;
+    c.p = m.p; broadcast({ t: 'pres', id: c.id, p: c.p }, c);
+  } else if (m.t === 'emit' && EVENTS.has(m.e)) {
+    const now = Date.now();
+    if (m.e === 'chat') { if (now - c.lastChat < 800) return; c.lastChat = now; }
+    if (now - c.win > 1000) { c.win = now; c.count = 0; }
+    if (++c.count > 40) return;
+    broadcast({ t: 'emit', e: m.e, d: m.d, from: c.id });
+  }
+}
+
+server.on('upgrade', (req, sock) => {
+  const url = new URL(req.url, 'http://x');
+  const key = req.headers['sec-websocket-key'];
+  if (url.pathname !== '/ws' || !key || peers.size >= 32) { sock.destroy(); return; }
+  const accept = crypto.createHash('sha1').update(key + '258EAFA5-E914-47DA-95CA-C5AB0DC85B11').digest('base64');
+  sock.write('HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: ' + accept + '\r\n\r\n');
+  sock.setNoDelay(true);
+  const c = { id: crypto.randomBytes(4).toString('hex'), sock, p: null, buf: Buffer.alloc(0), lastChat: 0, win: 0, count: 0, alive: true };
+  const others = [...peers.values()].filter(q => q.p).map(q => ({ id: q.id, p: q.p }));
+  peers.set(c.id, c);
+  wsSend(c, { t: 'hello', id: c.id, peers: others });
+  broadcast({ t: 'join', id: c.id }, c);
+  console.log('player joined', c.id, '(' + peers.size + ' online)');
+
+  sock.on('data', chunk => {
+    c.buf = Buffer.concat([c.buf, chunk]);
+    if (c.buf.length > 1 << 20) { sock.destroy(); return; }
+    while (c.buf.length >= 2) {
+      const op = c.buf[0] & 15, masked = c.buf[1] & 128;
+      let len = c.buf[1] & 127, off = 2;
+      if (len === 126) { if (c.buf.length < 4) return; len = c.buf.readUInt16BE(2); off = 4; }
+      else if (len === 127) { if (c.buf.length < 10) return; len = Number(c.buf.readBigUInt64BE(2)); off = 10; }
+      if (len > 65536) { sock.destroy(); return; }
+      const mOff = off; if (masked) off += 4;
+      if (c.buf.length < off + len) return;
+      const data = Buffer.from(c.buf.subarray(off, off + len));
+      if (masked) for (let i = 0; i < len; i++) data[i] ^= c.buf[mOff + (i & 3)];
+      c.buf = c.buf.subarray(off + len);
+      if (op === 1) onRoomMessage(c, data.toString('utf8'));
+      else if (op === 8) { sock.end(Buffer.from([0x88, 0])); return; }
+      else if (op === 9) sock.write(Buffer.concat([Buffer.from([0x8a, data.length]), data]));
+      else if (op === 10) c.alive = true;
+    }
+  });
+  const bye = () => { if (!peers.has(c.id)) return; peers.delete(c.id); broadcast({ t: 'leave', id: c.id }); console.log('player left', c.id, '(' + peers.size + ' online)'); };
+  sock.on('close', bye); sock.on('error', bye);
+});
+// Drop silent connections (closed laptop, lost Wi-Fi).
+setInterval(() => {
+  for (const c of peers.values()) {
+    if (!c.alive) { c.sock.destroy(); continue; }
+    c.alive = false; c.sock.write(Buffer.from([0x89, 0]));
+  }
+}, 20000).unref();
+
+server.listen(PORT, () => {
+  console.log('Cloud Islands: http://localhost:' + PORT);
+  for (const list of Object.values(require('os').networkInterfaces()))
+    for (const a of list || []) if (a.family === 'IPv4' && !a.internal) console.log('  in local network: http://' + a.address + ':' + PORT);
+});

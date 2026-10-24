@@ -2,7 +2,11 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#8fd3ff">
 <title>Облачные острова</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -356,6 +360,39 @@ body.ws #wsHelp{display:block}
 @media (prefers-reduced-motion:reduce){#achT{transition:none}#achT.on .ac::after,#achT.on .ai,.achC,.lbRow,.pod,.wsMap{animation:none}}
 @media (max-width:640px){.hudrow{gap:10px;font-size:10px}.hud{padding:6px 9px}.btn{font-size:8px;padding:6px 7px}.hint{display:none}#combo{font-size:17px}#banner .ttl{font-size:18px}.slot{width:34px;height:34px}.slot img{left:4px;top:3px;width:22px;height:22px}#alt{height:160px}}
 @media (prefers-reduced-motion:reduce){#combo.show{animation-duration:.01s;opacity:1}.hearts.hit{animation:none}#banner{transition:none}}
+/* phones and tablets: menu button instead of the tool row, no keyboard hints, no accidental zoom */
+button{touch-action:manipulation}
+body.touch{-webkit-touch-callout:none}
+body.touch .tools .btn{display:none}body.touch .tools #bMenu{display:block}body.touch .tools.open .btn{display:block}
+body.touch .tools.open{position:absolute;right:0;top:0;display:grid;grid-template-columns:repeat(2,auto);justify-items:stretch;max-width:none;max-height:calc(100vh - 24px);overflow-y:auto}
+body.touch .tools.open .btn{text-align:center}body.touch .tools.open #bMenu{grid-column:1/-1}
+body.touch .top:has(.tools.open){z-index:9}body.touch:has(.tools.open) #mini{display:none}
+body.touch #talk kbd{display:none}
+body.touch .keys{display:none}
+body.touch #start .card p{font-size:14px}
+#bSwap{display:none!important}body.two #bSwap{display:block!important}body.touch.two .tools:not(.open) #bSwap{display:none!important}
+/* phone held sideways: controls in the corners, hotbar at the bottom */
+@media (max-height:500px) and (orientation:landscape){
+  body.touch .tools.open{grid-template-columns:repeat(4,auto)}
+  body.touch #hotbar{bottom:6px;padding:4px;gap:3px;max-width:calc(100% - 330px);overflow-x:auto}
+  body.touch .slot{width:30px;height:30px}body.touch .slot img{left:2px;top:2px;width:22px;height:22px}
+  body.touch #joy{left:16px;bottom:12px;width:110px;height:110px}
+  body.touch #jbtn{right:18px;bottom:14px;width:78px;height:78px}
+  body.touch #abtn{right:106px;bottom:16px;width:62px;height:62px}
+  body.touch #dbtn{right:22px;bottom:104px;width:58px;height:58px}
+  body.touch #hbtn{right:96px;bottom:92px;width:54px;height:54px}
+  body.touch #joyZone{height:70%;width:34%}
+  body.touch #mini{width:84px;height:84px}
+  body.touch #alt{display:none}
+  body.touch #toast{bottom:58px}
+  body.touch #dlg,body.touch #talk{bottom:52px}
+  body.touch #chat{top:84px;width:min(300px,40%)}
+  body.touch .hudrow{gap:9px;font-size:9px}body.touch .hud{padding:5px 8px;gap:3px}
+  body.touch #banner{top:8%}body.touch #banner .ttl{font-size:16px}body.touch #banner .lore{font-size:13px;padding:6px 10px;margin-top:8px}
+  body.touch #bossbar{top:56px}
+  body.touch #start .card{padding:16px 18px}body.touch #start .card h1{font-size:15px;margin-bottom:6px}body.touch #start .card p{display:none}
+  body.touch .heroes{margin-bottom:10px}body.touch .hopt{padding:6px}body.touch .hopt svg{width:34px;height:34px}
+}
 </style>
 </head>
 <body>
@@ -386,6 +423,7 @@ body.ws #wsHelp{display:block}
       <button class="btn" id="bChat">Чат</button>
       <button class="btn" id="bRestart" aria-pressed="false" title="Телепорт к флажкам">Флажки</button>
       <button class="btn" id="bPvp" aria-pressed="false" title="PvP (P)">PvP</button>
+      <button class="btn" id="bSwap" title="Сменить оружие (Z)">Оружие</button>
       <button class="btn" id="bTop" title="Достижения и рекорды (T)">Рекорды</button>
       <button class="btn" id="bWs" title="Мастерская карт">Мастерская</button>
       <button class="btn" id="bSet" title="Настройки">Настройки</button>
@@ -556,7 +594,7 @@ Object.assign(EN,{"Рекорды":"Records","Достижения и рекор
   "гарпии из храма":"harpies in the temple","Прогонишь шестерых гарпий? Они шумят и роняют перья в мои свитки.":"Will you chase off six harpies? They are noisy and drop feathers on my scrolls.","Гарпии ещё кричат":"The harpies are still screeching","Тишина, наконец-то. Держи перья и мрамор для своего дома.":"Silence at last. Take feathers and marble for your home.","Зевс бьёт сверху, но устаёт после каждого падения с неба. Мудрость — это терпение.":"Zeus strikes from above, but tires after every crash from the sky. Wisdom is patience.",
   "Гермес":"Hermes","Я Гермес, бегаю быстрее молнии! Облачная лестница ведёт прямо на Олимп.":"I'm Hermes, faster than lightning! The cloud stair leads straight to Olympus.","Отец там, наверху. Он летает, мечет молнии и падает с неба как гора.":"Father is up there. He flies, hurls lightning and falls from the sky like a mountain.",
   "искры для Гермеса":"sparks for Hermes","Принесёшь пять искр молнии? Заряжу ими сандалии и передам тебе подарок.":"Will you bring five lightning sparks? I'll charge my sandals and hand you a gift.","Искр пока мало":"Not enough sparks yet","Вжух! Сандалии гудят. Держи яблоки бессмертия и светокамни.":"Whoosh! The sandals hum. Take apples of immortality and glowstones.","Если победишь отца, он отдаст тебе Венец громовержца. С ним мега-прыжок высекает молнии!":"Beat my father and he'll give you the Thunderer's Crown. With it, a mega jump strikes lightning!",
-  "Громовержец":"Thunderer","Победи Зевса на вершине Олимпа":"Defeat Zeus on the summit of Olympus","Гнев небес":"Wrath of the skies","Сделай мега-прыжок в Венце громовержца":"Mega jump while wearing the Thunderer's Crown","Олимпиец":"Olympian","Найди все места Царства богов":"Find every place in the Realm of the Gods"});
+  "Громовержец":"Thunderer","Победи Зевса на вершине Олимпа":"Defeat Zeus on the summit of Olympus","Гнев небес":"Wrath of the skies","Сделай мега-прыжок в Венце громовержца":"Mega jump while wearing the Thunderer's Crown","Олимпиец":"Olympian","Оружие":"Weapon","Сменить оружие (Z)":"Switch weapon (Z)","Ты в онлайне. Чат — в «Меню».":"You're online. Chat is in the “Menu”.","Удобнее играть, повернув телефон боком":"It's easier to play with the phone turned sideways","Связь с сервером пропала, переподключаемся…":"Lost connection to the server, reconnecting…","Онлайн работает, когда игра запущена со своим сервером (node server/server.js) или открыта по ссылке в Claude.":"Online works when the game runs with its own server (node server/server.js) or is opened via a Claude link.","Найди все места Царства богов":"Find every place in the Realm of the Gods"});
 let trRe=null,trMap=null;const CYR=/[А-Яа-яЁё]/;
 function tr(s){if(LANG!=='en'||!s||!CYR.test(s))return s;const e=EN[s];if(e!=null)return e;
   if(!trRe){const ks=Object.keys(EN).filter(k=>k.length>=3).sort((a,b)=>b.length-a.length);trMap=new Map(ks.map(k=>[k.toLowerCase(),EN[k]]));trRe=new RegExp(ks.map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|'),'gi')}
@@ -1767,7 +1805,8 @@ const dbtn=$('dbtn');dbtn.addEventListener('pointerdown',e=>{e.preventDefault();
 $('bFx').onclick=()=>{GFX.auto=false;setGfx(GFX.level===0?2:GFX.level-1);cv.focus()};
 $('bPlay').onclick=startGame;
 function startGame(){if(started)return;started=true;document.body.classList.add('playing');cam.clearViewOffset();if(hero.emote)stopEmote();dist=11;pitch=0.42;hero.inv=1.5;audioInit();$('start').style.display='none';cv.focus();S.respawn();curTier=0;fpsMon.t=0;fpsMon.n=0;fpsMon.acc=0;
-  if(prog.at>0)toast('Продолжаем с флажка: '+cpName(prog.at),1800)}
+  if(prog.at>0)toast('Продолжаем с флажка: '+cpName(prog.at),1800);
+  if(document.body.classList.contains('touch')&&innerHeight>innerWidth)setTimeout(()=>toast('Удобнее играть, повернув телефон боком',2600),prog.at>0?2000:300)}
 
 
 /* ===================== emotes ===================== */
@@ -1990,20 +2029,39 @@ function netPresence(force){
   const p={n:nick,s:prog.skin||'boy',x:+hero.p.x.toFixed(2),y:+hero.p.y.toFixed(2),z:+hero.p.z.toFixed(2),f:+HR.rotation.y.toFixed(2),e:hero.emote?hero.emote.id:null,w:prog.wings?1:0,fl:hero.flying?1:0,g:hero.onG?1:0,pv:pvp?1:0,wp:curWeapon(),hp:hero.hp,ar:hero.armor||0,wh:prog.pet?+(prog.wispHue||0).toFixed(3):null,as:hero.assassin?1:0};
   const key=JSON.stringify(p);if(key===NET.lastKey&&!force)return;NET.lastKey=key;NET.room.presence(p).catch(()=>{});
 }
+/* realtime room over our own server (same interface as the Claude room) */
+function wsRoom(url){return new Promise((resolve,reject)=>{let ws;try{ws=new WebSocket(url)}catch(e){reject(e);return}
+  const hs={},pcs=[],peers=new Map();let me=null,done=false;const P=(id,pr)=>({peer:id,presence:pr,kind:'viewer',sameTab:id===me});
+  const all=()=>[...peers.keys()].map(id=>P(id,peers.get(id)));const tell=(j,u,l)=>{const ch={joined:j,updated:u,left:l,peers:all()};pcs.forEach(cb=>cb(ch))};
+  const send=o=>{if(ws.readyState===1)ws.send(JSON.stringify(o));return Promise.resolve()};
+  const R={emit:(e,d)=>send({t:'emit',e,d}),presence:p=>send({t:'pres',p}),on:(e,cb)=>{(hs[e]=hs[e]||[]).push(cb)},onPeers:cb=>{pcs.push(cb);cb({joined:all(),updated:[],left:[],peers:all()})},onClose:null};
+  ws.onmessage=ev=>{let m;try{m=JSON.parse(ev.data)}catch(e){return}
+    if(m.t==='hello'){me=m.id;peers.set(me,null);(m.peers||[]).forEach(q=>peers.set(q.id,q.p));done=true;resolve(R)}
+    else if(m.t==='join'){peers.set(m.id,null);tell([P(m.id,null)],[],[])}
+    else if(m.t==='pres'){const n=!peers.has(m.id);peers.set(m.id,m.p);n?tell([P(m.id,m.p)],[],[]):tell([],[P(m.id,m.p)],[])}
+    else if(m.t==='leave'){peers.delete(m.id);tell([],[],[P(m.id,null)])}
+    else if(m.t==='emit')(hs[m.e]||[]).forEach(cb=>cb({data:m.d,peer:m.from,isMe:m.from===me,sameTab:m.from===me}))};
+  ws.onclose=()=>{if(!done)reject(new Error('closed'));else if(R.onClose)R.onClose()};ws.onerror=()=>{}})}
+async function netServer(base){const u=new URL((base||'')+'/ws',location.href);u.protocol=u.protocol==='https:'?'wss:':'ws:';
+  try{const room=await wsRoom(u.href);room.onClose=()=>{NET.room=null;NET.ready=false;for(const id of [...remotes.keys()])dropRemote(id);$('online').style.display='none';chatLine('','Связь с сервером пропала, переподключаемся…','sys');setTimeout(()=>netServer(base),3000)};netAttach(room)}
+  catch(e){setTimeout(()=>netServer(base),5000)}}
 (async()=>{
   const cl=window.claude;
-  if(!cl||typeof cl.use!=='function'){chatLine('','Онлайн-чат работает, когда игру открывают по ссылке в Claude. Для своего сайта подключим свой сервер.','sys');return}
+  if(!cl||typeof cl.use!=='function')return;
   let room=null;try{room=await cl.use('room')}catch(e){}
   if(!room){chatLine('','Онлайн сейчас недоступен в этом просмотре.','sys');return}
-  NET.room=room;$('online').style.display='flex';chatLine('','Ты в онлайне. Нажми Enter, чтобы написать в чат.','sys');
+  netAttach(room);
+})();
+function netAttach(room){
+  NET.room=room;$('online').style.display='flex';chatLine('',document.body.classList.contains('touch')?'Ты в онлайне. Чат — в «Меню».':'Ты в онлайне. Нажми Enter, чтобы написать в чат.','sys');
   room.on('sw',m=>{if(m.isMe&&m.sameTab)return;const r=remotes.get(m.peer);if(r)remoteSwing(r,(m.data||{}).t===1)},()=>{});
   room.on('hit',m=>{const d=m.data||{};if(m.isMe||d.to!==NET.me)return;pvpTake(d)},()=>{});
   room.on('ko',m=>{const d=m.data||{};const k=String(d.k||'Игрок').slice(0,16),v=String(d.v||'Игрок').slice(0,16);chatLine('',k+' выбивает '+v+' в PvP','sys');if(k===nick&&!(m.isMe&&m.sameTab)){PV.k++;prog.pvpK=(prog.pvpK||0)+1;saveProg();updPvp();combo('Победа в PvP!',0);S.fanfare();achGive('pvp1')}},()=>{});
   room.on('chat',m=>{const d=m.data||{};const t=String(d.t==null?'':d.t).slice(0,140),n=String(d.n==null?'Игрок':d.n).slice(0,16)||'Игрок';if(!t)return;chatLine(n,t);if(!(m.isMe&&m.sameTab))S.ui()},()=>{});
   room.onPeers(ch=>{ch.joined.forEach(p=>{if(p.sameTab)NET.me=p.peer});ch.joined.forEach(upRemote);ch.updated.forEach(upRemote);ch.left.forEach(p=>dropRemote(p.peer));$('onN').textContent=ch.peers.filter(p=>p.kind==='viewer').length;
     if(NET.ready)ch.joined.forEach(p=>{if(!p.sameTab&&p.kind==='viewer')chatLine('','Кто-то зашёл в игру','sys')})},()=>{});
-  setTimeout(()=>{NET.ready=true},3000);netPresence(true);
-})();
+  setTimeout(()=>{NET.ready=true},3000);NET.lastKey='';netPresence(true);
+}
 
 
 /* ===================== NPCs and quests ===================== */
@@ -2192,7 +2250,8 @@ function renderCraft(){
 function craft(r){if(prog.gear[r.id]||!r.need.every(n=>haveNeed(n)>=n[2]))return;if(r.realm&&hero.p.x<=REALMX){toast('Эта вещь крафтится только в Царстве богов',1800);return}r.need.forEach(n=>{if(n[0]==='m')prog.mats[n[1]]-=n[2];else if(n[0]==='b')invRemove(n[1],n[2])});
   prog.gear[r.id]=1;saveProg();S.craft();equipVis();if(r.id==='armor'||r.id==='aegis')hero.armor=armMax();if(r.id==='aegis'){buildHero(prog.skin||'boy');updInv();setTimeout(()=>banner('Лейт-гейм','Облачение тени','Капюшон, алый пояс и скрытый клинок. Пять сердечек брони и быстрое восстановление.',5500),300)}if(r.id==='scythe')prog.weapon='scythe';if(r.id==='sword'&&!prog.weapon)prog.weapon='sword';saveProg();equipVis();updHud();updGear();renderCraft();
   burst(hero.p.x,hero.p.y+1.2,hero.p.z,30,{c:[0xffc23c,0x7fe0ff,0xffffff,0x8ee04a],s:0.16,sp:4,up:5,life:1,g:8,spin:10});toast('Создано: '+r.name,2200)}
-function updGear(){const g=$('gear');g.innerHTML='';['hook','sword','scythe','armor','aegis','boots','wings2'].forEach(k=>{if(!prog.gear[k])return;const im=document.createElement('img');im.src=GEARI[k];im.alt=RECIPES.find(r=>r.id===k).name;im.title=im.alt;if(k===curWeapon())im.className='cur';g.appendChild(im)});document.body.classList.toggle('hook',!!prog.gear.hook)}
+function updGear(){const g=$('gear');g.innerHTML='';['hook','sword','scythe','armor','aegis','boots','wings2'].forEach(k=>{if(!prog.gear[k])return;const im=document.createElement('img');im.src=GEARI[k];im.alt=RECIPES.find(r=>r.id===k).name;im.title=im.alt;if(k===curWeapon())im.className='cur';g.appendChild(im)});document.body.classList.toggle('hook',!!prog.gear.hook);document.body.classList.toggle('two',!!(prog.gear.sword&&prog.gear.scythe))}
+$('bSwap').onclick=()=>{switchWeapon();cv.focus()};
 let swordG=null,armorG=null;
 function makeSword(){const g=new THREE.Group();g.position.set(0,0,0.12);const b=(w,h,d,c,x,y,z,basic)=>{const m=new THREE.Mesh(BOX,basic?new THREE.MeshBasicMaterial({color:c}):lam(c));m.scale.set(w,h,d);m.position.set(x,y,z);m.castShadow=!basic;g.add(m);return m};
   b(0.09,0.09,0.3,0x7a5230,0,0,0);b(0.46,0.08,0.09,0xffcc3a,0,0,0.17);b(0.14,0.14,0.14,0xffcc3a,0,0,-0.18);b(0.13,0.05,1.15,0xd8f8ff,0,0,0.8,true);
@@ -3155,9 +3214,11 @@ const lsJ=(k,d)=>{try{const v=JSON.parse(store.get(k)||'null');return v==null?d:
 const ASC=b=>b.startsWith('race-')||b.startsWith('map-');
 const CLV=[[0,'Новичок'],[50,'Строитель'],[200,'Архитектор'],[1000,'Мастер неба'],[5000,'Легенда облаков']];
 function wsStars(s){const st=s.stars!=null?s.stars:(s.plays||0)+(s.likes||0)*5+(s.fin||0)*2;let lv=CLV[0],nx=null;for(let i=0;i<CLV.length;i++)if(st>=CLV[i][0]){lv=CLV[i];nx=CLV[i+1]||null}return Object.assign({},s,{stars:st,lv:lv[1],next:nx})}
+const noClaudeRoom=()=>!(window.claude&&typeof window.claude.use==='function');
 const API={base:null,online:false,
   async init(){const m=document.querySelector('meta[name="oblaka-api"]');let b=window.OBLAKA_API||(m&&m.content)||(/^https?:$/.test(location.protocol)?'':null);if(b==null)return;b=b.replace(/\/$/,'');
-    try{const c=new AbortController(),tm=setTimeout(()=>c.abort(),2500);const r=await fetch(b+'/api/health',{signal:c.signal});clearTimeout(tm);const j=await r.json();if(j&&j.ok){this.base=b;this.online=true}}catch(e){}},
+    try{const c=new AbortController(),tm=setTimeout(()=>c.abort(),2500);const r=await fetch(b+'/api/health',{signal:c.signal});clearTimeout(tm);const j=await r.json();if(j&&j.ok){this.base=b;this.online=true}}catch(e){}
+    if(this.online&&noClaudeRoom())netServer(this.base);else if(!NET.room)chatLine('','Онлайн работает, когда игра запущена со своим сервером (node server/server.js) или открыта по ссылке в Claude.','sys')},
   async req(path,body){const r=await fetch(this.base+path+(body?'':(path.includes('?')?'&':'?')+'me='+encodeURIComponent(UID)),body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({uid:UID,nick},body))}:{});if(!r.ok)throw new Error('http '+r.status);return r.json()},
   submit(board,v){if(!isFinite(v))return;const lb=lsJ('oblaka-lb',{}),b=lb[board]=lb[board]||{},o=b[UID],better=!o||(ASC(board)?v<o.v:v>o.v);
     if(better||o.n!==nick){b[UID]={n:nick,v:better?v:o.v,at:Date.now()};store.set('oblaka-lb',JSON.stringify(lb))}
