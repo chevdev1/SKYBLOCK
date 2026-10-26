@@ -1,4 +1,4 @@
-// Cloud Islands server: serves the game, leaderboards and Workshop maps.
+// Hop to Olympus server: serves the game, leaderboards and Workshop maps.
 // No dependencies: `node server/server.js`, then open http://localhost:8080
 'use strict';
 const http = require('http');
@@ -191,9 +191,11 @@ const server = http.createServer(async (req, res) => {
 
 /* ---------- realtime room over WebSocket: positions, chat, swings, PvP ---------- */
 // Messages from a client: {t:'pres',p} and {t:'emit',e,d}.
+// Boss co-op events: bst (boss state from the fight host), bfx (its attacks), bhit (a hit sent to the host),
+// bdead (boss defeated, everyone in the fight takes loot), shit (shared seraph hit).
 // Messages to clients: hello, join, pres, leave, emit {e,d,from}.
 const peers = new Map();
-const EVENTS = new Set(['chat', 'sw', 'hit', 'ko']);
+const EVENTS = new Set(['chat', 'sw', 'hit', 'ko', 'bst', 'bfx', 'bhit', 'bdead', 'shit']);
 function frame(str) {
   const data = Buffer.from(str, 'utf8'), n = data.length;
   const head = n < 126 ? Buffer.from([0x81, n]) : n < 65536 ? Buffer.from([0x81, 126, n >> 8, n & 255]) : Buffer.concat([Buffer.from([0x81, 127, 0, 0, 0, 0]), Buffer.from([(n >>> 24) & 255, (n >>> 16) & 255, (n >>> 8) & 255, n & 255])]);
@@ -211,7 +213,7 @@ function onRoomMessage(c, text) {
     const now = Date.now();
     if (m.e === 'chat') { if (now - c.lastChat < 800) return; c.lastChat = now; }
     if (now - c.win > 1000) { c.win = now; c.count = 0; }
-    if (++c.count > 40) return;
+    if (++c.count > 90) return;
     broadcast({ t: 'emit', e: m.e, d: m.d, from: c.id });
   }
 }
@@ -262,7 +264,7 @@ setInterval(() => {
 }, 20000).unref();
 
 server.listen(PORT, () => {
-  console.log('Cloud Islands: http://localhost:' + PORT);
+  console.log('Hop to Olympus: http://localhost:' + PORT);
   for (const list of Object.values(require('os').networkInterfaces()))
     for (const a of list || []) if (a.family === 'IPv4' && !a.internal) console.log('  in local network: http://' + a.address + ':' + PORT);
 });
