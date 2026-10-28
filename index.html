@@ -5597,7 +5597,7 @@ function updKeto(dt){if(!started||!KETO.G)return;const tm=ketoTime(),z0=zoneOf(h
   const L=ketoLocal(hero.p),onDeck=KETO.deck.has(Math.round(L.x)+','+Math.round(L.z));KETO.ride=false;
   if(onDeck&&hero.v.y<=0.5&&L.y>KDY+0.5-1.4&&L.y<KDY+0.5+0.4&&!hero.downT){L.y=KDY+0.5;hero.p.copy(L.applyMatrix4(KETO.M));hero.v.y=0;hero.onG=true;hero.lastG=T;KETO.ride=true}
   if(KETO.ride){KETO.rideT+=dt;if(KETO.rideT>3&&!prog.ach?.keto)achGive('keto')}
-  const t=Date.now()/1000;KETO.tail.rotation.x=Math.sin(t*1.1)*0.22;KETO.fins.forEach(F=>F.f.rotation.z=F.s*Math.sin(t*1.3)*0.25);KETO.flame.scale.y=0.8+Math.sin(T*14)*0.2;
+  const t=Date.now()/1000;KETO.tail.rotation.x=Math.sin(t*1.1)*0.22;if(KETO.school)KETO.school.forEach(q=>{const a=q.ph+t*q.sp*0.3;q.f.position.set(Math.cos(a)*q.r*0.6,q.y+Math.sin(t*1.3+q.ph)*0.6,Math.sin(a)*q.r*1.6);q.f.rotation.y=-a});KETO.fins.forEach(F=>F.f.rotation.z=F.s*Math.sin(t*1.3)*0.25);KETO.flame.scale.y=0.8+Math.sin(T*14)*0.2;
   const sp=(tm.tIn/1000)%20<3;if(sp){const B=new THREE.Vector3(0,KDY+0.6,20).applyMatrix4(KETO.M);for(let i=0;i<3;i++)emit(B.x+(Math.random()-0.5)*0.8,B.y+Math.random()*2,B.z+(Math.random()-0.5)*0.8,{vy:14+Math.random()*8,c:[0xffffff,0xbfe6ff][i%2],s:0.22,life:1.1,g:10});
     if(!KETO.spoutOn){KETO.spoutOn=true;noise(1.2,{v:0.08,f:900,to:3000})}if(KETO.ride&&Math.hypot(L.x,L.z-20)<1.7){hero.v.y=46;hero.onG=false;KETO.ride=false;S.jump(2);combo('Фонтан Кето!',0)}}else KETO.spoutOn=false;
   if(Date.now()/1000-KETO.sungT>25){KETO.sungT=Date.now()/1000;ketoSong(Math.max(0.15,1-hero.p.distanceTo(P)/120))}
@@ -5652,6 +5652,19 @@ function updKark(dt,L){if(prog.karkDown)return;if(!KARK.mb){if(KETO.rideT>35)kar
   for(let i=KARK.puddles.length-1;i>=0;i--){const q=KARK.puddles[i];q.t-=dt;q.m.material.opacity=Math.min(0.75,q.t/2);if(KETO.ride&&Math.hypot(L.x-q.l.x,L.z-q.l.z)<1.3)hero.slowT=T+0.3;if(q.t<=0){KETO.G.remove(q.m);KARK.puddles.splice(i,1)}}
   if(Math.floor(T*4)!==Math.floor((T-dt)*4))karkBar()}
 ketoBuild();
+function ketoDress(){const G=KETO.G,y=KDY+0.5;
+  {const t=new THREE.Group();t.position.set(-1,y,-1);G.add(t);[[0x6b4226,0.9],[0x8a5a2b,0.85],[0x6b4226,0.8],[0x5a3a22,0.75]].forEach(([c,s],i)=>hbox(t,s,0.9,s,c,0,0.45+i*0.9,0));
+    hbox(t,0.9,0.5,0.1,0x5d7393,0,3.5,0.42);hbox(t,0.2,0.2,0.06,0xffffff,-0.2,3.6,0.48,true);hbox(t,0.2,0.2,0.06,0xffffff,0.2,3.6,0.48,true);[-1,1].forEach(s=>hbox(t,0.9,0.15,0.4,0x4f6382,s*0.8,3.0,0));hbox(t,0.3,0.3,0.3,0x7ff0ff,0,4.0,0,true)}
+  [[5,5],[-6,-2]].forEach(([x,z])=>{const r=new THREE.Group();r.position.set(x,y,z);G.add(r);[-0.8,0.8].forEach(u=>hbox(r,0.1,1.6,0.1,0x6b4226,u,0.8,0));hbox(r,1.8,0.08,0.08,0x6b4226,0,1.55,0);
+    for(let i=0;i<4;i++){const f=hbox(r,0.12,0.4,0.22,[0x9fd8ff,0xff9ab0,0xb8ffe8][i%3],-0.6+i*0.4,1.25,0);f.rotation.z=0.1}});
+  const pole=(x,z,h)=>{const p=new THREE.Group();p.position.set(x,y,z);G.add(p);hbox(p,0.1,h,0.1,0x6b4226,0,h/2,0);return new THREE.Vector3(x,y+h,z)};
+  const A=pole(-5,-9,3.2),B=pole(5,-7,3.2),C=pole(4,12,3.2),D=pole(-5,10,3.2);[[A,B],[B,C],[C,D]].forEach(([p,q])=>{for(let i=1;i<12;i++){const t=i/12,v=p.clone().lerp(q,t);v.y-=Math.sin(t*Math.PI)*0.7;const f=hbox(G,0.3,0.32,0.04,[0xff6a5a,0xffe14d,0x5fd3ff,0x8ee04a][i%4],v.x,v.y-0.15,v.z);f.lookAt(q.x,f.position.y,q.z)}});
+  [[6,-4],[-2,14],[7,8],[-7,6]].forEach(([x,z],i)=>{const b=new THREE.Group();b.position.set(x,y,z);G.add(b);hbox(b,0.55,0.75,0.55,0x8a5a2b,0,0.38,0);[0.15,0.6].forEach(h=>hbox(b,0.57,0.06,0.57,0x3a3540,0,h,0));if(i%2)hbox(b,0.6,0.4,0.6,0xc8955a,0.7,0.2,0.1)});
+  [[-7,-6],[7,2]].forEach(([x,z])=>{const h=new THREE.Group();h.position.set(x,y+0.2,z);G.add(h);hbox(h,0.8,0.25,1.8,0x8a5a2b,0,0,0);hbox(h,0.1,0.35,1.8,0x6b4226,0.4,0.15,0);hbox(h,0.1,0.35,1.8,0x6b4226,-0.4,0.15,0);hbox(h,0.7,0.06,1.2,0xe8d8b0,0,0.12,0)});
+  for(let i=0;i<46;i++){const z=-28+hash(i,4,9)*56,[a,b]=ketoA(z),s=hash(9,i,4)>0.5?1:-1,yy=-b*0.2+hash(i,i,3)*b*0.6,x=s*(a*Math.sqrt(Math.max(0,1-(yy*yy)/(b*b)))+0.3);
+    const m=hbox(G,0.5,0.5,0.5,[0xd8cfb8,0xc8c0a8,0xfff0f6,0xb8a890][i%4],x,yy,z);m.rotation.set(hash(i,1,1)*3,hash(1,i,1)*3,0)}
+  KETO.school=[];for(let i=0;i<16;i++){const f=new THREE.Group();hbox(f,0.25,0.35,0.7,[0x9fd8ff,0xffffff,0xb8ffe8,0xff9ab0][i%4],0,0,0,true);hbox(f,0.06,0.3,0.25,0xffffff,0,0,-0.45,true);G.add(f);KETO.school.push({f,ph:i/16*Math.PI*2,r:16+hash(i,7,7)*6,y:-3+hash(7,i,7)*8,sp:0.5+hash(7,7,i)*0.4})}}
+ketoDress();
 while(TT.length<17)TT.push({g:[0.62,0.55,0.85],l:[0.7,0.5,0.95],d:[0.55,0.5,0.7]});
 /* ===================== Erebus Abyss: darkness lit only by the wisp, seams that flip gravity, and Erebus himself ===================== */
 const ABL1=new THREE.PointLight(0x7fd0ff,0,12,1.2),ABL2=new THREE.PointLight(0xffa040,0,4,1.5);scene.add(ABL1);scene.add(ABL2);
