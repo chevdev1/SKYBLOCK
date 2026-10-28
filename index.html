@@ -870,6 +870,12 @@ body:not(.touch) .tools>.btn::after{border-radius:4px}body:not(.touch) .tools>.b
   <button id="hact" type="button"></button>
   <div id="ascB" aria-live="polite"></div>
   <div id="ascCard"></div>
+  <div class="overlay" id="endP" style="display:none">
+    <div class="card glass" role="dialog" aria-modal="true" aria-labelledby="endT" style="max-width:620px">
+      <div class="gh"><h1 id="endT">Небесный свод</h1></div>
+      <div id="endB"></div>
+    </div>
+  </div>
   <div class="overlay" id="ascPick" style="display:none">
     <div class="card glass" role="dialog" aria-modal="true" aria-labelledby="ascPickT">
       <div class="gh"><h1 id="ascPickT">Дар бога</h1></div>
@@ -1868,7 +1874,7 @@ const flyMax=()=>(prog.gear&&prog.gear.wings3?5.5:prog.gear&&prog.gear.wings2?3.
 const atkMul=()=>prog.gear&&prog.gear.erebus?0.55:prog.gear&&prog.gear.aegis?0.72:1;
 const BUFF={};const buffOn=id=>BUFF[id]!=null&&BUFF[id]>T;
 let PETRIFY=0;const runMul=()=>(prog.gear&&prog.gear.erebus?1.15:prog.gear&&prog.gear.aegis?1.1:1)*(buffOn('wind')?1.35:1)*(PETRIFY>T?0.3:1)*(foodOn('tea')?1.15:1)*((ASCR&&ASCR.on)?ascRun():1)*(hero.slowT>T?0.55:1);
-const hpMax=()=>(ASCR&&ASCR.on)?ascHpMax():3+Math.min(3,Math.floor((prog.lvl||1)/5))+(prog.gear&&prog.gear.titan?1:0)+(foodOn('soup')?1:0);
+const hpMax=()=>(ASCR&&ASCR.on)?ascHpMax():3+Math.min(3,Math.floor((prog.lvl||1)/5))+(prog.gear&&prog.gear.titan?1:0)+(foodOn('soup')?1:0)+(prog.ngAtlas?3:0);
 
 /* ===================== particles ===================== */
 const PMAX=2000;let PLIM=PMAX;
@@ -2299,7 +2305,7 @@ function keyName(e){const c=e.code||'';if(c.startsWith('Key'))return c.slice(3).
 const keys={};let editing=false,started=false,sel=1;
 const kd=k=>keys[k]?1:0;
 const shown=id=>$(id).style.display!=='none';
-function isTyping(){if(shown('homeP')||shown('ascPick')||shown('book')||shown('inv')||shown('settings')||shown('top')||shown('ws')||shown('wsRes')||document.body.classList.contains('wmap'))return true;return shown('modal')||shown('buy')}
+function isTyping(){if(shown('endP')||shown('homeP')||shown('ascPick')||shown('book')||shown('inv')||shown('settings')||shown('top')||shown('ws')||shown('wsRes')||document.body.classList.contains('wmap'))return true;return shown('modal')||shown('buy')}
 window.addEventListener('keydown',e=>{
   if(isTyping()){if(document.activeElement&&document.activeElement.tagName==='INPUT'&&e.key!=='Escape')return;const kc=keyName(e);
     if(e.key==='Escape'||(kc==='c'&&shown('inv')&&INV2.tab==='craft')||(kc==='i'&&shown('inv')&&INV2.tab==='bag')||((kc==='m'||kc==='ь')&&shown('book'))||(kc==='t'&&shown('top'))||(kc==='n'&&document.body.classList.contains('wmap'))){closeModal();closeHomeP();$('ascPick').style.display='none';closeBook();closeCraft();closeBag();closeSet();closeTop();closeWMap();if(shown('ws'))closeWs()}return}
@@ -2950,7 +2956,8 @@ const ACTS=[
   {n:'Акт IV. Разлом Хаоса',d:'Тюрьма титанов за небом. Стражи неба хранят части Копья Хроноса, на Троне времени ждёт Кронос.',items:[['Никта',()=>!!prog.minis.nyx],['Офион',()=>!!prog.minis.ophion],['Грифон часов',()=>!!prog.minis.gryphon],['Алекто',()=>!!prog.minis.alecto],['Копьё Хроноса',()=>!!prog.gear.spear],['Арена Титанов',()=>!!prog.arenaWon],['Кронос',()=>!!prog.minis.kronos]],need:1},
   {n:'Интерлюдия. Вестники Бездны',d:'Победы над Кроносом и Гераклом заметили твари из-за неба. Они приходят сами, туда, где ты есть, и уходят, только когда ты падёшь.',items:[['Пожиратель звёзд',()=>!!prog.minis.devourer],['Безликий Наблюдатель',()=>!!prog.minis.watcher],['Жезл Бездны',()=>!!prog.gear.wand],['Око Наблюдателя',()=>!!prog.gear.wand2]],need:3},
   {n:'Акт IV½. Звёздный купол',d:'Портал на Троне времени ведёт в ночной небосвод. Острова-созвездия хранят тех, кого боги подняли на небо.',items:[['Купол открыт',()=>!!prog.dome],['Охотница',()=>!!prog.found.dome_hunt],['Аталанта',()=>!!prog.minis.atalanta],['Лук Артемиды',()=>!!prog.gear.bow],['Близнецы',()=>!!prog.found.dome_twins],['Диоскуры',()=>!!(prog.minis.castor&&prog.minis.pollux)],['Персей',()=>!!prog.found.dome_perseus],['Горгоны',()=>!!(prog.minis.medusa&&prog.minis.stheno&&prog.minis.euryale)],['Прялка',()=>!!prog.found.dome_spindle],['Мойры',()=>!!prog.fate],['Ножницы Атропос',()=>!!prog.gear.shears]],need:3},
-  {n:'Акт V. Кто удержит небо',d:prog.fate?'Мойры пали, нить судьбы в твоих руках. Скоро выбор: Геракл, ты сам или Прометей.':'Скоро. За Вратами Тартара — Бездна Эреба, и миру придётся выбрать новую стену.',items:[],soon:1}];
+  {n:'Акт V. Кто удержит небо',d:'За Вратами Тартара Бездна Эреба. Без виспа там не видно ни зги. Потом небо начнёт падать, и под Небесным сводом на вершине Звёздного купола придётся выбрать: Геракл, ты сам или Прометей.',items:[['Бездна Эреба',()=>!!prog.abyss],['Эреб',()=>!!prog.erebus],['Выбор под сводом',()=>!!prog.fate2]]},
+  {n:'Акт VI. Эпоха огня',d:'Прошло сто лет. Огонь в руках людей, на облаках города и небесные поезда. Первые машины уже гудят в Мастерской Гефеста.',items:[],soon:1}];
 const actDone=a=>a.items.length&&a.items.every(i=>i[1]());
 const actOpen=(a,i)=>i===0||(a.need!=null?actDone(ACTS[a.need]):actDone(ACTS[i-1]));
 function openBook(){renderBook();$('book').style.display='flex';S.ui();for(const k in keys)keys[k]=false}
@@ -5624,6 +5631,61 @@ GEARI.kclaw=spriteURL(['....RR....','...RRRR...','..RR..RR..','..R....R..','..RR
 GEARI.ecloak=spriteURL(['...KKKK...','..KKWWKK..','..KWKKWK..','..KKKKKK..','.KKKKKKKK.','.KKKKKKKK.','KKKKKKKKKK','KK.KK.KKKK'],{K:0x1a1028,W:0xffffff});
 
 CPS.push({x:ABX,z:-47,y:10,t:15,realm:4,nm:'Порог Эреба'});
+/* ===================== Act V: who will hold the sky. The vault on top of the Star Dome, three endings, New Sky ===================== */
+const VAULT={G:null,figs:[],built:false,p:null,cine:0};
+function actVOpen(){if(prog.fate2)return;setTimeout(()=>{omen('НЕБО ПАДАЕТ','Кто-то должен его удержать. Небесный свод ждёт на вершине Звёздного купола');logEv('Небо падает: свод ждёт на вершине купола')},11000)}
+function buildVault(){if(VAULT.built)return;VAULT.built=true;const c=new THREE.Vector3(SPL.x,SPL.y+0.5,SPL.z),G=new THREE.Group();G.position.copy(c);scene.add(G);VAULT.G=G;VAULT.p=c;
+  const st=0xe8e0f8,gd=0xffcc3a;[-4,4].forEach(x=>{hbox(G,1.2,9,1.2,st,x,4.5,-3);hbox(G,1.6,0.5,1.6,gd,x,0.25,-3);hbox(G,1.6,0.5,1.6,gd,x,9,-3)});
+  for(let i=0;i<=12;i++){const a=i/12*Math.PI,x=-4*Math.cos(a),y=9+Math.sin(a)*3.2;hbox(G,1.1,1.1,1.2,i%3?st:gd,x,y,-3)}
+  const glow=new THREE.Mesh(BOX,new THREE.MeshBasicMaterial({color:0xfff2c0,transparent:true,opacity:0.25,depthWrite:false,blending:THREE.AdditiveBlending}));glow.scale.set(6.6,10,0.4);glow.position.set(0,5.5,-3);G.add(glow);VAULT.glow=glow;
+  const sky=new THREE.Group();sky.position.set(0,12.8,-3);G.add(sky);for(let i=0;i<40;i++){const a=Math.random()*6.28,r=1+Math.random()*3;hbox(sky,0.3,0.3,0.3,[0x9fb8ff,0xffffff,0xffe08a][i%3],Math.cos(a)*r,Math.random()*1.5,Math.sin(a)*r*0.4,true)}VAULT.sky=sky;
+  const H=makeHeracles();H.G.scale.setScalar(0.7);H.G.position.set(-6,0,2);H.G.rotation.y=0.5;G.add(H.G);VAULT.H=H;
+  const P=buildNPC(NPCDEF.find(n=>n.id==='prometheus').look);P.G.position.set(6,0,2);P.G.rotation.y=-0.5;G.add(P.G);VAULT.P=P;[-0.4,0.4].forEach(x=>hbox(P.G,0.12,0.12,1.6,0x6d7482,x,1.2,-0.6));
+  const spot=new THREE.Mesh(new THREE.CircleGeometry(1.1,24),new THREE.MeshBasicMaterial({color:0xffe08a,transparent:true,opacity:0.6,depthWrite:false}));spot.rotation.x=-Math.PI/2;spot.position.set(0,0.06,-3);G.add(spot);VAULT.spot=spot;
+  [['Геракл',-6,2],['Прометей',6,2],['Твоё место',0,-3]].forEach(([t,x,z])=>{const s=txtSprite(t,'#ffe08a',0.7);s.position.set(x,z===-3?2.6:4.2,z);G.add(s)});
+  VAULT.figs=[{k:'heracles',l:new THREE.Vector3(-6,0,2)},{k:'prometheus',l:new THREE.Vector3(6,0,2)},{k:'hero',l:new THREE.Vector3(0,0,-3)}]}
+const ENDS={heracles:{t:'Геракл держит небо',ask:'«Я держал его однажды, удержу снова». Геракл встанет под свод навсегда. Это окончательно для этого прохождения.',
+    end:'Геракл поднял руки, и небо остановилось в вечном рассвете. Арена героев стала мемориалом. Острова живут, но его смеха там больше не слышно.',ach:'end_h'},
+  hero:{t:'Новый Атлант',ask:'Ты сам встанешь под свод и станешь новым Атлантом. Это окончательно для этого прохождения.',end:'Ты встал под свод. Небо легло на плечи тяжело и тепло, как кошка. Внизу на островах снова зажглись огни. Теперь держать его — тебе.',ach:'end_a'},
+  prometheus:{t:'Огонь людям',ask:'Прометей разорвёт цепи и отдаст людям весь огонь, а не искру. Небо будут держать не боги и не титаны, а люди. Это окончательно.',
+    end:'Цепи лопнули. Огонь разошёлся по островам: в каждом очаге, в каждом фонаре. Люди посмотрели вверх и впервые не испугались. Прошло сто лет... Акт VI «Эпоха огня» — продолжение следует.',ach:'end_p'}};
+function endAct(){if(!VAULT.built||prog.fate2||!prog.erebus)return null;const L=hero.p.clone().sub(VAULT.p);for(const f of VAULT.figs)if(Math.hypot(L.x-f.l.x,L.z-f.l.z)<2.2&&Math.abs(L.y)<3)return {t:f.k==='hero'?'Встать под свод':'Подойти: '+(f.k==='heracles'?'Геракл':'Прометей'),fn:()=>endAsk(f.k)};return null}
+function endAsk(k){const E=ENDS[k],box=$('endB');box.innerHTML='';$('endT').textContent=E.t;box.appendChild(gEl('p','hp-p',E.ask));const row=gEl('div','hp-row');
+  const y=gEl('button','gbtn','Да, это мой выбор');y.onclick=()=>{$('endP').style.display='none';endPlay(k)};const n=gEl('button','gbtn','Подумать ещё');n.onclick=()=>{$('endP').style.display='none';cv.focus()};row.appendChild(y);row.appendChild(n);box.appendChild(row);$('endP').style.display='flex';S.ui()}
+function endPlay(k){prog.fate2=k;prog.endings=prog.endings||{};prog.endings[k]=1;saveProg();logEv('Акт V: '+ENDS[k].t);achGive(ENDS[k].ach);VAULT.cine=1;S.fanfare();
+  if(k==='heracles'){VAULT.H.G.position.set(0,0,-3);VAULT.H.G.rotation.y=0}
+  if(k==='hero'){hero.p.copy(VAULT.p).add(new THREE.Vector3(0,0.1,-3));hero.v.set(0,0,0);hero.face=0}
+  if(k==='prometheus'){const p=VAULT.p.clone().add(new THREE.Vector3(6,1,2));for(let i=0;i<6;i++)setTimeout(()=>burst(p.x,p.y+1,p.z,50,{c:[0xff8a3a,0xffcc3a,0xffffff],s:0.24,sp:7,up:9,life:1.6,g:3}),i*300);VAULT.P.G.children.forEach(q=>{if(q.scale&&q.scale.z>1.5)q.visible=false})}
+  VAULT.glow.material.opacity=0.6;let t=0;const iv=setInterval(()=>{t+=0.05;dist=Math.min(34,dist+0.5);pitch=Math.min(0.75,pitch+0.006);if(t>6){clearInterval(iv);endScreen(k)}},50)}
+function endScreen(k){const E=ENDS[k],box=$('endB');box.innerHTML='';$('endT').textContent=E.t;box.appendChild(gEl('p','hp-p',E.end));
+  if(k!=='prometheus'){box.appendChild(gEl('p','hp-p','«Новое небо» — второй круг того же мира: боссы снова живы, все враги элитные, но уровень, снаряжение, остров и питомцы остаются.'+(k==='hero'?' Как Атлант ты получишь +3 сердца.':'')))}
+  else box.appendChild(gEl('p','hp-p','Пока Эпоха огня строится, загляни в Мастерскую Гефеста в Царстве богов: там уже пахнет машинным маслом.'));
+  const row=gEl('div','hp-row');if(k!=='prometheus'){const ng=gEl('button','gbtn','Начать «Новое небо +'+((prog.ng||0)+1)+'»');ng.onclick=newSky;row.appendChild(ng)}
+  const st=gEl('button','gbtn','Остаться в этом мире');st.onclick=()=>{$('endP').style.display='none';dist=Math.min(dist,14);cv.focus()};row.appendChild(st);box.appendChild(row);$('endP').style.display='flex'}
+const NGKEEP=['lvl','xp','gear','mats','home','homeD','pet','wispHue','ach','ash','ascUp','ascBest','ascWins','kills','kk','log','skin','weapon','ketoShell','whaleSong','endings','ng','skins','emotes','food','wsMaps','wings','karkDown'];
+function newSky(){const keep={};NGKEEP.forEach(k=>{if(prog[k]!==undefined)keep[k]=prog[k]});const was=prog.fate2;keep.ng=(prog.ng||0)+1;keep.ngAtlas=was==='hero'||prog.ngAtlas;keep.hard=1;keep.cp=0;keep.at=0;keep.seen=[];keep.minis={};keep.q={};keep.found={};keep.ngNew=1;
+  store.set(PKEY,JSON.stringify(keep));location.reload()}
+function updVault(dt){if(!started)return;if(prog.ngNew){delete prog.ngNew;saveProg();setTimeout(()=>banner('Новое небо +'+prog.ng,'Второй круг','Боссы снова живы, все враги элитные с первого шага.'+(prog.ngAtlas?' Ты — Атлант: +3 сердца.':'')+' Уровень, снаряжение, остров и питомцы с тобой.',8000),1500)}if(prog.erebus&&zoneOf(hero.p.x)===3&&!VAULT.built)buildVault();if(!VAULT.built)return;const t=T;VAULT.sky.rotation.y+=dt*0.3;
+  if(!prog.fate2){VAULT.glow.material.opacity=0.2+Math.sin(t*2)*0.08;VAULT.spot.material.opacity=0.4+Math.sin(t*3)*0.2;if(Math.random()<dt*3){const p=VAULT.p;emit(p.x+(Math.random()-0.5)*6,p.y+12,p.z-3,{vy:-4,c:0xbfd0ff,s:0.12,life:1.5,g:2})}}
+  else if(prog.fate2==='hero'&&VAULT.cine&&hero.p.distanceTo(VAULT.p)<6){HB.rotation.x=0;if(armL){armL.rotation.x=-3;armR.rotation.x=-3}}}
+/* ===================== Hephaestus' Workshop: Talos asleep, two golden maidens and the first drone ===================== */
+const HWS={built:false,G:null,p:null,maids:[],drone:null};
+const MAIDL=[['Золотая служанка Хрисея','Мы помогали Гефесту ковать. Он ушёл, а мы остались: смазываем Талоса и ждём хозяина.','Огонь Прометея светит ярче, чем горн. Люди однажды научатся строить таких, как мы. Это будет... интересно.'],
+  ['Золотая служанка Аргира','Ты пахнешь звёздной сталью. Значит, ты видел Купол.','Возьми стрекозу. Она старая, но летает. Покажи ей мир, она любопытная.']];
+function buildWorkshop(){if(HWS.built)return;const L=rlm('forge');if(!L)return;HWS.built=true;const x=L.x+9,z=L.z+2,top=findTop(x,z,L.y+20,L.y-10),y=(top==null?L.y:top)+0.5;const G=new THREE.Group();G.position.set(x,y,z);scene.add(G);HWS.G=G;HWS.p=G.position.clone();
+  const B=0xc9873a,D=0x8a5a2a;hbox(G,2.6,2.6,1.6,B,0,3.9,0);hbox(G,1.4,1.2,1.2,B,0,5.9,0);hbox(G,0.5,0.25,0.1,0xff6a1a,0,6.0,0.62,true);[-1,1].forEach(s=>{hbox(G,0.8,2.8,0.8,B,s*1.9,3.7,0.1);hbox(G,0.9,2.6,0.9,D,s*0.7,1.3,0)});
+  hbox(G,3.2,0.4,2.2,0x3a3540,0,0.2,0);const eye=G.children[2];HWS.eye=eye;const lb=txtSprite('Талос (спит)','#ffcc3a',0.7);lb.position.set(0,7.6,0);G.add(lb);
+  [[-3,2.2],[3,2.2]].forEach(([dx,dz],i)=>{const N=buildNPC({skin:0xffcc3a,hair:0xe0a020,bun:1,shirt:0xffd860,robe:0xc9a030,boots:0x8a6a20});N.G.position.set(dx,0,dz);N.G.rotation.y=i?-2.6:2.6;G.add(N.G);const s=txtSprite(MAIDL[i][0].split(' ').pop(),'#ffe08a',0.55);s.position.set(dx,2.9,dz);G.add(s);HWS.maids.push({l:new THREE.Vector3(dx,0,dz),i})});
+  const an=new THREE.Group();an.position.set(0,1.1,2.6);G.add(an);hbox(an,0.9,0.7,0.3,0x6b4226,0,0,0);for(let i=0;i<5;i++){const g=hbox(an,0.32,0.32,0.06,0xd0a040,-0.25+(i%3)*0.25,0.12-Math.floor(i/3)*0.25,0.18);g.userData.sp=0.6+i*0.4}HWS.mech=an}
+function makeDrone(){const g=new THREE.Group();hbox(g,0.42,0.18,0.6,0xc9873a,0,0,0);hbox(g,0.14,0.14,0.14,0x5fd3ff,0,0.02,0.32,true);const rot=[];[[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([a,b])=>{const r=hbox(g,0.5,0.03,0.08,0xe8f4ff,a*0.32,0.14,b*0.28,true);rot.push(r)});g.userData.rot=rot;scene.add(g);return g}
+function wsAct(){if(!HWS.built)return null;const L=hero.p.clone().sub(HWS.p);for(const m of HWS.maids)if(Math.hypot(L.x-m.l.x,L.z-m.l.z)<2&&Math.abs(L.y)<3)return {t:'Поговорить: '+MAIDL[m.i][0],fn:()=>{const M=MAIDL[m.i];
+    if(m.i===1&&!prog.drone){prog.drone=1;saveProg();S.fanfare();banner(M[0],'Дрон-стрекоза',M[1]+' '+M[2]+' Стрекоза теперь летает за тобой и бьёт током ближайших врагов.',8000);logEv('Подарок служанки Гефеста: дрон-стрекоза')}
+    else banner(M[0],'Мастерская Гефеста',M[1+(HWS.tk=(HWS.tk||0)+1)%2]+(prog.fate2==='prometheus'?' Слышишь гул? Это люди разжигают первые машины.':''),7000)}};
+  if(Math.hypot(L.x,L.z)<2.6&&Math.abs(L.y)<3)return {t:'Талос',fn:()=>banner('Талос','Бронзовый страж','Гефест выковал его охранять Крит. Внутри одна жила, по ней течёт ихор. Глаз ещё тлеет: Талос не мёртв, он ждёт.',7000)};return null}
+function updWorkshop(dt){if(!started)return;if(prog.realm&&!HWS.built&&zoneOf(hero.p.x)===1)buildWorkshop();if(HWS.built){HWS.eye.material.color.setHSL(0.05,1,0.4+Math.sin(T*1.5)*0.12);HWS.mech.children.forEach(q=>{if(q.userData.sp)q.rotation.z+=dt*q.userData.sp})}
+  if(!prog.drone)return;if(!HWS.drone)HWS.drone=makeDrone();const d=HWS.drone,a=T*1.3,want=new THREE.Vector3(hero.p.x+Math.cos(a)*1.6,hero.p.y+(FLIP.on?-2.4:2.4)+Math.sin(T*2)*0.2,hero.p.z+Math.sin(a)*1.6);d.position.lerp(want,Math.min(1,dt*4));d.rotation.y=-a;d.userData.rot.forEach((r,i)=>r.rotation.y=T*40+i);
+  d.visible=!WS.active;if(T>(HWS.zapT||0)){HWS.zapT=T+3;let best=null,bd=8;for(const mb of allMobs())if(mb.state==='alive'&&mb.G.visible){const q=mb.p.distanceTo(hero.p);if(q<bd){bd=q;best=mb}}if(best){boltFx(d.position.clone(),best.p.clone().setY(best.p.y+0.6),0x5fd3ff,0.15,0.12);hitMob(best,1,best.p.clone().sub(hero.p).setY(0).normalize());tone(1800,0.05,{v:0.04})}}}
+
 let DAYFAST=1;
 /* ===================== Your own island: cosy home, real-time garden, cloud fishing, kitchen, furniture, trophies ===================== */
 const HX=-300,HY=40,HZ=0;
@@ -5719,6 +5781,7 @@ function giftHome(){if(prog.home||!prog.bossDown)return;prog.home=1;homeData();s
 /* the action under F at home */
 let homeAct=null;
 function updHomeAct(){homeAct=null;const el=$('hact');if(FISH.state==='bite'||FISH.state==='wait'){el.textContent=(TOUCH?'':'F — ')+(FISH.state==='bite'?'Подсечь!':'Смотать удочку');el.classList.add('on');return}if(!started||!prog.home||editing||FISH.state||hero.downT){el.classList.remove('on');ascCard(null);return}
+  {const ea=endAct()||wsAct();if(ea){homeAct=ea;ascCard(null);el.textContent=(TOUCH?'':'F — ')+ea.t;el.classList.add('on');return}}
   if(KETO.on&&KETO.ride){homeAct=ketoAct(ketoLocal(hero.p));ascCard(null);if(homeAct){el.textContent=(TOUCH?'':'F — ')+homeAct.t;el.classList.add('on')}else el.classList.remove('on');return}
   if(ASCR.on){homeAct=ascActNow();ascCard(homeAct&&homeAct.card);if(homeAct){el.textContent=(TOUCH?'':'F — ')+homeAct.t;el.classList.add('on')}else el.classList.remove('on');return}
   const h=homeData(),rx=hero.p.x-HX,rz=hero.p.z-HZ,home=atHome();
@@ -6218,6 +6281,9 @@ const AIC={
   bolt:spriteURL(['....YY..','...YY...','..YY....','.YYYYY..','...YY...','..YY....','.YY.....','YY......'],{Y:0xfff04a}),
   map:spriteURL(['WWGWWWW.','WGGGWBW.','WWGWBBW.','WWWWWBW.','WBWWWWW.','WBBWGWW.'],{W:0xfff4e0,G:0x5cc23a,B:0x3d8fe0})};
 const ACH=[
+  {id:'end_h',n:'Вечный рассвет',d:'Геракл встал под небесный свод',p:60,ic:'crown'},
+  {id:'end_a',n:'Новый Атлант',d:'Ты сам встал под небесный свод',p:60,ic:'crown2'},
+  {id:'end_p',n:'Огонь людям',d:'Прометей отдал людям весь огонь',p:60,ic:'star'},
   {id:'erebus',n:'Свет из тьмы',d:'Победи Эреба в его Бездне',p:80,ic:'crown2'},
   {id:'keto',n:'Я слышал Кето',d:'Прокатись на спине небесного кита',p:20,ic:'note'},
   {id:'karkin',n:'Краб Геры',d:'Победи Каркина на спине Кето',p:40,ic:'trophy'},
@@ -6583,7 +6649,7 @@ function renderWs(){const tb=$('wsTabs');tb.innerHTML='';[['pop','Популяр
     const g=document.createElement('div');g.className='wsGrid';ms.forEach((mt,i)=>{const own=!!mt.own;const c=wsCardEl(mt,[['Играть',()=>wsPlayId(mt.id),true]],own?'Твоя':(bests[mt.id]!=null?'Рекорд '+fmt(bests[mt.id]):(i<3&&wsTab==='pop'?'Топ '+(i+1):'')));c.style.animationDelay=(i*0.04)+'s';g.appendChild(c)});box.appendChild(g)})}
 
 /* developer hook: open the game with ?debug to inspect it from the console */
-if(/[?&]debug\b/.test(location.search))window.OBL={hero,prog,ZEUS,ZA,MINI,CPS,RLM,NET,hitMini,coopRole,coopHost,NYX,KRONOS,NYXL,KA,CLAY,gainXP,timeStop,cam:(y,p,d)=>{yaw=y;pitch=p;dist=d},world,RIFT,riftOpen,wallFalls,KS,mobs,tempMobs,ARN,ARENA2,arenaStart,buildErebus,OPHION,GRYPHON,ALECTO,HYPERION,OCEANUS,HERACLES,HAL,HAZ,openBook,NECT,BUFF,drink,brew,DEVOURER,WATCHER,HER,heraldArrive,wandCast,updWand,PPJ,DOME,DX,ATALANTA,HUNT,bowShoot,ARW,CASTOR,POLLUX,MEDUSA,STHENO,EURYALE,omen,CLOTHO,LACHESIS,ATROPOS,shearsCut,gswordSwing,gs,goHome,homeData,giftHome,cam,camT,ABY,FLIP,flipTo,abyEnter,abyBossStart,gateL,KETO,KARK,ketoLocal,karkSpawn,updKeto,ASCR,ascStart,ascRoom,ascEnd,rollItem,dropLoot,ascEquip,ascCleared,RUNG,runM,hitMob,allMobs,rebuild,setB,world,HB,HR,GUEST,updGuest,talkGuest,A,lofiTick,LOFI,FISH,castRod,hookFish,endFish,updHome,openHomeP,placeFurn,cozy,plant,harvest,water,sitOn,FURNG,HG,HX,HY,HZ,lofiOn,atHome,canFish,DAY,summonMinions,updDown,goDown,hurt,remotes,bossStart,shr,get lastAtk(){return lastAtk},set lastAtk(v){lastAtk=v},HUNT2:null,npcs,openDlg,openInv,INV2,R,get camObj(){return cam},OPHB:typeof ophBody!=='undefined'?ophBody:null,DEVB:typeof devBody!=='undefined'?devBody:null,bark,animeFace,FACES,npcFace,doFistHits,fistSwing,TITL,VRINGS,sp,tw,forgeSpear,spearThrow,updThrow,bossStart,updForge,twinSwing,doTwinHits,mP,LAYOUT,RLAY,ZA,get,DUNGEONS,findTop,RLM,buildMob,scene,THREE,attack,sc,buildHero,equipVis,get swordG(){return swordG},get HB(){return HB},counts:()=>({blocks:blocks.count,leaves:leaves.count,trans:transM.count,lit:litM.count,size:world.size}),respawnHero,zInside,get T(){return T},get started(){return started},get editing(){return editing}};
+if(/[?&]debug\b/.test(location.search))window.OBL={hero,prog,ZEUS,ZA,MINI,CPS,RLM,NET,hitMini,coopRole,coopHost,NYX,KRONOS,NYXL,KA,CLAY,gainXP,timeStop,cam:(y,p,d)=>{yaw=y;pitch=p;dist=d},world,RIFT,riftOpen,wallFalls,KS,mobs,tempMobs,ARN,ARENA2,arenaStart,buildErebus,OPHION,GRYPHON,ALECTO,HYPERION,OCEANUS,HERACLES,HAL,HAZ,openBook,NECT,BUFF,drink,brew,DEVOURER,WATCHER,HER,heraldArrive,wandCast,updWand,PPJ,DOME,DX,ATALANTA,HUNT,bowShoot,ARW,CASTOR,POLLUX,MEDUSA,STHENO,EURYALE,omen,CLOTHO,LACHESIS,ATROPOS,shearsCut,gswordSwing,gs,goHome,homeData,giftHome,VAULT,buildVault,endAsk,endPlay,newSky,HWS,buildWorkshop,camera:cam,camT,ABY,FLIP,flipTo,abyEnter,abyBossStart,gateL,KETO,KARK,ketoLocal,karkSpawn,updKeto,ASCR,ascStart,ascRoom,ascEnd,rollItem,dropLoot,ascEquip,ascCleared,RUNG,runM,hitMob,allMobs,rebuild,setB,world,HB,HR,GUEST,updGuest,talkGuest,A,lofiTick,LOFI,FISH,castRod,hookFish,endFish,updHome,openHomeP,placeFurn,cozy,plant,harvest,water,sitOn,FURNG,HG,HX,HY,HZ,lofiOn,atHome,canFish,DAY,summonMinions,updDown,goDown,hurt,remotes,bossStart,shr,get lastAtk(){return lastAtk},set lastAtk(v){lastAtk=v},HUNT2:null,npcs,openDlg,openInv,INV2,R,get camObj(){return cam},OPHB:typeof ophBody!=='undefined'?ophBody:null,DEVB:typeof devBody!=='undefined'?devBody:null,bark,animeFace,FACES,npcFace,doFistHits,fistSwing,TITL,VRINGS,sp,tw,forgeSpear,spearThrow,updThrow,bossStart,updForge,twinSwing,doTwinHits,mP,LAYOUT,RLAY,ZA,get,DUNGEONS,findTop,RLM,buildMob,scene,THREE,attack,sc,buildHero,equipVis,get swordG(){return swordG},get HB(){return HB},counts:()=>({blocks:blocks.count,leaves:leaves.count,trans:transM.count,lit:litM.count,size:world.size}),respawnHero,zInside,get T(){return T},get started(){return started},get editing(){return editing}};
 
 /* ===================== boot ===================== */
 MINI.forEach(M=>{if(!M.herald&&prog.minis&&prog.minis[M.D.id])M.state='dead'});ascRestoreAfterReload();
@@ -6603,7 +6669,7 @@ function frame(now){
   updHazards(edt);updWisp(dt);updRLM(dt);
   $('cross').classList.toggle('on',started&&!editing&&!!prog.gear.hook);
   updBoss(edt);updProj(edt);updRemotes(dt);updDecor(dt);updNPCs(dt);updTemps(edt);MINI.forEach(M=>updMini(M,edt));updWaves(dt);updSlashes(dt);updSWaves(dt);updPickups(dt);updPortals(dt);updRealmFx(dt);updRace(dt);updClock(dt);netPresence(false);
-  updWS(dt);achTick(dt);updBolts(dt);updHostile(edt);updRift(edt);updArena(dt);updVRings(dt);updCDeco(dt);updThrow(dt);updForge(dt);updHeroArena();updBuffs();updWand(dt);updJuice(dt);updDown(dt);updHome(dt);updAsc(dt);updKeto(dt);updAby(dt);updDome(dt);updBowArrows(dt);updShears(dt);updFlyParts(dt);updStreak();if(Math.floor(T*2)!==Math.floor((T-dt)*2))updHard();updTitanFx(dt);updLvFx(dt);updOlympFx(dt);auraTick(dt);
+  updWS(dt);achTick(dt);updBolts(dt);updHostile(edt);updRift(edt);updArena(dt);updVRings(dt);updCDeco(dt);updThrow(dt);updForge(dt);updHeroArena();updBuffs();updWand(dt);updJuice(dt);updDown(dt);updHome(dt);updAsc(dt);updKeto(dt);updAby(dt);updVault(dt);updWorkshop(dt);updDome(dt);updBowArrows(dt);updShears(dt);updFlyParts(dt);updStreak();if(Math.floor(T*2)!==Math.floor((T-dt)*2))updHard();updTitanFx(dt);updLvFx(dt);updOlympFx(dt);auraTick(dt);
   updFalls(dt);updParts(dt);updRings(dt);ambient(dt);updCam(dt);updGhost();updTier();updAtmo();updWMap(dt);updMinimap(dt);monitor(dt);
   render();requestAnimationFrame(frame);
 }
