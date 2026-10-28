@@ -5340,7 +5340,7 @@ function updDown(dt){if(hero.downT){if(Math.random()<dt*6)emit(hero.p.x,hero.p.y
 const AX=-450,AY=30,AZ=900;
 const runM=inst(6000,blocks.material,true,atlasGeo(6000)),runL=inst(600,litM.material,false,atlasGeo(600));
 function runRebuild(){let n=0,l=0;const aB=runM.geometry.attributes.aTile,aL=runL.geometry.attributes.aTile;
-  for(const [k,t] of RUNG){const [x,y,z]=UK(k),open=!SOLID(get(x,y+1,z)),h=hash(x,y,z),ti=tintAt(t,y,x),br=(0.93+h*0.12)*(open?1:0.94);dummy.position.set(x,y,z);dummy.rotation.set(0,0,0);dummy.scale.set(1,1,1);dummy.updateMatrix();
+  for(const [k,t] of RUNG){if(t===10||t===28)continue;const [x,y,z]=UK(k),open=!SOLID(get(x,y+1,z)),h=hash(x,y,z),ti=tintAt(t,y,x),br=(0.93+h*0.12)*(open?1:0.94);dummy.position.set(x,y,z);dummy.rotation.set(0,0,0);dummy.scale.set(1,1,1);dummy.updateMatrix();
     if(t===22||t===33||t===38){if(l<600){runL.setMatrixAt(l,dummy.matrix);runL.setColorAt(l,tmpC.setRGB(1,1,1));aL.setXYZ(l,t*3,t*3+1,t*3+2);l++}}
     else if(n<6000){runM.setMatrixAt(n,dummy.matrix);runM.setColorAt(n,tmpC.setRGB(ti[0]*br,ti[1]*br,ti[2]*br));aB.setXYZ(n,t*3,t*3+1,t*3+2);n++}}
   runM.count=n;runL.count=l;[runM,runL].forEach(m=>{m.instanceMatrix.needsUpdate=true;if(m.instanceColor)m.instanceColor.needsUpdate=true});aB.needsUpdate=aL.needsUpdate=true}
@@ -5379,7 +5379,31 @@ function ascBuild(){RUNG.clear();const pal=ASCA[ASCR.act].pal,R=ASCR.type==='gua
     ASCR.tops.push([x,AY+dy+1,z])}}
   if(ASCR.type==='bless'){for(let x=-1;x<=1;x++)for(let z=-1;z<=1;z++)rput(AX+x,AY+1,AZ+z,13);rcol(AX,AY+1,AZ,1,14)}
   for(let i=0;i<6;i++){const a=ASCR.rng()*6.28,d=2+ASCR.rng()*(R-4);ASCR.tops.push([Math.round(AX+Math.cos(a)*d),AY+1,Math.round(AZ+Math.sin(a)*d)])}
-  runRebuild()}
+  ascTheme(R,pal);runRebuild()}
+/* dressing on the rim, clear of the doors (north) and the spawn (south) */
+function ascRim(R,n,fn){for(let i=0;i<n;i++){const a=i/n*Math.PI*2+0.2;if(angDiff(a,Math.PI/2)<1.45||angDiff(a,-Math.PI/2)<0.5)continue;fn(Math.round(AX+Math.cos(a)*R),Math.round(AZ+Math.sin(a)*R),a,i)}}
+function ascTheme(R,pal){const P=(x,y,z,t)=>rput(x,y,z,t),y=AY,act2=ASCR.act===2;
+  if(ASCR.type==='guard'){ascRim(R-1,12,(x,z,a,i)=>{const h=6+(i%3)*2;for(let k=1;k<=h;k++)P(x,y+k,z,k%4===0?pal.acc:pal.col);P(x,y+h+1,z,22)});
+    for(let u=-2;u<=2;u++){P(AX+u,y+1,AZ+R-2,pal.col);P(AX+u,y+1,AZ+R-3,pal.col);for(let k=2;k<=6;k++)P(AX+u,y+k,AZ+R-2,Math.abs(u)===2?pal.acc:pal.col)}P(AX,y+7,AZ+R-2,22);
+    for(let r=2;r<=R-3;r+=3)for(let t=0;t<16;t++){const a=t/16*Math.PI*2;P(Math.round(AX+Math.cos(a)*r),y,Math.round(AZ+Math.sin(a)*r),pal.acc)}
+    ASCR.theme='arena';return}
+  if(ASCR.type==='bless'){ASCR.theme='altar';return}
+  const th=rpick(['temple','forge','garden','graves']);ASCR.theme=th;
+  if(th==='temple'){ascRim(R-1.5,10,(x,z,a,i)=>{const h=i%3===2?2+rr(0,2):5;for(let k=1;k<=h;k++)P(x,y+k,z,k===1?13:(act2?pal.col:14));if(h===5){P(x,y+6,z,act2?pal.col:14);P(x,y+7,z,22)}});
+    ascRim(R-4,5,(x,z,a,i)=>{if(i%2)return;for(let k=1;k<=2;k++)P(x,y+k,z,act2?pal.col:14);P(x,y+3,z,13)})}
+  if(th==='forge'){ascRim(R-1.5,8,(x,z,a,i)=>{if(i%2){P(x,y+1,z,32);P(x,y+2,z,25);P(x+1,y+2,z,25);P(x-1,y+2,z,25)}else{for(let k=1;k<=4;k++)P(x,y+k,z,20);P(x,y+5,z,33)}});
+    ascRim(R-0.5,40,(x,z,a,i)=>P(x,y,z,i%2?22:32))}
+  if(th==='garden'){ascRim(R-2,7,(x,z,a,i)=>{const h=3+(i%2);for(let k=1;k<=h;k++)P(x,y+k,z,5);for(let u=-2;u<=2;u++)for(let v=-2;v<=2;v++)for(let w=0;w<=2;w++)if(Math.abs(u)+Math.abs(v)+w<4)P(x+u,y+h+w,z+v,act2?45:(i%2?6:7));P(x,y+h+3,z,act2?38:36)});
+    for(let t=0;t<18;t++){const a=ASCR.rng()*6.28,d=3+ASCR.rng()*(R-5);const x=Math.round(AX+Math.cos(a)*d),z=Math.round(AZ+Math.sin(a)*d);if(RUNG.get(K(x,y,z)))P(x,y,z,act2?45:(ASCR.rng()<0.5?8:20))}}
+  if(th==='graves'){ascRim(R-2,14,(x,z,a,i)=>{P(x,y+1,z,i%3?20:15);P(x,y+2,z,i%3?20:15);if(i%4===0){P(x,y+3,z,46);P(x+1,y+2,z,46);P(x-1,y+2,z,46)}});
+    ascRim(R-0.5,10,(x,z)=>{P(x,y+1,z,46);P(x,y+2,z,22)})}}
+function ascGodDecor(gk){const y=AY,P=(x,yy,z,t)=>rput(x,yy,z,t),pyl=(x,z,h,t,tip)=>{for(let k=1;k<=h;k++)P(x,y+k,z,t);P(x,y+h+1,z,tip)};
+  const pts=[[4,4],[-4,4],[4,-4],[-4,-4]];
+  if(gk==='zeus')pts.forEach(([u,v])=>{pyl(AX+u,AZ+v,5,25,38);P(AX+u+1,y+5,AZ+v,25);P(AX+u+2,y+6,AZ+v,38)});
+  if(gk==='ares')pts.forEach(([u,v])=>{pyl(AX+u,AZ+v,4,39,25);P(AX+u,y+6,AZ+v,25);P(AX+u+1,y+3,AZ+v,25);P(AX+u-1,y+3,AZ+v,25)});
+  if(gk==='hermes')pts.forEach(([u,v])=>{pyl(AX+u,AZ+v,3,14,13);[-1,1].forEach(s=>{P(AX+u+s,y+4,AZ+v,31);P(AX+u+2*s,y+5,AZ+v,31);P(AX+u+2*s,y+4,AZ+v,31)})});
+  if(gk==='athena')pts.forEach(([u,v])=>{pyl(AX+u,AZ+v,3,14,15);for(let w=-1;w<=1;w++)for(let k=1;k<=3;k++)if(Math.abs(w)+Math.abs(k-2)<2)P(AX+u+(v>0?0:0),y+k,AZ+v+(v>0?-1:1)+0,13)});
+  for(let t=0;t<24;t++){const a=t/24*Math.PI*2;P(Math.round(AX+Math.cos(a)*3),y,Math.round(AZ+Math.sin(a)*3),gk==='ares'?39:gk==='zeus'?38:13)}}
 /* labels floating over doors, elites and loot */
 function txtSprite(t,col,sc){const c=document.createElement('canvas');c.width=512;c.height=96;const x=c.getContext('2d');x.font='800 44px Nunito,Arial,sans-serif';x.textAlign='center';x.textBaseline='middle';
   x.fillStyle='rgba(10,16,32,.72)';const w=Math.min(500,x.measureText(t).width+40);x.beginPath();x.roundRect?x.roundRect(256-w/2,10,w,76,22):x.rect(256-w/2,10,w,76);x.fill();x.fillStyle=col||'#fff';x.fillText(t,256,50);
@@ -5459,7 +5483,7 @@ function ascRoom(tp){const t0=performance.now();ascClearObjs();if(tp==='act'){AS
   if(hasGift('t_armor'))hero.armor=Math.max(hero.armor||0,2);
   if(tp==='fight'){ASCR.state='fight';ASCR.waves=rr(2,3);setTimeout(()=>ASCR.on&&ascWave(),900)}
   else if(tp==='elite'){ASCR.state='fight';ASCR.waves=1;const [x,y,z]=[AX,AY+1.5,AZ+3];setTimeout(()=>{if(!ASCR.on)return;ASCR.wave=1;ascSpawn(rpick(ASCA[ASCR.act].mobs.filter(k=>k!=='crawler')),x,y,z,{aff:eliteAffixes(ASCR.act)});for(let i=0;i<2;i++){const p=spawnAt(rr(0,99));ascSpawn(rpick(ASCA[ASCR.act].mobs),...p)}},900)}
-  else if(tp==='bless'){ASCR.state='bless';const gk=rpick(Object.keys(GODS)),G=GODS[gk];ASCR.godKey=gk;const orb=new THREE.Group();orb.position.set(AX,AY+3.6,AZ);const o=hbox(orb,0.8,0.8,0.8,G.c,0,0,0,true);addGlow(orb,BOX,G.c,0.35,new THREE.Vector3(1.6,1.6,1.6));
+  else if(tp==='bless'){ASCR.state='bless';const gk=rpick(Object.keys(GODS)),G=GODS[gk];ASCR.godKey=gk;ascGodDecor(gk);runRebuild();const orb=new THREE.Group();orb.position.set(AX,AY+3.6,AZ);const o=hbox(orb,0.8,0.8,0.8,G.c,0,0,0,true);addGlow(orb,BOX,G.c,0.35,new THREE.Vector3(1.6,1.6,1.6));
     const lb=txtSprite('Алтарь: '+G.n,'#'+new THREE.Color(G.c).getHexString());lb.position.y=1.4;orb.add(lb);ascObj(orb);ASCR.altar={g:orb,p:new THREE.Vector3(AX,AY+1,AZ),gk}}
   else if(tp==='guard'){ASCR.state='fight';ASCR.waves=1;hero.hp=hpMax();const GD=ASCA[ASCR.act].guard;setTimeout(()=>{if(!ASCR.on)return;ASCR.wave=1;const mb=ascSpawn('minotaur',AX,AY+1.5,AZ+4,{aff:eliteAffixes(ASCR.act,['split','giant']),name:GD.n,tint:GD.tint});if(!mb)return;
       mb.maxhp=mb.hp=GD.hp;mb.elite=false;ASCR.guard=mb;mb.sumT=T+8;$('bossbar').querySelector('.nm').textContent=GD.n;$('bossbar').classList.add('on');ascBar();dread(GD.n.toUpperCase(),'Страж акта '+ASCR.act,1800)},700);toast('У костра перед стражем: сердца восстановлены',1800)}
