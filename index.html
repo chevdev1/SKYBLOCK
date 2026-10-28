@@ -1863,7 +1863,7 @@ const flyMax=()=>(prog.gear&&prog.gear.wings3?5.5:prog.gear&&prog.gear.wings2?3.
 /* hearts grow with level: +1 every 5 levels (up to +3) and +1 from the Titan Heart */
 const atkMul=()=>prog.gear&&prog.gear.erebus?0.55:prog.gear&&prog.gear.aegis?0.72:1;
 const BUFF={};const buffOn=id=>BUFF[id]!=null&&BUFF[id]>T;
-let PETRIFY=0;const runMul=()=>(prog.gear&&prog.gear.erebus?1.15:prog.gear&&prog.gear.aegis?1.1:1)*(buffOn('wind')?1.35:1)*(PETRIFY>T?0.3:1)*(foodOn('tea')?1.15:1)*((ASCR&&ASCR.on)?ascRun():1);
+let PETRIFY=0;const runMul=()=>(prog.gear&&prog.gear.erebus?1.15:prog.gear&&prog.gear.aegis?1.1:1)*(buffOn('wind')?1.35:1)*(PETRIFY>T?0.3:1)*(foodOn('tea')?1.15:1)*((ASCR&&ASCR.on)?ascRun():1)*(hero.slowT>T?0.55:1);
 const hpMax=()=>(ASCR&&ASCR.on)?ascHpMax():3+Math.min(3,Math.floor((prog.lvl||1)/5))+(prog.gear&&prog.gear.titan?1:0)+(foodOn('soup')?1:0);
 
 /* ===================== particles ===================== */
@@ -3006,7 +3006,7 @@ function updNPCs(dt){
 prog.mats=prog.mats||{};prog.gear=prog.gear||{};prog.minis=prog.minis||{};
 function spriteURL(rows,pal){const N=12,c=document.createElement('canvas');c.width=c.height=N;const x=c.getContext('2d');const ox=Math.floor((N-Math.max(...rows.map(r=>r.length)))/2),oy=Math.floor((N-rows.length)/2);
   rows.forEach((r,j)=>{for(let i=0;i<r.length;i++){const k=pal[r[i]];if(k==null)continue;x.fillStyle='#'+k.toString(16).padStart(6,'0');x.fillRect(ox+i,oy+j,1,1)}});return c.toDataURL()}
-const MATS={slime:['Слизь',['..GGGG..','.GLGGGG.','GLGGGGGG','GGGGGGGG','.GGGGGG.','..GGGG..'],{G:0x8ee04a,L:0xd8ffb0}],
+const MATS={baleen:['Китовый ус',['W.......','WW......','.WW.....','..WW....','...WW...','....WWW.','......WW'],{W:0xe8e0c8}],slime:['Слизь',['..GGGG..','.GLGGGG.','GLGGGGGG','GGGGGGGG','.GGGGGG.','..GGGG..'],{G:0x8ee04a,L:0xd8ffb0}],
   claw:['Коготь кротика',['....WW..','...WW...','..WW..W.','.WW..WW.','WW..WW..','W..WW...'],{W:0xfff4e0}],
   shell:['Панцирь черепашки',['..GGGG..','.GDGGDG.','GGGDDGGG','GDGGGGDG','GGGDDGGG','.GGGGGG.','..YYYY..'],{G:0x4f8a3a,D:0x8bc26a,Y:0xd8c08a}],
   shard:['Звёздный осколок',['...Y....','..YWY...','YYYWYYY.','.YYYYY..','..Y.Y...','.Y...Y..'],{Y:0xffd84a,W:0xffffff}]};
@@ -3062,6 +3062,7 @@ const RECIPES=[
   {id:'titan',realm:2,name:'Сердце титана',desc:'Ещё одно сердце здоровья навсегда. Ихор титанов горячий, держи крепче.',need:[['m','ichor',6],['m','void',6],['b',13,8]],how:'Ихор падает с ужасов Тартара, осколки пустоты — с теней Разлома.'},
   {id:'erebus',realm:2,name:'Доспех Эреба',desc:'Тёмный доспех из пустоты: 7 сердечек брони и самое быстрое восстановление. Пустота: удары быстрее на 45%, бег на 15%, каждая победа над мобом возвращает сердечко брони. Нужно Облачение тени.',need:[['g','aegis',1],['m','void',10],['m','tsand',8]],how:'Песок времени сыплется со стражей Пустоши Кроноса.'},
   {id:'wings3',drop:1,name:'Крылья ночи',desc:'Полёт втрое дольше обычного и быстрый набор высоты.',need:[],how:'Падают с Никты в Обсерватории ночи.'},
+  {id:'kclaw',drop:1,name:'Клешня Каркина',desc:'Каждый третий удар по одному врагу хватает его клешнёй, швыряет и наносит +1 урона.',need:[],how:'Падает с Каркина, краба на спине небесного кита Кето.'},
   {id:'hourglass',drop:1,name:'Песочные часы Кроноса',desc:'V (на телефоне — кнопка «Время»): все враги, снаряды и боссы замирают на 4 секунды. Перезарядка 30 секунд.',need:[],how:'Падают с Кроноса на Троне времени.'},
   {id:'spear',realm:2,name:'Копьё Хроноса',desc:'Быстрые выпады на пять блоков вперёд. Каждый третий удар бросает копьё: оно само находит врага, даже летящего, пронзает всех на пути и возвращается в руку.',need:[['m','kshaft',1],['m','kcore',1],['m','ktip',1],['m','tsand',6]],how:'Три части падают с летающих стражей Разлома: Офиона в Сумеречном разломе, Грифона часов в Пустоши Кроноса и Алекто в Тартаре.'},
   {id:'twins',name:'Клинки титанов',desc:'Солнечный клинок в правой руке и Приливный в левой. Быстрые удары по очереди, каждый четвёртый удар крестом выпускает две волны. Быстрее любого меча, но слабее оружия Кроноса.',need:[['m','sunheart',1],['m','deeppearl',1],['b',13,12],['m','shard',8]],how:'Сердце солнца падает с Гипериона, Жемчужина бездны — с Океана. Оба титана просыпаются в первом мире после победы над Зевсом.'},
@@ -3106,7 +3107,7 @@ setTimeout(updNBar,0);
 function craft(r){if(prog.gear[r.id]||!r.need.every(n=>haveNeed(n)>=n[2]))return;if(r.realm&&zoneOf(hero.p.x)<r.realm){toast(r.realm===2?'Эта вещь крафтится только в Разломе Хаоса':'Эта вещь крафтится только в Царстве богов',1800);return}r.need.forEach(n=>{if(n[0]==='m')prog.mats[n[1]]-=n[2];else if(n[0]==='b')invRemove(n[1],n[2])});
   prog.gear[r.id]=1;saveProg();S.craft();equipVis();if(r.id==='armor'||r.id==='aegis')hero.armor=armMax();if(r.id==='aegis'||r.id==='erebus'){buildHero(prog.skin||'boy');updInv();setTimeout(()=>banner('Лейт-гейм','Облачение тени','Капюшон, алый пояс и скрытый клинок. Пять сердечек брони и быстрое восстановление.',5500),300)}if(r.id==='scythe')prog.weapon='scythe';if(r.id==='twins'){prog.weapon='twins';setTimeout(forgeTwins,150)}if(r.id==='spear')setTimeout(forgeSpear,150);if(r.id==='sword'&&!prog.weapon)prog.weapon='sword';saveProg();equipVis();updHud();updGear();renderCraft();
   burst(hero.p.x,hero.p.y+1.2,hero.p.z,30,{c:[0xffc23c,0x7fe0ff,0xffffff,0x8ee04a],s:0.16,sp:4,up:5,life:1,g:8,spin:10});toast('Создано: '+r.name,2200);logEv('Создано: '+r.name)}
-function updGear(){const g=$('gear');g.innerHTML='';['hook','sword','scythe','kronos','spear','twins','fists','wand','wand2','bow','shears','gsword','dios','gshield','armor','aegis','erebus','boots','wings2','wings3','titan','hourglass'].forEach(k=>{if(!prog.gear[k])return;const im=document.createElement('img');im.src=GEARI[k];im.alt=RECIPES.find(r=>r.id===k).name;im.title=im.alt;if(k===curWeapon())im.className='cur';g.appendChild(im)});document.body.classList.toggle('hook',!!prog.gear.hook);document.body.classList.toggle('two',WEAPONS.filter(w=>prog.gear[w]).length>1);document.body.classList.toggle('hg',!!prog.gear.hourglass)}
+function updGear(){const g=$('gear');g.innerHTML='';['hook','sword','scythe','kronos','spear','twins','fists','wand','wand2','bow','shears','gsword','dios','gshield','armor','aegis','erebus','boots','wings2','wings3','titan','hourglass','kclaw'].forEach(k=>{if(!prog.gear[k])return;const im=document.createElement('img');im.src=GEARI[k];im.alt=RECIPES.find(r=>r.id===k).name;im.title=im.alt;if(k===curWeapon())im.className='cur';g.appendChild(im)});document.body.classList.toggle('hook',!!prog.gear.hook);document.body.classList.toggle('two',WEAPONS.filter(w=>prog.gear[w]).length>1);document.body.classList.toggle('hg',!!prog.gear.hourglass)}
 $('bSwap').onclick=()=>{switchWeapon();cv.focus()};
 let swordG=null,armorG=null;
 function makeSword(){const g=new THREE.Group();g.position.set(0,0,0.12);const b=(w,h,d,c,x,y,z,basic)=>{const m=new THREE.Mesh(BOX,basic?new THREE.MeshBasicMaterial({color:c}):lam(c));m.scale.set(w,h,d);m.position.set(x,y,z);m.castShadow=!basic;g.add(m);return m};
@@ -3152,7 +3153,7 @@ function switchWeapon(){const own=WEAPONS.filter(w=>prog.gear[w]);if(own.length<
 
 /* ===================== sword ===================== */
 const sw={t:-1,n:0,last:-9,dur:0.26,hit:false};const slashes=[];
-const allMobs=()=>[...mobs.values(),...tempMobs];
+const allMobs=()=>[...mobs.values(),...tempMobs,...(KARK&&KARK.mb&&KARK.mb.state==='alive'&&KETO.on?[KARK.mb]:[])];
 function inArc(px,pz,py,h,n){const fx=Math.sin(HR.rotation.y),fz=Math.cos(HR.rotation.y),R=n===2?3.4:3.0;const dx=px-hero.p.x,dz=pz-hero.p.z,d=Math.hypot(dx,dz);
   if(d>R||py>hero.p.y+2.4||py+h<hero.p.y-0.8)return false;if(n!==2&&d>0.7&&(dx*fx+dz*fz)/d<0.15)return false;return true}
 function mobInFront(){for(const mb of allMobs())if(mb.state==='alive'&&mb.G.visible&&inArc(mb.p.x,mb.p.z,mb.p.y,mb.h,0))return true;for(const M of MINI){const P=mP(M);if(M.state==='fight'&&inArc(P.x,P.z,P.y,M.h,0))return true}return false}
@@ -3165,10 +3166,10 @@ function swordSwing(){if(T-sw.last<0.24*atkMul())return false;lastAtk=T;netSwing
   m.rotation.x=-Math.PI/2;g.add(m);if(sw.n===1)g.rotation.z=0.25;if(sw.n===0)g.rotation.z=-0.25;scene.add(g);slashes.push({g,m,t:0,n:sw.n});return true}
 function updSlashes(dt){for(let i=slashes.length-1;i>=0;i--){const s2=slashes[i];s2.t+=dt;const k=s2.t/0.26;s2.g.scale.setScalar(0.7+k*0.5);s2.m.material.opacity=Math.max(0,0.85*(1-k));s2.g.rotation.y+=(s2.n===1?-1:1)*dt*4;
   s2.g.position.set(hero.p.x,hero.p.y+1.0,hero.p.z);if(k>=1){scene.remove(s2.g);s2.m.geometry.dispose();s2.m.material.dispose();slashes.splice(i,1)}}}
-function hitMob(mb,dmg,dir,stomp){if(mb.state!=='alive')return false;if(ASCR.on&&mb.asc)dmg=ascDmg(mb,dmg);if(buffOn('might'))dmg+=1;const crit=dmg>0&&Math.random()<0.12;if(crit)dmg*=2;dmgNum(mb.p.x,mb.p.y+mb.h+0.4,mb.p.z,dmg,crit);if(crit)HITSTOP=Math.max(HITSTOP,0.05);mb.hp=(mb.hp||1)-dmg;mb.flash=0.2;if(ASCR.on&&mb.asc&&dmg>0)ascOnHit(mb,dmg);S.thwack();burst(mb.p.x,mb.p.y+mb.h*0.6,mb.p.z,8,{c:[0xffffff,mb.c||0xffffff,0xbff4ff],s:0.14,sp:3,up:3,life:0.4,g:8});
+function hitMob(mb,dmg,dir,stomp){if(mb.state!=='alive')return false;if(mb.kark&&!karkVuln()){karkClink(mb);return false}if(ASCR.on&&mb.asc)dmg=ascDmg(mb,dmg);if(buffOn('might'))dmg+=1;const crit=dmg>0&&Math.random()<0.12;if(crit)dmg*=2;dmgNum(mb.p.x,mb.p.y+mb.h+0.4,mb.p.z,dmg,crit);if(crit)HITSTOP=Math.max(HITSTOP,0.05);mb.hp=(mb.hp||1)-dmg;mb.flash=0.2;if(ASCR.on&&mb.asc&&dmg>0)ascOnHit(mb,dmg);if(prog.gear&&prog.gear.kclaw&&!mb.kark&&dmg>0){mb.kcN=(mb.kcN||0)+1;if(mb.kcN%3===0){mb.hp-=1;combo('Клешня!',0);HITSTOP=Math.max(HITSTOP,0.06);mb.flingT=0.4}}S.thwack();burst(mb.p.x,mb.p.y+mb.h*0.6,mb.p.z,8,{c:[0xffffff,mb.c||0xffffff,0xbff4ff],s:0.14,sp:3,up:3,life:0.4,g:8});
   if(mb.hp<=0){mb.state='squish';mb.t=0.13;return true}
   if(!mb.fly){if(!stomp){mb.v.x+=dir.x*7;mb.v.z+=dir.z*7;mb.v.y=5;mb.onG=false}}else{mb.p.x+=dir.x*1.4;mb.p.z+=dir.z*1.4}
-  if(mb.kind==='turtle'){mb.shell=4}return true}
+  if(mb.kind==='turtle'){mb.shell=4}if(mb.flingT){mb.v.set(dir.x*15,11,dir.z*15);mb.onG=false;mb.flingT=0}return true}
 function doSwordHits(n){const dmg=n===2?2:1;let hit=false;pvpHits((x,z,y,h)=>inArc(x,z,y,h,n),dmg);
   for(const mb of allMobs())if(mb.state==='alive'&&mb.G.visible&&inArc(mb.p.x,mb.p.z,mb.p.y,mb.h,n)){const d=new THREE.Vector3(mb.p.x-hero.p.x,0,mb.p.z-hero.p.z).normalize();hitMob(mb,dmg,d);hit=true}
   for(const M of MINI){const P=mP(M);if(M.state==='fight'&&inArc(P.x,P.z,P.y,M.h,n)){hitMini(M,dmg);hit=true}}
@@ -5422,6 +5423,102 @@ function updAsc(dt){if(!ASCR.on)return;
   if(Math.floor(T*2)!==Math.floor((T-dt)*2))ascHud()}
 function ascRestoreAfterReload(){if(prog.ascBak){prog.gear=prog.ascBak.gear;prog.weapon=prog.ascBak.weapon;delete prog.ascBak;saveProg()}}
 
+/* ===================== Keto, the sky whale: a living island that swims over the first world on a real-time schedule ===================== */
+const KPER=12*60000,KLIFE=4*60000,KDY=5;
+const KETO={G:null,body:null,glow:null,tail:null,fins:[],deck:new Set(),cyc:-1,curve:null,k:0,on:false,ride:false,rideT:0,M:new THREE.Matrix4(),inv:new THREE.Matrix4(),yaw:0,chests:[],shells:[],npc:null,warned:-1,sungT:0,force:null,spoutOn:false,lastHint:-1};
+function ketoA(z){const t=(z+32)/64,s=Math.sin(Math.PI*(0.05+0.9*Math.max(0,Math.min(1,t))));return [9.5*Math.pow(s,0.55),7*Math.pow(s,0.6)]}
+function ketoBuild(){const G=new THREE.Group();scene.add(G);G.visible=false;KETO.G=G;const cells=[],glow=[],inside=(x,y,z)=>{if(z<-32||z>32)return false;const [a,b]=ketoA(z),deck=z>=-12&&z<=22;if(deck&&y>KDY)return false;return (x*x)/(a*a)+((y+0.5)*(y+0.5))/(b*b)<=1};
+  for(let z=-32;z<=32;z++){const [a,b]=ketoA(z);for(let x=-Math.ceil(a);x<=Math.ceil(a);x++)for(let y=-Math.ceil(b)-1;y<=Math.min(KDY,Math.ceil(b));y++){if(!inside(x,y,z))continue;
+    if(inside(x+1,y,z)&&inside(x-1,y,z)&&inside(x,y+1,z)&&inside(x,y-1,z)&&inside(x,y,z+1)&&inside(x,y,z-1))continue;const h=hash(x,y,z);let c;
+    const deckTop=y===KDY&&z>=-12&&z<=22;if(deckTop){KETO.deck.add(x+','+z);c=(x+z)%5===0?0x7a6a58:0x8a7a66}
+    else if(y<-b*0.25){c=(x&1)?0xc8d0e0:0xe8edf6}else{c=h>0.93?0xd8cfb8:h>0.8?0x4f6382:0x5d7393;if(Math.abs(Math.abs(x)-a)<1.2&&y>-2&&y<2&&(z&3)===0){glow.push([x,y,z]);continue}}
+    if(z>=24&&Math.abs(y+2)<0.6)c=0x2a3448;cells.push([x,y,z,c])}}
+  const body=new THREE.InstancedMesh(BOX,new THREE.MeshLambertMaterial({color:0xffffff}),cells.length);cells.forEach(([x,y,z,c],i)=>{dummy.position.set(x,y,z);dummy.rotation.set(0,0,0);dummy.scale.set(1,1,1);dummy.updateMatrix();body.setMatrixAt(i,dummy.matrix);body.setColorAt(i,tmpC.set(c))});
+  body.castShadow=true;body.receiveShadow=true;body.frustumCulled=false;G.add(body);KETO.body=body;
+  const gl=new THREE.InstancedMesh(BOX,new THREE.MeshBasicMaterial({color:0x7ff0ff}),glow.length);glow.forEach(([x,y,z],i)=>{dummy.position.set(x,y,z);dummy.updateMatrix();gl.setMatrixAt(i,dummy.matrix)});gl.frustumCulled=false;G.add(gl);KETO.glow=gl;
+  [-1,1].forEach(s=>{const [a]=ketoA(26);hbox(G,0.3,1.2,1.2,0xffffff,s*(a+0.1),0.5,26,true);hbox(G,0.35,0.7,0.7,0x10141c,s*(a+0.15),0.5,26.2,true)});
+  const tail=new THREE.Group();tail.position.set(0,0,-31);G.add(tail);KETO.tail=tail;hbox(tail,3,2.4,8,0x5d7393,0,0,-3);[-1,1].forEach(s=>{const f=hbox(tail,11,0.8,6,0x4f6382,s*6,0,-7.5);f.rotation.y=s*0.35});
+  [-1,1].forEach(s=>{const f=new THREE.Group();const [a]=ketoA(12);f.position.set(s*(a-1),-3,12);G.add(f);hbox(f,8,0.7,4,0x4f6382,s*4,0,0);KETO.fins.push({f,s})});
+  hbox(G,1.6,0.3,1.6,0x2a3448,0,KDY+0.4,20);
+  /* the nomad village on the back */
+  const tent=(x,z,c)=>{const g=new THREE.Group();g.position.set(x,KDY+0.5,z);G.add(g);for(let i=0;i<4;i++)hbox(g,3.2-i*0.8,0.6,3.4,c,0,0.3+i*0.6,0);hbox(g,0.12,3,0.12,0x6b4226,0,1.5,1.75);hbox(g,0.8,1.3,0.1,0x2a1a12,0,0.65,1.71);return g};
+  tent(-4,-6,0xc8a070);tent(4,-2,0xa87a4a);tent(-3,8,0xd8b890);
+  const fire=new THREE.Group();fire.position.set(1,KDY+0.6,4);G.add(fire);for(let i=0;i<4;i++){const l=hbox(fire,0.9,0.15,0.15,0x6b4226,0,0,0);l.rotation.y=i*Math.PI/4}KETO.flame=hbox(fire,0.4,0.7,0.4,0xffa040,0,0.4,0,true);
+  [[-6,2],[6,10],[-1,-10]].forEach(([x,z],i)=>{const g=new THREE.Group();g.position.set(x,KDY+0.5,z);G.add(g);hbox(g,1.1,0.7,0.8,0x8a5a2b,0,0.35,0);const lid=new THREE.Group();lid.position.set(0,0.7,-0.4);g.add(lid);hbox(lid,1.15,0.25,0.85,0xc9873a,0,0.12,0.4);hbox(g,0.2,0.3,0.06,0xffcc3a,0,0.55,0.42);KETO.chests.push({g,lid,l:new THREE.Vector3(x,KDY+0.5,z),i})});
+  for(let i=0;i<5;i++){const z=-10+i*7,[a]=ketoA(z),s=i%2?1:-1,x=s*(Math.floor(a)-1.5);const g=new THREE.Group();g.position.set(x,KDY+0.9,z);G.add(g);hbox(g,0.5,0.4,0.5,0xfff0f6,0,0,0,true);addGlow(g,BOX,0xff9ad8,0.35,new THREE.Vector3(1,1,1));KETO.shells.push({g,l:new THREE.Vector3(x,KDY+0.5,z),i})}
+  const N=buildNPC({skin:0xc08a5a,hair:0xe6e6ee,beard:1,shirt:0x3a5a7a,robe:0x8a6a4a,boots:0x3a2a1a});N.G.position.set(2.5,KDY+0.5,6.5);N.G.rotation.y=-2.4;G.add(N.G);KETO.npc={N,l:new THREE.Vector3(2.5,KDY+0.5,6.5)};
+  const lb=txtSprite('Талассий','#ffe08a',0.6);lb.position.set(2.5,KDY+3.3,6.5);G.add(lb)}
+function ketoTime(){const t=Date.now(),cyc=Math.floor(t/KPER),tIn=t-cyc*KPER;if(KETO.force!=null)return {cyc,tIn:KETO.force*KLIFE,active:true,k:KETO.force};return {cyc,tIn,active:tIn<KLIFE,k:tIn/KLIFE}}
+function ketoCurve(cyc){const r=mulberry32(cyc*7919+13),a0=r()*Math.PI*2,pts=[];const at=(ang,rad,y)=>new THREE.Vector3(-8+Math.cos(ang)*rad,y,-8+Math.sin(ang)*rad);
+  pts.push(at(a0-0.9,110,-30));for(let i=0;i<=6;i++)pts.push(at(a0+i/6*Math.PI*2.3,54+r()*12,26+i/6*86));pts.push(at(a0+Math.PI*2.3+0.9,110,40));pts.push(at(a0+Math.PI*2.3+1.4,130,-40));return new THREE.CatmullRomCurve3(pts)}
+const ketoUnlocked=()=>!!(prog.minis&&prog.minis.zeus);
+function ketoLocal(p){return p.clone().applyMatrix4(KETO.inv)}
+function updKeto(dt){if(!started||!KETO.G)return;const tm=ketoTime(),z0=zoneOf(hero.p.x)===0;
+  if(ketoUnlocked()&&!tm.active&&tm.tIn>KPER-30000&&KETO.warned!==tm.cyc+1){KETO.warned=tm.cyc+1;if(z0){omen('КЕТО ПЛЫВЁТ','Небесный кит пролетит над островами через 30 секунд');ketoSong(0.7)}else toast('Кето плывёт над Облачными островами',2400)}
+  const show=ketoUnlocked()&&tm.active&&z0;if(!show){if(KETO.on){KETO.on=false;KETO.G.visible=false;KETO.ride=false;karkHide()}return}
+  if(KETO.cyc!==tm.cyc){KETO.cyc=tm.cyc;KETO.curve=ketoCurve(tm.cyc);KETO.rideT=0;KETO.chests.forEach(c=>c.lid.rotation.x=0);if(!prog.ketoC||prog.ketoC.cyc!==tm.cyc)prog.ketoC={cyc:tm.cyc,o:{}};KETO.chests.forEach(c=>{if(prog.ketoC.o[c.i])c.lid.rotation.x=-1.2});KETO.shells.forEach(s=>s.g.visible=(prog.ketoShell||0)<5)}
+  KETO.on=true;KETO.G.visible=true;let local=null;if(KETO.ride)local=ketoLocal(hero.p);
+  const k=Math.min(0.9999,tm.k),P=KETO.curve.getPointAt(k),tg=KETO.curve.getTangentAt(k),ny=Math.atan2(tg.x,tg.z),dy=KETO.ride?((ny-KETO.yaw+Math.PI*3)%(Math.PI*2))-Math.PI:0;
+  P.y+=Math.sin(Date.now()/1600)*0.35;KETO.G.position.copy(P);KETO.G.rotation.set(0,ny,0);KETO.yaw=ny;KETO.G.updateMatrixWorld(true);KETO.M.copy(KETO.G.matrixWorld);KETO.inv.copy(KETO.M).invert();
+  if(local){hero.p.copy(local.applyMatrix4(KETO.M));hero.face+=dy;yaw+=dy}
+  const L=ketoLocal(hero.p),onDeck=KETO.deck.has(Math.round(L.x)+','+Math.round(L.z));KETO.ride=false;
+  if(onDeck&&hero.v.y<=0.5&&L.y>KDY+0.5-1.4&&L.y<KDY+0.5+0.4&&!hero.downT){L.y=KDY+0.5;hero.p.copy(L.applyMatrix4(KETO.M));hero.v.y=0;hero.onG=true;hero.lastG=T;KETO.ride=true}
+  if(KETO.ride){KETO.rideT+=dt;if(KETO.rideT>3&&!prog.ach?.keto)achGive('keto')}
+  const t=Date.now()/1000;KETO.tail.rotation.x=Math.sin(t*1.1)*0.22;KETO.fins.forEach(F=>F.f.rotation.z=F.s*Math.sin(t*1.3)*0.25);KETO.flame.scale.y=0.8+Math.sin(T*14)*0.2;
+  const sp=(tm.tIn/1000)%20<3;if(sp){const B=new THREE.Vector3(0,KDY+0.6,20).applyMatrix4(KETO.M);for(let i=0;i<3;i++)emit(B.x+(Math.random()-0.5)*0.8,B.y+Math.random()*2,B.z+(Math.random()-0.5)*0.8,{vy:14+Math.random()*8,c:[0xffffff,0xbfe6ff][i%2],s:0.22,life:1.1,g:10});
+    if(!KETO.spoutOn){KETO.spoutOn=true;noise(1.2,{v:0.08,f:900,to:3000})}if(KETO.ride&&Math.hypot(L.x,L.z-20)<1.7){hero.v.y=46;hero.onG=false;KETO.ride=false;S.jump(2);combo('Фонтан Кето!',0)}}else KETO.spoutOn=false;
+  if(Date.now()/1000-KETO.sungT>25){KETO.sungT=Date.now()/1000;ketoSong(Math.max(0.15,1-hero.p.distanceTo(P)/120))}
+  KETO.shells.forEach(s=>{if(!s.g.visible)return;s.g.rotation.y+=dt*2;if(KETO.ride&&Math.hypot(L.x-s.l.x,L.z-s.l.z)<1.4){s.g.visible=false;prog.ketoShell=(prog.ketoShell||0)+1;saveProg();S.coin();combo('Ракушка '+Math.min(5,prog.ketoShell)+' из 5',0);if(prog.ketoShell===5)toast('Все ракушки собраны: отнеси их Талассию',2200)}});
+  updKark(dt,L)}
+function ketoSong(v){const o={v:0.09*v,type:'sine'};tone(55,3.2,Object.assign({to:82},o));tone(110,2.6,Object.assign({at:0.8,to:96,v:0.05*v},o));tone(82,3.4,Object.assign({at:2.2,to:61},o))}
+const THAL=['Я Талассий. Родился на этой спине, на ней и умру. Кето старше островов: она помнит небо, когда в нём ещё не было земли.',
+  'Когда Зевс пал, она снова поплыла. Ей не нравится, когда небо держат силой.','Собери пять светящихся ракушек по бортам, и я научу твоё радио её песне.'];
+function ketoAct(L){if(!KETO.ride)return null;const near=v=>Math.hypot(L.x-v.x,L.z-v.z)<2;
+  for(const c of KETO.chests)if(near(c.l)&&!prog.ketoC.o[c.i])return {t:'Открыть сундук кочевников',fn:()=>{prog.ketoC.o[c.i]=1;c.lid.rotation.x=-1.2;addMat('baleen',2);addMat(['feather','spark','shard','nheart'][c.i%4],2);gainXP(25);saveProg();S.coin();const W=c.l.clone().applyMatrix4(KETO.M);burst(W.x,W.y+1,W.z,22,{c:[0xffcc3a,0xffffff],s:0.15,sp:4,up:5,life:0.8,g:8});toast('Китовый ус ×2 и ещё кое-что',1800)}};
+  if(near(KETO.npc.l))return {t:'Поговорить с Талассием',fn:()=>{const n=prog.ketoShell||0;if(n>=5&&!prog.whaleSong){prog.whaleSong=1;saveProg();S.fanfare();banner('Талассий','Песнь кита','«Слышишь? Теперь она будет петь и у тебя дома». На радио открыта станция «Песнь кита».',7000);if(prog.homeD&&prog.homeD.radio)prog.homeD.radio.st='whale'}
+      else banner('Талассий',n>=5?'Кочевник':'Ракушки: '+n+' из 5',THAL[(KETO.talk=(KETO.talk||0)+1)%3],6500)}};
+  return null}
+/* ===================== Karkinos, Hera's crab, sits on the whale's back and drinks from it ===================== */
+var KARK={mb:null,l:new THREE.Vector3(0,KDY+0.5,-4),mode:'idle',t:0,n:0,face:0,puddles:[],grab:0,slowT:0};
+function makeCrab(){const G=new THREE.Group(),S=new THREE.Group();G.add(S);const R=0xd8452a,D=0xa8321e,L=0xffb08a;
+  hbox(S,4.6,1.6,3.4,R,0,1.4,0);hbox(S,4.0,0.6,3.0,D,0,2.4,0);hbox(S,3.6,0.3,2.6,L,0,0.55,0);[[-1.6,-1],[1.6,-1],[0,-1.4]].forEach(([x,z])=>hbox(S,0.7,0.4,0.7,0xe8d0b0,x,2.75,z));
+  const eyes=[];[-0.7,0.7].forEach(x=>{hbox(S,0.18,0.9,0.18,D,x,2.6,1.5);eyes.push(hbox(S,0.38,0.38,0.38,0x10141c,x,3.15,1.5))});
+  const claws=[];[-1,1].forEach(s=>{const c=new THREE.Group();c.position.set(s*2.5,1.6,1.3);S.add(c);hbox(c,0.6,0.6,1.6,R,s*0.4,0,0.6);const p=new THREE.Group();p.position.set(s*0.6,0,1.6);c.add(p);hbox(p,1.4,1.1,1.6,R,s*0.3,0,0.6);const j=hbox(p,0.5,0.5,1.4,L,s*0.5,-0.55,0.9);claws.push({c,p,j,s})});
+  const legs=[];for(let i=0;i<3;i++)[-1,1].forEach(s=>{const l=new THREE.Group();l.position.set(s*2.2,1.1,-0.9+i*0.8);S.add(l);hbox(l,1.6,0.3,0.3,D,s*0.8,0,0);hbox(l,0.3,1.2,0.3,D,s*1.6,-0.6,0);legs.push({l,s,i})});
+  const glow=new THREE.Mesh(BOX,new THREE.MeshBasicMaterial({color:0x8ee04a,transparent:true,opacity:0,depthWrite:false,blending:THREE.AdditiveBlending}));glow.scale.set(5,2.4,4);glow.position.y=1.6;S.add(glow);
+  return {G,S,claws,legs,glow,eyes}}
+function karkSpawn(){const C=makeCrab();KETO.G.add(C.G);const max=40,hp=prog.karkHp||max;KARK.C=C;KARK.l.set(0,KDY+0.5,-6);KARK.mode='rise';KARK.t=2;KARK.n=0;
+  KARK.mb={G:C.G,Sg:C.S,p:new THREE.Vector3(),v:new THREE.Vector3(),h:3,hw:2.4,state:'alive',hp,maxhp:max,kind:'karkinos',c:0xd8452a,kark:true,flash:0,marker:{visible:false},q:1,qv:0,onG:true,fly:false};
+  $('bossbar').querySelector('.nm').textContent='Каркин, Краб Геры';$('bossbar').classList.add('on');karkBar();dread('КАРКИН','Краб Геры проснулся на спине кита',2400);S.thunder&&S.thunder()}
+function karkHide(){if(KARK.mb){if(KARK.mb.state==='alive')prog.karkHp=Math.max(1,Math.ceil(KARK.mb.hp));saveProg();KETO.G.remove(KARK.C.G);KARK.mb=null;$('bossbar').classList.remove('on')}KARK.puddles.forEach(p=>KETO.G.remove(p.m));KARK.puddles=[]}
+const karkVuln=()=>KARK.mode==='drink';
+function karkBar(){const m=KARK.mb;if(!m)return;const w=Math.max(3,Math.floor(320/m.maxhp));$('bossHp').innerHTML=Array.from({length:m.maxhp},(_,i)=>'<i class="'+(i<Math.ceil(m.hp)?'':'off')+'" style="width:'+w+'px"></i>').join('')}
+function karkClink(mb){if(T-(KARK.clk||0)<0.3)return;KARK.clk=T;tone(1400,0.06,{v:0.06});tone(900,0.08,{at:0.04,v:0.05});burst(mb.p.x,mb.p.y+2,mb.p.z,6,{c:[0xffffff,0xffe08a],s:0.1,sp:3,up:2,life:0.3,g:6});combo('Панцирь! Жди, пока он пьёт',0)}
+function updKark(dt,L){if(prog.karkDown)return;if(!KARK.mb){if(KETO.rideT>35)karkSpawn();return}const m=KARK.mb,C=KARK.C;
+  if(m.state!=='alive'){if(!KARK.dead){KARK.dead=true;prog.karkDown=1;delete prog.karkHp;achGive('karkin');prog.gear.kclaw=1;saveProg();gainXP(300);S.fanfare();$('bossbar').classList.remove('on');
+      banner('Каркин повержен','Клешня Каркина','Каждый третий удар по одному врагу хватает его клешнёй и швыряет, +1 урона. Клешня уже на тебе.',8000);logEv('Каркин, Краб Геры, повержен');updGear();
+      const W=m.p;burst(W.x,W.y+1.5,W.z,60,{c:[0xd8452a,0xffb08a,0xffffff],s:0.25,sp:7,up:8,life:1.4,g:8});setTimeout(()=>{if(KARK.C)KETO.G.remove(KARK.C.G);KARK.mb=null},700)}return}
+  const fighting=KETO.ride||hero.p.distanceTo(m.p)<14;KARK.t-=dt;const H=new THREE.Vector3(L.x,0,L.z),me=new THREE.Vector3(KARK.l.x,0,KARK.l.z),to=H.clone().sub(me),dist=to.length();
+  const hurtFrom=()=>{const W=KARK.l.clone().applyMatrix4(KETO.M);hurt(W)};
+  if(KARK.mode==='rise'){C.G.position.y=(KARK.t/2)*-2;if(KARK.t<=0){KARK.mode='walk';KARK.t=2.5}}
+  else if(!fighting){KARK.mode='walk';KARK.t=1}
+  else if(KARK.mode==='walk'){const side=new THREE.Vector3(Math.cos(KARK.face),0,-Math.sin(KARK.face));const sg=Math.sign(side.dot(to))||1;KARK.l.addScaledVector(side,sg*3.2*dt);KARK.face+=Math.sin(Math.atan2(to.x,to.z)-KARK.face)*dt*2;
+    if(KARK.t<=0){KARK.n++;const r=Math.random();KARK.mode=KARK.n%3===0?'drink':dist<3?'grab':r<0.4?'sweep':r<0.7?'spin':'foam';KARK.t={drink:4.5,grab:1.2,sweep:1.4,spin:3,foam:1.2}[KARK.mode];KARK.hit=false;
+      if(KARK.mode==='sweep')ring(m.p.x,m.p.y+0.2,m.p.z,0xff4a4a,4.8);if(KARK.mode==='drink'){combo('Каркин пьёт: бей сейчас!',0);tone(220,0.6,{to:330,v:0.05})}}}
+  else if(KARK.mode==='sweep'){const k=1-KARK.t/1.4;C.claws.forEach(q=>{q.c.rotation.y=q.s*(k<0.55?-1.2*k/0.55:-1.2+3*(k-0.55))});if(k>0.55&&!KARK.hit){KARK.hit=true;shake=0.3;noise(0.3,{v:0.12,f:700});if(dist<5&&L.y-(KDY+0.5)<0.9)hurtFrom()}if(KARK.t<=0){KARK.mode='walk';KARK.t=2}}
+  else if(KARK.mode==='spin'){C.S.rotation.y+=dt*16;if(dist>0.5)KARK.l.addScaledVector(to.normalize(),8*dt);if(dist<2.4&&!KARK.hit){KARK.hit=true;hurtFrom()}if(KARK.t<=0){C.S.rotation.y=0;KARK.mode='walk';KARK.t=2}}
+  else if(KARK.mode==='foam'){if(KARK.t<0.6&&!KARK.hit){KARK.hit=true;for(let i=0;i<3;i++){const p=new THREE.Vector3(L.x+(Math.random()-0.5)*4,KDY+0.55,L.z+(Math.random()-0.5)*4);const pm=new THREE.Mesh(new THREE.CircleGeometry(1.3,16),new THREE.MeshBasicMaterial({color:0xf2f8ff,transparent:true,opacity:0.75,depthWrite:false}));pm.rotation.x=-Math.PI/2;pm.position.copy(p);KETO.G.add(pm);KARK.puddles.push({m:pm,l:p,t:6})}noise(0.4,{v:0.08,f:2400})}if(KARK.t<=0){KARK.mode='walk';KARK.t=2}}
+  else if(KARK.mode==='grab'){if(!KARK.hit&&KARK.t<0.8){KARK.hit=true;if(dist<3.2&&hero.inv<=0){KARK.grab=0.9;combo('Схватил!',0)}}if(KARK.grab>0){KARK.grab-=dt;hero.v.set(0,0,0);const W=KARK.l.clone().add(new THREE.Vector3(Math.sin(KARK.face)*2.4,1.6,Math.cos(KARK.face)*2.4)).applyMatrix4(KETO.M);hero.p.copy(W);
+      if(KARK.grab<=0){const out=new THREE.Vector3(Math.sign(L.x)||1,0,0).applyAxisAngle(new THREE.Vector3(0,1,0),KETO.yaw);hero.v.set(out.x*20,10,out.z*20);hero.onG=false;KETO.ride=false;hurtFrom();toast('Каркин выбросил тебя за борт! Крюк-кошка спасёт',2000)}}
+    if(KARK.t<=0&&KARK.grab<=0){KARK.mode='walk';KARK.t=2}}
+  else if(KARK.mode==='drink'){C.glow.material.opacity=0.3+Math.sin(T*8)*0.15;C.S.position.y=-0.4;if(KARK.t<=0){C.glow.material.opacity=0;C.S.position.y=0;KARK.mode='walk';KARK.t=2.5;combo('Панцирь закрылся',0)}}
+  if(!KETO.deck.has(Math.round(KARK.l.x)+','+Math.round(KARK.l.z))){KARK.l.x*=0.9;KARK.l.z=KARK.l.z*0.9-0.4}
+  if(KARK.mode!=='rise')C.G.position.set(KARK.l.x,KDY+0.5,KARK.l.z);else C.G.position.x=KARK.l.x,C.G.position.z=KARK.l.z;C.G.rotation.y=KARK.face;
+  C.legs.forEach(q=>q.l.rotation.x=Math.sin(T*12+q.i*1.3+(q.s>0?Math.PI:0))*(KARK.mode==='walk'||KARK.mode==='spin'?0.5:0.05));C.claws.forEach(q=>{q.j.rotation.y=Math.sin(T*6)*0.2*q.s;if(KARK.mode!=='sweep')q.c.rotation.y*=0.9});
+  m.p.copy(new THREE.Vector3(KARK.l.x,KDY+0.5,KARK.l.z).applyMatrix4(KETO.M));if(m.flash>0){m.flash-=dt;C.S.position.x=Math.sin(T*80)*0.08}else C.S.position.x=0;
+  for(let i=KARK.puddles.length-1;i>=0;i--){const q=KARK.puddles[i];q.t-=dt;q.m.material.opacity=Math.min(0.75,q.t/2);if(KETO.ride&&Math.hypot(L.x-q.l.x,L.z-q.l.z)<1.3)hero.slowT=T+0.3;if(q.t<=0){KETO.G.remove(q.m);KARK.puddles.splice(i,1)}}
+  if(Math.floor(T*4)!==Math.floor((T-dt)*4))karkBar()}
+ketoBuild();
 let DAYFAST=1;
 /* ===================== Your own island: cosy home, real-time garden, cloud fishing, kitchen, furniture, trophies ===================== */
 const HX=-300,HY=40,HZ=0;
@@ -5517,6 +5614,7 @@ function giftHome(){if(prog.home||!prog.bossDown)return;prog.home=1;homeData();s
 /* the action under F at home */
 let homeAct=null;
 function updHomeAct(){homeAct=null;const el=$('hact');if(FISH.state==='bite'||FISH.state==='wait'){el.textContent=(TOUCH?'':'F — ')+(FISH.state==='bite'?'Подсечь!':'Смотать удочку');el.classList.add('on');return}if(!started||!prog.home||editing||FISH.state||hero.downT){el.classList.remove('on');ascCard(null);return}
+  if(KETO.on&&KETO.ride){homeAct=ketoAct(ketoLocal(hero.p));ascCard(null);if(homeAct){el.textContent=(TOUCH?'':'F — ')+homeAct.t;el.classList.add('on')}else el.classList.remove('on');return}
   if(ASCR.on){homeAct=ascActNow();ascCard(homeAct&&homeAct.card);if(homeAct){el.textContent=(TOUCH?'':'F — ')+homeAct.t;el.classList.add('on')}else el.classList.remove('on');return}
   const h=homeData(),rx=hero.p.x-HX,rz=hero.p.z-HZ,home=atHome();
   if(hero.sit){homeAct={t:'Встать',fn:standFromSeat}}
@@ -5599,11 +5697,12 @@ function renderHomeP(){const h=homeData(),nav=$('homeNav'),box=$('homeBody');nav
     const buy=(lab,key,max,cost)=>{const n=up[key],c=cost(n),bt=gEl('button','gbtn',n>=max?'максимум':'за '+c+' пепла');bt.disabled=n>=max||(prog.ash||0)<c;bt.onclick=()=>{prog.ash-=c;up[key]++;saveProg();S.craft();renderHomeP()};row(lab+' ('+n+'/'+max+')',bt)};
     buy('+1 сердце в начале забега','hp',3,n=>40+n*50);buy('Шанс легендарки +1%','leg',5,n=>30+n*30)}
   else if(homeTab==='radio'){const t=gEl('button','gbtn',h.radio.on?'Выключить':'Включить');t.onclick=()=>{h.radio.on=!h.radio.on;saveProg();renderHomeP()};row('Радио',t);
-    Object.keys(STATIONS).forEach(k=>{const b=gEl('button','gbtn',h.radio.st===k?'Играет':'Слушать');if(h.radio.st===k)b.setAttribute('aria-pressed','true');b.onclick=()=>{h.radio.st=k;h.radio.on=true;saveProg();renderHomeP()};row(STATIONS[k].n,b)});
+    Object.keys(STATIONS).filter(k=>k!=='whale'||prog.whaleSong).forEach(k=>{const b=gEl('button','gbtn',h.radio.st===k?'Играет':'Слушать');if(h.radio.st===k)b.setAttribute('aria-pressed','true');b.onclick=()=>{h.radio.st=k;h.radio.on=true;saveProg();renderHomeP()};row(STATIONS[k].n,b)});
     const e=gEl('button','gbtn',h.radio.every?'Да':'Нет');if(h.radio.every)e.setAttribute('aria-pressed','true');e.onclick=()=>{h.radio.every=!h.radio.every;saveProg();renderHomeP()};row('Играть во всём мире вместо 8-бит',e)}}
 /* ===================== lo-fi radio: Rhodes chords, soft drums, vinyl crackle, rain, tape wow ===================== */
 const STATIONS={sunset:{n:'Закат над облаками',bpm:80,prog:[[60,64,67,71],[57,60,64,67],[62,65,69,72],[55,59,62,65]],bass:[48,45,50,43]},
   rain:{n:'Дождь в Тартаре',bpm:72,prog:[[57,60,64,67],[53,57,60,64],[50,53,57,60],[52,56,59,62]],bass:[45,41,38,40],rain:1},
+  whale:{n:'Песнь кита',bpm:62,prog:[[57,60,64,69],[53,57,60,65],[55,59,62,67],[52,55,59,64]],bass:[45,41,43,40],sparse:1,whale:1},
   night:{n:'Ночная рыбалка',bpm:66,prog:[[62,65,69,72],[55,59,62,65],[60,64,67,71],[57,60,64,67]],bass:[50,43,48,45],crick:1,sparse:1}};
 const LOFI={next:0,step:0,bus:null};
 function lofiOn(){return !!(A.music&&prog.home&&prog.homeD&&prog.homeD.radio&&prog.homeD.radio.on&&(prog.homeD.radio.every||atHome()))}
@@ -5623,6 +5722,7 @@ function lofiTick(c){lofiBus();const st=STATIONS[(prog.homeD.radio||{}).st]||STA
     if(s===2||s===6)noise(0.12,Object.assign({v:0.025,f:1800},o));if(s%2===1&&!(st.sparse&&s===3))noise(0.03,Object.assign({v:0.01,f:8000,ft:'highpass'},o));
     if(Math.random()<0.12)noise(0.01,Object.assign({v:0.04,f:6000,ft:'highpass'},o));
     if(st.crick&&Math.random()<0.18){tone(4300,0.03,Object.assign({type:'sine',v:0.008},o));tone(4300,0.03,Object.assign({type:'sine',v:0.008,at:0.06},o))}
+    if(st.whale&&i===0)ketoSong(0.35);
     LOFI.next+=sd;LOFI.step++}}
 function lofiQuiet(){if(LOFI.vinyl&&A.ctx){LOFI.vinyl.gain.setTargetAtTime(0,A.ctx.currentTime,0.3);LOFI.rain.gain.setTargetAtTime(0,A.ctx.currentTime,0.3)}}
 /* guests: from cosy 3 a friend flies in every 20 minutes, sits by the fire for five minutes and leaves a gift */
@@ -6011,6 +6111,8 @@ const AIC={
   bolt:spriteURL(['....YY..','...YY...','..YY....','.YYYYY..','...YY...','..YY....','.YY.....','YY......'],{Y:0xfff04a}),
   map:spriteURL(['WWGWWWW.','WGGGWBW.','WWGWBBW.','WWWWWBW.','WBWWWWW.','WBBWGWW.'],{W:0xfff4e0,G:0x5cc23a,B:0x3d8fe0})};
 const ACH=[
+  {id:'keto',n:'Я слышал Кето',d:'Прокатись на спине небесного кита',p:20,ic:'note'},
+  {id:'karkin',n:'Краб Геры',d:'Победи Каркина на спине Кето',p:40,ic:'trophy'},
   {id:'jump5',n:'Мега-прыжок',d:'Сделай пять прыжков подряд в ритм',p:10,ic:'jump'},
   {id:'streak10',n:'Ритм облаков',d:'Серия из 10 ритмичных прыжков',p:25,ic:'jump'},
   {id:'fall',n:'Свободное падение',d:'Пролети вниз 60 метров и приземлись',p:10,ic:'fall'},
@@ -6373,7 +6475,7 @@ function renderWs(){const tb=$('wsTabs');tb.innerHTML='';[['pop','Популяр
     const g=document.createElement('div');g.className='wsGrid';ms.forEach((mt,i)=>{const own=!!mt.own;const c=wsCardEl(mt,[['Играть',()=>wsPlayId(mt.id),true]],own?'Твоя':(bests[mt.id]!=null?'Рекорд '+fmt(bests[mt.id]):(i<3&&wsTab==='pop'?'Топ '+(i+1):'')));c.style.animationDelay=(i*0.04)+'s';g.appendChild(c)});box.appendChild(g)})}
 
 /* developer hook: open the game with ?debug to inspect it from the console */
-if(/[?&]debug\b/.test(location.search))window.OBL={hero,prog,ZEUS,ZA,MINI,CPS,RLM,NET,hitMini,coopRole,coopHost,NYX,KRONOS,NYXL,KA,CLAY,gainXP,timeStop,cam:(y,p,d)=>{yaw=y;pitch=p;dist=d},world,RIFT,riftOpen,wallFalls,KS,mobs,tempMobs,ARN,ARENA2,arenaStart,buildErebus,OPHION,GRYPHON,ALECTO,HYPERION,OCEANUS,HERACLES,HAL,HAZ,openBook,NECT,BUFF,drink,brew,DEVOURER,WATCHER,HER,heraldArrive,wandCast,updWand,PPJ,DOME,DX,ATALANTA,HUNT,bowShoot,ARW,CASTOR,POLLUX,MEDUSA,STHENO,EURYALE,omen,CLOTHO,LACHESIS,ATROPOS,shearsCut,gswordSwing,gs,goHome,homeData,giftHome,ASCR,ascStart,ascRoom,ascEnd,rollItem,dropLoot,ascEquip,ascCleared,RUNG,runM,hitMob,allMobs,rebuild,setB,world,HB,HR,GUEST,updGuest,talkGuest,A,lofiTick,LOFI,FISH,castRod,hookFish,endFish,updHome,openHomeP,placeFurn,cozy,plant,harvest,water,sitOn,FURNG,HG,HX,HY,HZ,lofiOn,atHome,canFish,DAY,summonMinions,updDown,goDown,hurt,remotes,bossStart,shr,get lastAtk(){return lastAtk},set lastAtk(v){lastAtk=v},HUNT2:null,npcs,openDlg,openInv,INV2,R,get camObj(){return cam},OPHB:typeof ophBody!=='undefined'?ophBody:null,DEVB:typeof devBody!=='undefined'?devBody:null,bark,animeFace,FACES,npcFace,doFistHits,fistSwing,TITL,VRINGS,sp,tw,forgeSpear,spearThrow,updThrow,bossStart,updForge,twinSwing,doTwinHits,mP,LAYOUT,RLAY,ZA,get,DUNGEONS,findTop,RLM,buildMob,scene,THREE,attack,sc,buildHero,equipVis,get swordG(){return swordG},get HB(){return HB},counts:()=>({blocks:blocks.count,leaves:leaves.count,trans:transM.count,lit:litM.count,size:world.size}),respawnHero,zInside,get T(){return T},get started(){return started},get editing(){return editing}};
+if(/[?&]debug\b/.test(location.search))window.OBL={hero,prog,ZEUS,ZA,MINI,CPS,RLM,NET,hitMini,coopRole,coopHost,NYX,KRONOS,NYXL,KA,CLAY,gainXP,timeStop,cam:(y,p,d)=>{yaw=y;pitch=p;dist=d},world,RIFT,riftOpen,wallFalls,KS,mobs,tempMobs,ARN,ARENA2,arenaStart,buildErebus,OPHION,GRYPHON,ALECTO,HYPERION,OCEANUS,HERACLES,HAL,HAZ,openBook,NECT,BUFF,drink,brew,DEVOURER,WATCHER,HER,heraldArrive,wandCast,updWand,PPJ,DOME,DX,ATALANTA,HUNT,bowShoot,ARW,CASTOR,POLLUX,MEDUSA,STHENO,EURYALE,omen,CLOTHO,LACHESIS,ATROPOS,shearsCut,gswordSwing,gs,goHome,homeData,giftHome,KETO,KARK,ketoLocal,karkSpawn,updKeto,ASCR,ascStart,ascRoom,ascEnd,rollItem,dropLoot,ascEquip,ascCleared,RUNG,runM,hitMob,allMobs,rebuild,setB,world,HB,HR,GUEST,updGuest,talkGuest,A,lofiTick,LOFI,FISH,castRod,hookFish,endFish,updHome,openHomeP,placeFurn,cozy,plant,harvest,water,sitOn,FURNG,HG,HX,HY,HZ,lofiOn,atHome,canFish,DAY,summonMinions,updDown,goDown,hurt,remotes,bossStart,shr,get lastAtk(){return lastAtk},set lastAtk(v){lastAtk=v},HUNT2:null,npcs,openDlg,openInv,INV2,R,get camObj(){return cam},OPHB:typeof ophBody!=='undefined'?ophBody:null,DEVB:typeof devBody!=='undefined'?devBody:null,bark,animeFace,FACES,npcFace,doFistHits,fistSwing,TITL,VRINGS,sp,tw,forgeSpear,spearThrow,updThrow,bossStart,updForge,twinSwing,doTwinHits,mP,LAYOUT,RLAY,ZA,get,DUNGEONS,findTop,RLM,buildMob,scene,THREE,attack,sc,buildHero,equipVis,get swordG(){return swordG},get HB(){return HB},counts:()=>({blocks:blocks.count,leaves:leaves.count,trans:transM.count,lit:litM.count,size:world.size}),respawnHero,zInside,get T(){return T},get started(){return started},get editing(){return editing}};
 
 /* ===================== boot ===================== */
 MINI.forEach(M=>{if(!M.herald&&prog.minis&&prog.minis[M.D.id])M.state='dead'});ascRestoreAfterReload();
@@ -6393,7 +6495,7 @@ function frame(now){
   updHazards(edt);updWisp(dt);updRLM(dt);
   $('cross').classList.toggle('on',started&&!editing&&!!prog.gear.hook);
   updBoss(edt);updProj(edt);updRemotes(dt);updDecor(dt);updNPCs(dt);updTemps(edt);MINI.forEach(M=>updMini(M,edt));updWaves(dt);updSlashes(dt);updSWaves(dt);updPickups(dt);updPortals(dt);updRealmFx(dt);updRace(dt);updClock(dt);netPresence(false);
-  updWS(dt);achTick(dt);updBolts(dt);updHostile(edt);updRift(edt);updArena(dt);updVRings(dt);updCDeco(dt);updThrow(dt);updForge(dt);updHeroArena();updBuffs();updWand(dt);updJuice(dt);updDown(dt);updHome(dt);updAsc(dt);updDome(dt);updBowArrows(dt);updShears(dt);updFlyParts(dt);updStreak();if(Math.floor(T*2)!==Math.floor((T-dt)*2))updHard();updTitanFx(dt);updLvFx(dt);updOlympFx(dt);auraTick(dt);
+  updWS(dt);achTick(dt);updBolts(dt);updHostile(edt);updRift(edt);updArena(dt);updVRings(dt);updCDeco(dt);updThrow(dt);updForge(dt);updHeroArena();updBuffs();updWand(dt);updJuice(dt);updDown(dt);updHome(dt);updAsc(dt);updKeto(dt);updDome(dt);updBowArrows(dt);updShears(dt);updFlyParts(dt);updStreak();if(Math.floor(T*2)!==Math.floor((T-dt)*2))updHard();updTitanFx(dt);updLvFx(dt);updOlympFx(dt);auraTick(dt);
   updFalls(dt);updParts(dt);updRings(dt);ambient(dt);updCam(dt);updGhost();updTier();updAtmo();updWMap(dt);updMinimap(dt);monitor(dt);
   render();requestAnimationFrame(frame);
 }
