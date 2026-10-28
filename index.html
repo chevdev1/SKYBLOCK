@@ -4416,7 +4416,7 @@ function riftClose(win){RIFT.on=false;RIFT.next=T+(zoneOf(hero.p.x)===2?55+Math.
     burst(RIFT.p.x,RIFT.p.y+2,RIFT.p.z,40,{c:[0xffc23c,0xff2a4a,0xc040ff,0xffffff],s:0.2,sp:6,up:6,life:1.3,g:6,spin:10});toast(z===2?'Разлом закрыт: осколки пустоты, ихор и песок времени':'Разлом закрыт: золото и светокамни',2200)}
   else toast('Разлом закрылся сам',1400)}
 function updRift(dt){if(!started||WS.active||editing)return;
-  if(!RIFT.on){const z=zoneOf(hero.p.x);if((z===2||prog.hard)&&T>RIFT.next&&hero.onG&&!activeMini&&!atHome()&&!ASCR.on&&boss.state!=='attack'&&boss.state!=='tired'&&!TSTOP)riftOpen();return}
+  if(!RIFT.on){const z=zoneOf(hero.p.x);if((z===2||prog.hard)&&z!==4&&T>RIFT.next&&hero.onG&&!activeMini&&!atHome()&&!ASCR.on&&boss.state!=='attack'&&boss.state!=='tired'&&!TSTOP)riftOpen();return}
   RIFT.t+=dt;if(RIFT.g){const s=Math.min(1,RIFT.t*1.5);RIFT.g.scale.setScalar(s*(1+Math.sin(T*6)*0.04))}
   if(Math.random()<dt*20)emit(RIFT.p.x+(Math.random()-0.5)*3,RIFT.p.y+Math.random()*5,RIFT.p.z+(Math.random()-0.5)*3,{c:[0xff2a4a,0xc040ff,0x1a0f30][Math.floor(Math.random()*3)],s:0.14,life:0.8,g:-1.5});
   RIFT.mobs=RIFT.mobs.filter(mb=>mb.state==='alive'||mb.state==='squish');const left=RIFT.mobs.length;
@@ -5028,7 +5028,7 @@ function heraldArrive(M,at){const a=Math.random()*6.28;if(at)M.p.copy(at);else{M
 function heraldLeave(M){if(HER.active!==M)return;HER.active=null;M.nextT=T+360+Math.random()*240;document.body.classList.remove('dread','gaze');if(M.hide)M.hide();
   setTimeout(()=>dread(M.leave[0],M.leave[1],4500),1200)}
 function heraldTick(M,dt){if(M.state!=='fight'){M.G.visible=false;if(M.hide)M.hide();
-    if(!started||editing||WS.active||!M.unlock()||HER.active||activeMini||atHome()||ASCR.on)return false;
+    if(!started||editing||WS.active||!M.unlock()||HER.active||activeMini||atHome()||ASCR.on||zoneOf(hero.p.x)===4)return false;
     if(M.nextT==null)M.nextT=T+(prog.minis[M.D.id]?420:90);
     if(T>=M.nextT)heraldArrive(M);return false}
   if(M.show)M.show(true);if(M.inv>0)M.inv-=dt;M.mt-=dt;M.cd-=dt;M.D.x=M.p.x;M.D.y=M.p.y;M.D.z=M.p.z;
@@ -5615,7 +5615,7 @@ function flipReset(){if(FLIP.on){FLIP.on=false;HR.rotation.z=0}}
 /* geometry: start ledge, a slab you must cross underneath, a stair of ledges, the inverted forest, Erebus' arena on top */
 function abyDisk(cx,cy,cz,r,th,o){o=o||{};for(let x=-r-1;x<=r+1;x++)for(let z=-r-1;z<=r+1;z++){const d=Math.hypot(x,z)+hash(cx+x,cy,cz+z)*0.6;if(d>r)continue;
   for(let i=0;i<th;i++)setB(cx+x,cy-i,cz+z,i===0?(o.top||45):i===th-1?(o.bot||45):37)}}
-function genAbyss(){const X=ABX;
+function genAbyss(){const X=ABX;for(const k of [...world.keys()]){const x=Math.floor(k/4194304)-1024;if(x>-262&&x<-138)world.delete(k)}
   abyDisk(X,10,-50,7,3,{});
   for(let z=-43;z<=-10;z++)for(let x=-2;x<=2;x++){setB(X+x,10,z,45);setB(X+x,9,z,45)}
   for(let x=-6;x<=6;x++)for(let y=11;y<=20;y++)setB(X+x,y,-30,y%3===0?40:37);for(let x=-6;x<=6;x++)for(let y=0;y<=8;y++)if(Math.abs(x)>2)setB(X+x,y,-30,37);
@@ -5624,7 +5624,7 @@ function genAbyss(){const X=ABX;
   abyDisk(X,10,0,7,3,{});
   for(let i=0;i<18;i++){const a=i*0.58,cx=Math.round(X+Math.cos(a)*9),cz=Math.round(Math.sin(a)*9),cy=12+i*2;abyDisk(cx,cy,cz,2,2,{});if(i%4===3)setB(cx,cy+1,cz,22)}
   abyDisk(X,50,34,12,4,{top:45,bot:45});
-  for(let t=0;t<9;t++){const a=t*0.7,r=3+(t%3)*3,tx=Math.round(X+Math.cos(a)*r),tz=Math.round(34+Math.sin(a)*r);for(let y=46;y>=40;y--)setB(tx,y,tz,19);for(let x=-2;x<=2;x++)for(let z=-2;z<=2;z++)for(let y=37;y<=39;y++)if(Math.abs(x)+Math.abs(z)+Math.abs(y-38)<4&&hash(tx+x,y,tz+z)>0.2)setB(tx+x,y,tz+z,45)}
+  for(let t=0;t<9;t++){const a=t*0.7,r=3+(t%3)*3,tx=Math.round(X+Math.cos(a)*r),tz=Math.round(34+Math.sin(a)*r);if(Math.abs(tx-X-1)<4)continue;for(let y=46;y>=40;y--)setB(tx,y,tz,19);for(let x=-2;x<=2;x++)for(let z=-2;z<=2;z++)for(let y=37;y<=39;y++)if(Math.abs(x)+Math.abs(z)+Math.abs(y-38)<4&&hash(tx+x,y,tz+z)>0.2)setB(tx+x,y,tz+z,45)}
   for(let i=0;i<8;i++){const a=i/8*Math.PI*2;setB(Math.round(X+Math.cos(a)*11),51,Math.round(34+Math.sin(a)*11),22)}
   /* seams: glowing sheets that flip you to the other side of the ledge you stand on */
   ABY.seams=[{p:new THREE.Vector3(X,11,-40),w:5,to:new THREE.Vector3(X,8.5,-38),flip:true,C:17},{p:new THREE.Vector3(X,7.5,-15),w:5,to:new THREE.Vector3(X,10.5,-13),flip:false},
@@ -5632,7 +5632,41 @@ function genAbyss(){const X=ABX;
     {p:new THREE.Vector3(X,45.5,44),w:5,to:new THREE.Vector3(X,50.5,42),flip:false}];
   ABY.seams.forEach(s=>{const g=new THREE.Group();g.position.copy(s.p);const m=new THREE.Mesh(new THREE.PlaneGeometry(s.w,3.2),new THREE.MeshBasicMaterial({color:0xc040ff,transparent:true,opacity:0.55,side:THREE.DoubleSide,depthWrite:false,blending:THREE.AdditiveBlending}));
     m.position.y=s.flip===false&&s.p.y<s.to.y?-1:1;g.add(m);[-1,1].forEach(k=>{const e=new THREE.Mesh(BOX,new THREE.MeshBasicMaterial({color:0xe8a0ff}));e.scale.set(0.2,3.4,0.2);e.position.set(k*s.w/2,m.position.y,0);g.add(e)});scene.add(g);s.g=g;s.m=m});
-  const back=makePortal(X,10.5,-56);back.rotation.y=0;ABY.back=back;dirty=true}
+  abyDecor();const back=makePortal(X,10.5,-56);back.rotation.y=0;ABY.back=back;dirty=true}
+/* ===================== Abyss dressing: Tartarus ruins upside down, Atlas' bones, chains of the titans, shards of every world ===================== */
+function abyDecor(){const X=ABX,S=(x,y,z,t)=>setB(Math.round(x),Math.round(y),Math.round(z),t),
+    rim=(cx,cy,cz,r,n,off,skip,fn)=>{for(let i=0;i<n;i++){const a=i/n*Math.PI*2+off;if(skip.some(s=>angDiff(a,s)<0.55))continue;fn(Math.round(cx+Math.cos(a)*r),cy,Math.round(cz+Math.sin(a)*r),a,i)}},
+    pillar=(x,y,z,h,dir,cap)=>{for(let i=1;i<=h;i++)S(x,y+dir*i,z,i%3===0?40:37);if(cap)S(x,y+dir*(h+1),z,38)},
+    shroom=(x,y,z)=>{if(!get(x,y+1,z)&&get(x,y,z))S(x,y+1,z,28)},
+    hang=(x,y,z,n)=>{for(let i=1;i<=n;i++)S(x,y-i,z,i===n?38:(hash(x,i,z)>0.5?19:45))};
+  /* broken gate of Tartarus around the way back */
+  [-3,3].forEach(u=>{pillar(X+u,10,-56,7,1,false);S(X+u,18,-56,38)});[-3,-2,-1,1,3].forEach(u=>S(X+u,18,-56,40));S(X+2,17,-55,40);S(X-1,19,-56,40);
+  /* start ledge: rim pillars up and down, mushrooms, bones */
+  rim(X,10,-50,6,8,0.3,[Math.PI/2,-Math.PI/2],(x,y,z,a,i)=>{pillar(x,y,z,2+(i%3)*2,1,i%2===0);pillar(x,y-2,z,2+((i+1)%3),-1,true)});
+  for(let i=0;i<14;i++){const a=hash(i,3,5)*6.28,r=1+hash(5,i,3)*4.5;shroom(Math.round(X+Math.cos(a)*r),10,Math.round(-50+Math.sin(a)*r))}
+  /* the corridor: bones and ribs on top past the wall, hanging roots on the wall's underside */
+  for(let z=-28;z<=-12;z+=4){S(X+(z%8?1:-1),11,z,46)}
+  for(let k=0;k<5;k++){const z=-26+k*3;for(let t=0;t<=6;t++){const a=t/6*Math.PI;[-1,1].forEach(s=>S(X+s*(2+Math.round(Math.sin(a)*2)),11+Math.round(Math.sin(a)*4),z,46))}}
+  for(let x=-6;x<=6;x++)if(Math.abs(x)>2&&hash(x,7,-30)>0.4)hang(X+x,0,-30,2+Math.floor(hash(x,3,9)*4));
+  /* second ledge: Atlas' ribs arching over, inverted columns hanging down */
+  rim(X,10,0,6,10,0.15,[0,-Math.PI/2],(x,y,z,a,i)=>{if(i%2){for(let t=0;t<=8;t++){const b=t/8*Math.PI,r=6-Math.sin(b)*2;S(Math.round(X+Math.cos(a)*r),11+Math.round(Math.sin(b)*6),Math.round(Math.sin(a)*r),46)}}else pillar(x,y-2,z,4+(i%3),-1,true)});
+  for(let i=0;i<10;i++){const a=hash(i,9,1)*6.28,r=1+hash(1,i,9)*5;shroom(Math.round(X+Math.cos(a)*r),10,Math.round(Math.sin(a)*r))}
+  /* stair: crystal under each step, mushrooms on top */
+  for(let i=0;i<18;i++){const a=i*0.58,cx=Math.round(X+Math.cos(a)*9),cz=Math.round(Math.sin(a)*9),cy=12+i*2;hang(cx,cy-1,cz,2+(i%3));if(i%3===1)shroom(cx+1,cy,cz)}
+  /* shards of every world drifting in the dark */
+  {const cx=X-15,cy=16,cz=6;for(let u=-3;u<=3;u++)for(let v=-3;v<=3;v++)if(Math.hypot(u,v)<3.2){S(cx+u,cy,cz+v,1);S(cx+u,cy-1,cz+v,2)}for(let i=1;i<=3;i++)S(cx,cy+i,cz,5);for(let u=-1;u<=1;u++)for(let v=-1;v<=1;v++)for(let w=4;w<=5;w++)S(cx+u,cy+w,cz+v,7);S(cx+2,cy+1,cz-1,10)}
+  {const cx=X+15,cy=28,cz=-8;for(let u=-2;u<=2;u++)for(let v=-2;v<=2;v++)if(Math.hypot(u,v)<2.4)S(cx+u,cy,cz+v,14);S(cx,cy+1,cz,13);for(let i=2;i<=5;i++)S(cx,cy+i,cz,14);S(cx+1,cy+5,cz,14);S(cx+1,cy+6,cz+1,14)}
+  {const cx=X-14,cy=40,cz=-6;for(let t=0;t<24;t++){const a=t/24*Math.PI*2;S(cx+Math.round(Math.cos(a)*3),cy+Math.round(Math.sin(a)*3),cz,42);if(t%3===0)S(cx+Math.round(Math.cos(a)*4.2),cy+Math.round(Math.sin(a)*4.2),cz,42)}S(cx,cy,cz,43)}
+  {const cx=X+16,cy=52,cz=30;for(let u=-2;u<=2;u++)for(let v=-2;v<=2;v++)if(Math.hypot(u,v)<2.4){S(cx+u,cy,cz+v,41);S(cx+u,cy-1,cz+v,41)}for(let i=1;i<=3;i++)S(cx,cy+i,cz,38);S(cx+1,cy+1,cz,16);hang(cx,cy-1,cz,3)}
+  /* Erebus' arena: obelisks with runes, a cracked black throne, a sigil in the floor */
+  rim(X,50,34,10,8,Math.PI/8,[Math.PI/2],(x,y,z,a,i)=>{for(let h=1;h<=6;h++)S(x,y+h,z,h===3?38:40);S(x,y+7,z,22);hang(x,y-3,z,3)});
+  for(let r=0;r<=9;r++)[0,Math.PI*2/5,Math.PI*4/5,Math.PI*6/5,Math.PI*8/5].forEach(a=>S(Math.round(X+Math.cos(a)*r),50,Math.round(34+Math.sin(a)*r),r%3?40:38));
+  {const tz=34-11;for(let u=-2;u<=2;u++){S(X+u,51,tz+1,37);S(X+u,51,tz,37);for(let h=2;h<=7;h++)if(!(u===1&&h>4))S(X+u,50+h,tz,Math.abs(u)===2?40:37)}S(X-1,58,tz,38);S(X,58,tz,40);S(X+2,56,tz+1,37)}}
+const CHAINS=(()=>{const pts=[[ABX+5,30,-40],[ABX-6,30,-24],[ABX+7,32,-6],[ABX-9,34,10],[ABX+12,48,-2],[ABX-12,60,22],[ABX+13,64,44],[ABX-4,70,48]],links=[];
+  pts.forEach(([x,y,z])=>{const n=14+Math.floor(hash(x,y,z)*10);for(let i=0;i<n;i++)links.push([x,y-i*0.9,z,i%2])});
+  const m=new THREE.InstancedMesh(BOX,new THREE.MeshLambertMaterial({color:0x4a4458}),links.length);links.forEach(([x,y,z,o],i)=>{dummy.position.set(x,y,z);dummy.rotation.set(0,o?Math.PI/2:0,0);dummy.scale.set(0.5,0.9,0.14);dummy.updateMatrix();m.setMatrixAt(i,dummy.matrix)});
+  m.frustumCulled=false;m.visible=false;scene.add(m);return m})();
+
 const gateL=()=>rlm('gate');
 function abyOpenGate(){const L=gateL();if(!L||ABY.open)return;ABY.open=true;for(let i=-2;i<=2;i++)for(let k=1;k<=9;k++)setB(L.x+i,L.y+k,L.z,0);
   const pl=new THREE.Mesh(new THREE.PlaneGeometry(5,9),new THREE.MeshBasicMaterial({color:0x0a0014,transparent:true,opacity:0.92,side:THREE.DoubleSide}));pl.position.set(L.x,L.y+5.5,L.z);scene.add(pl);ABY.gatePl=pl}
@@ -5693,7 +5727,7 @@ function updAby(dt){updGate(dt);if(!started)return;const z4=zoneOf(hero.p.x)===4
   if(!ABY.open&&prog.fate)abyOpenGate();
   if(ABY.open&&zoneOf(hero.p.x)===2){const L=gateL();if(Math.abs(hero.p.x-L.x)<2.6&&Math.abs(hero.p.z-L.z)<1.3&&hero.p.y>L.y&&hero.p.y<L.y+10)abyEnter()}
   else if(!prog.fate&&zoneOf(hero.p.x)===2){const L=gateL();if(L&&hero.p.distanceTo(new THREE.Vector3(L.x,L.y+2,L.z))<4&&T-(ABY.lockT||0)>8){ABY.lockT=T;toast('Врата Тартара заперты. Их держат нити Мойр',2200)}}
-  ABY.on=z4;ABL1.intensity=0;ABL2.intensity=0;if(!z4){if(FLIP.on)flipReset();if(ABY.boss&&ABY.boss.state==='alive'){scene.remove(ABY.E.G);ABY.boss=null;$('bossbar').classList.remove('on')}ABY.secs={};ABY.mobs.forEach(m=>{if(m.state==='alive'){m.state='dead';m.G.visible=false}});ABY.mobs=[];return}
+  ABY.on=z4;ABL1.intensity=0;ABL2.intensity=0;CHAINS.visible=z4;if(z4&&Math.random()<0.25)emit(hero.p.x+(Math.random()-0.5)*14,hero.p.y+(Math.random()-0.3)*8,hero.p.z+(Math.random()-0.5)*14,{vy:0.4,c:[0x8a3aff,0x5a1aaa,0xc8a0ff][Math.floor(Math.random()*3)],s:0.07,life:2.5,g:-0.2});if(!z4){if(FLIP.on)flipReset();if(ABY.boss&&ABY.boss.state==='alive'){scene.remove(ABY.E.G);ABY.boss=null;$('bossbar').classList.remove('on')}ABY.secs={};ABY.mobs.forEach(m=>{if(m.state==='alive'){m.state='dead';m.G.visible=false}});ABY.mobs=[];return}
   if(prog.pet==='wisp'){ABL1.color.set(wisp.cols[0]);ABL1.intensity=SET.softDark?3.4:2.9;ABL1.position.copy(wisp.G.position)}
   const w=curWeapon();if(['scythe','kronos','shears','wand','wand2','gsword'].includes(w)){ABL2.intensity=1.2;ABL2.position.set(hero.p.x,hero.p.y+(FLIP.on?-1:1),hero.p.z)}
   FLIP.k+=((FLIP.on?1:0)-FLIP.k)*Math.min(1,dt*6);
