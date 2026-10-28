@@ -2,7 +2,7 @@
 
 Воксельный платформер-RPG в браузере: прыгай с яруса на ярус, собирай снаряжение, побеждай боссов и поднимайся в Царство богов.
 
-**Альфа-версия 3.0.1 — плейтест.**
+**Альфа-версия 3.1 — плейтест.**
 
 ## Как запустить
 
@@ -117,4 +117,4 @@ node server/server.js
 
 A voxel platformer RPG in the browser. Climb tier by tier, craft gear, beat bosses and ascend to the Realm of the Gods.
 
-**Alpha 3.0.1 — playtest.** Open `index.html` in a browser or host it on any static host. Switch the language to English in Settings (O). Run `node server/server.js` for shared leaderboards and the Workshop map catalog.
+**Alpha 3.1 — playtest.** Open `index.html` in a browser or host it on any static host. Switch the language to English in Settings (O). Run `node server/server.js` for shared leaderboards and the Workshop map catalog.
