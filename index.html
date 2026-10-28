@@ -5840,13 +5840,26 @@ const FURN=[{k:'chair',n:'Стул',lv:1},{k:'lamp',n:'Фонарь',lv:1},{k:'p
 const HUNLOCK=['','Палатка, костёр, радио, 2 грядки, удочка','Остров больше, 4 грядки, кухня, пруд, полка трофеев, лунный цветок','6 грядок, звёздная тыква, кровать, гамак, аквариум','8 грядок, золотая яблоня','Огромный остров'];
 const HG=new THREE.Group();scene.add(HG);HG.visible=false;let homeBuilt=-1;
 function hbox(par,w,h,d,c,x,y,z,basic){const m=new THREE.Mesh(BOX,basic?new THREE.MeshBasicMaterial({color:c}):lam(c));m.scale.set(w,h,d);m.position.set(x,y,z);m.castShadow=!basic;par.add(m);return m}
-function genHome(lv){const R=HOMER[lv]||5;
+function genHome(lv){const R=HOMER[lv]||5;for(let x=-30;x<=30;x++)for(let z=-30;z<=30;z++)for(let y=-12;y<=14;y++)if(world.has(K(HX+x,HY+y,HZ+z)))world.delete(K(HX+x,HY+y,HZ+z));
   for(let x=-R-1;x<=R+1;x++)for(let z=-R-1;z<=R+1;z++){const d=Math.hypot(x,z)+hash(x+HX,7,z)*0.6;if(d>R)continue;setB(HX+x,HY,HZ+z,1);const dep=Math.min(Math.floor((R-d)*0.9)+1,6);for(let i=1;i<=dep;i++)setB(HX+x,HY-i,HZ+z,i===dep&&hash(z,i,x)>0.5?20:2)}
-  for(const [a,b] of [[-4,-1],[-3,-1],[-2,-1],[-4,-3],[-3,-3],[-2,-3]])for(let k=1;k<=2;k++)setB(HX+a,HY+k,HZ+b,21);for(let a=-4;a<=-2;a++)for(let b=-3;b<=-1;b++)setB(HX+a,HY+3,HZ+b,24);setB(HX-4,HY+1,HZ-2,21);setB(HX-4,HY+2,HZ-2,21);
+  homeHouse(lv);homeFlora(lv,R);if(lv>=4)homeIsle(R+6,0,3,'gazebo');if(lv>=5)homeIsle(0,-(R+7),3.5,'light');
   for(const [a,b] of [[-1,0],[1,0],[0,-1],[0,1]])setB(HX+a,HY+1,HZ+b,20);
   PLOTS.slice(0,PLOTN[lv]).forEach(([a,b])=>setB(HX+a,HY,HZ+b,2));
   if(lv>=2){for(let a=4;a<=5;a++)for(let b=1;b<=2;b++){setB(HX+a,HY,HZ+b,23);setB(HX+a,HY-1,HZ+b,2)}}
   dirty=true;entDirty=true}
+/* the cottage grows with cosiness: a hut first, a proper house from level 2 */
+function homeHouse(lv){const S=(x,y,z,t)=>setB(HX+x,HY+y,HZ+z,t),big=lv>=2,x0=big?-5:-4,x1=big?-1:-2,z0=big?-5:-3,z1=-1,H=3;
+  for(let x=x0;x<=x1;x++)for(let z=z0;z<=z1;z++){S(x,0,z,21);const edge=x===x0||x===x1||z===z0||z===z1,corner=(x===x0||x===x1)&&(z===z0||z===z1);if(!edge)continue;
+    for(let y=1;y<=H;y++){let t=corner?5:21;if(z===z1&&x===-3&&y<=2)t=0;if(y===2&&!corner&&((x===x0&&z===Math.round((z0+z1)/2))||(z===z0&&x===-3)||(big&&z===z1&&x===x1-1)))t=26;S(x,y,z,t)}}
+  for(let k=0;k<=3;k++){const a0=x0-1+k,a1=x1+1-k,b0=z0-1+k,b1=z1+1-k;if(a0>a1||b0>b1)break;for(let x=a0;x<=a1;x++)for(let z=b0;z<=b1;z++)if(k===0||x===a0||x===a1||z===b0||z===b1)S(x,H+1+k,z,24)}
+  for(let y=1;y<=H+4;y++)S(x0,y,z0,20);S(x0,H+5,z0,0);S(-3,0,0,20);S(-2,0,0,20);S(-3,0,-2,21)}
+function homeFlora(lv,R){const S=(x,y,z,t)=>setB(HX+x,HY+y,HZ+z,t),busy=(x,z)=>(x>=1&&x<=5&&z>=-5&&z<=-1)||(x>=3&&x<=6&&z>=0&&z<=3)||(x<=0&&x>=-6&&z<=0&&z>=-6)||Math.hypot(x,z)<2.2||(z>=4&&lv>=2&&x<=1&&x>=-7);
+  for(let x=-R;x<=R;x++)for(let z=-R;z<=R;z++){const d=Math.hypot(x,z);if(d>R-0.8||busy(x,z))continue;const h=hash(x+HX,31,z);if(!world.has(K(HX+x,HY,HZ+z))||world.has(K(HX+x,HY+1,HZ+z)))continue;
+    if(d>R-2.6&&h>0.55)S(x,1,z,h>0.86?28:10);else if(h>0.93)S(x,1,z,10)}}
+function homeIsle(cx,cz,r,kind){const S=(x,y,z,t)=>setB(HX+x,HY+y,HZ+z,t);for(let x=-4;x<=4;x++)for(let z=-4;z<=4;z++){const d=Math.hypot(x,z);if(d>r)continue;S(cx+x,0,cz+z,1);for(let i=1;i<=Math.min(4,Math.floor((r-d)*1.2)+1);i++)S(cx+x,-i,cz+z,i>2?20:2)}
+  const L=Math.hypot(cx,cz),dx=-cx/L,dz=-cz/L;for(let s=r-0.5;s<=L-HOMER[5]+6;s++){const x=Math.round(cx+dx*s),z=Math.round(cz+dz*s);if(world.has(K(HX+x,HY,HZ+z))&&s>r+1)break;S(x,0,z,21);S(x+Math.round(dz),0,z+Math.round(dx),21)}
+  if(kind==='gazebo'){[[-2,-2],[2,-2],[-2,2],[2,2]].forEach(([u,v])=>{for(let y=1;y<=3;y++)S(cx+u,y,cz+v,14)});for(let k=0;k<=2;k++)for(let u=-3+k;u<=3-k;u++)for(let v=-3+k;v<=3-k;v++)if(k===2||Math.abs(u)===3-k||Math.abs(v)===3-k)S(cx+u,4+k,cz+v,24);S(cx,1,cz,21);S(cx-1,1,cz,21)}
+  if(kind==='light'){for(let y=1;y<=9;y++)for(let u=-1;u<=1;u++)for(let v=-1;v<=1;v++)if(Math.abs(u)===1||Math.abs(v)===1)S(cx+u,y,cz+v,y%3===0?24:14);for(let u=-1;u<=1;u++)for(let v=-1;v<=1;v++){S(cx+u,10,cz+v,u||v?26:22);S(cx+u,11,cz+v,24)}S(cx,1,cz+1,0);S(cx,2,cz+1,0)}}
 /* fixed home pieces: campfire flame, radio, cauldron, trophy shelf, sign */
 const HOMEFX={};
 function buildHomeDecor(){while(HG.children.length)HG.remove(HG.children[0]);const h=homeData(),lv=h.lvl;HG.position.set(HX,HY+0.5,HZ);
@@ -5857,6 +5870,19 @@ function buildHomeDecor(){while(HG.children.length)HG.remove(HG.children[0]);con
   const ap=new THREE.Group();ap.position.set(4.5,0,-1);ap.rotation.y=-Math.PI/2;HG.add(ap);[-1.1,1.1].forEach(x=>hbox(ap,0.4,3.2,0.4,0x3a2050,x,1.6,0));hbox(ap,2.6,0.4,0.45,0xffcc3a,0,3.2,0);
   const apl=new THREE.Mesh(new THREE.PlaneGeometry(1.8,2.9),portalMat);apl.position.y=1.5;ap.add(apl);HOMEFX.asc=ap;
   const sign=new THREE.Group();sign.position.set(1.5,0,3.5);HG.add(sign);hbox(sign,0.12,1.2,0.12,0x6b4226,0,0.6,0);hbox(sign,1.1,0.5,0.1,0xc8955a,0,1.1,0);
+  {const W=0x8a5a2b,D=0x6b4226,big=lv>=2,F=new THREE.Group();HG.add(F);const zMin=lv>=2?-4.6:-2.6,post=(x,z)=>hbox(F,0.12,0.7,0.12,D,x,0.35,z);
+    for(let x=1.4;x<=4.61;x+=0.8){post(x,zMin);post(x,-1.4)}for(let z=zMin;z<=-1.39;z+=0.8)post(4.6,z);post(1.4,zMin+0.8);
+    [0.25,0.55].forEach(y=>{hbox(F,3.2,0.06,0.06,W,3,y,zMin);hbox(F,3.2,0.06,0.06,W,3,y,-1.4);hbox(F,0.06,0.06,-zMin-1.4,W,4.6,y,(zMin-1.4)/2)});
+    const sc=new THREE.Group();sc.position.set(1.4,0,zMin);F.add(sc);hbox(sc,0.1,1.7,0.1,D,0,0.85,0);hbox(sc,1.2,0.1,0.1,D,0,1.3,0);hbox(sc,0.5,0.6,0.3,0x5a7ab8,0,1.2,0);hbox(sc,0.38,0.38,0.38,0xf2d27a,0,1.75,0);hbox(sc,0.6,0.08,0.6,0xc8955a,0,1.98,0);hbox(sc,0.32,0.22,0.32,0xc8955a,0,2.1,0);HOMEFX.scare=sc;
+    const can=new THREE.Group();can.position.set(1.0,0,-1.0);F.add(can);hbox(can,0.3,0.28,0.22,0x6aa0c8,0,0.14,0);hbox(can,0.32,0.05,0.05,0x6aa0c8,0.22,0.24,0);hbox(can,0.05,0.18,0.18,0x4a7aa0,-0.12,0.32,0);
+    const bar=(x,z)=>{const b=new THREE.Group();b.position.set(x,0,z);F.add(b);hbox(b,0.5,0.7,0.5,0x8a5a2b,0,0.35,0);[0.15,0.55].forEach(y=>hbox(b,0.52,0.06,0.52,0x3a3540,0,y,0))};bar(-4.5,0.4);hbox(F,0.55,0.45,0.55,0xc8955a,-3.9,0.22,0.9);hbox(F,0.4,0.35,0.4,0xa87a4a,-3.95,0.62,0.85);
+    const lamp=(x,z)=>{const l=new THREE.Group();l.position.set(x,0,z);F.add(l);hbox(l,0.12,1.9,0.12,0x3a3540,0,0.95,0);hbox(l,0.32,0.32,0.32,0xffe08a,0,2.0,0,true);hbox(l,0.4,0.08,0.4,0x3a3540,0,2.2,0);addGlow(l,BOX,0xffd27a,0.25,new THREE.Vector3(0.9,0.9,0.9)).position.y=2.0;return l};
+    lamp(2.7,2.5);lamp(-4.4,1.7);const A=new THREE.Vector3(2.7,2.1,2.5),Bv=new THREE.Vector3(-1,3.2,-1),cols=[0xff8fb8,0xffe08a,0x9fe8ff,0x8ee04a,0xb79cff];for(let i=1;i<14;i++){const t=i/14,p=A.clone().lerp(Bv,t);p.y-=Math.sin(t*Math.PI)*0.6;const b=hbox(F,0.1,0.14,0.1,cols[i%5],p.x,p.y,p.z,true);b.userData.bulb=i}
+    const mb=new THREE.Group();mb.position.set(0.4,0,4.2);F.add(mb);hbox(mb,0.08,1.0,0.08,D,0,0.5,0);hbox(mb,0.34,0.26,0.5,0xc84a3a,0,1.1,0);hbox(mb,0.04,0.18,0.08,0xffcc3a,0.19,1.2,0.12);
+    const vane=new THREE.Group();vane.position.set(big?-3:-3,big?7.5:5.5,big?-3:-2);F.add(vane);hbox(vane,0.06,0.6,0.06,0x3a3540,0,0.3,0);const arr=new THREE.Group();arr.position.y=0.6;vane.add(arr);hbox(arr,0.9,0.06,0.06,0x3a3540,0,0,0);hbox(arr,0.06,0.25,0.2,0xffcc3a,-0.42,0,0);hbox(arr,0.15,0.15,0.06,0x3a3540,0.45,0,0);HOMEFX.vane=arr;
+    HOMEFX.chim=new THREE.Vector3(big?-5:-4,big?8:7,big?-5:-3);const inner=hbox(F,0.3,0.3,0.3,0xffd27a,-3,1.6,big?-3:-2,true);HOMEFX.inner=inner;
+    if(lv>=2){hbox(F,1.6,0.1,0.8,W,3.4,0.02,1.5);[2.7,4.1].forEach(x=>hbox(F,0.1,0.5,0.1,D,x,-0.2,1.9));const boat=new THREE.Group();boat.position.set(5,-0.15,1.6);boat.rotation.y=0.4;F.add(boat);hbox(boat,0.5,0.18,1.0,0x8a5a2b,0,0,0);hbox(boat,0.06,0.2,1.0,0x6b4226,0.25,0.12,0);hbox(boat,0.06,0.2,1.0,0x6b4226,-0.25,0.12,0);HOMEFX.boat=boat}
+    if(lv>=5){const beam=new THREE.Mesh(BOX,new THREE.MeshBasicMaterial({color:0xfff2c0,transparent:true,opacity:0.18,blending:THREE.AdditiveBlending,depthWrite:false}));beam.scale.set(0.8,0.8,40);beam.position.set(0,0,20);const bg=new THREE.Group();bg.position.set(0,10,-(HOMER[5]+7));bg.add(beam);F.add(bg);HOMEFX.beam=bg}}
   buildPlantsAll();buildFurnAll()}
 function trophyList(){return MINI.filter(M=>M.D&&M.D.id&&M.G)}
 function buildTrophies(sh){const all=trophyList(),dark=new THREE.MeshBasicMaterial({color:0x1d1a2a});
@@ -6042,6 +6068,8 @@ function updGuest(){const h=homeData();if(!atHome()||h.lvl<3){if(GUEST.G&&!atHom
 function talkGuest(){const g=GUEST.on;if(!g)return;if(!GUEST.gift){GUEST.gift=true;const what=g[3]();cozy(15);saveProg();S.fanfare();banner(g[1],'В гостях',g[2][0]+' '+g[2][1]+' Подарок: '+what+'.',6500)}else toast(g[1]+': '+g[2][Math.floor(Math.random()*2)],2200)}
 function updHome(dt){if(!prog.home){if(prog.bossDown&&started)giftHome();return}const home=atHome();HG.visible=home;if(home){if(homeBuilt!==homeData().lvl){genHome(homeData().lvl);homeBuilt=homeData().lvl;buildHomeDecor()}
     if(HOMEFX.fire){const k=0.85+Math.sin(T*13)*0.15;HOMEFX.fire[0].scale.set(0.35,0.6*k,0.35);if(Math.random()<dt*10)emit(HX+(Math.random()-0.5)*0.4,HY+1.2,HZ+(Math.random()-0.5)*0.4,{c:[0xff9a3a,0xffe08a][Math.floor(Math.random()*2)],s:0.08,life:0.8,g:-2})}
+    if(HOMEFX.vane)HOMEFX.vane.rotation.y=Math.sin(T*0.4)*1.2+Math.sin(T*1.7)*0.2;if(HOMEFX.scare)HOMEFX.scare.rotation.z=Math.sin(T*1.3)*0.04;if(HOMEFX.boat)HOMEFX.boat.position.y=-0.15+Math.sin(T*1.6)*0.04;if(HOMEFX.beam)HOMEFX.beam.rotation.y+=dt*0.6;
+    if(HOMEFX.inner)HOMEFX.inner.visible=dayInfo().n>0.3;if(HOMEFX.chim&&Math.random()<dt*3)emit(HX+HOMEFX.chim.x+(Math.random()-0.5)*0.3,HY+HOMEFX.chim.y,HZ+HOMEFX.chim.z,{vy:1.2,c:[0xd8d8e0,0xb8b8c8][Math.floor(Math.random()*2)],s:0.18,life:2.4,g:-0.6});
     if(HOMEFX.radio&&lofiOn()&&Math.random()<dt*2)emit(HX-1+(Math.random()-0.5)*0.6,HY+1.6,HZ+3,{c:[0xff8fb8,0x9fe8ff,0xffe08a][Math.floor(Math.random()*3)],s:0.1,life:1.2,g:-1.5});
     FURNG.forEach(F=>{if(F.g.userData.cloth)F.g.userData.cloth.rotation.y=Math.sin(T*2+F.f.x)*0.3;if(F.g.userData.fish)F.g.userData.fish.forEach((m,i)=>{m.position.set(Math.sin(T*0.8+i*1.7)*0.45,0.35+i*0.1,Math.cos(T*1.1+i)*0.15);m.rotation.y=T*0.8+i*1.7+Math.PI/2})});
     if(Math.floor(T*2)!==Math.floor((T-dt)*2)){updPlants();updGuest()}}
