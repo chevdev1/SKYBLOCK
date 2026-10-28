@@ -622,6 +622,55 @@ body.asc .hud .h-chips,body.asc #moreP{display:none}
 .ap-card:hover,.ap-card:focus-visible{transform:translateY(-3px);background:rgba(255,255,255,.16)}
 .ap-card b{font-family:var(--pixel);font-size:11px;color:#ffe08a}
 @media (max-width:900px){#ascB{top:auto;bottom:250px;max-width:calc(100% - 24px)}#ascCard{bottom:300px}#ascCard .ac-col{min-width:140px}}
+body:not(.playing) #app>.top,body:not(.playing) #hotbar,body:not(.playing) #chat,body:not(.playing) #mini,body:not(.playing) #alt,body:not(.playing) #bark,body:not(.playing) #bossbar,body:not(.playing) #toast,body:not(.playing) .touch,body:not(.playing) #hbtn,body:not(.playing) #tbtn,body:not(.playing) #dbtn{visibility:hidden!important}
+#start{padding:0;align-items:stretch;justify-content:flex-start!important;background:none;overflow:hidden}
+#start .lp-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(6,8,26,.92) 0%,rgba(6,8,26,.75) 32%,rgba(6,8,26,.1) 62%,rgba(6,8,26,0) 75%),linear-gradient(0deg,rgba(6,8,26,.6),rgba(6,8,26,0) 30%)}
+#start .lp-main{position:relative;z-index:1;width:min(560px,100%);padding:4vh 4vw 3vh;display:flex;flex-direction:column;gap:12px;overflow-x:hidden;overflow-y:auto;scrollbar-width:none;max-height:100%;color:#fff}#start .lp-main::-webkit-scrollbar{display:none}
+.lp-season{align-self:flex-start;display:flex;align-items:center;gap:8px;font-family:var(--pixel);font-size:9px;letter-spacing:.06em;color:#17324d;background:linear-gradient(90deg,#ffe08a,#ff9ad8);padding:7px 12px;border-radius:999px;box-shadow:0 4px 18px rgba(255,160,200,.35)}
+.lp-dot{width:8px;height:8px;border-radius:50%;background:#ff2a6a;box-shadow:0 0 0 3px rgba(255,42,106,.3);animation:lpPulse 1.4s infinite}
+@keyframes lpPulse{50%{box-shadow:0 0 0 7px rgba(255,42,106,0)}}
+.lp-logo{margin:4px 0 0;line-height:.92;font-family:var(--pixel);text-transform:uppercase}
+.lp-logo span{display:block;font-size:clamp(18px,2.4vw,28px);color:#9fe8ff;text-shadow:0 3px 0 #17324d}
+.lp-logo b{display:block;font-size:clamp(34px,4.4vw,62px);white-space:nowrap;background:linear-gradient(180deg,#fff6c0 0%,#ffcc3a 45%,#ff7a2a 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 5px 0 #17324d) drop-shadow(0 0 22px rgba(255,180,60,.45));letter-spacing:.02em}
+.lp-sub{font-family:var(--pixel);font-size:11px;color:#ffe08a;opacity:.85;margin-top:-2px}
+.lp-tag{margin:2px 0 0;font-family:var(--round);font-size:clamp(15px,1.25vw,18px);line-height:1.45;font-weight:700;color:#e8f2ff;max-width:46ch;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+.lp-chips{display:flex;flex-wrap:wrap;gap:6px}
+.lp-chips span:before{content:"";display:inline-block;width:7px;height:7px;border-radius:2px;background:#ffcc3a;margin-right:7px;vertical-align:1px}.lp-chips span:nth-child(2):before{background:#9fe8ff}.lp-chips span:nth-child(3):before{background:#ff8fb8}.lp-chips span:nth-child(4):before{background:#8ee04a}.lp-chips span:nth-child(5):before{background:#b79cff}
+.lp-chips span{font-family:var(--round);font-weight:800;font-size:12.5px;padding:6px 10px;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.lp-h{font-family:var(--pixel);font-size:10px;color:#9fe8ff;margin-top:6px}
+#start .lp-heroes{margin:0;gap:10px}
+#start .lp-heroes .hopt{background:linear-gradient(180deg,rgba(40,60,110,.75),rgba(16,24,48,.85));border:2px solid rgba(255,255,255,.18);box-shadow:0 8px 20px rgba(0,0,0,.35);color:#fff;border-radius:14px;padding:12px 8px 10px;transition:transform .15s,border-color .15s,box-shadow .15s}
+#start .lp-heroes .hopt svg{width:58px;height:58px;filter:drop-shadow(0 4px 0 rgba(0,0,0,.35))}
+#start .lp-heroes .hopt b{font-family:var(--pixel);font-size:10px;color:#fff}
+#start .lp-heroes .hopt span{color:#b8c8e8;font-size:12px}
+#start .lp-heroes .hopt:hover{transform:translateY(-4px)}
+#start .lp-heroes .hopt[aria-pressed="true"]{border-color:#ffcc3a;background:linear-gradient(180deg,rgba(255,204,58,.35),rgba(60,40,10,.8));box-shadow:0 0 0 3px rgba(255,204,58,.25),0 10px 28px rgba(255,170,40,.35)}
+#start .lp-heroes .hopt em{position:absolute;top:6px;right:6px;font-style:normal;font-size:10px;font-weight:800;background:#ff4a6a;color:#fff;padding:2px 6px;border-radius:6px}
+.lp-cta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:6px}
+#start .lp-play{display:flex;align-items:center;gap:14px;font-size:20px;padding:18px 34px;border-radius:16px;background:linear-gradient(180deg,#ffe066,#ffb020);color:#17324d;border:none;box-shadow:0 6px 0 #a8620a,0 14px 30px rgba(255,170,30,.45);transition:transform .12s,box-shadow .12s;animation:lpGlow 2.4s ease-in-out infinite}
+#start .lp-play:hover{transform:translateY(-2px) scale(1.03)}#start .lp-play:active{transform:translateY(4px);box-shadow:0 2px 0 #a8620a}
+#start .lp-play i{font-style:normal;font-family:var(--round);font-weight:800;font-size:12px;padding:3px 8px;border-radius:7px;background:rgba(23,50,77,.15)}
+body.touch #start .lp-play i{display:none}
+@keyframes lpGlow{50%{box-shadow:0 6px 0 #a8620a,0 14px 44px rgba(255,190,60,.75)}}
+.lp-cont{font-family:var(--round);font-size:13px;font-weight:700;color:#cfe0ff;line-height:1.35}.lp-cont b{display:block;color:#fff;font-size:14px}
+#start .lp-row .btn{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25);box-shadow:none}
+#start .lp-row .btn:hover{background:rgba(255,255,255,.2)}
+#start .lp-keys{background:rgba(10,16,36,.7);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:12px 14px;color:#e8f2ff;margin:0}
+#start .lp-keys[hidden]{display:none}
+#start .ver{color:rgba(255,255,255,.45);text-align:left}
+.lp-news{position:absolute;right:3vw;bottom:4vh;width:min(360px,30vw);z-index:1;color:#fff}
+.lp-nh{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;font-family:var(--pixel);font-size:10px}
+.lp-nh span{display:flex;gap:5px}.lp-nh span i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer}.lp-nh span i.on{background:#ffcc3a;width:20px;border-radius:5px}
+.lp-card{border-radius:16px;overflow:hidden;background:rgba(10,16,36,.75);border:1px solid rgba(255,255,255,.2);box-shadow:0 14px 40px rgba(0,0,0,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);cursor:pointer;transition:transform .2s}
+.lp-card:hover{transform:translateY(-3px)}
+.lp-img{aspect-ratio:16/9;background:#0a0f24 center/cover no-repeat;transition:opacity .35s}
+.lp-txt{padding:10px 14px 13px;display:flex;flex-direction:column;gap:4px;font-family:var(--round)}
+.lp-txt em{font-style:normal;font-family:var(--pixel);font-size:8px;color:#17324d;background:#9fe8ff;align-self:flex-start;padding:3px 7px;border-radius:6px}
+.lp-txt b{font-size:17px;font-weight:900}.lp-txt span{font-size:13px;color:#c8d6f0;line-height:1.35}
+.lp-fade .lp-img,.lp-fade .lp-txt{opacity:0}
+.lp-txt{transition:opacity .35s}
+@media (max-width:900px){.lp-news{display:none}#start .lp-shade{background:linear-gradient(0deg,rgba(6,8,26,.92) 30%,rgba(6,8,26,.35) 100%)}#start .lp-main{justify-content:flex-end;width:100%;padding:16px}.lp-tag{display:none}.lp-logo b{font-size:42px}}
+@media (max-height:720px) and (min-width:901px){.lp-chips{display:none}#start .lp-heroes .hopt svg{width:44px;height:44px}}
 .gbtn:disabled{opacity:.38;cursor:default;filter:grayscale(1)}
 .hp-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.06);margin:6px 0;font-family:var(--round);font-size:14px}
 .hp-row b{font-weight:800;text-align:right}
@@ -838,24 +887,32 @@ body:not(.touch) .tools>.btn::after{border-radius:4px}body:not(.touch) .tools>.b
   <button id="tbtn" aria-label="Остановить время">Время</button>
   <button id="dbtn" aria-label="Рывок">Рывок</button>
   <div class="overlay" id="start">
-    <div class="card">
-      <h1>Hop to Olympus</h1>
-      <div class="lbl" style="margin:-6px 0 12px;color:var(--muted)">Прыг на Олимп</div>
-      <p>Говорят, на самой вершине неба спит Звёздное сердце. Поднимайся с яруса на ярус: через земляные облака, скайблок и небесный сад до самого космоса, где его сторожит серафим.</p>
-      <div class="lbl">Выбери героя</div>
-      <div class="heroes" id="heroes"></div>
-      <div class="keys">
+    <div class="lp-shade" aria-hidden="true"></div>
+    <div class="lp-main">
+      <div class="lp-season"><span class="lp-dot"></span>Сезон 3 · Кто удержит небо</div>
+      <h1 class="lp-logo"><span>Hop to</span><b>Olympus</b></h1>
+      <div class="lp-sub">Прыг на Олимп</div>
+      <p class="lp-tag">Прыгай в ритм с острова на остров, руби титанов вдвоём с другом и реши, кто удержит падающее небо.</p>
+      <div class="lp-chips"><span>30+ боссов</span><span>Кооп по сети</span><span>Рогалик «Восхождение»</span><span>Свой остров</span><span>Небесный кит</span></div>
+      <div class="lp-h">Выбери героя</div>
+      <div class="heroes lp-heroes" id="heroes"></div>
+      <div class="lp-cta"><button class="btn big lp-play" id="bPlay"><span>Играть</span><i>Пробел</i></button><div class="lp-cont" id="lpCont"></div></div>
+      <div class="startRow lp-row"><button class="btn" id="bPlayWs">Мастерская карт</button><button class="btn" id="bPlayTop">Достижения и рекорды</button><button class="btn" id="lpHow" aria-expanded="false">Как играть</button></div>
+      <div class="keys lp-keys" id="lpKeys" hidden>
         <kbd>WASD</kbd><span>бег, пробел — прыжок, держи ритм — каждый прыжок выше</span>
         <kbd>ЛКМ ПКМ</kbd><span>копать и ставить блоки, 1–9 — инвентарь</span>
         <kbd>G H J K L</kbd><span>танец и эмоции, Enter — чат</span>
         <kbd>Q I</kbd><span>выбросить предмет и открыть сумку</span>
         <kbd>Shift</kbd><span>рывок и двойной прыжок у SERGIO</span>
         <kbd>B</kbd><span>редактор карты</span>
+        <kbd>H</kbd><span>домой, на свой остров</span>
       </div>
-      <button class="btn big" id="bPlay">Играть</button>
-      <div class="startRow"><button class="btn" id="bPlayWs">Мастерская карт</button><button class="btn" id="bPlayTop">Достижения и рекорды</button></div>
       <div class="ver">Альфа-версия 3.2 — плейтест</div>
     </div>
+    <aside class="lp-news" aria-label="Что нового">
+      <div class="lp-nh"><b>Что нового</b><span id="lpDots"></span></div>
+      <div class="lp-card" id="lpCard"><div class="lp-img" id="lpImg"></div><div class="lp-txt"><em id="lpTag"></em><b id="lpT"></b><span id="lpD"></span></div></div>
+    </aside>
   </div>
   <div class="overlay" id="settings" style="display:none">
     <div class="card" role="dialog" aria-modal="true" aria-labelledby="setT" style="max-width:560px">
@@ -2623,6 +2680,20 @@ function drawHeroes(){heroesEl.innerHTML='';['boy','girl','sergio'].forEach(id=>
 $('buyClose').onclick=()=>{$('buy').style.display='none'};
 $('buyTest').onclick=()=>{prog.unlock=Object.assign({},prog.unlock,{sergio:'test'});saveProg();$('buy').style.display='none';drawHeroes();selectSkin('sergio',true);toast('SERGIO открыт в тестовом режиме: Shift — рывок, пробел в воздухе — двойной прыжок',3200)};
 drawHeroes();
+const LPNEWS=[{tag:'Новый босс',t:'Ахлис, Мгла смерти',d:'Сестра Эреба поднимается из-под островов Бездны. С неё падает Фонарь Ахлис.',img:'docs/screens/3.2/01_ahlis.png'},
+  {tag:'Режим',t:'Восхождение',d:'Рогалик на 15 минут: случайные комнаты, лут на один забег и дары богов.',img:'docs/screens/3.1/12_voshozhdenie_sad.png'},
+  {tag:'Событие',t:'Небесный кит Кето',d:'Раз в 12 минут над островами плывёт кит. Запрыгни на спину и найди Каркина.',img:'docs/screens/3.1/14_kit_derevnya.png'},
+  {tag:'Оружие',t:'Длани Геракла',d:'Каждый удар — огненный шар, третий — огромный взрыв.',img:'docs/screens/3.1/17_dlani_fireball.png'},
+  {tag:'Мир',t:'Звёздный купол',d:'Созвездия ожили: Охотница, Близнецы, Сад Персея и Прялка судеб.',img:'docs/screens/3.1/02_kupol_persey.png'},
+  {tag:'Дом',t:'Свой остров',d:'Огород, рыбалка, кухня, мебель и лоу-фай радио. Остров растёт с уютом.',img:'docs/screens/3.1/10_ostrov_uyut5.png'}];
+const LP={i:0,t:null};
+function lpShow(i){LP.i=(i+LPNEWS.length)%LPNEWS.length;const n=LPNEWS[LP.i],c=$('lpCard');c.classList.add('lp-fade');setTimeout(()=>{$('lpImg').style.backgroundImage='url("'+n.img+'")';$('lpTag').textContent=n.tag;$('lpT').textContent=n.t;$('lpD').textContent=n.d;c.classList.remove('lp-fade')},200);
+  [...$('lpDots').children].forEach((d,k)=>d.classList.toggle('on',k===LP.i));clearTimeout(LP.t);LP.t=setTimeout(()=>{if(!started)lpShow(LP.i+1)},5500)}
+LPNEWS.forEach((n,k)=>{const d=document.createElement('i');d.title=n.t;d.onclick=e=>{e.stopPropagation();lpShow(k)};$('lpDots').appendChild(d);const im=new Image();im.src=n.img});
+$('lpCard').onclick=()=>lpShow(LP.i+1);lpShow(0);
+$('lpHow').onclick=()=>{const k=$('lpKeys'),o=k.hidden;k.hidden=!o;$('lpHow').setAttribute('aria-expanded',String(o))};
+function lpCont(){const el=$('lpCont');if(!prog.cp&&!(prog.lvl>1)){el.innerHTML='<b>Новая игра</b>Первый прыжок — с Цветущих островов';return}const c=CPS[Math.min(prog.at||0,CPS.length-1)];el.innerHTML='';const b=document.createElement('b');b.textContent='Продолжить · ур. '+(prog.lvl||1);el.appendChild(b);el.appendChild(document.createTextNode(cpName(prog.at||0)+(prog.ng?' · Новое небо +'+prog.ng:'')))}
+lpCont();
 function selectSkin(id,greet){if(!SKINS[id]||!owned(id))id='boy';prog.skin=id;saveProg();buildHero(id);updInv();[...heroesEl.children].forEach(b=>b.setAttribute('aria-pressed',b.dataset.id===id?'true':'false'));if(greet){S.ui();hero.onG=true;emote(1)}}
 function preAnim(dt){
   hero.onG=true;HR.position.copy(hero.p);HR.rotation.y=yaw;HS.scale.set(1,1,1);HB.position.y=0.95+Math.sin(T*2.4)*0.02;legL.rotation.x=legR.rotation.x=0;
