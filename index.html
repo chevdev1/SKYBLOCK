@@ -1797,8 +1797,74 @@ function starIsland(cx,cy,cz,R,kind){const RI=Math.ceil(R)+1;
   if(kind==='twins')[-1,1].forEach(sg=>{const ox=cx+sg*4;for(let u=-2;u<=2;u++)for(let v=-2;v<=2;v++)if(Math.abs(u)+Math.abs(v)<4){setB(ox+u,cy+1,cz+v,14);setB(ox+u,cy+2,cz+v,Math.abs(u)+Math.abs(v)===3?43:14)}setB(ox,cy+3,cz,38)});
   if(kind==='perseus')[0.4,1.4,2.4,3.5,4.6,5.6].forEach(a=>{const [px,pz]=at(a,R-4);for(let k=1;k<=3;k++)setB(px,cy+k,pz,14);setB(px,cy+4,pz,15);setB(px+1,cy+3,pz,14);setB(px-1,cy+3,pz,14)});
   if(kind==='spindle'){for(let a=0;a<Math.PI*2;a+=0.1){setB(cx+Math.round(Math.cos(a)*4),cy+6+Math.round(Math.sin(a)*4),cz,34)}for(let k=-3;k<=3;k++){setB(cx+k,cy+6,cz,42);setB(cx,cy+6+k,cz,42)}setB(cx,cy+6,cz,43);for(let k=1;k<=2;k++)setB(cx,cy+k,cz,47)}}
+/* ===================== Star Dome dressing: statues, altars, groves, ruins and thrones for each constellation ===================== */
+const DOME_C={x:DX,z:0};
+const SB=(x,y,z,t)=>setB(Math.round(x),Math.round(y),Math.round(z),t);
+/* a frame facing direction (fx,fz): u to the right, v forward */
+function sFrame(cx,cz,fx,fz){const rx=fz,rz=-fx;return (u,v)=>[cx+u*rx+v*fx,cz+u*rz+v*fz]}
+const axisTo=(x,z,tx,tz)=>{const dx=tx-x,dz=tz-z;return Math.abs(dx)>Math.abs(dz)?[Math.sign(dx),0]:[0,Math.sign(dz)||1]};
+function sStatue(x,y,z,tx,tz,pose,m,acc){const [fx,fz]=axisTo(x,z,tx,tz),P=sFrame(x,z,fx,fz),put=(u,v,h,t)=>{const [a,b]=P(u,v);SB(a,y+h,b,t)};
+  for(let u=-1;u<=1;u++)for(let v=-1;v<=1;v++)put(u,v,1,(Math.abs(u)+Math.abs(v)===2)?13:14);
+  if(pose==='kneel'){[-1,0,1].forEach(u=>{put(u,0,2,m);put(u,0,3,m)});put(-1,1,2,m);put(0,0,4,m);put(0,1,4,acc);put(-2,0,3,m);put(2,0,3,m);put(2,1,3,13);return}
+  [-1,1].forEach(u=>{put(u,pose==='run'?(u<0?-1:1):0,2,m);put(u,0,3,m)});[-1,0,1].forEach(u=>{put(u,0,4,m);put(u,0,5,m)});put(0,0,6,m);put(0,0,7,acc);
+  if(pose==='raise'){[-2,2].forEach(u=>{put(u,0,5,m);put(u,0,6,m);put(u,0,7,m)})}
+  else if(pose==='shield'){put(-2,0,4,m);put(-2,0,5,m);[-2,-1].forEach(u=>[4,5,6].forEach(h=>put(u,1,h,13)));put(2,0,5,m);put(2,0,6,m);for(let h=7;h<=9;h++)put(2,0,h,25)}
+  else if(pose==='bow'){put(-2,0,5,m);put(-2,1,5,m);[4,5,6].forEach(h=>put(-2,2,h,13));put(-2,2,3,13);put(-2,2,7,13);put(2,0,5,m)}
+  else if(pose==='fist'){[-2,2].forEach(u=>{put(u,0,5,m);put(u,1,5,m);put(u,2,5,13)})}
+  else{put(-2,0,4,m);put(-2,0,5,m);put(2,0,5,m);put(2,1,6,m);put(2,2,7,25);put(2,3,8,25)}}
+function sBeast(x,y,z,tx,tz,m,acc,antlers){const [fx,fz]=axisTo(x,z,tx,tz),R=sFrame(x,z,-fz,fx),put=(u,v,h,t)=>{const [a,b]=R(u,v);SB(a,y+h,b,t)};
+  for(let u=-2;u<=2;u++)for(let v=-1;v<=1;v++)put(u,v,1,14);
+  [0,1].forEach(v=>{[-2,2].forEach(u=>{put(u,v,2,m);put(u,v,3,m)});for(let u=-2;u<=2;u++){put(u,v,4,m);put(u,v,5,m)}});
+  put(3,0,6,m);put(3,1,6,m);put(3,0,7,m);put(3,1,7,m);put(4,0,7,m);put(4,1,7,m);put(4,0,8,m);put(4,1,8,acc);put(-3,0,5,acc);put(-3,1,4,acc);
+  if(antlers){[[3,-1,9],[3,-2,10],[4,-1,10],[3,2,9],[3,3,10],[4,2,10],[3,-1,11],[3,2,11]].forEach(([u,v,h])=>put(u,v,h,13))}}
+function sTarget(x,y,z,tx,tz){const [fx,fz]=axisTo(x,z,tx,tz),P=sFrame(x,z,fx,fz);for(let h=1;h<=2;h++){const [a,b]=P(0,0);SB(a,y+h,b,5)}
+  for(let u=-2;u<=2;u++)for(let w=-2;w<=2;w++){const d=Math.hypot(u,w);if(d>2.3)continue;const [a,b]=P(u,0);SB(a,y+5+w,b,d<0.8?13:d<1.6?24:14)}}
+function sTree(x,y,z,leaf,fruit,trunk,leaf2){const h=5+Math.floor(hash(x,y,z)*3);for(let i=1;i<=h;i++)SB(x,y+i,z,trunk||47);
+  for(let u=-3;u<=3;u++)for(let v=-3;v<=3;v++)for(let w=-2;w<=3;w++){const d=Math.hypot(u,v,w*1.2);if(d>3.1)continue;const hh=hash(x+u,y+w,z+v);if(d>2.4&&hh>0.6)continue;SB(x+u,y+h+w,z+v,hh>0.93?fruit:leaf2&&hash(u+x,v+z,w+y)>0.62?leaf2:leaf)}}
+function sBrazier(x,y,z){for(let i=1;i<=2;i++)SB(x,y+i,z,34);for(let u=-1;u<=1;u++)for(let v=-1;v<=1;v++)SB(x+u,y+3,z+v,u||v?34:33)}
+function sLamp(x,y,z,t){for(let i=1;i<=3;i++)SB(x,y+i,z,t||47);SB(x,y+4,z,22);SB(x,y+5,z,13)}
+function sColumn(x,y,z,h,full){SB(x,y+1,z,13);for(let i=2;i<=h;i++)SB(x,y+i,z,hash(x,i,z)>0.85?45:14);if(full){for(let u=-1;u<=1;u++)for(let v=-1;v<=1;v++)SB(x+u,y+h+1,z+v,14)}}
+function sCrystal(x,y,z,dir,n){for(let i=0;i<n;i++){SB(x,y+dir*i,z,i===n-1?16:38);if(i<n-2&&hash(x,i,z)>0.5)SB(x+1,y+dir*i,z,38)}}
+function sRock(x,y,z,r){for(let u=-2;u<=2;u++)for(let v=-2;v<=2;v++){const d=Math.hypot(u,v);if(d>r)continue;SB(x+u,y,z+v,d>r-0.8?47:41);if(d<r-1)SB(x+u,y-1,z+v,41)}sCrystal(x,y+1,z,1,2+Math.floor(hash(x,y,z)*3));sCrystal(x,y-2,z,-1,3)}
+const angDiff=(a,b)=>Math.abs(Math.atan2(Math.sin(a-b),Math.cos(a-b)));
+function domeDecor(s,prev){const {x:cx,y:cy,z:cz,R}=s,aFlag=Math.atan2(DOME_C.z-cz,DOME_C.x-cx),aPrev=Math.atan2(prev.z-cz,prev.x-cx),keep=a=>angDiff(a,aFlag)<0.55||angDiff(a,aPrev)<0.55,
+    at=(a,r)=>[Math.round(cx+Math.cos(a)*r),Math.round(cz+Math.sin(a)*r)],ring=(n,r,off,fn)=>{for(let i=0;i<n;i++){const a=i/n*Math.PI*2+(off||0);if(keep(a))continue;const [x,z]=at(a,r);fn(x,z,a,i)}};
+  for(let i=0;i<14;i++){const a=hash(i,cx,cz)*6.28,r=hash(cz,i,cx)*(R-3);const [x,z]=at(a,r);sCrystal(x,cy-4-Math.floor(hash(x,i,z)*3),z,-1,3+Math.floor(hash(i,x,z)*4))}
+  ring(5,R+7,0.4,(x,z,a,i)=>sRock(x,cy-2+Math.round(hash(x,i,z)*8),z,1.6+hash(i,x,z)));
+  if(s.id==='hunt'){ring(3,R-3,1.9,(x,z)=>sTree(x,cy,z,6,22,15,36));const ma=aFlag+Math.PI;
+    {const [x,z]=at(ma+0.6,R-4);sBeast(x,cy,z,cx,cz,14,13,true)}{const [x,z]=at(ma-0.6,R-4);sBeast(x,cy,z,cx,cz,15,13,true)}
+    ring(3,R-2.5,1.2,(x,z)=>sTarget(x,cy,z,cx,cz));const [mx,mz]=at(ma+0.05,R-3);const [fx,fz]=axisTo(mx,mz,cx,cz),P=sFrame(mx,mz,fx,fz);
+    for(let u=-2;u<=2;u++)for(let v=-2;v<=0;v++){const [a,b]=P(u,v);SB(a,cy+1,b,15);if(v<0)SB(a,cy+2,b,14)}
+    for(let t=-100;t<=100;t+=12){const r=t*Math.PI/180,u=Math.round(Math.sin(r)*3.4),h=Math.round(Math.cos(r)*3.4);const u2=Math.round(Math.sin(r)*2.3+0.9);const [a,b]=P(u,-1);SB(a,cy+7+h,b,13);if(Math.abs(t)<80){const [a2,b2]=P(u2,-1);if(u2!==u)SB(a2,cy+7+h,b2,22)}}
+    sLamp(...(()=>{const [a,b]=P(-3,1);return [a,cy,b]})(),15);sLamp(...(()=>{const [a,b]=P(3,1);return [a,cy,b]})(),15)}
+  if(s.id==='twins'){const g=(a)=>{const [x,z]=at(a,R-3);return [x,z]};const aG=(aFlag+Math.PI);
+    {const [x1,z1]=at(aG-0.22,R-3),[x2,z2]=at(aG+0.22,R-3);sStatue(x1,cy,z1,cx,cz,'raise',14,13);sStatue(x2,cy,z2,cx,cz,'raise',47,13);
+      const n=12;for(let i=0;i<=n;i++){const t=i/n,x=x1+(x2-x1)*t,z=z1+(z2-z1)*t,h=8+Math.round(Math.sin(t*Math.PI)*3);SB(x,cy+h,z,i%3?13:22)}}
+    {const [x,z]=at(aG-1.2,R-4.5);sBeast(x,cy,z,cx,cz,14,13,false)}
+    const px=cx+4;[[-3,-3],[3,-3],[-3,3],[3,3]].forEach(([u,v])=>{for(let h=1;h<=3;h++)SB(px+u,cy+h,cz+v,34);SB(px+u,cy+4,cz+v,13)});
+    for(let z=-R+1;z<=R-1;z++)if(get(cx,cy,cz+z))SB(cx,cy,cz+z,13);
+    ring(6,R-2,0.2,(x,z)=>sBrazier(x,cy,z))}
+  if(s.id==='perseus'){const poses=['shield','sword','raise','run','kneel','fist','bow','kneel'];ring(8,R-3.5,0.15,(x,z,a,i)=>sStatue(x,cy,z,cx,cz,poses[i],hash(x,i,z)>0.5?15:20,hash(i,x,z)>0.5?45:13));
+    ring(10,R-1.5,0.5,(x,z,a,i)=>sColumn(x,cy,z,i%3===0?6:2+Math.floor(hash(x,i,z)*4),i%3===0));
+    {const aF=aFlag+Math.PI;const [x,z]=at(aF,R-8);for(let u=-3;u<=3;u++)for(let v=-3;v<=3;v++){const d=Math.hypot(u,v);if(d>3.2)continue;SB(x+u,cy,z+v,d>2.3?14:23);if(d>2.3)SB(x+u,cy+1,z+v,14)}
+      for(let h=1;h<=2;h++)SB(x,cy+h,z,15);for(let u=-1;u<=1;u++)for(let v=-1;v<=1;v++)for(let h=3;h<=5;h++)SB(x+u,cy+h,z+v,14);SB(x,cy+4,z+1,38);SB(x+1,cy+4,z+1,38);
+      [[-2,0,4],[2,0,4],[0,-2,4],[-2,0,5],[2,0,5],[0,0,6],[-1,1,6],[1,-1,6],[-2,-1,6],[2,1,6],[0,2,5]].forEach(([u,v,h])=>SB(x+u,cy+h,z+v,29))}
+    ring(4,R-6.5,1.3,(x,z,a,i)=>{if(i%2)return;for(let h=1;h<=6;h++){SB(x,cy+h,z,14);const t=h*1.3;SB(x+Math.round(Math.cos(t)*1.2),cy+h,z+Math.round(Math.sin(t)*1.2),29)}SB(x,cy+7,z,13)});
+    ring(7,R-1,1.9,(x,z,a,i)=>{for(let k=-1;k<=1;k++){const [x2,z2]=at(a+k*0.08,R-1);SB(x2,cy+1,z2,7);if(k===0)SB(x2,cy+2,z2,7)}})}
+  if(s.id==='spindle'){const thr=[[14,13],[15,13],[37,13]];[0,1,2].forEach(i=>{let a=aFlag+Math.PI+(i-1)*0.9;if(keep(a))a+=0.6;const [x,z]=at(a,R-3.5);const [fx,fz]=axisTo(x,z,cx,cz),P=sFrame(x,z,fx,fz),[m,g]=thr[i],put=(u,v,h,t)=>{const [p,q]=P(u,v);SB(p,cy+h,q,t)};
+      for(let u=-2;u<=2;u++){put(u,0,1,m);put(u,-1,1,m);for(let h=2;h<=6;h++)put(u,-1,h,Math.abs(u)===2||h===6?g:m)}put(-2,0,2,g);put(2,0,2,g);put(0,-1,7,g);put(-1,-1,7,g);put(1,-1,7,g);put(0,-1,8,22)});
+    {let a=aFlag+Math.PI+2.3;if(keep(a))a+=0.7;const [x,z]=at(a,R-2.5);const [fx,fz]=axisTo(x,z,cx,cz),P=sFrame(x,z,fx,fz);for(let h=1;h<=8;h++){[-3,3].forEach(u=>{const [p,q]=P(u,0);SB(p,cy+h,q,5)})}
+      for(let u=-3;u<=3;u++){const [p,q]=P(u,0);SB(p,cy+9,q,5);SB(p,cy+1,q,5);if(Math.abs(u)<3)for(let h=2;h<=8;h++)SB(p,cy+h,q,[24,16,13,14,24][(u+3)%5])}}
+    {let a=aFlag+Math.PI-2.3;if(keep(a))a-=0.7;const [x,z]=at(a,R-3);const [fx,fz]=axisTo(x,z,cx,cz),P=sFrame(x,z,fx,fz);for(let k=0;k<=9;k++){const [p,q]=P(-2+Math.round(k*0.45),0),[p2,q2]=P(2-Math.round(k*0.45),0);SB(p,cy+2+k,q,25);SB(p2,cy+2+k,q2,25)}
+      [[-3,1],[-2,1],[-3,2],[-1,1],[3,1],[2,1],[3,2],[1,1]].forEach(([u,h])=>{const [p,q]=P(u,0);SB(p,cy+h,q,13)})}
+    ring(6,R-1.5,0.35,(x,z)=>sLamp(x,cy,z,47))}}
+function harborDecor(){const cx=DX,cy=0,cz=0,a=Math.PI;for(let r=6;r<=15;r++){const x=Math.round(cx+Math.cos(a)*r);for(let w=-1;w<=1;w++)SB(x,cy,cz+w,21);if(r%3===0){SB(x,cy-1,cz-2,5);SB(x,cy-1,cz+2,5);sLamp(x,cy,cz-2,5)}}
+  const bx=cx-12,bz=cz+4;for(let u=-3;u<=3;u++){SB(bx+u,cy-1,bz,47);SB(bx+u,cy,bz-1,Math.abs(u)===3?13:47);SB(bx+u,cy,bz+1,Math.abs(u)===3?13:47)}SB(bx-4,cy,bz,47);SB(bx+4,cy,bz,47);SB(bx-5,cy+1,bz,13);SB(bx+5,cy+1,bz,13);
+  for(let h=1;h<=6;h++)SB(bx,cy+h,bz,5);for(let u=-2;u<=1;u++)for(let h=3;h<=6;h++)if(u+h<=6)SB(bx+u,cy+h,bz+0,0),SB(bx+u,cy+h,bz+1,14);SB(bx+4,cy+1,bz,22);
+  [[3,-5],[-5,3],[5,5]].forEach(([u,v])=>sCrystal(cx+u,cy-3,cz+v,-1,4))}
 function clearDome(){for(const k of [...world.keys()])if(Math.floor(k/4194304)-1024<DOMEX)world.delete(k);dirty=true;entDirty=true}
-function genDome(){starIsland(DX,0,0,7,'harbor');DOME.steps.forEach(s=>starIsland(s.x,s.y,s.z,s.r,'step'));DOME.sites.forEach(s=>starIsland(s.x,s.y,s.z,s.R,s.id))}
+function genDome(){starIsland(DX,0,0,7,'harbor');DOME.steps.forEach(s=>starIsland(s.x,s.y,s.z,s.r,'step'));DOME.sites.forEach(s=>starIsland(s.x,s.y,s.z,s.R,s.id));
+  DOME.sites.forEach((s,i)=>domeDecor(s,i?DOME.sites[i-1]:DOME_C));harborDecor();DOME.steps.forEach(st=>{if(hash(st.x,st.y,st.z)>0.3)sCrystal(st.x,st.y-2,st.z,-1,2+Math.floor(hash(st.z,st.x,st.y)*3))})}
 /* constellations drawn in the sky above each site */
 const DOMESKY=(()=>{const P={hunt:[[[-4,0],[-2,2],[0,3],[2,2],[4,0],[0,-2],[0,-5]],[[0,1],[1,2],[2,3],[3,4],[2,5],[5,6]]],
     twins:[[[-2,4],[-2,0],[-2,-4],[2,4],[2,0],[2,-4],[-3,-5],[3,-5]],[[0,1],[1,2],[3,4],[4,5],[2,6],[5,7],[1,4]]],
@@ -1862,7 +1928,7 @@ function loadMap(){
   const s2=store.get(SKEY);if(s2){try{applyMap(parseMap(s2).m);r='v2'}catch(e){}}
   if(r==='new'){const s1=store.get(OLDKEY);if(s1){try{applyMap(parseMap(s1).m);genUpper();r='merged'}catch(e){}}}
   if(r==='new')genDefault();
-  const rv=store.get(RKEY);if(rv!=='16'){if(r!=='new'){if(rv!=='14'&&rv!=='15'){if(rv!=='13'){if(!['12','11','10','9'].includes(rv)){if(rv!=='8'){if(rv!=='7'){if(rv!=='6'){if(rv!=='3'&&rv!=='4'&&rv!=='5')genArena();if(rv!=='4'&&rv!=='5'){genDecor();genLandmarks()}if(rv!=='5')genDecor2();genTurtles();genRealm();genDungeons()}genRealm2()}genRealm3()}}clearChaos();genChaosAll();genTitanLairs()}genHeroArena()}clearDome();genDome();scheduleSave(true)}store.set(RKEY,'16')}
+  const rv=store.get(RKEY);if(rv!=='18'){if(r!=='new'){if(rv!=='14'&&rv!=='15'&&rv!=='16'&&rv!=='17'){if(rv!=='13'){if(!['12','11','10','9'].includes(rv)){if(rv!=='8'){if(rv!=='7'){if(rv!=='6'){if(rv!=='3'&&rv!=='4'&&rv!=='5')genArena();if(rv!=='4'&&rv!=='5'){genDecor();genLandmarks()}if(rv!=='5')genDecor2();genTurtles();genRealm();genDungeons()}genRealm2()}genRealm3()}}clearChaos();genChaosAll();genTitanLairs()}genHeroArena()}clearDome();genDome();scheduleSave(true)}store.set(RKEY,'18')}
   return r;
 }
 const prog={cp:0,at:0,seen:[],won:false,skin:null,wings:false,bossDown:false,unlock:{},chests:{},found:{}};
@@ -5699,6 +5765,27 @@ function updWorkshop(dt){if(!started)return;if(prog.realm&&!HWS.built&&zoneOf(he
   if(!prog.drone)return;if(!HWS.drone)HWS.drone=makeDrone();const d=HWS.drone,a=T*1.3,want=new THREE.Vector3(hero.p.x+Math.cos(a)*1.6,hero.p.y+(FLIP.on?-2.4:2.4)+Math.sin(T*2)*0.2,hero.p.z+Math.sin(a)*1.6);d.position.lerp(want,Math.min(1,dt*4));d.rotation.y=-a;d.userData.rot.forEach((r,i)=>r.rotation.y=T*40+i);
   d.visible=!WS.active;if(T>(HWS.zapT||0)){HWS.zapT=T+3;let best=null,bd=8;for(const mb of allMobs())if(mb.state==='alive'&&mb.G.visible){const q=mb.p.distanceTo(hero.p);if(q<bd){bd=q;best=mb}}if(best){boltFx(d.position.clone(),best.p.clone().setY(best.p.y+0.6),0x5fd3ff,0.15,0.12);hitMob(best,1,best.p.clone().sub(hero.p).setY(0).normalize());tone(1800,0.05,{v:0.04})}}}
 
+/* ===================== Star Dome sky: planets, nebulae, falling stars and the golden threads of fate ===================== */
+const DSKY={G:new THREE.Group(),falls:[],threads:[],t:0};scene.add(DSKY.G);DSKY.G.visible=false;
+(function(){const B=(c,o)=>new THREE.MeshBasicMaterial(Object.assign({color:c,fog:false},o||{}));
+  const planet=(x,y,z,r,c1,c2,ring)=>{const g=new THREE.Group();g.position.set(x,y,z);const m=new THREE.Mesh(new THREE.IcosahedronGeometry(r,2),B(c1));g.add(m);
+    const sh=new THREE.Mesh(new THREE.IcosahedronGeometry(r*1.01,2),B(0x000000,{transparent:true,opacity:0.45}));sh.position.set(r*0.25,-r*0.1,r*0.25);sh.scale.setScalar(0.98);g.add(sh);
+    const at=new THREE.Mesh(new THREE.IcosahedronGeometry(r*1.12,2),B(c2,{transparent:true,opacity:0.18,blending:THREE.AdditiveBlending,depthWrite:false}));g.add(at);
+    if(ring){const rg=new THREE.Mesh(new THREE.RingGeometry(r*1.5,r*2.3,48),B(c2,{transparent:true,opacity:0.5,side:THREE.DoubleSide,depthWrite:false}));rg.rotation.x=-1.2;rg.rotation.y=0.3;g.add(rg)}
+    DSKY.G.add(g);return g};
+  DSKY.p1=planet(DX-150,70,110,24,0x5a3a9a,0xc8a0ff,true);DSKY.p2=planet(DX+130,110,-120,11,0x2a6aa8,0x9fe8ff,false);DSKY.p3=planet(DX+60,170,150,6,0xb04a3a,0xffb08a,false);
+  {const g=new THREE.Group();g.position.set(DX-60,150,-150);const m=new THREE.Mesh(new THREE.CircleGeometry(14,40),B(0xfff6d8));g.add(m);const c=new THREE.Mesh(new THREE.CircleGeometry(13.5,40),B(0x0a0620));c.position.set(5,2,0.1);g.add(c);
+    const halo=new THREE.Mesh(new THREE.CircleGeometry(22,40),B(0xfff2c0,{transparent:true,opacity:0.12,blending:THREE.AdditiveBlending,depthWrite:false}));halo.position.z=-0.1;g.add(halo);DSKY.G.add(g);DSKY.moon=g}
+  const neb=(c)=>{const cv=document.createElement('canvas');cv.width=cv.height=128;const x=cv.getContext('2d'),gr=x.createRadialGradient(64,64,4,64,64,64);gr.addColorStop(0,c);gr.addColorStop(1,'rgba(0,0,0,0)');x.fillStyle=gr;x.fillRect(0,0,128,128);return new THREE.CanvasTexture(cv)};
+  [['rgba(255,90,200,0.55)',-170,40,-40,110],['rgba(90,140,255,0.5)',140,60,90,130],['rgba(160,90,255,0.45)',20,130,-170,120],['rgba(90,255,220,0.35)',-110,160,140,100],['rgba(255,160,90,0.3)',170,20,-60,90]].forEach(([c,x,y,z,s])=>{
+    const m=new THREE.Mesh(new THREE.PlaneGeometry(s,s*0.6),new THREE.MeshBasicMaterial({map:neb(c),transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,fog:false}));m.position.set(DX+x,y,z);m.lookAt(DX,40,0);m.rotation.z=Math.random()*3;DSKY.G.add(m)});
+  const sp=DOME.sites[3];for(let i=0;i<9;i++){const a=i/9*Math.PI*2,len=46,m=new THREE.Mesh(BOX,B(0xffe08a,{transparent:true,opacity:0.5,blending:THREE.AdditiveBlending,depthWrite:false}));
+    const from=new THREE.Vector3(sp.x,sp.y+6,sp.z),to=new THREE.Vector3(sp.x+Math.cos(a)*30,sp.y+46,sp.z+Math.sin(a)*30);m.position.copy(from).lerp(to,0.5);m.scale.set(0.07,0.07,from.distanceTo(to));m.lookAt(to);DSKY.G.add(m);DSKY.threads.push({m,ph:i})}})();
+function updDomeSky(dt){const on=started&&zoneOf(hero.p.x)===3;DSKY.G.visible=on;if(!on)return;DSKY.t+=dt;
+  DSKY.p1.rotation.y+=dt*0.02;DSKY.p2.rotation.y-=dt*0.05;DSKY.moon.lookAt(cam.position);DSKY.threads.forEach(q=>q.m.material.opacity=0.25+0.25*(0.5+0.5*Math.sin(DSKY.t*1.5+q.ph)));
+  if(Math.random()<dt*0.6){const a=Math.random()*6.28,p=new THREE.Vector3(hero.p.x+Math.cos(a)*90,hero.p.y+50+Math.random()*50,hero.p.z+Math.sin(a)*90),v=new THREE.Vector3(-Math.cos(a)*40+(Math.random()-0.5)*30,-22,-Math.sin(a)*40+(Math.random()-0.5)*30);
+    const m=new THREE.Mesh(BOX,new THREE.MeshBasicMaterial({color:0xfff6d8,transparent:true,opacity:0.9,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));m.scale.set(0.15,0.15,6);m.position.copy(p);m.lookAt(p.clone().add(v));scene.add(m);DSKY.falls.push({m,v,t:0})}
+  for(let i=DSKY.falls.length-1;i>=0;i--){const f=DSKY.falls[i];f.t+=dt;f.m.position.addScaledVector(f.v,dt);f.m.material.opacity=Math.max(0,0.9-f.t*0.6);if(f.t>1.5){scene.remove(f.m);f.m.material.dispose();DSKY.falls.splice(i,1)}}}
 let DAYFAST=1;
 /* ===================== Your own island: cosy home, real-time garden, cloud fishing, kitchen, furniture, trophies ===================== */
 const HX=-300,HY=40,HZ=0;
@@ -6682,7 +6769,7 @@ function frame(now){
   updHazards(edt);updWisp(dt);updRLM(dt);
   $('cross').classList.toggle('on',started&&!editing&&!!prog.gear.hook);
   updBoss(edt);updProj(edt);updRemotes(dt);updDecor(dt);updNPCs(dt);updTemps(edt);MINI.forEach(M=>updMini(M,edt));updWaves(dt);updSlashes(dt);updSWaves(dt);updPickups(dt);updPortals(dt);updRealmFx(dt);updRace(dt);updClock(dt);netPresence(false);
-  updWS(dt);achTick(dt);updBolts(dt);updHostile(edt);updRift(edt);updArena(dt);updVRings(dt);updCDeco(dt);updThrow(dt);updForge(dt);updHeroArena();updBuffs();updWand(dt);updJuice(dt);updDown(dt);updHome(dt);updAsc(dt);updKeto(dt);updAby(dt);updVault(dt);updWorkshop(dt);updDome(dt);updBowArrows(dt);updShears(dt);updFlyParts(dt);updStreak();if(Math.floor(T*2)!==Math.floor((T-dt)*2))updHard();updTitanFx(dt);updLvFx(dt);updOlympFx(dt);auraTick(dt);
+  updWS(dt);achTick(dt);updBolts(dt);updHostile(edt);updRift(edt);updArena(dt);updVRings(dt);updCDeco(dt);updThrow(dt);updForge(dt);updHeroArena();updBuffs();updWand(dt);updJuice(dt);updDown(dt);updHome(dt);updAsc(dt);updKeto(dt);updAby(dt);updVault(dt);updWorkshop(dt);updDomeSky(dt);updDome(dt);updBowArrows(dt);updShears(dt);updFlyParts(dt);updStreak();if(Math.floor(T*2)!==Math.floor((T-dt)*2))updHard();updTitanFx(dt);updLvFx(dt);updOlympFx(dt);auraTick(dt);
   updFalls(dt);updParts(dt);updRings(dt);ambient(dt);updCam(dt);updGhost();updTier();updAtmo();updWMap(dt);updMinimap(dt);monitor(dt);
   render();requestAnimationFrame(frame);
 }
