@@ -631,6 +631,7 @@ body.asc .hud .h-chips,body.asc #moreP{display:none}
 .hp-chips{display:flex;flex-wrap:wrap;gap:6px}.hp-chips span{padding:5px 9px;border-radius:9px;background:rgba(255,255,255,.1);font-family:var(--round);font-size:13px}
 .hp-fish{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}.hp-fish div{padding:10px;border-radius:12px;background:rgba(255,255,255,.07);text-align:center;font-family:var(--round);font-size:13px}
 .hp-fish img{width:48px;height:48px;image-rendering:pixelated;display:block;margin:0 auto 6px}.hp-fish .unk img{filter:brightness(0) opacity(.5)}.hp-fish b{display:block}
+body.blackout #tsov{opacity:1!important;background:#000!important;transition:none}
 body.downed #tsov{opacity:1;background:radial-gradient(ellipse at center,rgba(120,0,30,.15) 30%,rgba(60,0,20,.7) 100%)}
 body.stone #tsov{opacity:1;background:radial-gradient(ellipse at center,rgba(160,160,150,.25) 30%,rgba(70,70,64,.75) 100%)}
 #dread.omen b{color:#ffd23c;text-shadow:0 0 12px #ffb000,0 0 28px #8a5a00,3px 0 0 #2a1a00,-3px 0 0 #9fe8ff;animation:none}
@@ -1145,8 +1146,8 @@ const LEAF=t=>t===6||t===7||t===36;
 const world=new Map();
 const K=(x,y,z)=>((x+1024)*2048+(y+1024))*2048+(z+1024);
 const UK=k=>{const z=k%2048-1024,r=Math.floor(k/2048),y=r%2048-1024,x=Math.floor(r/2048)-1024;return[x,y,z]};
-const RUNG=new Map();
-const get=(x,y,z)=>world.get(K(x,y,z))||(RUNG.size?RUNG.get(K(x,y,z))||0:0);
+const RUNG=new Map();let GFLIP=0;
+const get=(x,y,z)=>{if(GFLIP)y=GFLIP-y;return world.get(K(x,y,z))||(RUNG.size?RUNG.get(K(x,y,z))||0:0)};
 let dirty=true,entDirty=true;
 function setB(x,y,z,t){const k=K(x,y,z);if(t)world.set(k,t);else world.delete(k);dirty=true;if(t===11||t===12||t===0)entDirty=true}
 
@@ -1275,7 +1276,7 @@ const TIERS=[null,
   {n:'Космос',y0:116,c:'#7a5cff',lore:'Воздух кончился, прыжки стали длиннее. Звёздное сердце уже совсем рядом.'}];
 const TOPY=150;
 const REALMX=400,RX=700,CHAOSX=830,CX=910,DOMEX=-720,DX=-860;
-const tierAt=(y,x)=>{if(x<DOMEX)return y>=62?14:13;if(x>CHAOSX)return y>=100?12:y>=50?11:10;if(x>REALMX)return y>=120?9:y>=80?8:y>=40?7:6;for(let i=5;i>=1;i--)if(y>=TIERS[i].y0)return i;return 1};
+const tierAt=(y,x)=>{if(x>-262&&x<-138)return y>=45?16:15;if(x<DOMEX)return y>=62?14:13;if(x>CHAOSX)return y>=100?12:y>=50?11:10;if(x>REALMX)return y>=120?9:y>=80?8:y>=40?7:6;for(let i=5;i>=1;i--)if(y>=TIERS[i].y0)return i;return 1};
 const LAYOUT=(()=>{
   const out=[];let c={x:-11,z:-2,y:10,r:3.3,t:1};let i=0;
   while(c.y<TOPY-3&&i<200){
@@ -1325,6 +1326,9 @@ TIERS.push(
 TIERS.push(
   {n:'Звёздный купол',y0:-999,c:'#9fb8ff',lore:'Ночной небосвод над тюрьмой титанов. Острова здесь — созвездия, и в каждом живёт тот, кого боги когда-то подняли на небо.'},
   {n:'Прялка судеб',y0:62,c:'#e0c8ff',lore:'Вершина купола. Здесь три сестры-Мойры прядут нить каждой жизни, и твою тоже.'});
+TIERS.push(
+  {n:'Порог Эреба',y0:-999,c:'#3a2050',lore:'Здесь кончается свет. Острова висят без верха и низа, и по днищам ходит то же, что и по траве.'},
+  {n:'Перевёрнутый лес',y0:45,c:'#5a1a8a',lore:'Деревья растут вниз, в чёрное небо. Где-то над ними ждёт Эреб, первородная тьма.'});
 const CLAY=(()=>{const out=[];let c={x:CX,z:0,y:0,r:7,t:10};let i=0;
   while(c.y<144&&i<220){i++;const ny=c.y+(i%3===0?4:3),t=tierAt(ny,CX+1),rest=(t!==c.t)||(i%5===0);
     const r=rest?5.8:2.6+hash(i,90,5)*1.8,gap=4.5+hash(i,91,6)*3;
@@ -1339,7 +1343,7 @@ const NYXL=(()=>{const f=CLAY.isl.find(n=>n.t===11&&n.tierStart),lx=f.x-CX,lz=f.
   for(let d=f.r+4.5,k=0;d<30-L.R-1;d+=4.6,k++)L.stones.push({x:Math.round(f.x+ux*d+(k%2?1.5:-1.5)*-uz),y:f.y+1+k,z:Math.round(f.z+uz*d+(k%2?1.5:-1.5)*ux)});return L})();
 CPS.push({x:CX,z:3,y:0,t:10,realm:2});CLAY.isl.forEach(n=>{if(n.tierStart)CPS.push({x:n.x,z:n.z,y:n.y,t:n.t,realm:2})});
 {const L=CLAY.isl[CLAY.isl.length-1],dx=L.x-KA.x,dz=L.z-KA.z,l=Math.hypot(dx,dz)||1;KA.cp={x:Math.round(KA.x+dx/l*11),z:Math.round(KA.z+dz/l*11)};KA.back={x:Math.round(KA.x-dx/l*7),z:Math.round(KA.z-dz/l*7)};CPS.push({x:KA.cp.x,z:KA.cp.z,y:KA.y,t:12,realm:2,nm:'Трон времени'})}
-const zoneOf=x=>x>CHAOSX?2:x>REALMX?1:x<DOMEX?3:0;
+const zoneOf=x=>x>CHAOSX?2:x>REALMX?1:x<DOMEX?3:(x>-262&&x<-138)?4:0;const ABX=-200;
 /* ===================== Star Dome layout: a harbour, four constellations on a rising ring, stepping stars between ===================== */
 const DOME=(()=>{const sites=[{id:'hunt',n:'Охотница',a:0,y:14,R:17,lore:'Созвездие охотницы. Здесь ждёт Аталанта, самая быстрая из смертных: её подняли на небо за то, что никто не мог её догнать.'},
     {id:'twins',n:'Близнецы',a:Math.PI/2,y:32,R:16,lore:'Созвездие Близнецов. Кастор и Поллукс делят одну жизнь на двоих. Говорят, их можно победить только вдвоём.'},
@@ -2273,7 +2277,7 @@ let bannerT=0;
 function banner(lvl,ttl,lore,ms){$('bLvl').textContent=lvl;$('bTtl').textContent=ttl;$('bLore').textContent=lore;$('bLore').style.display=lore?'':'none';$('banner').classList.add('on');clearTimeout(bannerT);bannerT=setTimeout(()=>$('banner').classList.remove('on'),ms||5200)}
 const ALTMIN=-10,ALTMAX=TOPY+6;
 let altRealm=null;
-const altRange=z=>z===3?[-5,84,13,14]:z===2?[-5,KA.y+8,10,12]:z===1?[-5,ZA.y+8,6,9]:[ALTMIN,ALTMAX,1,5];
+const altRange=z=>z===4?[-5,60,15,16]:z===3?[-5,84,13,14]:z===2?[-5,KA.y+8,10,12]:z===1?[-5,ZA.y+8,6,9]:[ALTMIN,ALTMAX,1,5];
 function buildAlt(zone){const a=$('alt');[...a.querySelectorAll('.seg')].forEach(e=>e.remove());const [lo,hi,from,to]=altRange(zone);
   for(let i=from;i<=to;i++){const y0=Math.max(lo,TIERS[i].y0),y1=i<to?TIERS[i+1].y0:hi;const sg=document.createElement('div');sg.className='seg';sg.style.bottom=((y0-lo)/(hi-lo)*100)+'%';sg.style.height=((y1-y0)/(hi-lo)*100)+'%';sg.style.background=TIERS[i].c;a.insertBefore(sg,$('altm'))}}
 let curTier=0;
@@ -3006,7 +3010,7 @@ function updNPCs(dt){
 prog.mats=prog.mats||{};prog.gear=prog.gear||{};prog.minis=prog.minis||{};
 function spriteURL(rows,pal){const N=12,c=document.createElement('canvas');c.width=c.height=N;const x=c.getContext('2d');const ox=Math.floor((N-Math.max(...rows.map(r=>r.length)))/2),oy=Math.floor((N-rows.length)/2);
   rows.forEach((r,j)=>{for(let i=0;i<r.length;i++){const k=pal[r[i]];if(k==null)continue;x.fillStyle='#'+k.toString(16).padStart(6,'0');x.fillRect(ox+i,oy+j,1,1)}});return c.toDataURL()}
-const MATS={baleen:['Китовый ус',['W.......','WW......','.WW.....','..WW....','...WW...','....WWW.','......WW'],{W:0xe8e0c8}],slime:['Слизь',['..GGGG..','.GLGGGG.','GLGGGGGG','GGGGGGGG','.GGGGGG.','..GGGG..'],{G:0x8ee04a,L:0xd8ffb0}],
+const MATS={dheart:['Сердце мрака',['..KKKK..','.KPKKPK.','KPPKKPPK','KPPPPPPK','.KPPPPK.','..KPPK..','...KK...'],{K:0x1a1028,P:0x7a3aaa}],baleen:['Китовый ус',['W.......','WW......','.WW.....','..WW....','...WW...','....WWW.','......WW'],{W:0xe8e0c8}],slime:['Слизь',['..GGGG..','.GLGGGG.','GLGGGGGG','GGGGGGGG','.GGGGGG.','..GGGG..'],{G:0x8ee04a,L:0xd8ffb0}],
   claw:['Коготь кротика',['....WW..','...WW...','..WW..W.','.WW..WW.','WW..WW..','W..WW...'],{W:0xfff4e0}],
   shell:['Панцирь черепашки',['..GGGG..','.GDGGDG.','GGGDDGGG','GDGGGGDG','GGGDDGGG','.GGGGGG.','..YYYY..'],{G:0x4f8a3a,D:0x8bc26a,Y:0xd8c08a}],
   shard:['Звёздный осколок',['...Y....','..YWY...','YYYWYYY.','.YYYYY..','..Y.Y...','.Y...Y..'],{Y:0xffd84a,W:0xffffff}]};
@@ -3062,6 +3066,7 @@ const RECIPES=[
   {id:'titan',realm:2,name:'Сердце титана',desc:'Ещё одно сердце здоровья навсегда. Ихор титанов горячий, держи крепче.',need:[['m','ichor',6],['m','void',6],['b',13,8]],how:'Ихор падает с ужасов Тартара, осколки пустоты — с теней Разлома.'},
   {id:'erebus',realm:2,name:'Доспех Эреба',desc:'Тёмный доспех из пустоты: 7 сердечек брони и самое быстрое восстановление. Пустота: удары быстрее на 45%, бег на 15%, каждая победа над мобом возвращает сердечко брони. Нужно Облачение тени.',need:[['g','aegis',1],['m','void',10],['m','tsand',8]],how:'Песок времени сыплется со стражей Пустоши Кроноса.'},
   {id:'wings3',drop:1,name:'Крылья ночи',desc:'Полёт втрое дольше обычного и быстрый набор высоты.',need:[],how:'Падают с Никты в Обсерватории ночи.'},
+  {id:'ecloak',drop:1,name:'Плащ Эреба',desc:'Полупрозрачный чёрный плащ. В Бездне тени и шептуны не замечают тебя, пока ты не ударишь.',need:[],how:'Остаётся от Эреба, когда он распадается на свет.'},
   {id:'kclaw',drop:1,name:'Клешня Каркина',desc:'Каждый третий удар по одному врагу хватает его клешнёй, швыряет и наносит +1 урона.',need:[],how:'Падает с Каркина, краба на спине небесного кита Кето.'},
   {id:'hourglass',drop:1,name:'Песочные часы Кроноса',desc:'V (на телефоне — кнопка «Время»): все враги, снаряды и боссы замирают на 4 секунды. Перезарядка 30 секунд.',need:[],how:'Падают с Кроноса на Троне времени.'},
   {id:'spear',realm:2,name:'Копьё Хроноса',desc:'Быстрые выпады на пять блоков вперёд. Каждый третий удар бросает копьё: оно само находит врага, даже летящего, пронзает всех на пути и возвращается в руку.',need:[['m','kshaft',1],['m','kcore',1],['m','ktip',1],['m','tsand',6]],how:'Три части падают с летающих стражей Разлома: Офиона в Сумеречном разломе, Грифона часов в Пустоши Кроноса и Алекто в Тартаре.'},
@@ -3107,7 +3112,7 @@ setTimeout(updNBar,0);
 function craft(r){if(prog.gear[r.id]||!r.need.every(n=>haveNeed(n)>=n[2]))return;if(r.realm&&zoneOf(hero.p.x)<r.realm){toast(r.realm===2?'Эта вещь крафтится только в Разломе Хаоса':'Эта вещь крафтится только в Царстве богов',1800);return}r.need.forEach(n=>{if(n[0]==='m')prog.mats[n[1]]-=n[2];else if(n[0]==='b')invRemove(n[1],n[2])});
   prog.gear[r.id]=1;saveProg();S.craft();equipVis();if(r.id==='armor'||r.id==='aegis')hero.armor=armMax();if(r.id==='aegis'||r.id==='erebus'){buildHero(prog.skin||'boy');updInv();setTimeout(()=>banner('Лейт-гейм','Облачение тени','Капюшон, алый пояс и скрытый клинок. Пять сердечек брони и быстрое восстановление.',5500),300)}if(r.id==='scythe')prog.weapon='scythe';if(r.id==='twins'){prog.weapon='twins';setTimeout(forgeTwins,150)}if(r.id==='spear')setTimeout(forgeSpear,150);if(r.id==='sword'&&!prog.weapon)prog.weapon='sword';saveProg();equipVis();updHud();updGear();renderCraft();
   burst(hero.p.x,hero.p.y+1.2,hero.p.z,30,{c:[0xffc23c,0x7fe0ff,0xffffff,0x8ee04a],s:0.16,sp:4,up:5,life:1,g:8,spin:10});toast('Создано: '+r.name,2200);logEv('Создано: '+r.name)}
-function updGear(){const g=$('gear');g.innerHTML='';['hook','sword','scythe','kronos','spear','twins','fists','wand','wand2','bow','shears','gsword','dios','gshield','armor','aegis','erebus','boots','wings2','wings3','titan','hourglass','kclaw'].forEach(k=>{if(!prog.gear[k])return;const im=document.createElement('img');im.src=GEARI[k];im.alt=RECIPES.find(r=>r.id===k).name;im.title=im.alt;if(k===curWeapon())im.className='cur';g.appendChild(im)});document.body.classList.toggle('hook',!!prog.gear.hook);document.body.classList.toggle('two',WEAPONS.filter(w=>prog.gear[w]).length>1);document.body.classList.toggle('hg',!!prog.gear.hourglass)}
+function updGear(){const g=$('gear');g.innerHTML='';['hook','sword','scythe','kronos','spear','twins','fists','wand','wand2','bow','shears','gsword','dios','gshield','armor','aegis','erebus','boots','wings2','wings3','titan','hourglass','kclaw','ecloak'].forEach(k=>{if(!prog.gear[k])return;const im=document.createElement('img');im.src=GEARI[k];im.alt=RECIPES.find(r=>r.id===k).name;im.title=im.alt;if(k===curWeapon())im.className='cur';g.appendChild(im)});document.body.classList.toggle('hook',!!prog.gear.hook);document.body.classList.toggle('two',WEAPONS.filter(w=>prog.gear[w]).length>1);document.body.classList.toggle('hg',!!prog.gear.hourglass)}
 $('bSwap').onclick=()=>{switchWeapon();cv.focus()};
 let swordG=null,armorG=null;
 function makeSword(){const g=new THREE.Group();g.position.set(0,0,0.12);const b=(w,h,d,c,x,y,z,basic)=>{const m=new THREE.Mesh(BOX,basic?new THREE.MeshBasicMaterial({color:c}):lam(c));m.scale.set(w,h,d);m.position.set(x,y,z);m.castShadow=!basic;g.add(m);return m};
@@ -3153,7 +3158,7 @@ function switchWeapon(){const own=WEAPONS.filter(w=>prog.gear[w]);if(own.length<
 
 /* ===================== sword ===================== */
 const sw={t:-1,n:0,last:-9,dur:0.26,hit:false};const slashes=[];
-const allMobs=()=>[...mobs.values(),...tempMobs,...(KARK&&KARK.mb&&KARK.mb.state==='alive'&&KETO.on?[KARK.mb]:[])];
+const allMobs=()=>[...mobs.values(),...tempMobs,...(KARK&&KARK.mb&&KARK.mb.state==='alive'&&KETO.on?[KARK.mb]:[]),...(typeof ABY!=='undefined'&&ABY.boss&&ABY.boss.state==='alive'?[ABY.boss]:[])];
 function inArc(px,pz,py,h,n){const fx=Math.sin(HR.rotation.y),fz=Math.cos(HR.rotation.y),R=n===2?3.4:3.0;const dx=px-hero.p.x,dz=pz-hero.p.z,d=Math.hypot(dx,dz);
   if(d>R||py>hero.p.y+2.4||py+h<hero.p.y-0.8)return false;if(n!==2&&d>0.7&&(dx*fx+dz*fz)/d<0.15)return false;return true}
 function mobInFront(){for(const mb of allMobs())if(mb.state==='alive'&&mb.G.visible&&inArc(mb.p.x,mb.p.z,mb.p.y,mb.h,0))return true;for(const M of MINI){const P=mP(M);if(M.state==='fight'&&inArc(P.x,P.z,P.y,M.h,0))return true}return false}
@@ -3166,7 +3171,7 @@ function swordSwing(){if(T-sw.last<0.24*atkMul())return false;lastAtk=T;netSwing
   m.rotation.x=-Math.PI/2;g.add(m);if(sw.n===1)g.rotation.z=0.25;if(sw.n===0)g.rotation.z=-0.25;scene.add(g);slashes.push({g,m,t:0,n:sw.n});return true}
 function updSlashes(dt){for(let i=slashes.length-1;i>=0;i--){const s2=slashes[i];s2.t+=dt;const k=s2.t/0.26;s2.g.scale.setScalar(0.7+k*0.5);s2.m.material.opacity=Math.max(0,0.85*(1-k));s2.g.rotation.y+=(s2.n===1?-1:1)*dt*4;
   s2.g.position.set(hero.p.x,hero.p.y+1.0,hero.p.z);if(k>=1){scene.remove(s2.g);s2.m.geometry.dispose();s2.m.material.dispose();slashes.splice(i,1)}}}
-function hitMob(mb,dmg,dir,stomp){if(mb.state!=='alive')return false;if(mb.kark&&!karkVuln()){karkClink(mb);return false}if(ASCR.on&&mb.asc)dmg=ascDmg(mb,dmg);if(buffOn('might'))dmg+=1;const crit=dmg>0&&Math.random()<0.12;if(crit)dmg*=2;dmgNum(mb.p.x,mb.p.y+mb.h+0.4,mb.p.z,dmg,crit);if(crit)HITSTOP=Math.max(HITSTOP,0.05);mb.hp=(mb.hp||1)-dmg;mb.flash=0.2;if(ASCR.on&&mb.asc&&dmg>0)ascOnHit(mb,dmg);if(prog.gear&&prog.gear.kclaw&&!mb.kark&&dmg>0){mb.kcN=(mb.kcN||0)+1;if(mb.kcN%3===0){mb.hp-=1;combo('Клешня!',0);HITSTOP=Math.max(HITSTOP,0.06);mb.flingT=0.4}}S.thwack();burst(mb.p.x,mb.p.y+mb.h*0.6,mb.p.z,8,{c:[0xffffff,mb.c||0xffffff,0xbff4ff],s:0.14,sp:3,up:3,life:0.4,g:8});
+function hitMob(mb,dmg,dir,stomp){if(mb.state!=='alive')return false;if(mb.ereb&&!ereVuln()){abyClink(mb);return false}if(mb.kark&&!karkVuln()){karkClink(mb);return false}if(ASCR.on&&mb.asc)dmg=ascDmg(mb,dmg);if(buffOn('might'))dmg+=1;const crit=dmg>0&&Math.random()<0.12;if(crit)dmg*=2;dmgNum(mb.p.x,mb.p.y+mb.h+0.4,mb.p.z,dmg,crit);if(crit)HITSTOP=Math.max(HITSTOP,0.05);mb.hp=(mb.hp||1)-dmg;mb.flash=0.2;if(ASCR.on&&mb.asc&&dmg>0)ascOnHit(mb,dmg);if(prog.gear&&prog.gear.kclaw&&!mb.kark&&dmg>0){mb.kcN=(mb.kcN||0)+1;if(mb.kcN%3===0){mb.hp-=1;combo('Клешня!',0);HITSTOP=Math.max(HITSTOP,0.06);mb.flingT=0.4}}S.thwack();burst(mb.p.x,mb.p.y+mb.h*0.6,mb.p.z,8,{c:[0xffffff,mb.c||0xffffff,0xbff4ff],s:0.14,sp:3,up:3,life:0.4,g:8});
   if(mb.hp<=0){mb.state='squish';mb.t=0.13;return true}
   if(!mb.fly){if(!stomp){mb.v.x+=dir.x*7;mb.v.z+=dir.z*7;mb.v.y=5;mb.onG=false}}else{mb.p.x+=dir.x*1.4;mb.p.z+=dir.z*1.4}
   if(mb.kind==='turtle'){mb.shell=4}if(mb.flingT){mb.v.set(dir.x*15,11,dir.z*15);mb.onG=false;mb.flingT=0}return true}
@@ -3656,7 +3661,7 @@ function makeRift(x,y,z){const g=makePortal(x,y,z);g.children.forEach(m=>{if(m.m
 const portalC=makeRift(ZA.x-Math.round(Math.cos(ZA.aE)*5),ZA.y+0.5,ZA.z-Math.round(Math.sin(ZA.aE)*5)),portalD=makeRift(CX,0.5,-6);const portalE=makeRift(KA.x,KA.y+0.5,KA.z+4),portalF=makeRift(DX,0.5,-5);portalE.visible=portalF.visible=false;
 portalE.children.forEach(m=>{if(m.material===riftMat)m.material=portalMat});
 let portalCool=0,realmFxT=6;
-function teleport(p,where){$('flash').classList.add('on');S.portal();setTimeout(()=>$('flash').classList.remove('on'),80);hero.p.copy(p);hero.v.set(0,0,0);camInit=false;hero.inv=1.5;raceCancel();hook.s=0;
+function teleport(p,where){flipReset();$('flash').classList.add('on');S.portal();setTimeout(()=>$('flash').classList.remove('on'),80);hero.p.copy(p);hero.v.set(0,0,0);camInit=false;hero.inv=1.5;raceCancel();hook.s=0;
   if(where==='realm'){const ri=CPS.findIndex(c=>c.realm);if(prog.cp<ri)prog.cp=ri;prog.at=ri;saveProg();placeFlags();drawFlags();
     if(!prog.realm){prog.realm=1;saveProg();setTimeout(()=>banner('Новое измерение','Царство богов','Серафим охранял не сердце, а дверь. Отсюда когда-то пришёл ветер, поднявший острова. Боги давно ушли, но их стражи остались. Забирайся наверх, к Трону богов.',8500),500)}}
   else if(where==='chaos'){const ci=CPS.findIndex(c=>c.realm===2);if(prog.cp<ci)prog.cp=ci;prog.at=ci;saveProg();placeFlags();drawFlags();
@@ -3664,6 +3669,8 @@ function teleport(p,where){$('flash').classList.add('on');S.portal();setTimeout(
   else if(where==='dome'){const di=CPS.findIndex(c=>c.realm===3);if(prog.cp<di)prog.cp=di;prog.at=di;saveProg();placeFlags();drawFlags();
     if(!prog.dome){prog.dome=1;saveProg();logEv('Открыт Звёздный купол');setTimeout(()=>banner('Новое измерение','Звёздный купол','Над тюрьмой титанов раскинулся ночной небосвод. Острова здесь — созвездия: Охотница, Близнецы, Персей и Прялка судеб. Каждое хранит того, кого боги подняли на небо. Монстры здесь элитные с первого шага.',10000),500)}}
   else if(where==='kronos'){prog.at=CPS.findIndex(c=>c.nm==='Трон времени');saveProg();drawFlags()}
+  else if(where==='abyss'){const ai=CPS.findIndex(c=>c.realm===4);if(prog.cp<ai)prog.cp=ai;prog.at=ai;saveProg();drawFlags()}
+  else if(where==='home'){}
   else if(where==='olymp'){prog.at=CPS.findIndex(c=>c.nm==='Вершина Олимпа');saveProg();drawFlags()}
   else{prog.at=CPS.findIndex(c=>c.realm)-1;saveProg();drawFlags()}}
 function updPortals(dt){
@@ -5109,7 +5116,7 @@ function updWisp(dt){
     if(started&&wispJar.position.distanceTo(_h)<1.5){wispJar.visible=false;prog.pet='wisp';prog.wispHue=wispJar.userData.hue!=null?wispJar.userData.hue:Math.random();applyWispColor();saveProg();S.fanfare();wisp.p.copy(_h);banner('Новый питомец','Висп','Твой огонёк уникального цвета теперь летает за тобой. Зажми стрелку, и он метнётся в ту сторону: режет мобов, собирает кристаллы и подтягивает выпавшие вещи. Героем теперь управляй через WASD.',8000)}}
   if(prog.pet!=='wisp'){wisp.G.visible=false;return}wisp.G.visible=true;
   const ax=kd('arrowright')-kd('arrowleft'),az=kd('arrowup')-kd('arrowdown');const sy=Math.sin(yaw),cy2=Math.cos(yaw);let dx=-sy*az+cy2*ax,dz=-cy2*az-sy*ax;const L=Math.hypot(dx,dz);
-  const moving=Math.hypot(hero.v.x,hero.v.z)>1;const f=HR.rotation.y;const home=new THREE.Vector3(hero.p.x+Math.cos(f)*0.85+Math.cos(T*1.7)*0.25,hero.p.y+2.0+Math.sin(T*2.3)*0.18,hero.p.z-Math.sin(f)*0.85+Math.sin(T*1.7)*0.25);
+  const moving=Math.hypot(hero.v.x,hero.v.z)>1;const f=HR.rotation.y;const home=new THREE.Vector3(hero.p.x+Math.cos(f)*0.85+Math.cos(T*1.7)*0.25,hero.p.y+(FLIP.on?-2.0:2.0)+Math.sin(T*2.3)*0.18,hero.p.z-Math.sin(f)*0.85+Math.sin(T*1.7)*0.25);
   let tgt=home,k=moving?10:4;const sent=L>0.1;if(sent){tgt=new THREE.Vector3(hero.p.x+dx/L*4.5,hero.p.y+1.1,hero.p.z+dz/L*4.5);k=16}
   if(wisp.p.distanceTo(home)>9){burst(wisp.p.x,wisp.p.y,wisp.p.z,8,{c:wisp.cols[1],s:0.1,sp:2,up:1,life:0.4,g:0});wisp.p.copy(home)}
   wisp.p.lerp(tgt,Math.min(1,k*dt));wisp.G.position.copy(wisp.p);wisp.G.rotation.y=Math.atan2(cam.position.x-wisp.p.x,cam.position.z-wisp.p.z);
@@ -5156,7 +5163,7 @@ function hurt(from){if(ESTOP>0)return;if(ASCR.on&&ascHurt(from))return;if(prog.g
   if(hero.hp<=0){if(!goDown()){toast('Ой! Сердечки закончились — возвращаемся к флажку',1800);setTimeout(()=>respawnHero(true),350)}}
   updHud();
 }
-function respawnHero(full){if(ASCR&&ASCR.on&&!ASCR.ending){if(full)ascEnd(false);else ascFall();return}if(typeof ARN!=='undefined'&&ARN.on)arenaEnd(false);if(boss.state!=='gone'&&boss.state!=='sleep')bossReset();if(typeof MINI!=='undefined')MINI.forEach(M=>{if(M.state==='fight')miniReset(M)});spawn.copy(WS.active?wsSpawn():cpPos(prog.at));hero.dashT=0;camInit=false;hero.p.copy(spawn);hero.v.set(0,0,0);hero.combo=0;hero.streak=0;hero.trick=null;hero.inv=1;hero.fallSnd=false;if(full){hero.hp=hpMax();hero.armor=armMax()}if(typeof raceCancel==='function')raceCancel('Забег прерван');if(typeof hook!=='undefined')hook.s=0;updHud();S.respawn();burst(spawn.x,spawn.y+1,spawn.z,16,{c:[0xffffff,0xffc23c,0x8fd3ff],s:0.2,sp:3,up:3,life:0.8,g:6})}
+function respawnHero(full){flipReset();if(ASCR&&ASCR.on&&!ASCR.ending){if(full)ascEnd(false);else ascFall();return}if(typeof ARN!=='undefined'&&ARN.on)arenaEnd(false);if(boss.state!=='gone'&&boss.state!=='sleep')bossReset();if(typeof MINI!=='undefined')MINI.forEach(M=>{if(M.state==='fight')miniReset(M)});spawn.copy(WS.active?wsSpawn():cpPos(prog.at));hero.dashT=0;camInit=false;hero.p.copy(spawn);hero.v.set(0,0,0);hero.combo=0;hero.streak=0;hero.trick=null;hero.inv=1;hero.fallSnd=false;if(full){hero.hp=hpMax();hero.armor=armMax()}if(typeof raceCancel==='function')raceCancel('Забег прерван');if(typeof hook!=='undefined')hook.s=0;updHud();S.respawn();burst(spawn.x,spawn.y+1,spawn.z,16,{c:[0xffffff,0xffc23c,0x8fd3ff],s:0.2,sp:3,up:3,life:0.8,g:6})}
 function toCheckpoint(){respawnHero(false)}
 function restart(){for(const c of crystals.values()){c.got=false;c.m.visible=true}gotAll=false;pops=0;for(const mb of mobs.values())resetMob(mb);respawnHero(true)}
 function resetMob(mb){mb.hp=mb.maxhp||1;mb.shell=0;mb.p.set(mb.sx,mb.sy-0.5,mb.sz);mb.v.set(0,0,0);mb.state='alive';mb.G.visible=true;mb.born=0;mb.cd=0.6+Math.random()}
@@ -5519,6 +5526,104 @@ function updKark(dt,L){if(prog.karkDown)return;if(!KARK.mb){if(KETO.rideT>35)kar
   for(let i=KARK.puddles.length-1;i>=0;i--){const q=KARK.puddles[i];q.t-=dt;q.m.material.opacity=Math.min(0.75,q.t/2);if(KETO.ride&&Math.hypot(L.x-q.l.x,L.z-q.l.z)<1.3)hero.slowT=T+0.3;if(q.t<=0){KETO.G.remove(q.m);KARK.puddles.splice(i,1)}}
   if(Math.floor(T*4)!==Math.floor((T-dt)*4))karkBar()}
 ketoBuild();
+while(TT.length<17)TT.push({g:[0.62,0.55,0.85],l:[0.7,0.5,0.95],d:[0.55,0.5,0.7]});
+/* ===================== Erebus Abyss: darkness lit only by the wisp, seams that flip gravity, and Erebus himself ===================== */
+const ABL1=new THREE.PointLight(0x7fd0ff,0,12,1.2),ABL2=new THREE.PointLight(0xffa040,0,4,1.5);scene.add(ABL1);scene.add(ABL2);
+const ABY={on:false,seams:[],mobs:[],boss:null,secs:{},bossT:0,whisT:0,eyesT:0,P0:{x:ABX,y:10,z:-50},P2:{x:ABX,y:50,z:34},open:false};
+const FLIP={on:false,C:0,k:0};
+function flipTo(on,p,C){FLIP.on=on;FLIP.C=C||0;hero.p.copy(p);hero.v.set(0,0,0);hero.onG=false;HR.rotation.z=on?Math.PI:0;camInit=false;S.portal();
+  burst(p.x,p.y+(on?-1:1),p.z,30,{c:[0xc040ff,0x7a3aaa,0xffffff],s:0.16,sp:4,up:2,life:0.8,g:0});tone(300,0.35,{to:900,v:0.06});noise(0.3,{v:0.06,f:1500,to:4000})}
+function flipReset(){if(FLIP.on){FLIP.on=false;HR.rotation.z=0}}
+/* geometry: start ledge, a slab you must cross underneath, a stair of ledges, the inverted forest, Erebus' arena on top */
+function abyDisk(cx,cy,cz,r,th,o){o=o||{};for(let x=-r-1;x<=r+1;x++)for(let z=-r-1;z<=r+1;z++){const d=Math.hypot(x,z)+hash(cx+x,cy,cz+z)*0.6;if(d>r)continue;
+  for(let i=0;i<th;i++)setB(cx+x,cy-i,cz+z,i===0?(o.top||45):i===th-1?(o.bot||45):37)}}
+function genAbyss(){const X=ABX;
+  abyDisk(X,10,-50,7,3,{});
+  for(let z=-43;z<=-10;z++)for(let x=-2;x<=2;x++){setB(X+x,10,z,45);setB(X+x,9,z,45)}
+  for(let x=-6;x<=6;x++)for(let y=11;y<=20;y++)setB(X+x,y,-30,y%3===0?40:37);for(let x=-6;x<=6;x++)for(let y=0;y<=8;y++)if(Math.abs(x)>2)setB(X+x,y,-30,37);
+  for(let z=-28;z<=-20;z++)for(let x=-2;x<=2;x+=4)setB(X+x,11,z,33);
+  for(let z=-40;z<=-14;z+=3)setB(X+((z/3)&1?1:-1),8,z,22);
+  abyDisk(X,10,0,7,3,{});
+  for(let i=0;i<18;i++){const a=i*0.58,cx=Math.round(X+Math.cos(a)*9),cz=Math.round(Math.sin(a)*9),cy=12+i*2;abyDisk(cx,cy,cz,2,2,{});if(i%4===3)setB(cx,cy+1,cz,22)}
+  abyDisk(X,50,34,12,4,{top:45,bot:45});
+  for(let t=0;t<9;t++){const a=t*0.7,r=3+(t%3)*3,tx=Math.round(X+Math.cos(a)*r),tz=Math.round(34+Math.sin(a)*r);for(let y=46;y>=40;y--)setB(tx,y,tz,19);for(let x=-2;x<=2;x++)for(let z=-2;z<=2;z++)for(let y=37;y<=39;y++)if(Math.abs(x)+Math.abs(z)+Math.abs(y-38)<4&&hash(tx+x,y,tz+z)>0.2)setB(tx+x,y,tz+z,45)}
+  for(let i=0;i<8;i++){const a=i/8*Math.PI*2;setB(Math.round(X+Math.cos(a)*11),51,Math.round(34+Math.sin(a)*11),22)}
+  /* seams: glowing sheets that flip you to the other side of the ledge you stand on */
+  ABY.seams=[{p:new THREE.Vector3(X,11,-40),w:5,to:new THREE.Vector3(X,8.5,-38),flip:true,C:17},{p:new THREE.Vector3(X,7.5,-15),w:5,to:new THREE.Vector3(X,10.5,-13),flip:false},
+    {p:new THREE.Vector3(Math.round(X+Math.cos(17*0.58)*9),46.5,Math.round(Math.sin(17*0.58)*9)),w:3,to:new THREE.Vector3(X+2,46.5,28),flip:true,C:93},
+    {p:new THREE.Vector3(X,45.5,44),w:5,to:new THREE.Vector3(X,50.5,42),flip:false}];
+  ABY.seams.forEach(s=>{const g=new THREE.Group();g.position.copy(s.p);const m=new THREE.Mesh(new THREE.PlaneGeometry(s.w,3.2),new THREE.MeshBasicMaterial({color:0xc040ff,transparent:true,opacity:0.55,side:THREE.DoubleSide,depthWrite:false,blending:THREE.AdditiveBlending}));
+    m.position.y=s.flip===false&&s.p.y<s.to.y?-1:1;g.add(m);[-1,1].forEach(k=>{const e=new THREE.Mesh(BOX,new THREE.MeshBasicMaterial({color:0xe8a0ff}));e.scale.set(0.2,3.4,0.2);e.position.set(k*s.w/2,m.position.y,0);g.add(e)});scene.add(g);s.g=g;s.m=m});
+  const back=makePortal(X,10.5,-56);back.rotation.y=0;ABY.back=back;dirty=true}
+const gateL=()=>rlm('gate');
+function abyOpenGate(){const L=gateL();if(!L||ABY.open)return;ABY.open=true;for(let i=-2;i<=2;i++)for(let k=1;k<=9;k++)setB(L.x+i,L.y+k,L.z,0);
+  const pl=new THREE.Mesh(new THREE.PlaneGeometry(5,9),new THREE.MeshBasicMaterial({color:0x0a0014,transparent:true,opacity:0.92,side:THREE.DoubleSide}));pl.position.set(L.x,L.y+5.5,L.z);scene.add(pl);ABY.gatePl=pl}
+function abyEnter(){if(!prog.pet){hero.v.set(0,6,(hero.p.z>gateL().z?1:-1)*12);document.body.classList.add('blackout');setTimeout(()=>document.body.classList.remove('blackout'),900);
+    dread('ЗДЕСЬ СЛИШКОМ ТЕМНО','Найди виспа, чтобы он освещал тебе путь. Его стережёт Око бури',4200);tone(55,1.6,{type:'sine',v:0.14});[0,0.5,1.0].forEach(t=>tone(60,0.12,{at:t,type:'sine',v:0.12}));return}
+  flipReset();teleport(new THREE.Vector3(ABX,10.5,-47),'abyss');S.thunder&&S.thunder();
+  if(!prog.abyss){prog.abyss=1;saveProg();logEv('Открыта Бездна Эреба');setTimeout(()=>banner('Новое измерение','Бездна Эреба','Здесь нет верха и низа. Висп — твой единственный свет: зажми стрелку, и он полетит вперёд. Фиолетовые швы переворачивают тебя на другую сторону острова.',9000),600)}
+  setTimeout(()=>{wisp.p.set(hero.p.x,hero.p.y+2,hero.p.z+3);ring(hero.p.x,hero.p.y+2,hero.p.z+3,0x7fd0ff,2.5);tone(1568,0.3,{v:0.06});tone(2093,0.4,{at:0.12,v:0.05})},300)}
+/* the three dwellers */
+function abyLit(p){const wl=prog.pet==='wisp'&&wisp.G.visible&&wisp.G.position.distanceTo(p)<6.5;return wl||hero.p.distanceTo(p)<2.6}
+function abyMob(kind,x,y,z,role){const mb=spawnTemp(kind,x,y,z);if(!mb)return;mb.life=1e9;mb.aby=role;mb.v.set(0,0,0);
+  mb.G.traverse(q=>{if(q.isMesh&&q.material&&q.material.color&&!q.material.transparent){q.material=q.material.clone();q.material.color.lerp(new THREE.Color(0x0a0612),0.85)}});
+  if(role==='eyes')[-0.25,0.25].forEach(dx=>{const e=new THREE.Mesh(BOX,new THREE.MeshBasicMaterial({color:0xfff2a0}));e.scale.set(0.2,0.14,0.05);e.position.set(dx,mb.h*0.7,0.55);mb.G.add(e)});
+  if(role==='shadow')[-0.18,0.18].forEach(dx=>{const e=new THREE.Mesh(BOX,new THREE.MeshBasicMaterial({color:0xffffff}));e.scale.set(0.1,0.1,0.05);e.position.set(dx,mb.h*0.8,0.45);mb.G.add(e)});
+  mb.hold=new THREE.Vector3(x,y,z);mb.shotT=T+2+Math.random()*2;ABY.mobs.push(mb);return mb}
+const ABSEC=[{p:[ABX,10,-50],r:10,m:[['wraith','shadow',3,11,4],['horror','eyes',-4,13,-2]]},{p:[ABX,10,0],r:10,m:[['wraith','shadow',-4,11,2],['imp','whisper',4,11,-2],['horror','eyes',0,14,6]]},
+  {p:[ABX,30,0],r:14,m:[['horror','eyes',6,30,-4],['imp','whisper',-6,26,3]]},{p:[ABX,50,34],r:13,m:[]}];
+function updAbyMobs(dt){const cloak=prog.gear&&prog.gear.ecloak&&T-(lastAtk||0)>3;
+  ABSEC.forEach((S2,i)=>{if(ABY.secs[i])return;if(Math.hypot(hero.p.x-S2.p[0],hero.p.z-S2.p[2])<S2.r+6&&Math.abs(hero.p.y-S2.p[1])<20){ABY.secs[i]=1;S2.m.forEach(([k,r,dx,y,dz])=>abyMob(k,ABX+dx,y,(S2.p[2])+dz,r))}});
+  let whisper=0;for(let i=ABY.mobs.length-1;i>=0;i--){const mb=ABY.mobs[i];if(mb.state!=='alive'){if(mb.state==='dead')ABY.mobs.splice(i,1);continue}const lit=abyLit(mb.p),d=mb.p.distanceTo(hero.p);
+    if(mb.aby==='shadow'){if(lit||cloak){mb.p.copy(mb.hold);mb.v.set(0,0,0)}else mb.hold.copy(mb.p)}
+    if(mb.aby==='whisper'){mb.G.visible=lit;if(d<14)whisper=Math.max(whisper,1-d/14);if(cloak){mb.p.copy(mb.hold);mb.v.set(0,0,0)}else mb.hold.copy(mb.p)}
+    if(mb.aby==='eyes'){const blind=prog.pet==='wisp'&&wisp.G.position.distanceTo(mb.p)<3.5;if(blind)mb.shotT=T+2;if(T>mb.shotT&&d<16&&!cloak){mb.shotT=T+3.2;shootProj(mb.p.clone().setY(mb.p.y+mb.h*0.6),hero.p.clone().setY(hero.p.y+1),6,0xb040ff,{size:0.45})}}}
+  if(whisper>0&&T>ABY.whisT){ABY.whisT=T+1.4+Math.random()*1.6;noise(0.9,{v:0.05*whisper,f:900+Math.random()*900,ft:'bandpass',to:600})}}
+/* Erebus: phase one is your own reflection walking your path 1.5 s late; phase three can only be hurt in the wisp's light */
+function makeEcho(){const g=HR.clone(true);g.rotation.set(0,0,0);const blk=new THREE.MeshLambertMaterial({color:0x0a0812}),wht=new THREE.MeshBasicMaterial({color:0xffffff});
+  g.traverse(q=>{if(q.isMesh){const b=q.material&&q.material.type==='MeshBasicMaterial';q.material=b?wht:blk}if(q.isSprite)q.visible=false});const G=new THREE.Group();G.add(g);g.scale.setScalar(1.45);
+  const aura=new THREE.Mesh(new THREE.SphereGeometry(1.4,10,8),new THREE.MeshBasicMaterial({color:0x2a0040,transparent:true,opacity:0.35,depthWrite:false}));aura.position.y=1.3;G.add(aura);scene.add(G);return {G,aura}}
+function abyBossStart(){if(ABY.boss||prog.erebus)return;const E=makeEcho();const mb={G:E.G,Sg:E.G,p:new THREE.Vector3(ABX,50.5,24),v:new THREE.Vector3(),h:2.6,hw:0.6,state:'alive',hp:60,maxhp:60,kind:'erebus',c:0x2a0040,ereb:true,flash:0,marker:{visible:false},q:1,qv:0,onG:true,fly:false};
+  ABY.boss=mb;ABY.E=E;ABY.path=[];ABY.ph=1;ABY.waveT=T+6;$('bossbar').querySelector('.nm').textContent='Эреб, Первородная тьма';$('bossbar').classList.add('on');abyBar();
+  dread('ЭРЕБ','Он принимает форму того, кто к нему пришёл',3200);tone(49,2.5,{type:'sawtooth',v:0.07});setTimeout(()=>toast('Он повторяет твой путь с опозданием. Заставь его ударить в пустоту и бей сзади',3200),2600)}
+function abyBar(){const m=ABY.boss;if(!m)return;const w=Math.max(3,Math.floor(320/m.maxhp));$('bossHp').innerHTML=Array.from({length:m.maxhp},(_,i)=>'<i class="'+(i<Math.ceil(m.hp)?'':'off')+'" style="width:'+w+'px"></i>').join('')}
+const ereVuln=()=>ABY.ph<3||(prog.pet==='wisp'&&(TOUCH||kd('arrowup')||kd('arrowdown')||kd('arrowleft')||kd('arrowright'))&&wisp.G.position.distanceTo(ABY.boss.p.clone().setY(ABY.boss.p.y+1.5))<4.5);
+function updAbyBoss(dt){const m=ABY.boss;if(!m)return;const E=ABY.E;
+  if(m.state!=='alive'){if(!ABY.won){ABY.won=true;prog.erebus=1;prog.gear.ecloak=1;addMat('dheart',1);saveProg();gainXP(500);achGive('erebus');updGear();$('bossbar').classList.remove('on');S.fanfare();logEv('Эреб распался на свет');
+      for(let i=0;i<5;i++)setTimeout(()=>burst(m.p.x,m.p.y+1.5,m.p.z,50,{c:[0xffffff,0xe8f4ff,0x7fd0ff,0xffe08a],s:0.22,sp:6,up:6,life:1.4,g:-1}),i*260);
+      setTimeout(()=>{scene.remove(E.G);ABY.boss=null;banner('Эреб распался на свет','Никта забрала брата','«Он был до света и будет после. Но не сегодня». Плащ Эреба и Сердце мрака теперь твои. Наверху, у Трона, ждёт последний выбор.',10000);if(typeof actVOpen==='function')actVOpen()},1400)}return}
+  ABY.path.push({t:T,p:hero.p.clone(),f:hero.face,a:T-(lastAtk||-9)<0.12});while(ABY.path.length&&ABY.path[0].t<T-1.5)ABY.path.shift();
+  if(ABY.ph===1){const s=ABY.path[0];if(s){m.p.lerp(s.p,Math.min(1,dt*10));E.G.rotation.y=s.f;if(s.a&&T-(ABY.slashT||0)>0.4){ABY.slashT=T;const fx=Math.sin(s.f),fz=Math.cos(s.f);fxMesh(new THREE.RingGeometry(1.2,2.4,20,1,-0.9,1.8),0x8a3aff,m.p.clone().setY(m.p.y+1),new THREE.Euler(-Math.PI/2,0,-s.f+Math.PI/2),0.25,2,0.8);
+        const dx=hero.p.x-m.p.x,dz=hero.p.z-m.p.z,d=Math.hypot(dx,dz);if(d<2.6&&(dx*fx+dz*fz)/(d||1)>0)hurt(m.p)}}
+    if(m.p.distanceTo(hero.p)<0.9)hurt(m.p);if(m.hp<=25){ABY.ph=3;dread('СВЕТ ВНУТРИ','Тьму ранит только свет: направь виспа к Эребу стрелками',3600);ring(m.p.x,m.p.y+0.3,m.p.z,0xffffff,6)}}
+  else{const to=hero.p.clone().sub(m.p).setY(0),d=to.length();if(d>1.6)m.p.addScaledVector(to.normalize(),4.2*dt);m.p.y+=((hero.p.y>=50?50.5:m.p.y)-m.p.y)*dt*4;E.G.rotation.y=Math.atan2(hero.p.x-m.p.x,hero.p.z-m.p.z);
+    if(d<1.4&&T-(ABY.touchT||0)>1){ABY.touchT=T;hurt(m.p)}
+    if(T>ABY.waveT){ABY.waveT=T+6;const c=m.p.clone();ring(c.x,c.y+0.2,c.z,0x8a3aff,1);let r=0;const iv=setInterval(()=>{r+=0.8;ring(c.x,c.y+0.2,c.z,0x5a1aaa,r);if(Math.abs(Math.hypot(hero.p.x-c.x,hero.p.z-c.z)-r)<0.6&&hero.onG&&Math.abs(hero.p.y-c.y)<1.5)hurt(c);if(r>12)clearInterval(iv)},70)}}
+  const lit=ABY.ph===3&&ereVuln();E.aura.material.color.set(lit?0xfff2c0:0x2a0040);E.aura.material.opacity=lit?0.45:0.35;E.G.position.copy(m.p);
+  if(m.flash>0)m.flash-=dt;if(Math.floor(T*4)!==Math.floor((T-dt)*4))abyBar()}
+function abyClink(mb){if(T-(ABY.clk||0)<0.35)return;ABY.clk=T;tone(180,0.15,{v:0.06});combo('Тьма глотает удар — нужен свет виспа',0)}
+/* per frame */
+function updAby(dt){if(!started)return;const z4=zoneOf(hero.p.x)===4;
+  if(!ABY.open&&prog.fate)abyOpenGate();
+  if(ABY.open&&zoneOf(hero.p.x)===2){const L=gateL();if(Math.abs(hero.p.x-L.x)<2.6&&Math.abs(hero.p.z-L.z)<1.3&&hero.p.y>L.y&&hero.p.y<L.y+10)abyEnter()}
+  else if(!prog.fate&&zoneOf(hero.p.x)===2){const L=gateL();if(L&&hero.p.distanceTo(new THREE.Vector3(L.x,L.y+2,L.z))<4&&T-(ABY.lockT||0)>8){ABY.lockT=T;toast('Врата Тартара заперты. Их держат нити Мойр',2200)}}
+  ABY.on=z4;ABL1.intensity=0;ABL2.intensity=0;if(!z4){if(FLIP.on)flipReset();if(ABY.boss&&ABY.boss.state==='alive'){scene.remove(ABY.E.G);ABY.boss=null;$('bossbar').classList.remove('on')}ABY.secs={};ABY.mobs.forEach(m=>{if(m.state==='alive'){m.state='dead';m.G.visible=false}});ABY.mobs=[];return}
+  if(prog.pet==='wisp'){ABL1.color.set(wisp.cols[0]);ABL1.intensity=SET.softDark?3.4:2.9;ABL1.position.copy(wisp.G.position)}
+  const w=curWeapon();if(['scythe','kronos','shears','wand','wand2','gsword'].includes(w)){ABL2.intensity=1.2;ABL2.position.set(hero.p.x,hero.p.y+(FLIP.on?-1:1),hero.p.z)}
+  FLIP.k+=((FLIP.on?1:0)-FLIP.k)*Math.min(1,dt*6);
+  if(T-(ABY.seamT||0)>0.8)for(const s of ABY.seams){const top=s.p.y+(s.m.position.y),dz=Math.abs(hero.p.z-s.p.z),dx=Math.abs(hero.p.x-s.p.x);if(dz<0.6&&dx<s.w/2+0.2&&Math.abs(hero.p.y+(FLIP.on?-0.8:0.8)-top)<1.7){ABY.seamT=T;if(s.flip)flipTo(true,s.to,s.C);else flipTo(false,s.to);break}}
+  ABY.seams.forEach(s=>{s.m.material.opacity=0.4+Math.sin(T*3+s.p.z)*0.15});
+  if(!FLIP.on&&ABY.back&&Math.hypot(hero.p.x-ABX,hero.p.z+56)<1.5&&Math.abs(hero.p.y-11)<3){const L=gateL();teleport(new THREE.Vector3(L.x,L.y+1.5,L.z+3),'chaos');return}
+  if(FLIP.on&&hero.p.y>FLIP.C+30){flipReset();respawnHero(false)}
+  updAbyMobs(dt);
+  if(!ABY.boss&&!prog.erebus&&hero.p.y>49.5&&!FLIP.on&&Math.hypot(hero.p.x-ABY.P2.x,hero.p.z-ABY.P2.z)<12)abyBossStart();updAbyBoss(dt);
+  if(Math.random()<dt*0.12){const a=Math.random()*6.28,p=hero.p.clone().add(new THREE.Vector3(Math.cos(a)*13,1+Math.random()*3,Math.sin(a)*13));if(!abyLit(p)){const eg=new THREE.Group();[-0.22,0.22].forEach(dx=>hbox(eg,0.14,0.1,0.05,0xfff2a0,dx,0,0,true));eg.position.copy(p);eg.lookAt(hero.p);scene.add(eg);setTimeout(()=>scene.remove(eg),1400+Math.random()*1400)}}}
+function abyAtmo(){if(!ABY.on)return;const soft=!!SET.softDark;skyU.top.value.set(0x000000);skyU.hor.value.set(0x020106);skyU.bot.value.set(0x000000);hemi.intensity=soft?0.16:0.05;hemi.color.set(0x6a5a9a);hemi.groundColor.set(0x000000);sun.intensity=0;
+  scene.fog.color.set(0x020106);scene.fog.near=soft?6:2;scene.fog.far=soft?28:16;starMat.opacity=0;stars.visible=false;R.setClearColor(0x020106)}
+GEARI.kclaw=spriteURL(['....RR....','...RRRR...','..RR..RR..','..R....R..','..RR..RR..','...RRRR...','....RR....','....OO....','...OOOO...'],{R:0xd8452a,O:0xa8321e});
+GEARI.ecloak=spriteURL(['...KKKK...','..KKWWKK..','..KWKKWK..','..KKKKKK..','.KKKKKKKK.','.KKKKKKKK.','KKKKKKKKKK','KK.KK.KKKK'],{K:0x1a1028,W:0xffffff});
+
+CPS.push({x:ABX,z:-47,y:10,t:15,realm:4,nm:'Порог Эреба'});
 let DAYFAST=1;
 /* ===================== Your own island: cosy home, real-time garden, cloud fishing, kitchen, furniture, trophies ===================== */
 const HX=-300,HY=40,HZ=0;
@@ -5750,12 +5855,14 @@ $('homeClose').onclick=closeHomeP;$('homeP').addEventListener('click',e=>{if(e.t
 $('hact').onclick=()=>{if(FISH.state==='bite')hookFish();else if(FISH.state==='wait')endFish(false);else if(homeAct)homeAct.fn();cv.focus()};
 {const fu=$('fishUI');fu.addEventListener('pointerdown',e=>{e.preventDefault();FISH.hold=true});['pointerup','pointercancel','pointerleave'].forEach(t=>fu.addEventListener(t,()=>{FISH.hold=false}))}
 
-function updHero(dt){if(hero.sit||FISH.state==='game'){hero.v.x=0;hero.v.z=0;if(!hero.sit)physics(hero,dt);HR.position.set(hero.p.x,hero.p.y,hero.p.z);HR.rotation.y=hero.face;if(hero.sit&&(kd('w')||kd('s')||kd('a')||kd('d')||kd(' ')))standFromSeat();return}
+function updHero(dt){if(!FLIP.on)return updHero0(dt);GFLIP=FLIP.C;hero.p.y=FLIP.C-hero.p.y;hero.v.y=-hero.v.y;
+  try{updHero0(dt)}finally{GFLIP=0;hero.p.y=FLIP.C-hero.p.y;hero.v.y=-hero.v.y}HR.position.y=hero.p.y;HR.rotation.z=Math.PI}
+function updHero0(dt){if(hero.sit||FISH.state==='game'){hero.v.x=0;hero.v.z=0;if(!hero.sit)physics(hero,dt);HR.position.set(hero.p.x,hero.p.y,hero.p.z);HR.rotation.y=hero.face;if(hero.sit&&(kd('w')||kd('s')||kd('a')||kd('d')||kd(' ')))standFromSeat();return}
   if(hero.downT){hero.v.x=0;hero.v.z=0;const r=physics(hero,dt);HR.position.set(hero.p.x,hero.p.y,hero.p.z);HB.rotation.x=1.3;HB.position.y=0.45;return}
   if(TSTOP>0){hero.v.set(0,0,0);HR.position.set(hero.p.x,hero.p.y,hero.p.z);return}
   hero.grav=gravAt(hero.p.y,hero.p.x);if(ASCR.on&&ASCR.mod==='lowg')hero.grav*=0.55;
   if(jbHold&&hero.onG&&T-hero.jb>0.25&&!editing)hero.jb=T;
-  const ar=prog.pet?0:1,f=kd('w')+ar*kd('arrowup')-kd('s')-ar*kd('arrowdown')-joy.y,rt=kd('d')+ar*kd('arrowright')-kd('a')-ar*kd('arrowleft')+joy.x;
+  const ar=prog.pet?0:1,f=kd('w')+ar*kd('arrowup')-kd('s')-ar*kd('arrowdown')-joy.y,rt=(kd('d')+ar*kd('arrowright')-kd('a')-ar*kd('arrowleft')+joy.x)*(FLIP.on?-1:1);
   hero.inF=f;const sy=Math.sin(yaw),cy=Math.cos(yaw);let dx=-sy*f+cy*rt,dz=-cy*f-sy*rt;const L=Math.hypot(dx,dz);
   if(L>0.05){const m=Math.min(1,L);dx=dx/L*m;dz=dz/L*m;hero.face=Math.atan2(dx,dz);if(hero.emote)stopEmote()}else{dx=dz=0}
   if(hero.onG&&T-hero.landT>0.4&&hero.combo){hero.combo=0;hero.streak=0}
@@ -5883,7 +5990,7 @@ function ambient(dt){
   if(petalT<=0&&pinkLeaves.length){petalT=0.1;for(let i=0;i<3;i++){const l=pinkLeaves[Math.floor(Math.random()*pinkLeaves.length)];if(Math.abs(l[0]-hero.p.x)+Math.abs(l[2]-hero.p.z)+Math.abs(l[1]-hero.p.y)>40)continue;
     emit(l[0]+(Math.random()-0.5),l[1]-0.6,l[2]+(Math.random()-0.5),{vx:0.4,vy:-0.4,vz:0.2,c:[0xff8fb0,0xffb3c8,0xff6f91][i],s:0.11,life:3.5,g:0.25,sway:1.4,spin:4})}}
   const tH=tierAt(hero.p.y,hero.p.x);
-  cloudI.position.x=WS.active?WX:[0,RX,CX][zoneOf(hero.p.x)];
+  cloudI.position.x=WS.active?WX:([0,RX,CX][zoneOf(hero.p.x)]||0);
   if(tH===7&&Math.random()<dt*4)emit(hero.p.x+(Math.random()-0.5)*20,hero.p.y+3+Math.random()*4,hero.p.z+(Math.random()-0.5)*20,{c:[0xffd24a,0xfff2a0][Math.floor(Math.random()*2)],s:0.1,life:4,g:0.3,sway:1.2,spin:4});
   if(tH===8&&Math.random()<dt*10)emit(hero.p.x+(Math.random()-0.5)*24,hero.p.y-4+Math.random()*3,hero.p.z+(Math.random()-0.5)*24,{c:[0xff8a1a,0xffd08a,0xff4a1a][Math.floor(Math.random()*3)],s:0.08,life:3,g:-1.2,sway:0.6});
   if(tH===10&&Math.random()<dt*10)emit(hero.p.x+(Math.random()-0.5)*24,hero.p.y-2+Math.random()*8,hero.p.z+(Math.random()-0.5)*24,{c:[0xc040ff,0x7a3aaa,0xffb8ff][Math.floor(Math.random()*3)],s:0.08,life:3,g:-0.4,sway:0.8});
@@ -5921,11 +6028,11 @@ const camT=new THREE.Vector3();let camInit=false,lastDragT=-9;
 function updCam(dt){
   if(SET.autocam!==false&&started&&!editing&&!(pd&&pd.drag)&&T-lastDragT>1.0&&!(hero.dashT>0)&&hook.s!==2){const sp=Math.hypot(hero.v.x,hero.v.z);
     if(sp>1.5){const want=HR.rotation.y+Math.PI;let d=want-yaw;d=Math.atan2(Math.sin(d),Math.cos(d));const fw=0.3+0.7*Math.max(0,hero.inF||0);yaw+=d*Math.min(1,dt*2.2*fw*Math.min(1,sp/7.8));pitch+=(0.36-pitch)*Math.min(1,dt*0.9)}}
-  const tx=hero.p.x,ty=hero.p.y+1.3,tz=hero.p.z;
+  const tx=hero.p.x,ty=hero.p.y+(FLIP.on?-1.3:1.3),tz=hero.p.z;
   if(!camInit){camT.set(tx,ty,tz);camInit=true}else{camT.x+=(tx-camT.x)*Math.min(1,10*dt);camT.z+=(tz-camT.z)*Math.min(1,10*dt);camT.y+=(ty-camT.y)*Math.min(1,(hero.onG?6:2.8)*dt)}
-  const cp=Math.cos(pitch);cam.position.set(camT.x+Math.sin(yaw)*cp*dist,camT.y+Math.sin(pitch)*dist,camT.z+Math.cos(yaw)*cp*dist);
+  const cp=Math.cos(pitch);cam.position.set(camT.x+Math.sin(yaw)*cp*dist,camT.y+Math.sin(pitch)*dist*Math.cos(FLIP.k*Math.PI),camT.z+Math.cos(yaw)*cp*dist);
   if(shake>0){shake=Math.max(0,shake-dt);const s=shake*0.9;cam.position.x+=(Math.random()-0.5)*s;cam.position.y+=(Math.random()-0.5)*s}
-  cam.lookAt(camT);
+  cam.lookAt(camT);if(FLIP.k>0.01)cam.rotateZ(FLIP.k*Math.PI);
   sun.position.set(camT.x+LIGHT.x*40,camT.y+LIGHT.y*40,camT.z+LIGHT.z*40);sun.target.position.copy(camT);
   sky.position.copy(cam.position);stars.position.copy(cam.position);
 }
@@ -5956,7 +6063,7 @@ const ATM2=[
 const DAY={len:300,t:36};let DAYN=0,FLASH=0;const LIGHT=SUN_DIR.clone(),cN=new THREE.Color(),_sd=new THREE.Vector3(),_md=new THREE.Vector3();
 function dayInfo(){const p=DAY.t/DAY.len;const th=p<0.7?p/0.7*Math.PI:Math.PI+(p-0.7)/0.3*Math.PI;const el=Math.sin(th);const n=1-Math.max(0,Math.min(1,(el+0.12)/0.3));const hour=(p<0.7?6+p/0.7*14:20+(p-0.7)/0.3*10)%24;return {th,el,n,hour}}
 function updAtmo(){
-  const zz=zoneOf(hero.p.x),realm=hero.p.x>REALMX||zz===3,A2=zz===3?ATM4:zz===2?ATM3:realm?ATM2:ATM;
+  const zz=zoneOf(hero.p.x),realm=hero.p.x>REALMX||zz===3,A2=zz===3||zz===4?ATM4:zz===2?ATM3:realm?ATM2:ATM;
   const y=cam.position.y*0.6+hero.p.y*0.4;let i=0;while(i<A2.length-2&&y>A2[i+1].y)i++;
   const a=A2[i],b=A2[i+1];let t=(y-a.y)/(b.y-a.y);t=Math.max(0,Math.min(1,t));t=t*t*(3-2*t);
   lerpHex(a.top,b.top,t,skyU.top.value);lerpHex(a.hor,b.hor,t,skyU.hor.value);lerpHex(a.bot,b.bot,t,skyU.bot.value);lerpHex(a.sun,b.sun,t,skyU.sunCol.value);
@@ -5972,7 +6079,7 @@ function updAtmo(){
   }else{DAYN=0;LIGHT.copy(SUN_DIR);skyU.sunDir.value.copy(SUN_DIR)}
   if(FLASH>0){hemi.intensity+=FLASH*2.2;skyU.hor.value.lerp(cN.set(0xe8ecff),FLASH*0.7)}
   scene.fog.color.copy(skyU.hor.value);scene.fog.far=far;scene.fog.near=far*0.38;sun.color.copy(skyU.sunCol.value);
-  starMat.opacity=st;stars.visible=st>0.01;R.setClearColor(skyU.hor.value);
+  starMat.opacity=st;stars.visible=st>0.01;R.setClearColor(skyU.hor.value);abyAtmo();
 }
 
 /* ===================== post-processing (shaders) ===================== */
@@ -6111,6 +6218,7 @@ const AIC={
   bolt:spriteURL(['....YY..','...YY...','..YY....','.YYYYY..','...YY...','..YY....','.YY.....','YY......'],{Y:0xfff04a}),
   map:spriteURL(['WWGWWWW.','WGGGWBW.','WWGWBBW.','WWWWWBW.','WBWWWWW.','WBBWGWW.'],{W:0xfff4e0,G:0x5cc23a,B:0x3d8fe0})};
 const ACH=[
+  {id:'erebus',n:'Свет из тьмы',d:'Победи Эреба в его Бездне',p:80,ic:'crown2'},
   {id:'keto',n:'Я слышал Кето',d:'Прокатись на спине небесного кита',p:20,ic:'note'},
   {id:'karkin',n:'Краб Геры',d:'Победи Каркина на спине Кето',p:40,ic:'trophy'},
   {id:'jump5',n:'Мега-прыжок',d:'Сделай пять прыжков подряд в ритм',p:10,ic:'jump'},
@@ -6475,11 +6583,11 @@ function renderWs(){const tb=$('wsTabs');tb.innerHTML='';[['pop','Популяр
     const g=document.createElement('div');g.className='wsGrid';ms.forEach((mt,i)=>{const own=!!mt.own;const c=wsCardEl(mt,[['Играть',()=>wsPlayId(mt.id),true]],own?'Твоя':(bests[mt.id]!=null?'Рекорд '+fmt(bests[mt.id]):(i<3&&wsTab==='pop'?'Топ '+(i+1):'')));c.style.animationDelay=(i*0.04)+'s';g.appendChild(c)});box.appendChild(g)})}
 
 /* developer hook: open the game with ?debug to inspect it from the console */
-if(/[?&]debug\b/.test(location.search))window.OBL={hero,prog,ZEUS,ZA,MINI,CPS,RLM,NET,hitMini,coopRole,coopHost,NYX,KRONOS,NYXL,KA,CLAY,gainXP,timeStop,cam:(y,p,d)=>{yaw=y;pitch=p;dist=d},world,RIFT,riftOpen,wallFalls,KS,mobs,tempMobs,ARN,ARENA2,arenaStart,buildErebus,OPHION,GRYPHON,ALECTO,HYPERION,OCEANUS,HERACLES,HAL,HAZ,openBook,NECT,BUFF,drink,brew,DEVOURER,WATCHER,HER,heraldArrive,wandCast,updWand,PPJ,DOME,DX,ATALANTA,HUNT,bowShoot,ARW,CASTOR,POLLUX,MEDUSA,STHENO,EURYALE,omen,CLOTHO,LACHESIS,ATROPOS,shearsCut,gswordSwing,gs,goHome,homeData,giftHome,KETO,KARK,ketoLocal,karkSpawn,updKeto,ASCR,ascStart,ascRoom,ascEnd,rollItem,dropLoot,ascEquip,ascCleared,RUNG,runM,hitMob,allMobs,rebuild,setB,world,HB,HR,GUEST,updGuest,talkGuest,A,lofiTick,LOFI,FISH,castRod,hookFish,endFish,updHome,openHomeP,placeFurn,cozy,plant,harvest,water,sitOn,FURNG,HG,HX,HY,HZ,lofiOn,atHome,canFish,DAY,summonMinions,updDown,goDown,hurt,remotes,bossStart,shr,get lastAtk(){return lastAtk},set lastAtk(v){lastAtk=v},HUNT2:null,npcs,openDlg,openInv,INV2,R,get camObj(){return cam},OPHB:typeof ophBody!=='undefined'?ophBody:null,DEVB:typeof devBody!=='undefined'?devBody:null,bark,animeFace,FACES,npcFace,doFistHits,fistSwing,TITL,VRINGS,sp,tw,forgeSpear,spearThrow,updThrow,bossStart,updForge,twinSwing,doTwinHits,mP,LAYOUT,RLAY,ZA,get,DUNGEONS,findTop,RLM,buildMob,scene,THREE,attack,sc,buildHero,equipVis,get swordG(){return swordG},get HB(){return HB},counts:()=>({blocks:blocks.count,leaves:leaves.count,trans:transM.count,lit:litM.count,size:world.size}),respawnHero,zInside,get T(){return T},get started(){return started},get editing(){return editing}};
+if(/[?&]debug\b/.test(location.search))window.OBL={hero,prog,ZEUS,ZA,MINI,CPS,RLM,NET,hitMini,coopRole,coopHost,NYX,KRONOS,NYXL,KA,CLAY,gainXP,timeStop,cam:(y,p,d)=>{yaw=y;pitch=p;dist=d},world,RIFT,riftOpen,wallFalls,KS,mobs,tempMobs,ARN,ARENA2,arenaStart,buildErebus,OPHION,GRYPHON,ALECTO,HYPERION,OCEANUS,HERACLES,HAL,HAZ,openBook,NECT,BUFF,drink,brew,DEVOURER,WATCHER,HER,heraldArrive,wandCast,updWand,PPJ,DOME,DX,ATALANTA,HUNT,bowShoot,ARW,CASTOR,POLLUX,MEDUSA,STHENO,EURYALE,omen,CLOTHO,LACHESIS,ATROPOS,shearsCut,gswordSwing,gs,goHome,homeData,giftHome,cam,camT,ABY,FLIP,flipTo,abyEnter,abyBossStart,gateL,KETO,KARK,ketoLocal,karkSpawn,updKeto,ASCR,ascStart,ascRoom,ascEnd,rollItem,dropLoot,ascEquip,ascCleared,RUNG,runM,hitMob,allMobs,rebuild,setB,world,HB,HR,GUEST,updGuest,talkGuest,A,lofiTick,LOFI,FISH,castRod,hookFish,endFish,updHome,openHomeP,placeFurn,cozy,plant,harvest,water,sitOn,FURNG,HG,HX,HY,HZ,lofiOn,atHome,canFish,DAY,summonMinions,updDown,goDown,hurt,remotes,bossStart,shr,get lastAtk(){return lastAtk},set lastAtk(v){lastAtk=v},HUNT2:null,npcs,openDlg,openInv,INV2,R,get camObj(){return cam},OPHB:typeof ophBody!=='undefined'?ophBody:null,DEVB:typeof devBody!=='undefined'?devBody:null,bark,animeFace,FACES,npcFace,doFistHits,fistSwing,TITL,VRINGS,sp,tw,forgeSpear,spearThrow,updThrow,bossStart,updForge,twinSwing,doTwinHits,mP,LAYOUT,RLAY,ZA,get,DUNGEONS,findTop,RLM,buildMob,scene,THREE,attack,sc,buildHero,equipVis,get swordG(){return swordG},get HB(){return HB},counts:()=>({blocks:blocks.count,leaves:leaves.count,trans:transM.count,lit:litM.count,size:world.size}),respawnHero,zInside,get T(){return T},get started(){return started},get editing(){return editing}};
 
 /* ===================== boot ===================== */
 MINI.forEach(M=>{if(!M.herald&&prog.minis&&prog.minis[M.D.id])M.state='dead'});ascRestoreAfterReload();
-const loaded=loadMap();rebuild();syncEntities();placeFlags();placeNPCs();placeGates();
+const loaded=loadMap();genAbyss();rebuild();syncEntities();placeFlags();placeNPCs();placeGates();
 if(prog.at==null||prog.at>prog.cp)prog.at=prog.cp;spawn.copy(cpPos(prog.at));hero.p.copy(spawn);HR.position.copy(spawn);HR.rotation.y=0.35;resize();updHud();selectSkin(prog.skin||'boy');setGfx(GFX.level,true);if(store.get('oblaka-settings')){try{Object.assign(SET,JSON.parse(store.get('oblaka-settings')))}catch(e){}applySettings()}drawFlags();updTier();bossReset();if(prog.wings)$('fly').classList.add('on');if(!prog.weapon&&prog.gear.sword)prog.weapon='sword';equipVis();hero.armor=armMax();updGear();updHud();
 applyTouch();achInit();xpInit();updXP();hero.hp=Math.max(hero.hp,hpMax());updHud();
 if(loaded==='merged')setTimeout(()=>toast('Твоя карта сохранена, а сверху выросли новые ярусы',2600),400);
@@ -6495,7 +6603,7 @@ function frame(now){
   updHazards(edt);updWisp(dt);updRLM(dt);
   $('cross').classList.toggle('on',started&&!editing&&!!prog.gear.hook);
   updBoss(edt);updProj(edt);updRemotes(dt);updDecor(dt);updNPCs(dt);updTemps(edt);MINI.forEach(M=>updMini(M,edt));updWaves(dt);updSlashes(dt);updSWaves(dt);updPickups(dt);updPortals(dt);updRealmFx(dt);updRace(dt);updClock(dt);netPresence(false);
-  updWS(dt);achTick(dt);updBolts(dt);updHostile(edt);updRift(edt);updArena(dt);updVRings(dt);updCDeco(dt);updThrow(dt);updForge(dt);updHeroArena();updBuffs();updWand(dt);updJuice(dt);updDown(dt);updHome(dt);updAsc(dt);updKeto(dt);updDome(dt);updBowArrows(dt);updShears(dt);updFlyParts(dt);updStreak();if(Math.floor(T*2)!==Math.floor((T-dt)*2))updHard();updTitanFx(dt);updLvFx(dt);updOlympFx(dt);auraTick(dt);
+  updWS(dt);achTick(dt);updBolts(dt);updHostile(edt);updRift(edt);updArena(dt);updVRings(dt);updCDeco(dt);updThrow(dt);updForge(dt);updHeroArena();updBuffs();updWand(dt);updJuice(dt);updDown(dt);updHome(dt);updAsc(dt);updKeto(dt);updAby(dt);updDome(dt);updBowArrows(dt);updShears(dt);updFlyParts(dt);updStreak();if(Math.floor(T*2)!==Math.floor((T-dt)*2))updHard();updTitanFx(dt);updLvFx(dt);updOlympFx(dt);auraTick(dt);
   updFalls(dt);updParts(dt);updRings(dt);ambient(dt);updCam(dt);updGhost();updTier();updAtmo();updWMap(dt);updMinimap(dt);monitor(dt);
   render();requestAnimationFrame(frame);
 }
