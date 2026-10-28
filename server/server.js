@@ -195,7 +195,7 @@ const server = http.createServer(async (req, res) => {
 // bdead (boss defeated, everyone in the fight takes loot), shit (shared seraph hit).
 // Messages to clients: hello, join, pres, leave, emit {e,d,from}.
 const peers = new Map();
-const EVENTS = new Set(['chat', 'sw', 'hit', 'ko', 'bst', 'bfx', 'bhit', 'bdead', 'shit', 'revive', 'radio', 'asc']);
+const EVENTS = new Set(['chat', 'sw', 'hit', 'ko', 'bst', 'bfx', 'bhit', 'bdead', 'shit', 'revive', 'radio', 'asc', 'her', 'rift']);
 function frame(str) {
   const data = Buffer.from(str, 'utf8'), n = data.length;
   const head = n < 126 ? Buffer.from([0x81, n]) : n < 65536 ? Buffer.from([0x81, 126, n >> 8, n & 255]) : Buffer.concat([Buffer.from([0x81, 127, 0, 0, 0, 0]), Buffer.from([(n >>> 24) & 255, (n >>> 16) & 255, (n >>> 8) & 255, n & 255])]);
