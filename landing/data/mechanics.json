@@ -1,0 +1,74 @@
+[
+ {
+  "id": "jump",
+  "scene": "jump",
+  "title": {
+   "ru": "Прыгай всё выше",
+   "en": "Jump ever higher"
+  },
+  "text": {
+   "ru": "Ритм-прыжки, крылья, рывок и крюк-кошка. Чем точнее ритм, тем выше полёт.",
+   "en": "Rhythm jumps, wings, dashes and a grappling hook. The better your rhythm, the higher you fly."
+  }
+ },
+ {
+  "id": "fight",
+  "scene": "fight",
+  "title": {
+   "ru": "Сражайся клинком",
+   "en": "Fight with a blade"
+  },
+  "text": {
+   "ru": "Мечи, катаны, косы и кулаки. Удар, удар, пауза — и выходит особый приём.",
+   "en": "Swords, katanas, scythes and fists. Strike, strike, pause — and a special move comes out."
+  }
+ },
+ {
+  "id": "boss",
+  "scene": "boss",
+  "title": {
+   "ru": "Побеждай богов и титанов",
+   "en": "Defeat gods and titans"
+  },
+  "text": {
+   "ru": "Каждый акт заканчивается боссом из мифов. Уже в игре 32 босса — от Желейного короля до Кроноса, Никты, Рюдзина и Геракла. Нажми, чтобы посмотреть всех.",
+   "en": "Every act ends with a boss from myth. 32 bosses are already in the game — from the Jelly King to Kronos, Nyx, Ryujin and Heracles. Click to see them all."
+  }
+ },
+ {
+  "id": "craft",
+  "scene": "craft",
+  "title": {
+   "ru": "Куй снаряжение",
+   "en": "Forge your gear"
+  },
+  "text": {
+   "ru": "Добыча с мобов превращается в броню, крылья и легендарное оружие. Кузнец начинает в простой куртке — и выходит из кузни в новом доспехе.",
+   "en": "Loot from mobs becomes armour, wings and legendary weapons. The smith starts in a plain jacket and walks out in new armour."
+  }
+ },
+ {
+  "id": "home",
+  "scene": "home",
+  "title": {
+   "ru": "Обустрой свой остров",
+   "en": "Build your own island"
+  },
+  "text": {
+   "ru": "Грядки, зверюшки, питомцы и Ярмарка с мини-играми. Остров растёт вместе с тобой.",
+   "en": "Garden beds, farm animals, pets and a Fair with mini-games. Your island grows with you."
+  }
+ },
+ {
+  "id": "coop",
+  "scene": "coop",
+  "title": {
+   "ru": "Играй вместе",
+   "en": "Play together"
+  },
+  "text": {
+   "ru": "Кооп по сети: общие боссы, Пух-бокс на ринге и прогулки за руку.",
+   "en": "Online co-op: shared bosses, puffy boxing in the ring and walks hand in hand."
+  }
+ }
+]

@@ -1,0 +1,189 @@
+[
+ {
+  "status": "done",
+  "title": {
+   "ru": "Облачные острова и Царство богов",
+   "en": "Cloud Isles and the Realm of the Gods"
+  },
+  "text": {
+   "ru": "Девять ярусов, крафт, боссы-боги, кооп по сети.",
+   "en": "Nine tiers, crafting, god bosses, online co-op."
+  }
+ },
+ {
+  "status": "done",
+  "title": {
+   "ru": "Разлом Хаоса, Звёздный купол, Бездна",
+   "en": "Chaos Rift, Star Dome, the Abyss"
+  },
+  "text": {
+   "ru": "Титаны, Прялка судеб, кошмары и Звездолом.",
+   "en": "Titans, the Loom of Fate, nightmares and the Starbreaker."
+  }
+ },
+ {
+  "status": "done",
+  "title": {
+   "ru": "Акт VI: Хорай",
+   "en": "Act VI: Horai"
+  },
+  "text": {
+   "ru": "Неоновый город, катаны, драконы и дуэли с тенью.",
+   "en": "A neon city, katanas, dragons and shadow duels."
+  }
+ },
+ {
+  "status": "done",
+  "title": {
+   "ru": "Свой остров и Ярмарка",
+   "en": "Your island and the Fair"
+  },
+  "text": {
+   "ru": "Ферма, звери, питомцы, Пух-бокс и мини-игры.",
+   "en": "Farming, animals, pets, puffy boxing and mini-games."
+  }
+ },
+ {
+  "status": "done",
+  "title": {
+   "ru": "Кумо",
+   "en": "Kumo"
+  },
+  "text": {
+   "ru": "Облачный сад, эволюция форм, сверхредкие, семья и походы.",
+   "en": "The Cloud Garden, evolving forms, ultra-rares, families and adventures."
+  }
+ },
+ {
+  "status": "progress",
+  "title": {
+   "ru": "Общий дом для двоих",
+   "en": "A shared home for two"
+  },
+  "text": {
+   "ru": "Друг видит твой остров, ферму и Кумо.",
+   "en": "Your friend sees your island, farm and Kumo."
+  }
+ },
+ {
+  "status": "next",
+  "title": {
+   "ru": "Облачные гонки Кумо",
+   "en": "Kumo cloud races"
+  },
+  "text": {
+   "ru": "Трасса, где решают навыки твоего Кумо.",
+   "en": "A track where your Kumo's skills decide the race."
+  }
+ },
+ {
+  "status": "next",
+  "title": {
+   "ru": "Маркетплейс Кумо",
+   "en": "Kumo marketplace"
+  },
+  "text": {
+   "ru": "Обмен и торговля Кумо между игроками. [УТОЧНИТЬ: сроки]",
+   "en": "Trading Kumo between players. [TO CONFIRM: timing]"
+  }
+ },
+ {
+  "status": "progress",
+  "title": {
+   "ru": "Альфа-тест",
+   "en": "Alpha test"
+  },
+  "text": {
+   "ru": "Баланс, баги, отзывы игроков. Каждое обновление добавляет контент.",
+   "en": "Balance, bugs, player feedback. Every update adds content."
+  }
+ },
+ {
+  "status": "next",
+  "title": {
+   "ru": "Лидерборды и награды",
+   "en": "Leaderboards and rewards"
+  },
+  "text": {
+   "ru": "Спидранеры, охотники, дуэлянты, авторы карт и заводчики Кумо. Лучших будем поощрять.",
+   "en": "Speedrunners, hunters, duellists, map authors and Kumo breeders. The best will be rewarded."
+  }
+ },
+ {
+  "status": "next",
+  "title": {
+   "ru": "Новые режимы",
+   "en": "New modes"
+  },
+  "text": {
+   "ru": "Развиваем Восхождение, забеги, PvP и мини-игры Ярмарки.",
+   "en": "Growing Ascension, races, PvP and Fair mini-games."
+  }
+ },
+ {
+  "status": "later",
+  "title": {
+   "ru": "Токен и его этапы",
+   "en": "The token and its tiers"
+  },
+  "text": {
+   "ru": "Запуск [TOKEN] и градация по этапам роста сообщества. [УТОЧНИТЬ: этапы и условия]",
+   "en": "[TOKEN] launch with tiers that unlock as the community grows. [TO CONFIRM: tiers and terms]"
+  }
+ },
+ {
+  "status": "later",
+  "title": {
+   "ru": "Фонд сообщества 5K",
+   "en": "Community fund 5K"
+  },
+  "text": {
+   "ru": "После этапа 5K средства идут на подарки и награды: активным участникам сообщества и покупателям токена. [УТОЧНИТЬ: условия, проверка юристом]",
+   "en": "After the 5K tier, funds go to gifts and rewards for active community members and token buyers. [TO CONFIRM: terms, legal review]"
+  }
+ },
+ {
+  "status": "later",
+  "title": {
+   "ru": "Раздел модификаций",
+   "en": "Mods section"
+  },
+  "text": {
+   "ru": "Отдельное место для модов и инструментов креаторов.",
+   "en": "A home for mods and creator tools."
+  }
+ },
+ {
+  "status": "later",
+  "title": {
+   "ru": "Монетизация контента",
+   "en": "Creator monetization"
+  },
+  "text": {
+   "ru": "Авторы карт, модов и Кумо смогут зарабатывать на своём контенте. [УТОЧНИТЬ]",
+   "en": "Authors of maps, mods and Kumo will be able to earn from their content. [TO CONFIRM]"
+  }
+ },
+ {
+  "status": "later",
+  "title": {
+   "ru": "Встречи и комьюнити",
+   "en": "Meetups and community"
+  },
+  "text": {
+   "ru": "Офлайн- и онлайн-встречи, турниры и ивенты сообщества.",
+   "en": "Offline and online meetups, tournaments and community events."
+  }
+ },
+ {
+  "status": "later",
+  "title": {
+   "ru": "Kickstarter",
+   "en": "Kickstarter"
+  },
+  "text": {
+   "ru": "Кампания на Kickstarter и выступления с игрой. [УТОЧНИТЬ: сроки]",
+   "en": "A Kickstarter campaign and talks about the game. [TO CONFIRM: timing]"
+  }
+ }
+]

@@ -1,0 +1,524 @@
+{
+ "acts": [
+  {
+   "id": 1,
+   "ru": "I · Облачные острова",
+   "en": "I · Cloud Isles",
+   "c": "#5cc23a"
+  },
+  {
+   "id": 2,
+   "ru": "II · Олимп",
+   "en": "II · Olympus",
+   "c": "#ffc23c"
+  },
+  {
+   "id": 3,
+   "ru": "III · Разлом Хаоса",
+   "en": "III · Chaos Rift",
+   "c": "#ff7a3a"
+  },
+  {
+   "id": 4,
+   "ru": "IV · Звёздный купол",
+   "en": "IV · Star Dome",
+   "c": "#9fb8ff"
+  },
+  {
+   "id": 5,
+   "ru": "V · Бездна",
+   "en": "V · The Abyss",
+   "c": "#b070ff"
+  },
+  {
+   "id": 6,
+   "ru": "VI · Хорай",
+   "en": "VI · Horai",
+   "c": "#22e6ff"
+  },
+  {
+   "id": 7,
+   "ru": "Последствия",
+   "en": "Aftermath",
+   "c": "#ff4a6a"
+  }
+ ],
+ "bosses": [
+  {
+   "act": 1,
+   "id": "jelly",
+   "snap": "jelly",
+   "ru": "Желейный король",
+   "en": "The Jelly King",
+   "ar": {
+    "ru": "Склеп желейного короля",
+    "en": "Jelly King's Crypt"
+   },
+   "d": {
+    "ru": "Делится, когда его бьют. Не давай мелочи себя окружить.",
+    "en": "Splits when hit. Don't let the little ones surround you."
+   }
+  },
+  {
+   "act": 1,
+   "id": "guard",
+   "snap": "golem",
+   "ru": "Каменный страж",
+   "en": "The Stone Guardian",
+   "ar": {
+    "ru": "Кузница стража",
+    "en": "The Guardian's Forge"
+   },
+   "d": {
+    "ru": "Древний страж кузницы. Перепрыгивай ударные волны и бей, пока он замахивается.",
+    "en": "The forge's ancient guard. Jump the shockwaves and strike while he winds up."
+   }
+  },
+  {
+   "act": 1,
+   "id": "seraph",
+   "ru": "Серафим",
+   "en": "The Seraph",
+   "ar": {
+    "ru": "Финал I акта",
+    "en": "Act I finale"
+   },
+   "d": {
+    "ru": "Охраняет сердце островов. Он не злой — просто очень серьёзный.",
+    "en": "Guards the heart of the isles. Not evil — just very serious."
+   }
+  },
+  {
+   "act": 1,
+   "id": "karkin",
+   "img": "karkin",
+   "ru": "Каркин, Краб Геры",
+   "en": "Karkinos, Hera's Crab",
+   "ar": {
+    "ru": "Палуба кита Кето",
+    "en": "Deck of the whale Keto"
+   },
+   "d": {
+    "ru": "Живёт на спине небесного кита. Может выбросить за борт — крюк-кошка спасёт.",
+    "en": "Lives on the back of the sky whale. Can throw you overboard — the hook will save you."
+   }
+  },
+  {
+   "act": 2,
+   "id": "zeus",
+   "ru": "Зевс Громовержец",
+   "en": "Zeus the Thunderer",
+   "ar": {
+    "ru": "Вершина Олимпа",
+    "en": "Peak of Olympus"
+   },
+   "d": {
+    "ru": "Летает над ареной, мечет молнии и обрушивается с неба. Бей, когда он устанет.",
+    "en": "Flies over the arena, hurls lightning and crashes down. Strike when he tires."
+   }
+  },
+  {
+   "act": 3,
+   "id": "kronos",
+   "ru": "Кронос, Пожиратель времени",
+   "en": "Kronos, Devourer of Time",
+   "ar": {
+    "ru": "Трон времени",
+    "en": "Throne of Time"
+   },
+   "d": {
+    "ru": "Его коса режет сами секунды. Перепрыгивай волны, лучи и стрелки часов.",
+    "en": "His scythe cuts the seconds themselves. Jump waves, beams and clock hands."
+   }
+  },
+  {
+   "act": 3,
+   "id": "hyperion",
+   "img": "hyperion",
+   "ru": "Гиперион, Титан света",
+   "en": "Hyperion, Titan of Light",
+   "ar": {
+    "ru": "Солнечный престол",
+    "en": "The Solar Throne"
+   },
+   "d": {
+    "ru": "Отец Солнца, Луны и Зари проснулся и жжёт всё вокруг лучами.",
+    "en": "Father of Sun, Moon and Dawn has woken and burns everything with beams."
+   }
+  },
+  {
+   "act": 3,
+   "id": "oceanus",
+   "img": "oceanus",
+   "ru": "Океан, Титан глубин",
+   "en": "Oceanus, Titan of the Deep",
+   "ar": {
+    "ru": "Чертог Океана",
+    "en": "Hall of Oceanus"
+   },
+   "d": {
+    "ru": "Затягивает водоворотом, гонит приливы и бьёт снизу из-под пола.",
+    "en": "Pulls you into whirlpools, sends tides and strikes from under the floor."
+   }
+  },
+  {
+   "act": 3,
+   "id": "ophion",
+   "img": "ophion",
+   "ru": "Офион, Первый змей",
+   "en": "Ophion, the First Serpent",
+   "ar": {
+    "ru": "Сумеречное небо",
+    "en": "Twilight Sky"
+   },
+   "d": {
+    "ru": "Правил небом до Кроноса. Рубить можно любой сегмент — голову, тело, хвост.",
+    "en": "Ruled the sky before Kronos. Cut any segment — head, body or tail."
+   }
+  },
+  {
+   "act": 3,
+   "id": "gryphon",
+   "img": "gryphon",
+   "ru": "Грифон часов",
+   "en": "The Clockwork Gryphon",
+   "ar": {
+    "ru": "Небо Пустоши",
+    "en": "Wasteland Sky"
+   },
+   "d": {
+    "ru": "Страж неба: хранит часть Копья Хроноса и кружит над Пустошью.",
+    "en": "A sky warden: guards a piece of the Spear of Chronos and circles the Wastes."
+   }
+  },
+  {
+   "act": 4,
+   "id": "atalanta",
+   "img": "atalanta",
+   "ru": "Аталанта, Охотница",
+   "en": "Atalanta the Huntress",
+   "ar": {
+    "ru": "Созвездие Охотницы",
+    "en": "The Huntress constellation"
+   },
+   "d": {
+    "ru": "Стреляет туда, куда ты побежишь, а не туда, где ты стоишь.",
+    "en": "Shoots where you will run, not where you stand."
+   }
+  },
+  {
+   "act": 4,
+   "id": "castor",
+   "img": "castor",
+   "ru": "Кастор, укротитель коней",
+   "en": "Castor the Horse-tamer",
+   "ar": {
+    "ru": "Созвездие Близнецов",
+    "en": "The Twins constellation"
+   },
+   "d": {
+    "ru": "Близнецы делят одну жизнь: если один упал, второй поднимет его через 10 секунд.",
+    "en": "The twins share one life: if one falls, the other revives him in 10 seconds."
+   }
+  },
+  {
+   "act": 4,
+   "id": "pollux",
+   "img": "pollux",
+   "ru": "Поллукс, кулачный боец",
+   "en": "Pollux the Boxer",
+   "ar": {
+    "ru": "Созвездие Близнецов",
+    "en": "The Twins constellation"
+   },
+   "d": {
+    "ru": "Добивайте обоих близнецов почти одновременно — это бой на двоих.",
+    "en": "Finish both twins almost together — it is a fight for two."
+   }
+  },
+  {
+   "act": 4,
+   "id": "medusa",
+   "img": "medusa",
+   "ru": "Медуза",
+   "en": "Medusa",
+   "ar": {
+    "ru": "Сад Персея",
+    "en": "Garden of Perseus"
+   },
+   "d": {
+    "ru": "Взгляд обращает в камень — отверни камеру. Пока она жива, сёстры бессмертны.",
+    "en": "Her gaze turns you to stone — look away. While she lives, her sisters are immortal."
+   }
+  },
+  {
+   "act": 4,
+   "id": "stheno",
+   "img": "stheno",
+   "ru": "Сфено, Сильная",
+   "en": "Stheno the Mighty",
+   "ar": {
+    "ru": "Сад Персея",
+    "en": "Garden of Perseus"
+   },
+   "d": {
+    "ru": "Сестра Медузы. Бессмертна, пока Медуза жива.",
+    "en": "Medusa's sister. Immortal while Medusa lives."
+   }
+  },
+  {
+   "act": 4,
+   "id": "euryale",
+   "img": "euryale",
+   "ru": "Эвриала, Широкопрыгающая",
+   "en": "Euryale the Far-leaper",
+   "ar": {
+    "ru": "Сад Персея",
+    "en": "Garden of Perseus"
+   },
+   "d": {
+    "ru": "Старшая сестра Медузы. Пикирует с неба.",
+    "en": "Medusa's elder sister. Dives from the sky."
+   }
+  },
+  {
+   "act": 4,
+   "id": "clotho",
+   "img": "clotho",
+   "ru": "Клото, Прядущая",
+   "en": "Clotho the Spinner",
+   "ar": {
+    "ru": "Прялка судеб",
+    "en": "The Loom of Fate"
+   },
+   "d": {
+    "ru": "Младшая Мойра чинит нити сестёр. Бейте её первой.",
+    "en": "The youngest Fate mends her sisters' threads. Hit her first."
+   }
+  },
+  {
+   "act": 4,
+   "id": "lachesis",
+   "img": "lachesis",
+   "ru": "Лахесис, Отмеряющая",
+   "en": "Lachesis the Measurer",
+   "ar": {
+    "ru": "Прялка судеб",
+    "en": "The Loom of Fate"
+   },
+   "d": {
+    "ru": "Средняя Мойра отмеряет нить и плетёт сеть из золотых лучей.",
+    "en": "The middle Fate measures the thread and weaves a net of golden beams."
+   }
+  },
+  {
+   "act": 4,
+   "id": "atropos",
+   "img": "atropos",
+   "ru": "Атропос, Неотвратимая",
+   "en": "Atropos the Inevitable",
+   "ar": {
+    "ru": "Прялка судеб",
+    "en": "The Loom of Fate"
+   },
+   "d": {
+    "ru": "Старшая Мойра режет нити. С неё падают Ножницы Атропос.",
+    "en": "The eldest Fate cuts the threads. She drops the Shears of Atropos."
+   }
+  },
+  {
+   "act": 5,
+   "id": "nyx",
+   "ru": "Никта, Мать ночи",
+   "en": "Nyx, Mother of Night",
+   "ar": {
+    "ru": "Обсерватория ночи",
+    "en": "Observatory of Night"
+   },
+   "d": {
+    "ru": "Её боялся сам Зевс. Прячется среди своих теней и бьёт лучом тьмы.",
+    "en": "Even Zeus feared her. Hides among her shadows and fires a beam of darkness."
+   }
+  },
+  {
+   "act": 5,
+   "id": "erebus",
+   "ru": "Эреб, Первородная тьма",
+   "en": "Erebus, Primordial Dark",
+   "ar": {
+    "ru": "Бездна",
+    "en": "The Abyss"
+   },
+   "d": {
+    "ru": "Тьма, что была до богов. Сердце Бездны.",
+    "en": "The dark that came before the gods. The heart of the Abyss."
+   },
+   "img": "erebus"
+  },
+  {
+   "act": 5,
+   "id": "ahlis",
+   "img": "ahlis",
+   "ru": "Ахлис, Мгла смерти",
+   "en": "Achlys, Mist of Death",
+   "ar": {
+    "ru": "Бездна Эреба",
+    "en": "Abyss of Erebus"
+   },
+   "d": {
+    "ru": "Сестра Эреба. Мгла сжимает мир до семи блоков, а свет гаснет.",
+    "en": "Sister of Erebus. Her mist shrinks the world to seven blocks and the light dies."
+   }
+  },
+  {
+   "act": 5,
+   "id": "alecto",
+   "img": "alecto",
+   "ru": "Алекто, Эриния",
+   "en": "Alecto the Fury",
+   "ar": {
+    "ru": "Небо Тартара",
+    "en": "Sky of Tartarus"
+   },
+   "d": {
+    "ru": "Богиня мести исчезает и появляется рядом. Прыгай через огненный кнут.",
+    "en": "The goddess of vengeance blinks next to you. Jump her fire whip."
+   }
+  },
+  {
+   "act": 5,
+   "id": "lamia",
+   "img": "lamia",
+   "ru": "Ламия, Пожирательница",
+   "en": "Lamia the Devourer",
+   "ar": {
+    "ru": "Логово кошмаров",
+    "en": "Lair of Nightmares"
+   },
+   "d": {
+    "ru": "Вынимает глаза и слушает. Когда глаз нет — не беги: она слышит каждый шаг.",
+    "en": "Takes out her eyes and listens. Without them, don't run: she hears every step."
+   }
+  },
+  {
+   "act": 5,
+   "id": "empusa",
+   "img": "empusa",
+   "ru": "Эмпуса, Медноногая",
+   "en": "Empusa the Bronze-legged",
+   "ar": {
+    "ru": "Логово кошмаров",
+    "en": "Lair of Nightmares"
+   },
+   "d": {
+    "ru": "Одна нога медная, волосы горят. Пикирует сверху и насылает миражи.",
+    "en": "One bronze leg, burning hair. Dives from above and casts mirages."
+   }
+  },
+  {
+   "act": 5,
+   "id": "mormo",
+   "img": "mormo",
+   "ru": "Мормо, Детоед",
+   "en": "Mormo the Child-eater",
+   "ar": {
+    "ru": "Логово кошмаров",
+    "en": "Lair of Nightmares"
+   },
+   "d": {
+    "ru": "Прыгает к тебе волна за волной и пытается проглотить целиком.",
+    "en": "Leaps at you wave after wave and tries to swallow you whole."
+   }
+  },
+  {
+   "act": 6,
+   "id": "ryujin",
+   "img": "ryujin",
+   "ru": "Рюдзин, царь драконов моря",
+   "en": "Ryujin, Dragon King of the Sea",
+   "ar": {
+    "ru": "Облачная гавань",
+    "en": "Cloud Harbour"
+   },
+   "d": {
+    "ru": "В когтях две жемчужины: Канджу поднимает прилив, Мандзю его опускает.",
+    "en": "Two pearls in his claws: Kanju raises the tide, Manju lowers it."
+   }
+  },
+  {
+   "act": 6,
+   "id": "kiyo",
+   "img": "kiyo",
+   "ru": "Киёхимэ, невеста-змея",
+   "en": "Kiyohime, the Serpent Bride",
+   "ar": {
+    "ru": "Двор колокола",
+    "en": "Bell courtyard"
+   },
+   "d": {
+    "ru": "Призрачная невеста с веером превращается в огненного змея.",
+    "en": "A ghost bride with a fan who turns into a fire serpent."
+   }
+  },
+  {
+   "act": 6,
+   "id": "kagemaru",
+   "img": "kagemaru",
+   "ru": "Кагэмару, Тень героя",
+   "en": "Kagemaru, the Hero's Shadow",
+   "ar": {
+    "ru": "Дуэль в три боя",
+    "en": "A duel in three bouts"
+   },
+   "d": {
+    "ru": "«Я видел все твои бои». Тень учится твоим рывкам и отвечает тем же.",
+    "en": "\"I have seen all your fights.\" The shadow learns your dashes and answers in kind."
+   }
+  },
+  {
+   "act": 7,
+   "id": "heracles",
+   "img": "heracles",
+   "ru": "Геракл, сын Зевса",
+   "en": "Heracles, son of Zeus",
+   "ar": {
+    "ru": "Арена героев",
+    "en": "Hero Arena"
+   },
+   "d": {
+    "ru": "Пришёл мстить за отца: дубина, валуны, критский бык и стимфалийские птицы.",
+    "en": "Came to avenge his father: a club, boulders, the Cretan bull and Stymphalian birds."
+   }
+  },
+  {
+   "act": 7,
+   "id": "devourer",
+   "img": "devourer",
+   "ru": "Пожиратель звёзд",
+   "en": "The Star Devourer",
+   "ar": {
+    "ru": "Из-за неба",
+    "en": "From beyond the sky"
+   },
+   "d": {
+    "ru": "Вестник из-за неба. Приходит сам, туда, где ты есть.",
+    "en": "A herald from beyond the sky. Comes to you, wherever you are."
+   }
+  },
+  {
+   "act": 7,
+   "id": "watcher",
+   "img": "watcher",
+   "ru": "Безликий Наблюдатель",
+   "en": "The Faceless Watcher",
+   "ar": {
+    "ru": "Из-за неба",
+    "en": "From beyond the sky"
+   },
+   "d": {
+    "ru": "Заметил твои победы над богами. Уходит, только когда ты падёшь.",
+    "en": "Noticed your victories over the gods. Leaves only when you fall."
+   }
+  }
+ ]
+}

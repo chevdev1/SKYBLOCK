@@ -1,0 +1,33 @@
+/* Action variant: night and storm palette, dark glass cards, red-gold accents, each world card glows in its own colour */
+body.action{background:#07061a}
+.action #pre{background:radial-gradient(ellipse at 50% 120%,#ff5a3a 0,#3a1a5a 45%,#07061a 80%)}
+.action .nav{background:linear-gradient(rgba(7,6,26,.7),transparent)}
+.action .nav.solid{background:rgba(10,8,30,.72)}
+.action .logo b{color:#ff8a4a}
+.action h1{font-size:clamp(52px,9vw,128px);text-shadow:0 6px 0 #2a0a1a,0 0 60px rgba(255,90,58,.45)}
+.action h1 .big{color:#ffb84a;text-shadow:0 6px 0 #5a1a0a,0 0 50px rgba(255,140,60,.6)}
+.action .eyebrow{color:#ff9a6a}
+.action .btn-play{background:linear-gradient(180deg,#ffb84a,#ff5a2a);color:#1a0608;box-shadow:0 6px 0 #9a2a10,0 16px 44px rgba(255,90,40,.55)}
+.action .btn-play:hover{box-shadow:0 9px 0 #9a2a10,0 22px 54px rgba(255,90,40,.65)}
+.action .btn-play i{background:#1a0608;color:#ffb84a}
+.action .m-card,.action .kumo-copy,.action .road li,.action .m-cardk{background:rgba(16,12,40,.84);color:#f4f2ff;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 20px 50px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.08)}
+.action .m-card h3,.action .kumo-copy h2,.action .road b{color:#fff}
+.action .m-card p,.action .kumo-copy .lead,.action .road p,.action .w-desc{color:#c8c2e8}
+.action .m-card .m-n{color:#ff8a4a}
+.action .w-card{border-left:6px solid var(--wc,#ff8a4a);box-shadow:0 20px 50px rgba(0,0,0,.45),-12px 0 40px -12px var(--wc,#ff8a4a)}
+.action .w-card h3{font-size:42px}
+.action .w-biome{color:var(--wc,#ff8a4a);opacity:.95}
+.action .w-feat li{background:rgba(255,255,255,.1);color:#fff}
+.action .stages button,.action .forms button{background:rgba(255,255,255,.1);color:#fff}
+.action .stages button[aria-selected="true"]{background:#ff5a2a}
+.action .forms button[aria-pressed="true"]{box-shadow:0 0 0 3px #ffb84a}
+.action .k-cap,.action .m-cardk small,.action .road .st{color:#9a92c8}
+.action .m-cardk b{color:#fff}.action .m-cardk .price span{background:rgba(255,255,255,.1)}
+.action .m-cardk img{background:radial-gradient(circle at 50% 40%,#2a2460,#120e30)}
+.action .m-cardk.rare{background:linear-gradient(rgba(16,12,40,.92),rgba(16,12,40,.92)) padding-box,var(--rare-gradient) border-box}
+.action .road::before{background:linear-gradient(#ff5a2a,#ffb84a 70%,rgba(255,255,255,.2))}
+.action .road li::before{background:#ff5a2a}.action .road li.progress::before{background:#ffb84a}.action .road li.next::before{background:#4a4470}
+.action .dive-line{color:#fff;text-shadow:0 4px 0 #2a0a1a,0 0 40px rgba(255,90,58,.5)}
+.action .final-in h2{text-shadow:0 6px 0 #2a0a1a,0 0 60px rgba(255,90,58,.5)}
+.action .foot{background:linear-gradient(transparent,rgba(7,6,26,.9))}
+.action .mech.world{min-height:120vh}

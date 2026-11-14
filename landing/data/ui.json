@@ -1,0 +1,79 @@
+[
+  {
+    "img": "landing/img/ui_map.jpg",
+    "title": {
+      "ru": "3D-карта мира",
+      "en": "3D world map"
+    },
+    "text": {
+      "ru": "Объёмная карта каждого мира: флажки для телепорта, боссы, задания. Крути мышью или пальцем, переключай миры вкладками.",
+      "en": "A 3D map of every world: teleport flags, bosses, quests. Spin it with the mouse or a finger and switch worlds with tabs."
+    }
+  },
+  {
+    "img": "docs/screens/ui/1-craft-recept.png",
+    "title": {
+      "ru": "Крафт",
+      "en": "Crafting"
+    },
+    "text": {
+      "ru": "Мобы роняют материалы своего мира. Из них по рецептам куются оружие, броня, крылья, сапоги и трофеи.",
+      "en": "Monsters drop their world's materials. Recipes turn them into weapons, armour, wings, boots and trophies."
+    }
+  },
+  {
+    "img": "docs/screens/ui/3-craft-oruzhie.png",
+    "title": {
+      "ru": "Оружие",
+      "en": "Weapons"
+    },
+    "text": {
+      "ru": "У каждого оружия свой стиль боя и свои приёмы. Легендарное оружие падает с боссов.",
+      "en": "Every weapon has its own fighting style and moves. Legendary weapons drop from bosses."
+    }
+  },
+  {
+    "img": "docs/screens/ui/5-craft-nektary.png",
+    "title": {
+      "ru": "Нектары",
+      "en": "Nectars"
+    },
+    "text": {
+      "ru": "Варятся в котле из урожая: короткие баффы к скорости, прыжкам и силе.",
+      "en": "Brewed in the cauldron from your harvest: short buffs to speed, jumps and strength."
+    }
+  },
+  {
+    "img": "docs/screens/ui/6-sumka.png",
+    "title": {
+      "ru": "Сумка",
+      "en": "Bag"
+    },
+    "text": {
+      "ru": "36 ячеек, быстрые слоты, снаряжение по слотам: тело, голова, ноги, крылья.",
+      "en": "36 slots, quick slots and gear by slot: body, head, feet, wings."
+    }
+  },
+  {
+    "img": "docs/screens/ui/7-menu-kniga.png",
+    "title": {
+      "ru": "Книга героя",
+      "en": "Hero's book"
+    },
+    "text": {
+      "ru": "Задания жителей, лор миров и достижения.",
+      "en": "Villagers' quests, world lore and achievements."
+    }
+  },
+  {
+    "img": "docs/screens/kumo_card53_rare.png",
+    "title": {
+      "ru": "Карточка Кумо",
+      "en": "Kumo card"
+    },
+    "text": {
+      "ru": "Живой портрет, сытость и настроение, шкалы миров, навыки, детали, семья и атака сверхредкого.",
+      "en": "A live portrait, fullness and mood, world scales, skills, parts, family and the ultra-rare's attack."
+    }
+  }
+]

@@ -1,0 +1,134 @@
+[
+  {
+    "tag": {
+      "ru": "Сюжет",
+      "en": "Story"
+    },
+    "title": {
+      "ru": "Шесть актов",
+      "en": "Six acts"
+    },
+    "text": {
+      "ru": "От Облачных островов до Олимпа, Разлома Хаоса, Звёздного купола, Бездны и неонового Хорая. Боги, титаны, кошмары и драконы — 32 босса.",
+      "en": "From the Cloud Isles to Olympus, the Chaos Rift, the Star Dome, the Abyss and neon Horai. Gods, titans, nightmares and dragons — 32 bosses."
+    },
+    "color": "#ffc23c"
+  },
+  {
+    "tag": {
+      "ru": "Кооп",
+      "en": "Co-op"
+    },
+    "title": {
+      "ru": "Вместе по сети",
+      "en": "Together online"
+    },
+    "text": {
+      "ru": "Общие мобы и боссы: один игрок ведёт бой, остальные видят то же самое. Добыча и опыт достаются всем. Можно взяться за руку, обняться и дать пять.",
+      "en": "Shared monsters and bosses: one player leads the fight, everyone sees the same thing. Loot and XP go to all. Hold hands, hug and high-five."
+    },
+    "color": "#5fd3ff"
+  },
+  {
+    "tag": "PvP",
+    "title": {
+      "ru": "Дуэли и ринг",
+      "en": "Duels and the ring"
+    },
+    "text": {
+      "ru": "PvP в любом мире с таблицей побед, а на Ярмарке — Пух-бокс в надувных перчатках: две победы из трёх раундов, гонг и боты-барашки.",
+      "en": "PvP in any world with a win board, and at the Fair — Puffy Boxing in inflatable gloves: best of three rounds, a gong and sheep bots."
+    },
+    "color": "#ff5d8a"
+  },
+  {
+    "tag": {
+      "ru": "Испытание",
+      "en": "Challenge"
+    },
+    "title": {
+      "ru": "Восхождение",
+      "en": "Ascension"
+    },
+    "text": {
+      "ru": "Портал на твоём острове ведёт в забег по случайным комнатам с модификаторами вроде низкой гравитации. Каждый раз новый маршрут.",
+      "en": "A portal on your island leads to runs through random rooms with modifiers such as low gravity. A new route every time."
+    },
+    "color": "#b070ff"
+  },
+  {
+    "tag": {
+      "ru": "Творчество",
+      "en": "Create"
+    },
+    "title": {
+      "ru": "Мастерская",
+      "en": "Workshop"
+    },
+    "text": {
+      "ru": "Строй свои карты: старт, финиш, чекпоинты. Публикуй, собирай лайки и звёзды создателя, соревнуйся на таблице рекордов своей карты.",
+      "en": "Build your own maps: start, finish, checkpoints. Publish them, collect likes and creator stars, compete on each map's leaderboard."
+    },
+    "color": "#8ee04a"
+  },
+  {
+    "tag": {
+      "ru": "Скорость",
+      "en": "Speed"
+    },
+    "title": {
+      "ru": "Забеги на время",
+      "en": "Time trials"
+    },
+    "text": {
+      "ru": "Пять трасс с призраком твоей лучшей попытки и общими таблицами рекордов. Здесь решают ритм-прыжки и рывки.",
+      "en": "Five tracks with a ghost of your best run and shared leaderboards. Rhythm jumps and dashes decide everything."
+    },
+    "color": "#ff9a3a"
+  },
+  {
+    "tag": {
+      "ru": "Последствия",
+      "en": "Aftermath"
+    },
+    "title": {
+      "ru": "Арена героев",
+      "en": "Hero Arena"
+    },
+    "text": {
+      "ru": "После падения Зевса начинаются Последствия: монстры злеют, просыпаются титаны первого мира, а Геракл приходит на Олимп мстить за отца. На Арене героев тебя ждут волны противников.",
+      "en": "After Zeus falls the Aftermath begins: monsters grow fiercer, the first world's titans wake, and Heracles comes to Olympus to avenge his father. The Hero Arena throws waves of foes at you."
+    },
+    "color": "#e0542a"
+  },
+  {
+    "tag": {
+      "ru": "Ярмарка",
+      "en": "Fair"
+    },
+    "title": {
+      "ru": "Мини-игры",
+      "en": "Mini-games"
+    },
+    "text": {
+      "ru": "Пух-бокс, «Пол — это лава» и «Курятник-переполох» — одному или с другом, за билеты Ярмарки.",
+      "en": "Puffy Boxing, The Floor Is Lava and Hen Chase — solo or with a friend, for Fair tickets."
+    },
+    "color": "#ff8fb8"
+  },
+  {
+    "tag": {
+      "ru": "Дом",
+      "en": "Home"
+    },
+    "title": {
+      "ru": "Свой остров",
+      "en": "Your own island"
+    },
+    "text": {
+      "ru": "Ферма, курочки и коровки, питомцы, заказы и десять уровней уюта. Остров растёт вместе с тобой, а в Облачном саду живут Кумо.",
+      "en": "A farm, hens and cows, pets, orders and ten cosiness levels. Your island grows with you, and Kumo live in the Cloud Garden."
+    },
+    "color": "#5cc23a"
+  }
+]

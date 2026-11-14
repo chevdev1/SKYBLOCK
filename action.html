@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hop to Olympus — шесть миров, боги и титаны</title>
+<meta name="description" content="Прыгай по облачным островам, сражайся с богами и титанами, обустрой свой остров и вырасти своего Кумо. Воксельная экшн-RPG прямо в браузере, одному или с другом.">
+<meta name="theme-color" content="#1e2260">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hop to Olympus — воксельная экшн-RPG в браузере">
+<meta property="og:description" content="Облачные острова, боги, неоновый Хорай и свой Кумо. Играй прямо в браузере.">
+<meta property="og:image" content="docs/screens/kumo_rare_lineup.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='3' y='5' width='10' height='8' fill='%23f4f8ff'/%3E%3Crect x='5' y='3' width='6' height='3' fill='%23f4f8ff'/%3E%3Crect x='5' y='8' width='2' height='2' fill='%2317324d'/%3E%3Crect x='9' y='8' width='2' height='2' fill='%2317324d'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Pixelify+Sans:wght@500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="landing/tokens.css">
+<link rel="stylesheet" href="landing/style.css">
+<link rel="stylesheet" href="landing/action.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Hop to Olympus","alternateName":"Прыг на Олимп","genre":["Action RPG","Sandbox","Platformer"],"gamePlatform":"Web browser","playMode":["SinglePlayer","CoOp"],"applicationCategory":"Game","inLanguage":["ru","en"],"description":"Воксельная экшн-RPG в браузере: облачные острова, боги, неоновый Хорай, свой остров и существа Кумо.","url":"/"}</script>
+</head>
+<body class="action">
+<div id="pre" aria-hidden="true"><div class="pre-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="pre-txt"><span id="preN">0</span>%</div></div>
+<canvas id="scene" aria-hidden="true"></canvas>
+<div id="grain" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="logo" href="#hero" data-go="hero">Hop to <b>Olympus</b></a>
+  <nav class="links" aria-label="Разделы">
+    <a href="#worlds" data-go="worlds" data-i18n="nav.worlds">Миры</a>
+    <a href="#mechanics" data-go="mechanics" data-i18n="nav.mech">Механики</a>
+    <a href="#kumo" data-go="kumo" data-i18n="nav.kumo">Кумо</a>
+    <a href="#roadmap" data-go="roadmap" data-i18n="nav.road">Роадмап</a>
+  </nav>
+  <div class="tools">
+    <button class="chip" id="lang" aria-label="Language">EN</button>
+    <button class="chip" id="sound" aria-pressed="false" aria-label="Звук" data-i18n-aria="sound">♪</button>
+    <a class="btn btn-play sm" href="play/" data-i18n="cta.play">Играть</a>
+  </div>
+</header>
+
+<main>
+  <section id="hero" class="sec" data-cam="hero">
+    <div class="wrap hero-in">
+      <p class="eyebrow reveal" data-i18n="hero.eyebrow">Воксельная экшн-RPG прямо в браузере</p>
+      <h1 class="reveal"><span data-i18n="hero.h1a">Сражайся</span><span class="big" data-i18n="hero.h1b">за небо</span></h1>
+      <p class="lead reveal" data-i18n="hero.lead">Прыгай по облачным островам, сражайся с богами и вырасти своего Кумо — одному или вместе с другом.</p>
+      <div class="ctas reveal">
+        <a class="btn btn-play" href="play/"><span data-i18n="cta.play">Играть</span><i>▶</i></a>
+        <button class="btn btn-ghost" id="trailerBtn"><span data-i18n="cta.trailer">Смотреть бой</span></button>
+      </div>
+      <p class="note reveal" data-i18n="hero.note">Бесплатно · без установки · ПК и телефон</p>
+      <button class="snd-pill reveal" id="sound2" aria-pressed="false"><i><b></b><b></b><b></b><b></b></i><span>Включить звук</span></button>
+    </div>
+    <button class="scroll-hint" data-go="dive"><span data-i18n="hero.scroll">Спускайся вниз</span><i></i></button>
+  </section>
+
+  <section id="dive" class="sec short" data-cam="dive">
+    <div class="wrap"><p class="dive-line reveal" data-i18n="dive.line">Под облаками — целые миры.</p></div>
+  </section>
+
+  <section id="worlds" class="sec-group">
+    <div class="wrap mech-head"><div class="sec-head reveal"><p class="eyebrow" data-i18n="worlds.eyebrow">Миры</p><h2 data-i18n="worlds.title">Шесть миров</h2></div></div>
+    <div id="worldStack"></div>
+  </section>
+
+  <section id="mechanics" class="sec-group">
+    <div class="wrap mech-head"><div class="sec-head reveal"><p class="eyebrow" data-i18n="mech.eyebrow">Механики</p><h2 data-i18n="mech.title">Что ты будешь делать</h2></div></div>
+    <div id="mechList"></div>
+  </section>
+
+  <section id="kumo" class="sec tall" data-cam="kumo">
+    <div class="wrap kumo-in">
+      <div class="kumo-copy reveal">
+        <p class="eyebrow" data-i18n="kumo.eyebrow">Твой спутник</p>
+        <h2 data-i18n="kumo.title">Вырасти своего Кумо</h2>
+        <p class="lead" data-i18n="kumo.lead">Облачный малыш вылупляется из яйца и растёт от того, чем ты его кормишь. Искорки от черепашек, гарпий, призраков и кицунэ дают ему детали и превращают во взрослую форму своего мира.</p>
+        <div class="stages" id="kStages" role="tablist"></div>
+        <div class="forms" id="kForms"></div>
+        <label class="rare-toggle"><input type="checkbox" id="kRare"><span class="rt-box"></span><span data-i18n="kumo.rare">Сверхредкий · шанс 1%</span></label>
+        <p class="k-cap" id="kCap"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="market" class="sec" data-cam="market">
+    <div class="wrap">
+      <div class="sec-head reveal"><p class="eyebrow" data-i18n="market.eyebrow">Скоро</p><h2 data-i18n="market.title">Маркетплейс Кумо</h2><p class="lead" data-i18n="market.lead">Меняйся Кумо с друзьями, собирай редкие формы и устраивай с ними игры. У каждого Кумо свой номер и своя история.</p></div>
+      <div class="m-filters reveal" aria-hidden="true"><span class="chip on" data-i18n="market.all">Все</span><span class="chip" data-i18n="market.rare">Сверхредкие</span><span class="chip" data-i18n="market.adult">Взрослые</span><span class="chip" data-i18n="market.baby">Малыши</span></div>
+      <div class="m-grid" id="mGrid"></div>
+      <p class="disclaimer">[TOKEN] · [ЮРИДИЧЕСКИЙ ТЕКСТ — УТОЧНИТЬ]</p>
+    </div>
+  </section>
+
+  <section id="roadmap" class="sec" data-cam="road">
+    <div class="wrap">
+      <div class="sec-head reveal"><p class="eyebrow" data-i18n="road.eyebrow">Роадмап</p><h2 data-i18n="road.title">Мы только разгоняемся</h2></div>
+      <ol class="road" id="roadList"></ol>
+    </div>
+  </section>
+
+  <section id="final" class="sec" data-cam="final">
+    <div class="wrap final-in">
+      <h2 class="reveal" data-i18n="final.title">Олимп ждёт</h2>
+      <p class="lead reveal" data-i18n="final.lead">Первый прыжок — через пару секунд. Без установки и регистрации.</p>
+      <a class="btn btn-play xl reveal" href="play/"><span data-i18n="cta.play">Играть</span><i>▶</i></a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span class="logo">Hop to <b>Olympus</b></span>
+    <nav class="soc" aria-label="Сообщество"><a href="#" data-todo>Telegram</a><a href="#" data-todo>Discord</a><a href="#" data-todo>YouTube</a><a href="#" data-todo data-i18n="foot.press">Пресс-кит</a></nav>
+    <span class="copy">© 2026 Hop to Olympus · <span data-i18n="foot.todo">[УТОЧНИТЬ: ссылки на сообщество]</span></span>
+  </div>
+</footer>
+
+<dialog id="trailer"><button class="round close" id="trailerClose" aria-label="Закрыть">×</button><video id="trailerVid" src="docs/video/horai_fight.mp4" controls playsinline preload="none"></video></dialog>
+<noscript><style>#pre{display:none}</style></noscript>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="landing/voxel.js"></script>
+<script>window.HTO_CFG={action:true,night:true,stack:true,worlds:"landing/data/worlds-all.json",mechanics:"landing/data/mechanics-action.json",kumo:{stage:3,form:"sum",rare:true},i18n:{ru:{"hero.eyebrow":"Hop to Olympus · шесть миров","hero.h1a":"Сражайся","hero.h1b":"за небо","hero.lead":"Боги пали, титаны рвутся на свободу, а под облаками ждут шесть миров. Возьми клинок, позови друга и поднимись на Олимп.","cta.play":"В бой","dive.line":"Шесть миров. Один герой.","worlds.eyebrow":"Миры","worlds.title":"Шесть миров","mech.eyebrow":"Бой","mech.title":"Как ты сражаешься","kumo.eyebrow":"Боевой спутник","kumo.title":"Твой Кумо дерётся рядом","kumo.lead":"Сверхредкий Кумо выпадает с шансом 1% и идёт с тобой в поход: молнии, теневые шары, лисьи огоньки и радужный луч.","final.title":"Небо ждёт героя","final.lead":"Первый бой — через пару секунд. Без установки и регистрации."},en:{"hero.eyebrow":"Hop to Olympus · six worlds","hero.h1a":"Fight","hero.h1b":"for the sky","hero.lead":"The gods have fallen, the titans are breaking free and six worlds wait below the clouds. Grab a blade, call a friend and climb to Olympus.","cta.play":"Fight","dive.line":"Six worlds. One hero.","worlds.eyebrow":"Worlds","worlds.title":"Six worlds","mech.eyebrow":"Combat","mech.title":"How you fight","kumo.eyebrow":"Battle companion","kumo.title":"Your Kumo fights beside you","kumo.lead":"An ultra-rare Kumo drops at a 1% chance and joins your adventures: lightning, shadow orbs, fox fires and a rainbow beam.","final.title":"The sky needs a hero","final.lead":"Your first fight is seconds away. No install, no sign-up."}}};</script>
+<script src="landing/app.js"></script>
+</body>
+</html>

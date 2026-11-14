@@ -1,0 +1,38 @@
+[
+  {
+    "id": "fight",
+    "scene": "fight",
+    "title": {
+      "ru": "Комбо, которые решают",
+      "en": "Combos that matter"
+    },
+    "text": {
+      "ru": "Удар, удар, пауза — Цубамэ-гаэси. Катаны, косы, кулаки и Звездолом, у каждого свой ритм.",
+      "en": "Strike, strike, pause — Tsubame-gaeshi. Katanas, scythes, fists and the Starbreaker, each with its own rhythm."
+    }
+  },
+  {
+    "id": "boss",
+    "scene": "boss",
+    "title": {
+      "ru": "Побеждай богов и титанов",
+      "en": "Defeat gods and titans"
+    },
+    "text": {
+      "ru": "Каждый мир заканчивается боссом из мифов: Зевс, Кронос, Медуза, Эреб и другие.",
+      "en": "Every world ends with a boss from myth: Zeus, Kronos, Medusa, Erebus and more."
+    }
+  },
+  {
+    "id": "coop",
+    "scene": "coop",
+    "title": {
+      "ru": "Не в одиночку",
+      "en": "Not alone"
+    },
+    "text": {
+      "ru": "Зови друга: общие боссы, Пух-бокс на ринге, прогулки за руку.",
+      "en": "Bring a friend: shared bosses, puffy boxing in the ring, walks hand in hand."
+    }
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "islands",
+    "theme": "islands",
+    "color": "#5cc23a",
+    "name": { "ru": "Облачные острова", "en": "Cloud Isles" },
+    "biome": { "ru": "Луга, сады и космос над ними", "en": "Meadows, gardens and the space above" },
+    "desc": { "ru": "Пять ярусов парящих островов, которые держит Звёздное сердце. Прыгай всё выше, собирай снаряжение и учись летать.", "en": "Five tiers of floating isles held up by the Star Heart. Jump higher, gather gear and learn to fly." },
+    "features": { "ru": ["Ритм-прыжки до мега-прыжка", "Крылья и крюк-кошка", "Серафим — страж сердца"], "en": ["Rhythm jumps up to a mega jump", "Wings and a grappling hook", "Seraph, guardian of the heart"] }
+  },
+  {
+    "id": "olympus",
+    "theme": "olympus",
+    "color": "#e8dcc0",
+    "name": { "ru": "Царство богов", "en": "Realm of the Gods" },
+    "biome": { "ru": "Мраморные сады и кузни Олимпа", "en": "Marble gardens and the forges of Olympus" },
+    "desc": { "ru": "Сады Гесперид, Кузня Гефеста и Чертог Зевса. Боги не ушли — они стерегут тюрьму титанов.", "en": "The Gardens of the Hesperides, the Forge of Hephaestus and the Hall of Zeus. The gods never left — they guard the titans' prison." },
+    "features": { "ru": ["Боги-боссы", "Арена титанов", "Легендарное оружие"], "en": ["God bosses", "Titan arena", "Legendary weapons"] }
+  },
+  {
+    "id": "horai",
+    "theme": "horai",
+    "color": "#22e6ff",
+    "name": { "ru": "Хорай", "en": "Horai" },
+    "biome": { "ru": "Неоновый летающий город", "en": "A flying neon city" },
+    "desc": { "ru": "Город тысячи фонарей под вечным дождём. Ронины, тэнгу и они дерутся твоими же приёмами, а под городом спят драконы.", "en": "A city of a thousand lanterns under endless rain. Ronin, tengu and oni fight with your own moves, and dragons sleep beneath." },
+    "features": { "ru": ["Катаны и комбо с паузой", "Дуэли с тенью героя", "Драконы Киёхимэ и Рюдзин"], "en": ["Katanas and pause combos", "Duels with the hero's shadow", "Dragons Kiyohime and Ryujin"] }
+  },
+  {
+    "id": "abyss",
+    "theme": "abyss",
+    "color": "#7a3aaa",
+    "name": { "ru": "Бездна Эреба", "en": "Abyss of Erebus" },
+    "biome": { "ru": "Тёмный мир за Вратами Тартара", "en": "A dark world beyond the Gates of Tartarus" },
+    "desc": { "ru": "Перевёрнутый лес, кошмары и светящиеся кристаллы. Сюда спускаются только со Звездоломом в руках.", "en": "An upside-down forest, nightmares and glowing crystals. Only those holding the Starbreaker come down here." },
+    "features": { "ru": ["Кошмары Ламия, Эмпуса, Мормо", "Покров кошмара", "Эреб — владыка тьмы"], "en": ["Nightmares Lamia, Empusa, Mormo", "The Nightmare Shroud", "Erebus, lord of darkness"] }
+  }
+]

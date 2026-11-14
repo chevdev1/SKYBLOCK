@@ -164,10 +164,11 @@ async function api(req, res, url) {
 }
 
 /* ---------- static files (game only, never the server folder) ---------- */
-const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.png': 'image/png', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.json': 'application/json' };
+const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.json': 'application/json', '.mp4': 'video/mp4', '.woff2': 'font/woff2' };
 function serveStatic(req, res, url) {
   let rel = decodeURIComponent(url.pathname);
-  if (rel === '/') rel = '/index.html';
+  if (rel === '/play') { res.writeHead(301, { Location: '/play/' + (url.search || '') }); return res.end(); }
+  if (rel.endsWith('/')) rel += 'index.html';
   const file = path.resolve(ROOT, '.' + rel);
   const ext = path.extname(file).toLowerCase();
   if (!file.startsWith(ROOT + path.sep) || file.startsWith(__dirname) || !TYPES[ext] || path.basename(file).startsWith('.')) {

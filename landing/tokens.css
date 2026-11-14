@@ -1,0 +1,59 @@
+/* Design tokens taken from the game (index.html): UI palette, hero skins, Kumo, world colours, fonts */
+:root {
+  --ink: #17324d;
+  --muted: #46607e;
+  --panel: #ffffff;
+  --panel-2: #e8f4ff;
+  --pink: #ff5d8a;
+  --gold: #ffc23c;
+  --sky: #8fd3ff;
+  --empty: #c9d6e4;
+  --glass: rgba(16, 24, 48, .58);
+
+  --kumo: #f4f8ff;
+  --kumo-shade: #dde8f7;
+  --rare-1: #39ff14;
+  --rare-2: #ffee00;
+  --rare-3: #ff1493;
+  --rare-4: #9d00ff;
+  --rare-gradient: linear-gradient(90deg, var(--rare-1), var(--rare-2), var(--rare-3), var(--rare-4));
+
+  --sky-space: #0d1440;
+  --sky-dusk: #5a3aa8;
+  --sky-olympus: #ffcf6a;
+  --sky-day: #8fd3ff;
+  --sky-home: #cfeaff;
+
+  --w-islands: #5cc23a;
+  --w-olympus: #e8dcc0;
+  --w-chaos: #7a3aaa;
+  --w-stardome: #9fb8ff;
+  --w-abyss: #3a2050;
+  --w-horai: #22e6ff;
+  --w-home: #8ee04a;
+
+  --font-display: 'Pixelify Sans', system-ui, sans-serif;
+  --font-body: 'Nunito', system-ui, sans-serif;
+  --font-pixel: 'Press Start 2P', monospace;
+
+  --fs-hero: clamp(44px, 8vw, 112px);
+  --fs-h2: clamp(32px, 5vw, 64px);
+  --fs-h3: clamp(20px, 2.4vw, 28px);
+  --fs-body: 18px;
+  --fs-small: 14px;
+
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-pill: 999px;
+
+  --sh-block: 0 6px 0 rgba(23, 50, 77, .18);
+  --sh-float: 0 24px 60px rgba(13, 20, 64, .35);
+  --sh-rare: 0 0 32px rgba(255, 20, 147, .55), 0 0 64px rgba(57, 255, 20, .35);
+
+  --t-fast: 160ms;
+  --t-base: 320ms;
+  --t-slow: 700ms;
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+  --ease-bounce: cubic-bezier(.2, 1.4, .4, 1);
+}
