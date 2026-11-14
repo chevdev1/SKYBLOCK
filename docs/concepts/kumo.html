@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Кумо — концепт</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1b2a44;--soft:#5a6a84;--card:#ffffffd9}
+*{box-sizing:border-box}
+body{margin:0;width:1600px;height:1040px;overflow:hidden;font-family:Nunito,system-ui,sans-serif;color:var(--ink);background:linear-gradient(#8fd0ff 0%,#cfeaff 55%,#fff4e6 100%)}
+#v{position:absolute;left:0;top:0;width:1600px;height:720px}
+h1{position:absolute;left:36px;top:18px;margin:0;font-size:40px;font-weight:900;letter-spacing:.5px}
+h1 small{font-size:20px;font-weight:800;color:var(--soft);margin-left:12px}
+.row{position:absolute;left:36px;font-size:15px;font-weight:900;color:#fff;background:var(--ink);padding:4px 12px;border-radius:10px}
+.lab{position:absolute;transform:translateX(-50%);text-align:center;width:200px}
+.lab b{display:block;font-size:17px;font-weight:900}
+.lab i{display:block;font-style:normal;font-size:12.5px;font-weight:800;color:var(--soft);line-height:1.25}
+.arrow{position:absolute;font-size:34px;font-weight:900;color:#ffffffcc;transform:translate(-50%,-50%)}
+#sys{position:absolute;left:24px;right:24px;top:730px;bottom:18px;display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.c{background:var(--card);border-radius:18px;padding:14px 16px;box-shadow:0 5px 0 #0000001a}
+.c h3{margin:0 0 6px;font-size:18px;font-weight:900}
+.c h3 span{display:inline-block;width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;text-align:center;line-height:26px;font-size:15px;margin-right:6px}
+.c p{margin:0 0 6px;font-size:13.5px;line-height:1.35;font-weight:700;color:#33405a}
+.c ul{margin:0;padding-left:16px;font-size:13px;line-height:1.4;font-weight:700;color:#33405a}
+.tag{display:inline-block;padding:1px 8px;border-radius:8px;font-size:12px;font-weight:900;margin:1px 2px 1px 0}
+</style></head><body>
+<canvas id="v"></canvas>
+<h1>Кумо — облачные малыши <small>растут от того, чем их кормишь</small></h1>
+<div class="row" style="top:84px">Рост</div>
+<div class="row" style="top:336px">Взрослые формы</div>
+<div id="labs"></div>
+<div id="sys">
+ <div class="c"><h3><span>1</span>Облачный сад</h3><p>Новый островок у дома: пруд, деревце с облачными фруктами, игрушки. Первое яйцо дарит Бабушка Облачка, до 6 Кумо.</p><p>Кумо гуляют, спят, плещутся, радуются тебе. Над головой — капелька настроения: ♥, «!», «?», «zzz».</p></div>
+ <div class="c"><h3><span>2</span>Искорки от мобов</h3><p>Побеждённые мобы роняют <b>искорку</b> своего мира:</p><ul>
+  <li><span class="tag" style="background:#d8f5c0">луговая</span> кротики, барашки, черепашки, зайчики</li>
+  <li><span class="tag" style="background:#fff0b0">громовая</span> гарпии, бури, големы Олимпа</li>
+  <li><span class="tag" style="background:#e4d4ff">сумрачная</span> призраки, ужасы, бесы Бездны</li>
+  <li><span class="tag" style="background:#ffd6d0">фонарная</span> кицунэ, тэнгу, они Хорая</li>
+  <li><span class="tag" style="background:#d0dcff">звёздная</span> звёздочки, шестерёнки Свода</li></ul></div>
+ <div class="c"><h3><span>3</span>Кормишь — растёт</h3><p>Каждая искорка сразу даёт <b>деталь</b> от этого моба: панцирь черепашки, ушки, крылышки гарпии, хвостик призрака, лисий хвост, антенну-шестерёнку.</p><p>И двигает <b>шкалу мира</b> и навыки: бег, полёт, плавание, сила.</p></div>
+ <div class="c"><h3><span>4</span>Эволюция</h3><p>Малыш → Подросток (после 10 кормлений) → взрослая форма (после 30). Форму выбирает самая большая шкала мира.</p><p>Все шкалы поровну — редкий <b>Радужный</b>. Через неделю взрослый может уйти в <b>кокон</b> и вылупиться малышом заново, сохранив часть навыков — так собирают все формы.</p></div>
+ <div class="c"><h3><span>5</span>Зачем растить</h3><ul>
+  <li><b>Облачные гонки</b> на Ярмарке: трасса с бегом, полётом и прудом — решают навыки</li>
+  <li><b>Пух-бокс Кумо</b>: твой Кумо против Кумо друга на ринге</li>
+  <li>Кумо можно взять с собой вместо питомца</li>
+  <li>Альбом форм, билеты и уют за первые эволюции</li></ul></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const cv=document.getElementById('v'),R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true,preserveDrawingBuffer:true});R.setPixelRatio(1);R.setSize(1600,720,false);R.shadowMap.enabled=true;R.shadowMap.type=THREE.PCFSoftShadowMap;
+const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(30,1600/720,0.1,200);cam.position.set(0,6.4,21.5);cam.lookAt(0,1.15,0);
+scene.add(new THREE.HemisphereLight(0xffffff,0xb8c8e0,0.75));const sun=new THREE.DirectionalLight(0xffffff,0.75);sun.position.set(6,14,10);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-20,right:20,top:12,bottom:-12});scene.add(sun);
+const BOX=new THREE.BoxGeometry(1,1,1),MC={};const lam=(c,o)=>{const k=c+'|'+(o||1);return MC[k]||(MC[k]=new THREE.MeshLambertMaterial(o&&o<1?{color:c,transparent:true,opacity:o}:{color:c}))};
+const bas=c=>new THREE.MeshBasicMaterial({color:c});
+function B(p,w,h,d,c,x,y,z,mat){const m=new THREE.Mesh(BOX,mat||lam(c));m.scale.set(w,h,d);m.position.set(x,y,z);m.castShadow=true;p.add(m);return m}
+/* the shared cloud body: a puffy core, stubby feet and arms, big eyes, blush */
+function body(g,col,o){const c=col||0xf4f8ff,sh=(o&&o.shade)||0xdde8f7,ghost=o&&o.ghost;
+  B(g,1.1,0.9,0.95,c,0,0.75,0);B(g,0.55,0.55,0.55,c,-0.52,0.7,0.05);B(g,0.55,0.55,0.55,c,0.52,0.7,0.05);B(g,0.6,0.42,0.6,c,0.18,1.27,0);B(g,0.5,0.36,0.5,c,-0.25,1.22,0.08);B(g,0.7,0.5,0.4,sh,0,0.62,-0.4);
+  if(!ghost){B(g,0.32,0.22,0.36,sh,-0.25,0.2,0.08);B(g,0.32,0.22,0.36,sh,0.25,0.2,0.08)}
+  B(g,0.22,0.24,0.24,c,-0.68,0.62,0.22);B(g,0.22,0.24,0.24,c,0.68,0.62,0.22);
+  const ey=(o&&o.eye)||0x1d2433;for(const s of [-1,1]){B(g,0.17,0.25,0.04,ey,s*0.21,0.84,0.48,o&&o.glowEye?bas(ey):null);B(g,0.07,0.08,0.02,0xffffff,s*0.21+0.04,0.9,0.5,bas(0xffffff));B(g,0.14,0.06,0.02,0xffa0b8,s*0.36,0.66,0.49)}
+  B(g,0.1,0.04,0.02,0x5a3a4a,0,0.66,0.49)}
+/* the mood drop that floats above the head */
+function drop(g,kind,y){const d=new THREE.Group();d.position.set(0,y||1.95,0);g.add(d);
+  if(kind==='heart'){B(d,0.12,0.12,0.1,0xff5d8a,-0.06,0.05,0,bas(0xff5d8a));B(d,0.12,0.12,0.1,0xff5d8a,0.06,0.05,0,bas(0xff5d8a));B(d,0.12,0.12,0.1,0xff5d8a,0,-0.05,0,bas(0xff5d8a))}
+  else if(kind==='clover'){[[-0.08,0],[0.08,0],[0,0.08],[0,-0.08]].forEach(([x,yy])=>B(d,0.11,0.11,0.06,0x5cc23a,x,yy,0,bas(0x5cc23a)))}
+  else if(kind==='bolt'){B(d,0.08,0.18,0.06,0xffd84a,0.03,0.08,0,bas(0xffd84a));B(d,0.16,0.05,0.06,0xffd84a,0,0,0,bas(0xffd84a));B(d,0.08,0.18,0.06,0xffd84a,-0.03,-0.08,0,bas(0xffd84a))}
+  else if(kind==='flame'){B(d,0.16,0.16,0.1,0xb070ff,0,0,0,bas(0xb070ff));B(d,0.1,0.14,0.08,0xd8b0ff,0,0.12,0,bas(0xd8b0ff));B(d,0.05,0.08,0.06,0xffffff,0,0.22,0,bas(0xffffff))}
+  else if(kind==='lantern'){B(d,0.2,0.22,0.2,0xff4a3a,0,0,0,bas(0xff6a4a));B(d,0.22,0.04,0.22,0x3b2410,0,0.13,0);B(d,0.22,0.04,0.22,0x3b2410,0,-0.13,0)}
+  else if(kind==='star'){B(d,0.2,0.07,0.06,0xfff2a0,0,0,0,bas(0xfff2a0));B(d,0.07,0.2,0.06,0xfff2a0,0,0,0,bas(0xfff2a0));B(d,0.1,0.1,0.06,0xffffff,0,0,0,bas(0xffffff)).rotation.z=0.78}
+  else if(kind==='rainbow'){[0xff6a8a,0xffc84a,0x8ee04a,0x5fb8ff,0xb070ff].forEach((c,i)=>B(d,0.07,0.07,0.07,c,(i-2)*0.075,Math.sin(i/4*Math.PI)*0.06,0,bas(c)))}
+  else{const m=new THREE.Mesh(new THREE.SphereGeometry(0.09,10,8),bas(0x9fd8ff));d.add(m);const t=new THREE.Mesh(new THREE.ConeGeometry(0.075,0.14,8),bas(0x9fd8ff));t.position.y=0.1;d.add(t)}
+  return d}
+/* parts given by mobs */
+const P={
+  shell(g){B(g,0.95,0.7,0.3,0x5a9a3a,0,0.82,-0.55);[[-0.22,0.98],[0.22,0.98],[0,0.72],[-0.26,0.62],[0.26,0.62]].forEach(([x,y])=>B(g,0.2,0.18,0.06,0x8ec85a,x,y,-0.72));B(g,1.0,0.08,0.34,0x3a7a2a,0,0.5,-0.55)},
+  bunny(g,c){for(const s of [-1,1]){const e=new THREE.Group();e.position.set(s*0.2,1.4,0.02);e.rotation.z=s*-0.18;g.add(e);B(e,0.17,0.62,0.14,c||0xf4f8ff,0,0.3,0);B(e,0.08,0.44,0.03,0xffb0c0,0,0.3,0.075)}},
+  wings(g,c){for(const s of [-1,1]){const w=new THREE.Group();w.position.set(s*0.5,0.95,-0.35);w.rotation.set(0,s*0.5,s*-0.35);g.add(w);B(w,0.62,0.34,0.06,c||0xffffff,s*0.3,0.05,0);B(w,0.44,0.18,0.06,0xffe8a0,s*0.42,-0.18,0);B(w,0.3,0.14,0.06,c||0xffffff,s*0.55,0.24,0)}},
+  ghost(g,c){[[0,0.28,0.85],[0,0.05,0.6],[0.12,-0.13,0.36],[0.2,-0.28,0.18]].forEach(([x,y,w],i)=>B(g,w,0.26,w*0.9,c,x,y,-0.05*i))},
+  horns(g,c){for(const s of [-1,1]){B(g,0.13,0.2,0.13,c||0x3a2050,s*0.3,1.5,0.1);B(g,0.08,0.12,0.08,c||0x3a2050,s*0.34,1.64,0.12)}},
+  oni(g){B(g,0.13,0.26,0.13,0xffe0a0,0.12,1.55,0.15);B(g,0.08,0.12,0.08,0xffe0a0,0.12,1.72,0.15)},
+  foxEars(g){for(const s of [-1,1]){B(g,0.24,0.3,0.12,0xffffff,s*0.3,1.5,0.05);B(g,0.12,0.18,0.04,0xff4a3a,s*0.3,1.5,0.12)}},
+  foxTail(g,n){for(let i=0;i<(n||1);i++){const t=new THREE.Group();t.position.set(0,0.55,-0.45);t.rotation.set(-0.9,(i-(n-1)/2)*0.55,0);g.add(t);B(t,0.32,0.32,0.75,0xffffff,0,0,-0.35);B(t,0.34,0.34,0.22,0xff6a3a,0,0,-0.76)}},
+  gear(g){B(g,0.05,0.42,0.05,0x9aa0b8,0,1.65,0);const gr=new THREE.Group();gr.position.set(0,1.92,0);g.add(gr);B(gr,0.26,0.26,0.08,0xd0a040,0,0,0);for(let i=0;i<4;i++){const t=B(gr,0.42,0.08,0.08,0xd0a040,0,0,0);t.rotation.z=i*Math.PI/4}B(gr,0.1,0.1,0.1,0x5a4020,0,0,0)},
+  stars(g){[[0.4,1.05,0.4],[-0.45,0.85,0.35],[0.2,0.45,0.48],[-0.15,1.25,0.4],[0.55,0.6,0.2]].forEach(([x,y,z])=>{B(g,0.1,0.1,0.02,0xfff2a0,x,y,z,bas(0xfff2a0)).rotation.z=0.78})},
+  flower(g){B(g,0.06,0.2,0.06,0x5cc23a,0.25,1.55,0.05);[[0,0.12],[0.1,0],[-0.1,0],[0,-0.1]].forEach(([x,y])=>B(g,0.11,0.11,0.06,0xff8fb8,0.25+x,1.7+y,0.05,bas(0xff9ac0)));B(g,0.08,0.08,0.07,0xffe14d,0.25,1.7,0.07,bas(0xffe14d))},
+  wreath(g){for(let i=0;i<10;i++){const a=i/10*Math.PI*2;B(g,0.14,0.08,0.08,i%2?0x8ec85a:0x5a9a3a,Math.cos(a)*0.42,1.42,Math.sin(a)*0.38).rotation.y=-a}},
+  halo(g){const h=new THREE.Mesh(new THREE.TorusGeometry(0.32,0.05,8,24),bas(0xfff2a0));h.rotation.x=Math.PI/2;h.position.y=1.85;g.add(h)},
+  mask(g){B(g,0.5,0.08,0.03,0xff3a5a,0,1.0,0.49,bas(0xff3a5a));B(g,0.06,0.2,0.03,0xff3a5a,0,1.1,0.49,bas(0xff3a5a))}};
+function mk(build,x,y,s){const g=new THREE.Group();g.position.set(x,y,0);g.rotation.y=-0.62;g.scale.setScalar(s||1);build(g);scene.add(g);
+  const base=new THREE.Mesh(new THREE.CylinderGeometry(1.05,0.8,0.35,20),lam(0xffffff));base.position.set(x,y-0.18,0);base.receiveShadow=true;scene.add(base);
+  const grass=new THREE.Mesh(new THREE.CylinderGeometry(1.06,1.06,0.08,20),lam(0x8ee04a));grass.position.set(x,y+0.0,0);grass.receiveShadow=true;scene.add(grass);return g}
+const LAB=[],ARR=[];const lab=(x,y,b,i)=>LAB.push({p:new THREE.Vector3(x,y,0),b,i});
+/* row 1: growth */
+const Y1=3.2,X1=[-10.5,-6.3,-2.1,2.1,6.3,10.5];
+mk(g=>{const e=new THREE.Mesh(new THREE.SphereGeometry(0.55,16,12),new THREE.MeshPhongMaterial({color:0xeaf6ff,shininess:60}));e.scale.set(1,1.25,1);e.position.y=0.7;e.castShadow=true;g.add(e);[[0.2,0.95,0.42],[-0.3,0.6,0.4],[0.35,0.45,0.35],[-0.1,1.15,0.35]].forEach(([x,y,z])=>B(g,0.12,0.12,0.12,0x9fd8ff,x,y,z,bas(0x9fd8ff)))},X1[0],Y1);
+lab(X1[0],Y1-0.6,'Яйцо','Бабушка Облачка дарит первое. Вылупляется в саду');
+mk(g=>{body(g);drop(g,'drop')},X1[1],Y1,0.82);lab(X1[1],Y1-0.6,'Малыш','Чистое облачко. Капелька — настроение');
+mk(g=>{body(g);P.shell(g);drop(g,'heart')},X1[2],Y1,0.82);lab(X1[2],Y1-0.6,'+ искорка черепашки','Сразу появляется панцирь');
+mk(g=>{body(g);P.bunny(g);drop(g,'heart')},X1[3],Y1,0.82);lab(X1[3],Y1-0.6,'+ искорка зайчика','Ушки — с первого кормления');
+mk(g=>{body(g,0xeee6ff,{shade:0xd8ccf0});P.ghost(g,0xe2d8ff);drop(g,'flame',1.95)},X1[4],Y1,0.82);lab(X1[4],Y1-0.6,'+ искорка призрака','Хвостик вместо ножек');
+mk(g=>{body(g);P.bunny(g);P.wings(g);drop(g,'drop')},X1[5],Y1,0.95);lab(X1[5],Y1-0.6,'Подросток','Детали копятся, Кумо подрастает');
+for(let i=0;i<5;i++)ARR.push(new THREE.Vector3((X1[i]+X1[i+1])/2,Y1+0.9,0));
+/* row 2: adult forms */
+const Y2=-1.6,X2=[-11,-6.6,-2.2,2.2,6.6,11];
+mk(g=>{body(g,0xfffbea,{shade:0xf0e6c8});P.shell(g);P.bunny(g,0xfffbea);P.flower(g);drop(g,'clover',2.2)},X2[0],Y2,1.15);lab(X2[0],Y2-0.65,'Луговой','Земляные облака. Бег и сила');
+mk(g=>{body(g,0xfff6d8,{shade:0xf0e0a8});P.wings(g,0xffffff);P.wreath(g);drop(g,'bolt',2.1)},X2[1],Y2,1.15);lab(X2[1],Y2-0.65,'Громовой','Олимп. Полёт');
+mk(g=>{body(g,0xb8a0f0,{shade:0x9a80d8,ghost:true,eye:0x5ff0ff,glowEye:true});P.ghost(g,0xa890e8);P.horns(g,0x4a2a70);drop(g,'flame',2.0)},X2[2],Y2+0.25,1.15);lab(X2[2],Y2-0.65,'Сумрачный','Бездна и Эреб. Парит, светятся глаза');
+mk(g=>{body(g,0xfffaf6,{shade:0xf0e0d8});P.foxEars(g);P.foxTail(g,3);P.oni(g);P.mask(g);drop(g,'lantern',2.1)},X2[3],Y2,1.15);lab(X2[3],Y2-0.65,'Фонарный','Хорай. Хвосты кицунэ, рожок они');
+mk(g=>{body(g,0x4a5aa8,{shade:0x3a4890,eye:0xfff2a0,glowEye:true});P.stars(g);P.gear(g);drop(g,'star',2.35)},X2[4],Y2,1.15);lab(X2[4],Y2-0.65,'Звёздный','Небесный свод. Плавает в небе как в воде');
+mk(g=>{body(g,0xfff0f8,{shade:0xf0d8ea});P.halo(g);P.wings(g,0xd8f0ff);[0xff8aa0,0xffd070,0x9ae070,0x80c8ff,0xc090ff].forEach((c,i)=>B(g,0.2,0.2,0.2,c,-0.5+i*0.25,1.3+Math.sin(i)*0.05,-0.1));drop(g,'rainbow',2.25)},X2[5],Y2,1.15);lab(X2[5],Y2-0.65,'Радужный','Редкий: все искорки поровну');
+R.render(scene,cam);
+const L=document.getElementById('labs');const pr=v=>{const q=v.clone().project(cam);return[(q.x+1)/2*1600,(1-q.y)/2*720]};
+LAB.forEach(o=>{const[x,y]=pr(o.p);const d=document.createElement('div');d.className='lab';d.style.left=x+'px';d.style.top=y+'px';d.innerHTML='<b>'+o.b+'</b><i>'+o.i+'</i>';L.appendChild(d)});
+ARR.forEach(v=>{const[x,y]=pr(v);const d=document.createElement('div');d.className='arrow';d.style.left=x+'px';d.style.top=y+'px';d.textContent='→';L.appendChild(d)});
+let t0=performance.now();(function loop(){const t=(performance.now()-t0)/1000;scene.children.forEach((o,i)=>{if(o.isGroup){o.rotation.y=-0.62+Math.sin(t*0.5+i)*0.12;o.children.forEach(c=>{})}});R.render(scene,cam);requestAnimationFrame(loop)})();
+</script></body></html>

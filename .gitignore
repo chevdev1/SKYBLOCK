@@ -4,3 +4,4 @@ node_modules/
 dist/
 server/data.json
 server/data.json.tmp
+server/data.backup*.json
