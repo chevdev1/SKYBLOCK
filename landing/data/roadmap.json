@@ -8,6 +8,16 @@
   "text": {
    "ru": "Девять ярусов, крафт, боссы-боги, кооп по сети.",
    "en": "Nine tiers, crafting, god bosses, online co-op."
+  },
+  "id": "r1",
+  "icon": "portal",
+  "area": {
+   "ru": "Ядро игры",
+   "en": "Core game"
+  },
+  "detail": {
+   "ru": "Девять ярусов от Облачных островов до Царства богов: крафт, оружие, сумка и боссы-боги. Всё это уже проходится в одиночку или вдвоём по сети.",
+   "en": "Nine tiers from the Cloud Isles to the Realm of the Gods: crafting, weapons, a bag and god bosses. You can already play it solo or online with a friend."
   }
  },
  {
@@ -19,6 +29,16 @@
   "text": {
    "ru": "Титаны, Прялка судеб, кошмары и Звездолом.",
    "en": "Titans, the Loom of Fate, nightmares and the Starbreaker."
+  },
+  "id": "r2",
+  "icon": "moon",
+  "area": {
+   "ru": "Ядро игры",
+   "en": "Core game"
+  },
+  "detail": {
+   "ru": "Хаос, звёздное небо и Бездна. Титаны, Прялка судеб и кошмары, а чтобы пробить демонов Бездны, нужен Звездолом.",
+   "en": "Chaos, the night sky and the Abyss. Titans, the Loom of Fate and nightmares, and you need the Starbreaker to cut the Abyss demons."
   }
  },
  {
@@ -30,6 +50,16 @@
   "text": {
    "ru": "Неоновый город, катаны, драконы и дуэли с тенью.",
    "en": "A neon city, katanas, dragons and shadow duels."
+  },
+  "id": "r3",
+  "icon": "sword",
+  "area": {
+   "ru": "Ядро игры",
+   "en": "Core game"
+  },
+  "detail": {
+   "ru": "Шестой акт: неоновый город Хорай. Катаны, драконы, дуэли с тенью и отдельные боссы со своими приёмами.",
+   "en": "Act VI: the neon city of Horai. Katanas, dragons, shadow duels and bosses with their own moves."
   }
  },
  {
@@ -41,6 +71,16 @@
   "text": {
    "ru": "Ферма, звери, питомцы, Пух-бокс и мини-игры.",
    "en": "Farming, animals, pets, puffy boxing and mini-games."
+  },
+  "id": "r4",
+  "icon": "house",
+  "area": {
+   "ru": "Ядро игры",
+   "en": "Core game"
+  },
+  "detail": {
+   "ru": "Свой остров, где можно строить, растить ферму и держать зверей. Рядом Ярмарка с мини-играми и Пух-боксом.",
+   "en": "Your own island to build on, farm and keep animals. Next to it, the Fair with mini-games and puffy boxing."
   }
  },
  {
@@ -52,6 +92,16 @@
   "text": {
    "ru": "Облачный сад, эволюция форм, сверхредкие, семья и походы.",
    "en": "The Cloud Garden, evolving forms, ultra-rares, families and adventures."
+  },
+  "id": "r5",
+  "icon": "egg",
+  "area": {
+   "ru": "Кумо",
+   "en": "Kumo"
+  },
+  "detail": {
+   "ru": "Яйцо в Облачном саду, эволюция форм, сверхредкие со своим номером, семьи и походы. Шансы известны всем заранее.",
+   "en": "An egg in the Cloud Garden, evolving forms, numbered ultra-rares, families and adventures. Odds are public."
   }
  },
  {
@@ -63,6 +113,17 @@
   "text": {
    "ru": "Друг видит твой остров, ферму и Кумо.",
    "en": "Your friend sees your island, farm and Kumo."
+  },
+  "id": "r6",
+  "icon": "duo",
+  "pct": 70,
+  "area": {
+   "ru": "Кооп",
+   "en": "Co-op"
+  },
+  "detail": {
+   "ru": "Друг заходит на твой остров: видит ферму, домик и Кумо, помогает по хозяйству и гуляет рядом. Сейчас дорабатываем синхронизацию.",
+   "en": "Your friend visits your island: sees the farm, the house and your Kumo, helps out and walks beside you. We are polishing the sync now."
   }
  },
  {
@@ -74,6 +135,16 @@
   "text": {
    "ru": "Трасса, где решают навыки твоего Кумо.",
    "en": "A track where your Kumo's skills decide the race."
+  },
+  "id": "r7",
+  "icon": "dash",
+  "area": {
+   "ru": "Кумо",
+   "en": "Kumo"
+  },
+  "detail": {
+   "ru": "Трасса по облакам, где скорость решают умения твоего Кумо: прыжки, рывки, планирование. Гонки с друзьями и на рекорд.",
+   "en": "A cloud track where your Kumo's skills decide the speed: jumps, dashes, gliding. Races with friends and for records."
   }
  },
  {
@@ -85,6 +156,16 @@
   "text": {
    "ru": "Обмен и торговля Кумо между игроками. [УТОЧНИТЬ: сроки]",
    "en": "Trading Kumo between players. [TO CONFIRM: timing]"
+  },
+  "id": "r8",
+  "icon": "star",
+  "area": {
+   "ru": "Экономика",
+   "en": "Economy"
+  },
+  "detail": {
+   "ru": "Обмен Кумо между игроками. У каждого номер и история. Сроки пока уточняются.",
+   "en": "Trading Kumo between players. Each one has a number and a story. Timing is still being confirmed."
   }
  },
  {
@@ -96,6 +177,17 @@
   "text": {
    "ru": "Баланс, баги, отзывы игроков. Каждое обновление добавляет контент.",
    "en": "Balance, bugs, player feedback. Every update adds content."
+  },
+  "id": "r9",
+  "icon": "bug",
+  "pct": 55,
+  "area": {
+   "ru": "Качество",
+   "en": "Quality"
+  },
+  "detail": {
+   "ru": "Ловим баги, правим баланс и слушаем игроков. С каждым патчем игра растёт: патч-ноты открыты и ведутся подробно.",
+   "en": "We hunt bugs, tune balance and listen to players. The game grows with every patch: patch notes are public and detailed."
   }
  },
  {
@@ -107,6 +199,16 @@
   "text": {
    "ru": "Спидранеры, охотники, дуэлянты, авторы карт и заводчики Кумо. Лучших будем поощрять.",
    "en": "Speedrunners, hunters, duellists, map authors and Kumo breeders. The best will be rewarded."
+  },
+  "id": "r10",
+  "icon": "trophy",
+  "area": {
+   "ru": "Сообщество",
+   "en": "Community"
+  },
+  "detail": {
+   "ru": "Таблицы уже работают в игре. Дальше награды для спидранеров, охотников, дуэлянтов, авторов карт и заводчиков Кумо.",
+   "en": "The tables already work in the game. Next come rewards for speedrunners, hunters, duellists, map authors and Kumo breeders."
   }
  },
  {
@@ -118,6 +220,16 @@
   "text": {
    "ru": "Развиваем Восхождение, забеги, PvP и мини-игры Ярмарки.",
    "en": "Growing Ascension, races, PvP and Fair mini-games."
+  },
+  "id": "r11",
+  "icon": "pvp",
+  "area": {
+   "ru": "Геймплей",
+   "en": "Gameplay"
+  },
+  "detail": {
+   "ru": "Растущее Восхождение, гонки, PvP и новые мини-игры на Ярмарке.",
+   "en": "A growing Ascension, races, PvP and new Fair mini-games."
   }
  },
  {
@@ -129,6 +241,16 @@
   "text": {
    "ru": "Запуск [TOKEN] и градация по этапам роста сообщества. [УТОЧНИТЬ: этапы и условия]",
    "en": "[TOKEN] launch with tiers that unlock as the community grows. [TO CONFIRM: tiers and terms]"
+  },
+  "id": "r12",
+  "icon": "crown",
+  "area": {
+   "ru": "Экономика",
+   "en": "Economy"
+  },
+  "detail": {
+   "ru": "Запуск токена с уровнями, которые открываются по мере роста сообщества. Условия и уровни ещё уточняются, это не обещание дохода.",
+   "en": "A token launch with tiers that unlock as the community grows. Terms and tiers are still being confirmed. It is not a promise of profit."
   }
  },
  {
@@ -140,6 +262,16 @@
   "text": {
    "ru": "После этапа 5K средства идут на подарки и награды: активным участникам сообщества и покупателям токена. [УТОЧНИТЬ: условия, проверка юристом]",
    "en": "After the 5K tier, funds go to gifts and rewards for active community members and token buyers. [TO CONFIRM: terms, legal review]"
+  },
+  "id": "r13",
+  "icon": "heart",
+  "area": {
+   "ru": "Сообщество",
+   "en": "Community"
+  },
+  "detail": {
+   "ru": "После уровня 5K средства пойдут на подарки и награды активным участникам и покупателям токена. Условия и юридическая проверка впереди.",
+   "en": "After the 5K tier, funds go to gifts and rewards for active members and token buyers. Terms and legal review are still ahead."
   }
  },
  {
@@ -151,6 +283,16 @@
   "text": {
    "ru": "Отдельное место для модов и инструментов креаторов.",
    "en": "A home for mods and creator tools."
+  },
+  "id": "r14",
+  "icon": "wall",
+  "area": {
+   "ru": "Создателям",
+   "en": "Creators"
+  },
+  "detail": {
+   "ru": "Раздел для модов и инструментов создателей: публикуй, делись, находи чужое.",
+   "en": "A section for mods and creator tools: publish, share and discover."
   }
  },
  {
@@ -162,6 +304,16 @@
   "text": {
    "ru": "Авторы карт, модов и Кумо смогут зарабатывать на своём контенте. [УТОЧНИТЬ]",
    "en": "Authors of maps, mods and Kumo will be able to earn from their content. [TO CONFIRM]"
+  },
+  "id": "r15",
+  "icon": "hook",
+  "area": {
+   "ru": "Создателям",
+   "en": "Creators"
+  },
+  "detail": {
+   "ru": "Авторы карт, модов и Кумо смогут зарабатывать на своём контенте. Условия уточняются.",
+   "en": "Authors of maps, mods and Kumo will be able to earn from their content. Terms are being confirmed."
   }
  },
  {
@@ -172,6 +324,16 @@
   },
   "text": {
    "ru": "Офлайн- и онлайн-встречи, турниры и ивенты сообщества.",
+   "en": "Offline and online meetups, tournaments and community events."
+  },
+  "id": "r16",
+  "icon": "chat",
+  "area": {
+   "ru": "Сообщество",
+   "en": "Community"
+  },
+  "detail": {
+   "ru": "Офлайн и онлайн встречи, турниры и события для комьюнити.",
    "en": "Offline and online meetups, tournaments and community events."
   }
  },
@@ -184,6 +346,16 @@
   "text": {
    "ru": "Кампания на Kickstarter и выступления с игрой. [УТОЧНИТЬ: сроки]",
    "en": "A Kickstarter campaign and talks about the game. [TO CONFIRM: timing]"
+  },
+  "id": "r17",
+  "icon": "map",
+  "area": {
+   "ru": "Сообщество",
+   "en": "Community"
+  },
+  "detail": {
+   "ru": "Кампания на Kickstarter и разговор об игре. Сроки уточняются.",
+   "en": "A Kickstarter campaign and talks about the game. Timing is being confirmed."
   }
  }
 ]

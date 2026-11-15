@@ -298,7 +298,7 @@
   };
   const TECH_PX = ['jump', 'dash', 'wall', 'hook', 'wings', 'star', 'pvp', 'sword'];
   function pix(name, ink, acc) { const g = PX[name] || PX.star; let r = ''; g.forEach((row, y) => [...row].forEach((c, x) => { if (c === '1' || c === '2') r += '<rect x="' + x + '" y="' + y + '" width="1.02" height="1.02" fill="' + (c === '1' ? (ink || 'var(--ink2)') : (acc || 'var(--acc,#ffc23c)')) + '"/>' })); return '<svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true">' + r + '</svg>' }
-  qa('[data-px]').forEach(e => e.innerHTML = pix(e.dataset.px));
+  qa('[data-px]').forEach(e => e.innerHTML = pix(e.dataset.px)); window.HTO_PIX = pix;
   /* chapter numbers on section labels */
   qa('main .sec-head .eyebrow, main .kumo-copy .eyebrow, main .plat-copy .eyebrow, main .about-card .eyebrow').forEach((e, i) => e.dataset.ch = String(i + 1).padStart(2, '0'));
 

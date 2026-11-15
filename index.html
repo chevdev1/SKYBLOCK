@@ -16,6 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Pixelify+Sans:wght@500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="landing/tokens.css">
 <link rel="stylesheet" href="landing/style.css">
+<link rel="stylesheet" href="landing/studio.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Hop to Olympus","alternateName":"Прыг на Олимп","genre":["Action RPG","Sandbox","Platformer"],"gamePlatform":"Web browser","playMode":["SinglePlayer","CoOp"],"applicationCategory":"Game","inLanguage":["ru","en"],"description":"Воксельная экшн-RPG в браузере: облачные острова, боги, неоновый Хорай, свой остров и существа Кумо.","url":"/"}</script>
 </head>
 <body>
@@ -268,22 +269,14 @@
   <section id="roadmap" class="sec" data-cam="road">
     <div class="wrap">
       <div class="sec-head reveal"><p class="eyebrow" data-i18n="road.eyebrow">Роадмап</p><h2 data-i18n="road.title">Мы только разгоняемся</h2></div>
-      <div class="phase reveal"><span class="ph-l" data-i18n="road.phase">Где мы сейчас</span><div class="ph-bar"><i></i><b class="ph a"><span data-i18n="road.alpha">Альфа</span><em data-i18n="road.now">мы здесь</em></b><b class="ph b"><span data-i18n="road.beta">Бета</span></b><b class="ph c"><span data-i18n="road.release">Релиз</span></b></div></div>
-      <div class="road-cols" id="roadList"></div>
+      <div id="roadApp" class="rd"></div>
+      <div id="roadList" hidden></div>
     </div>
   </section>
 
 
   <section id="about" class="sec" data-cam="about">
-    <div class="wrap about-in">
-      <div class="card about-card reveal">
-        <p class="eyebrow" data-i18n="about.eyebrow">Кто мы</p><h2 data-i18n="about.title">Маленькая студия, большой остров</h2>
-        <p class="about-p" data-i18n="about.p1">Мы — локальная инди-студия. Без издателя и без конвейера: делаем игру, в которую сами хотим играть, и вкладываем в неё душу — от каждого кубика острова до характера каждого Кумо.</p><p class="about-p" data-i18n="about.p2">Hop to Olympus сейчас в альфе. Это живая сборка: что-то ломается, что-то меняется, а контента становится больше с каждым обновлением. Играя сейчас, ты влияешь на то, какой игра станет.</p>
-        <div class="vals"><div><span data-px="heart"></span><b data-i18n="about.v1t">Душа в деталях</b><small data-i18n="about.v1d">Каждый остров, моб и Кумо сделан вручную.</small></div><div><span data-px="eye"></span><b data-i18n="about.v2t">Честно с игроками</b><small data-i18n="about.v2d">Шансы открыты. Никаких обещаний доходности.</small></div><div><span data-px="chat"></span><b data-i18n="about.v3t">Слушаем комьюнити</b><small data-i18n="about.v3d">Идеи игроков попадают в обновления.</small></div></div>
-        <div class="team"><i></i><i></i><i></i><i></i><span data-i18n="about.team">[УТОЧНИТЬ: состав команды, роли и фото]</span></div>
-      </div>
-      <aside class="card alpha-card reveal"><span class="al-tag">α 5.4</span><h3 data-i18n="alpha.title">Это альфа-версия</h3><p data-i18n="alpha.long">Игра в стадии тестирования: возможны баги и изменения баланса. Дальше игра будет только развиваться и наполняться контентом.</p><div class="al-meter"><i></i></div></aside>
-    </div>
+    <div class="wrap" id="aboutApp"></div>
   </section>
 
 
@@ -371,5 +364,6 @@
 <script src="landing/arsenal.js"></script>
 <script src="landing/mapview.js"></script>
 <script src="landing/app.js"></script>
+<script src="landing/studio.js"></script>
 </body>
 </html>
