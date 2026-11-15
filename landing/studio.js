@@ -316,7 +316,7 @@
   }
 
   /* ---------- boot ---------- */
-  function renderAll() { roadRender(); aboutRender(); hoodRender(); ['navDocs', 'footDocs'].forEach(i => { const n = document.getElementById(i); if (n) n.textContent = lang() === 'en' ? 'Docs' : 'Документация' }) }
+  function renderAll() { roadRender(); aboutRender(); hoodRender(); [['docsBtn', 'Docs'], ['footDocs', 'Documentation']].forEach(([i, en]) => { const n = document.getElementById(i); if (!n) return; const ru = 'Документация'; n.querySelector('.db-t').textContent = lang() === 'en' ? en : ru; n.title = lang() === 'en' ? 'Documentation' : ru; n.setAttribute('aria-label', n.title); n.querySelector('.db-ic').innerHTML = pix('book') }) }
   (async function boot() {
     const [r, p, w, b] = await Promise.all([get('landing/data/roadmap.json'), get('landing/data/patches.json'), get('landing/data/worlds-all.json'), get('landing/data/bosses.json')]);
     ROAD = Array.isArray(r) ? r : []; PATCH = Array.isArray(p) ? p : [];
