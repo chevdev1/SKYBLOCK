@@ -11,7 +11,7 @@
     }
   },
   {
-    "img": "docs/screens/ui/1-craft-recept.png",
+    "img": "landing/img/ui/1-craft-recept.jpg",
     "title": {
       "ru": "Крафт",
       "en": "Crafting"
@@ -22,7 +22,7 @@
     }
   },
   {
-    "img": "docs/screens/ui/3-craft-oruzhie.png",
+    "img": "landing/img/ui/3-craft-oruzhie.jpg",
     "title": {
       "ru": "Оружие",
       "en": "Weapons"
@@ -33,7 +33,7 @@
     }
   },
   {
-    "img": "docs/screens/ui/5-craft-nektary.png",
+    "img": "landing/img/ui/5-craft-nektary.jpg",
     "title": {
       "ru": "Нектары",
       "en": "Nectars"
@@ -44,7 +44,7 @@
     }
   },
   {
-    "img": "docs/screens/ui/6-sumka.png",
+    "img": "landing/img/ui/6-sumka.jpg",
     "title": {
       "ru": "Сумка",
       "en": "Bag"
@@ -55,7 +55,7 @@
     }
   },
   {
-    "img": "docs/screens/ui/7-menu-kniga.png",
+    "img": "landing/img/ui/7-menu-kniga.jpg",
     "title": {
       "ru": "Книга героя",
       "en": "Hero's book"
@@ -66,7 +66,7 @@
     }
   },
   {
-    "img": "docs/screens/kumo_card53_rare.png",
+    "img": "landing/img/ui/kumo_card.jpg",
     "title": {
       "ru": "Карточка Кумо",
       "en": "Kumo card"

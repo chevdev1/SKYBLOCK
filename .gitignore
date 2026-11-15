@@ -5,3 +5,5 @@ dist/
 server/data.json
 server/data.json.tmp
 server/data.backup*.json
+
+.vercel

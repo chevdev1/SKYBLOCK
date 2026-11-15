@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Hop to Olympus — воксельная экшн-RPG в браузере">
 <meta property="og:description" content="Облачные острова, боги, неоновый Хорай и свой Кумо. Играй прямо в браузере.">
-<meta property="og:image" content="docs/screens/kumo_rare_lineup.png">
+<meta property="og:image" content="landing/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='3' y='5' width='10' height='8' fill='%23f4f8ff'/%3E%3Crect x='5' y='3' width='6' height='3' fill='%23f4f8ff'/%3E%3Crect x='5' y='8' width='2' height='2' fill='%2317324d'/%3E%3Crect x='9' y='8' width='2' height='2' fill='%2317324d'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -100,7 +100,7 @@
   <section id="modes" class="sec" data-cam="modes">
     <div class="wrap">
       <div class="sec-head reveal"><p class="eyebrow" data-i18n="modes.eyebrow">Режимы</p><h2 data-i18n="modes.title">Во что поиграть сегодня</h2><p class="lead" data-i18n="modes.lead">Сюжет на десятки часов, кооп и PvP, свои карты, забеги на рекорд и мини-игры на Ярмарке.</p></div>
-      <div class="modes-grid" id="modesGrid"></div>
+      <div class="ms reveal" id="modeSel"><div class="ms-side"><p class="ms-pick" data-i18n="ms.pick">Выбери режим</p><div class="ms-list" id="msList" role="tablist"></div></div><div class="ms-stage"><div class="ms-img"><img id="msImgA" alt=""><img id="msImgB" alt=""></div><span class="ms-idx" id="msIdx"></span><div class="ms-info"><span class="ms-tag" id="msTag"></span><h3 id="msT"></h3><p id="msD"></p><div class="ms-chips" id="msChips"></div></div><div class="ms-prog"><i id="msProg"></i></div></div></div>
     </div>
   </section>
 
@@ -108,16 +108,16 @@
   <section id="duo" class="sec" data-cam="modes">
     <div class="wrap">
       <div class="sec-head reveal"><p class="eyebrow" data-i18n="duo.eyebrow">Для двоих</p><h2 data-i18n="duo.title">Всё лучше вдвоём</h2><p class="lead" data-i18n="duo.lead">Кооп работает по сети прямо в браузере: заходите на один сервер — и вы в одном мире. Боссы, лут и опыт общие, а сеть честная: удары не теряются, бой не откатывается.</p></div>
-      <div class="duo-steps reveal"><span><i>1</i><b data-i18n="duo.s1">Открой игру</b></span><span><i>2</i><b data-i18n="duo.s2">Друг заходит на тот же сервер</b></span><span><i>3</i><b data-i18n="duo.s3">До 32 игроков в одном мире, чат и PvP</b></span></div>
-      <div class="duo-grid" id="duoGrid">
-        <article class="card duo-c reveal-c"><span class="duo-ic" data-px="duo"></span><h3 data-i18n="duo.1t">Кооп-прохождение</h3><p data-i18n="duo.1d">Шесть актов вдвоём. Общие мобы и боссы: все видят одно и то же, лут и опыт получают оба.</p></article>
-        <article class="card duo-c reveal-c"><span class="duo-ic" data-px="heart"></span><h3 data-i18n="duo.2t">Приди на помощь</h3><p data-i18n="duo.2d">Напарник дерётся рядом? Вступаешь в его бой с тем же здоровьем босса. Если ведущий упал, бой продолжает второй.</p></article>
-        <article class="card duo-c reveal-c"><span class="duo-ic" data-px="crown"></span><h3 data-i18n="duo.3t">Боссы на двоих</h3><p data-i18n="duo.3d">Кастор и Поллукс делят одну жизнь — добивать нужно почти одновременно. Каркин и Эреб — с общим здоровьем на всех.</p></article>
-        <article class="card duo-c reveal-c"><span class="duo-ic" data-px="pvp"></span><h3 data-i18n="duo.4t">PvP-дуэли</h3><p data-i18n="duo.4d">Включи PvP в любом мире: удары отбрасывают, сильные приёмы — дальше. Победы идут в таблицу.</p></article>
-        <article class="card duo-c reveal-c"><span class="duo-ic" data-px="glove"></span><h3 data-i18n="duo.5t">Пух-бокс</h3><p data-i18n="duo.5d">Ринг на Ярмарке, надувные перчатки, лучший из трёх раундов и гонг.</p></article>
-        <article class="card duo-c reveal-c"><span class="duo-ic" data-px="house"></span><h3 data-i18n="duo.6t">Мини-игры Ярмарки</h3><p data-i18n="duo.6d">«Пол — это лава» и куриные догонялки — вдвоём за билеты.</p></article>
-        <article class="card duo-c reveal-c"><span class="duo-ic" data-px="duo"></span><h3 data-i18n="duo.7t">Действия пары</h3><p data-i18n="duo.7d">Возьмитесь за руки, обнимитесь, дайте пять — анимации для двоих.</p></article>
-        <article class="card duo-c reveal-c"><span class="duo-ic" data-px="house"></span><h3 data-i18n="duo.8t">Общий дом</h3><p data-i18n="duo.8d">Друг видит твой остров, ферму, питомцев и Кумо. В работе.</p></article>
+      <div class="vs reveal" id="vsBox">
+        <div class="vs-p p1"><span class="vs-tag" data-i18n="vs.p1">Игрок 1</span><img id="vsP1" alt=""><b data-i18n="vs.you">Ты</b><i class="vs-hp"><em></em><em></em><em></em><em></em><em></em></i><p class="vs-step"><i>1</i><b data-i18n="duo.s1">Открой игру</b></p></div>
+        <div class="vs-mid">
+          <div class="vs-link l"></div>
+          <div class="vs-stage"><div class="vs-img"><img id="vsImg" alt=""></div><div class="vs-tx"><span class="vs-k" id="vsK"></span><h3 id="vsT"></h3><p id="vsD"></p></div></div>
+          <div class="vs-link r"></div>
+          <div class="vs-modes" id="vsModes" role="tablist"></div>
+          <p class="vs-room"><i>3</i><b data-i18n="duo.s3">До 32 игроков в одном мире, чат и PvP</b> · <span data-i18n="vs.link">WebSocket · одна комната</span></p>
+        </div>
+        <div class="vs-p p2"><span class="vs-tag" data-i18n="vs.p2">Игрок 2</span><img id="vsP2" alt=""><b data-i18n="vs.friend">Друг</b><i class="vs-hp"><em></em><em></em><em></em><em></em><em></em></i><p class="vs-step"><i>2</i><b data-i18n="duo.s2">Друг заходит на тот же сервер</b></p></div>
       </div>
     </div>
   </section>
@@ -252,9 +252,15 @@
   <section id="news" class="sec" data-cam="road">
     <div class="wrap">
       <div class="sec-head reveal"><p class="eyebrow" data-i18n="news.eyebrow">Что нового</p><h2 data-i18n="news.title">Мир растёт каждое обновление</h2></div>
-      <div class="news-in">
-        <article class="card nw reveal" id="nwCard"><div class="nw-img"><img id="nwImg" alt=""></div><div class="nw-txt"><em id="nwTag"></em><h3 id="nwT"></h3><p id="nwD"></p><div class="nw-ctl"><div class="nw-dots" id="nwDots"></div><button class="nw-btn" id="nwPrev" aria-label="Prev">◀</button><button class="nw-btn" id="nwNext" aria-label="Next">▶</button></div></div></article>
-        <div class="ev reveal"><h3 class="ev-h" data-i18n="news.ev">Явления мира</h3><div id="evList"></div></div>
+      <div class="ln reveal">
+        <div class="ln-top"><div class="ln-brand"><b>HOP TO OLYMPUS</b><span data-i18n="ln.sub">лаунчер обновлений</span></div><div class="ln-tabs" role="tablist"><button data-t="news" aria-selected="true" data-i18n="ln.news">Новости</button><button data-t="patch" aria-selected="false" data-i18n="ln.patch">Патч-ноты</button><button data-t="ev" aria-selected="false" data-i18n="ln.ev">Явления мира</button></div><div class="ln-ver"><i></i><span data-i18n="ln.ver">текущая версия</span><b>5.4 α</b></div></div>
+        <div class="ln-body">
+          <div class="ln-pane on" data-p="news"><article class="ln-hero" id="nwCard"><img id="nwImg" alt=""><div class="ln-hero-tx"><em id="nwTag"></em><h3 id="nwT"></h3><p id="nwD"></p></div><div class="ln-prog"><i id="nwProg"></i></div><button class="ln-arr l" id="nwPrev" aria-label="Prev">◀</button><button class="ln-arr r" id="nwNext" aria-label="Next">▶</button></article><div class="ln-thumbs" id="nwDots"></div></div>
+          <div class="ln-pane" data-p="patch"><div class="pn-head"><b id="pnN"></b><span data-i18n="ln.pn">обновлений альфы</span><small data-i18n="ln.ru">Патч-ноты ведутся на русском</small></div><div class="pn" id="pnList"></div></div>
+          <div class="ln-pane" data-p="ev"><div class="ln-ev" id="evList"></div></div>
+        </div>
+        <div class="ln-foot"><a class="btn btn-play sm" href="play/"><span data-i18n="ln.play">Играть</span><i>▶</i></a><span class="ln-dots"><i></i><i></i><i></i></span></div>
+      </div>
       </div>
     </div>
   </section>
@@ -347,7 +353,7 @@
 <dialog id="arDlg" aria-labelledby="arT"><div class="bd-in"><header class="bd-head"><div><p class="eyebrow" data-i18n="ar.eyebrow">Арсенал</p><h2 id="arT" data-i18n="ar.title">Всё снаряжение из игры</h2></div><button class="round close" id="arClose" aria-label="Закрыть">×</button></header><div class="bd-acts ar-cats" id="arCats" role="tablist"></div><div class="ar-body"><div class="ar-main"><div class="ar-stage" id="arStage"><span class="tv-rec"><i></i><span data-i18n="ar.live">живой показ</span></span></div><div class="ar-info"><span class="ar-tag" id="arCat"></span><h3 id="arName"></h3><div class="ar-tags" id="arTags"></div><p class="ar-d" id="arD"></p><p class="ar-how"><b data-i18n="ar.how">Где взять</b> <span id="arHow"></span></p></div></div><div class="ar-grid" id="arGrid"></div></div></div></dialog>
 <dialog id="bossDlg" aria-labelledby="bdT"><div class="bd-in"><header class="bd-head"><div><p class="eyebrow" data-i18n="boss.eyebrow">Бестиарий</p><h2 id="bdT" data-i18n="boss.title">33 босса уже в игре</h2></div><button class="round close" id="bdClose" aria-label="Закрыть">×</button></header><div class="bd-acts" id="bdActs" role="tablist"></div><div class="bd-body"><div class="bd-grid" id="bdGrid"></div><aside class="bd-det" id="bdDet"><div class="bd-pic" id="bdPic"></div><span class="bd-act" id="bdAct"></span><h3 id="bdName"></h3><p class="bd-ar" id="bdAr"></p><p class="bd-d" id="bdD"></p></aside></div></div></dialog>
 <dialog id="lightbox"><button class="round close" id="lbClose" aria-label="Закрыть">×</button><img id="lbImg" alt=""><p id="lbCap"></p></dialog>
-<dialog id="trailer"><button class="round close" id="trailerClose" aria-label="Закрыть">×</button><video id="trailerVid" src="docs/video/horai_fight.mp4" controls playsinline preload="none"></video></dialog>
+<dialog id="trailer"><button class="round close" id="trailerClose" aria-label="Закрыть">×</button><video id="trailerVid" src="landing/video/horai_fight.mp4" controls playsinline preload="none"></video></dialog>
 <noscript><style>#pre{display:none}</style></noscript>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>

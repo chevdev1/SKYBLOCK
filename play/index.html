@@ -2768,12 +2768,12 @@ function drawHeroes(){heroesEl.innerHTML='';['boy','girl','sergio'].forEach(id=>
 $('buyClose').onclick=()=>{$('buy').style.display='none'};
 $('buyTest').onclick=()=>{prog.unlock=Object.assign({},prog.unlock,{sergio:'test'});saveProg();$('buy').style.display='none';drawHeroes();selectSkin('sergio',true);toast('SERGIO открыт в тестовом режиме: Shift — рывок, пробел в воздухе — двойной прыжок',3200)};
 drawHeroes();
-const LPNEWS=[{tag:'Новый босс',t:'Ахлис, Мгла смерти',d:'Сестра Эреба поднимается из-под островов Бездны. С неё падает Фонарь Ахлис.',img:'docs/screens/3.2/01_ahlis.png'},
-  {tag:'Режим',t:'Восхождение',d:'Рогалик на 15 минут: случайные комнаты, лут на один забег и дары богов.',img:'docs/screens/3.1/12_voshozhdenie_sad.png'},
-  {tag:'Событие',t:'Небесный кит Кето',d:'Раз в 12 минут над островами плывёт кит. Запрыгни на спину и найди Каркина.',img:'docs/screens/3.1/14_kit_derevnya.png'},
-  {tag:'Оружие',t:'Длани Геракла',d:'Каждый удар — огненный шар, третий — огромный взрыв.',img:'docs/screens/3.1/17_dlani_fireball.png'},
-  {tag:'Мир',t:'Звёздный купол',d:'Созвездия ожили: Охотница, Близнецы, Сад Персея и Прялка судеб.',img:'docs/screens/3.1/02_kupol_persey.png'},
-  {tag:'Дом',t:'Свой остров',d:'Огород, рыбалка, кухня, мебель и лоу-фай радио. Остров растёт с уютом.',img:'docs/screens/3.1/10_ostrov_uyut5.png'}];
+const LPNEWS=[{tag:'Новый босс',t:'Ахлис, Мгла смерти',d:'Сестра Эреба поднимается из-под островов Бездны. С неё падает Фонарь Ахлис.',img:'img/news/01_ahlis.jpg'},
+  {tag:'Режим',t:'Восхождение',d:'Рогалик на 15 минут: случайные комнаты, лут на один забег и дары богов.',img:'img/news/12_voshozhdenie_sad.jpg'},
+  {tag:'Событие',t:'Небесный кит Кето',d:'Раз в 12 минут над островами плывёт кит. Запрыгни на спину и найди Каркина.',img:'img/news/14_kit_derevnya.jpg'},
+  {tag:'Оружие',t:'Длани Геракла',d:'Каждый удар — огненный шар, третий — огромный взрыв.',img:'img/news/17_dlani_fireball.jpg'},
+  {tag:'Мир',t:'Звёздный купол',d:'Созвездия ожили: Охотница, Близнецы, Сад Персея и Прялка судеб.',img:'img/news/02_kupol_persey.jpg'},
+  {tag:'Дом',t:'Свой остров',d:'Огород, рыбалка, кухня, мебель и лоу-фай радио. Остров растёт с уютом.',img:'img/news/10_ostrov_uyut5.jpg'}];
 const LP={i:0,t:null};
 function lpShow(i){LP.i=(i+LPNEWS.length)%LPNEWS.length;const n=LPNEWS[LP.i],c=$('lpCard');c.classList.add('lp-fade');setTimeout(()=>{$('lpImg').style.backgroundImage='url("'+n.img+'")';$('lpTag').textContent=n.tag;$('lpT').textContent=n.t;$('lpD').textContent=n.d;c.classList.remove('lp-fade')},200);
   [...$('lpDots').children].forEach((d,k)=>d.classList.toggle('on',k===LP.i));clearTimeout(LP.t);LP.t=setTimeout(()=>{if(!started)lpShow(LP.i+1)},5500)}
