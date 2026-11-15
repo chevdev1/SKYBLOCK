@@ -214,8 +214,109 @@
     root.appendChild(grid);
   }
 
+
+  /* ================= UNDER THE HOOD ================= */
+  const HT = {
+    ru: {
+      stats: [[1.47, 'МБ', 'вся игра в одном файле', 'cam', 2], [9900, '+', 'строк игрового кода', 'book'], [140000, '+', 'блоков в мирах', 'wall'], [19, '', 'регионов в 6 мирах', 'map'], [33, '', 'боссов', 'crown'], [12, '', 'видов оружия', 'sword'], [32, '', 'игроков в одной комнате', 'duo'], [0, '', 'установок', 'portal']],
+      nodes: [
+        { k: 'client', ic: 'cam', n: 'Клиент', s: 'игра · Three.js', d: 'Three.js и свой воксельный движок. Мир разбит на чанки 64×64: видеокарта рисует только то, что рядом. Если устройство слабое, графика снижается сама, чтобы игра шла плавно.', tags: ['Three.js r128', 'чанки 64×64', 'авто-качество', 'один файл'], f: [['Рисуется', 'только ближние чанки'], ['Слабое устройство', 'графика падает сама'], ['Установка', 'не нужна']], v: 'Видимые чанки следуют за камерой' },
+        { k: 'room', ic: 'duo', n: 'Комната', s: 'WebSocket · до 32', d: 'Комната по WebSocket до 32 игроков: позиции, чат, удары и PvP. Честный кооп: ведущий боя не меняется на лету, здоровье боссов общее, эффекты зеркалятся у всех.', tags: ['WebSocket', '32 игрока', 'общее здоровье босса', 'зеркальные эффекты'], f: [['Игроков', 'до 32'], ['Ведущий боя', 'не меняется на лету'], ['Здоровье босса', 'общее']], v: 'Игроки заходят в комнату, бой общий' },
+        { k: 'server', ic: 'house', n: 'Сервер', s: 'Node.js · REST API', d: 'Свой сервер на Node.js без сторонних зависимостей. Нужен только Node 18+. Он держит комнаты, отдаёт таблицы и каталог карт.', tags: ['Node.js 18+', '0 зависимостей', 'REST', 'WebSocket'], f: [['Зависимости', 'ноль'], ['Запуск', 'node server/server.js'], ['Эндпоинты', '/api/health · scores · maps']], v: 'Живой журнал запросов' },
+        { k: 'data', ic: 'trophy', n: 'Данные', s: 'лидерборды · карты', d: 'REST API для лидербордов (забеги, охотники, PvP, достижения, авторы) и карт Мастерской с лайками и звёздами. Сервер хранит всё в своём файле и пишет его атомарно.', tags: ['лидерборды', 'карты Мастерской', 'лайки и звёзды', 'атомарная запись'], f: [['Хранилище', 'один файл'], ['Запись', 'атомарная'], ['Таблицы', 'забеги · охотники · PvP · авторы']], v: 'Таблицы рекордов обновляются' },
+        { k: 'content', ic: 'star', n: 'Контент', s: 'музыка · боссы · Кумо', d: 'Музыка собирается из аккордов прямо в игре, фото-режим с фильтрами, русский и английский. 33 босса с фазами, 12 видов оружия с комбо, Кумо с генетикой редкости.', tags: ['музыка из аккордов', 'фото-режим', 'RU + EN', 'генетика Кумо'], f: [['Боссов', '33 с фазами'], ['Оружия', '12 видов с комбо'], ['Музыка', 'из аккордов в игре']], v: 'Музыка собирается из аккордов' },
+      ],
+      cap: 'Иллюстрация: так работает слой. Нажми на узел схемы.',
+    },
+    en: {
+      stats: [[1.47, 'MB', 'the whole game in one file', 'cam', 2], [9900, '+', 'lines of game code', 'book'], [140000, '+', 'blocks across the worlds', 'wall'], [19, '', 'regions in 6 worlds', 'map'], [33, '', 'bosses', 'crown'], [12, '', 'weapon types', 'sword'], [32, '', 'players in one room', 'duo'], [0, '', 'installs', 'portal']],
+      nodes: [
+        { k: 'client', ic: 'cam', n: 'Client', s: 'game · Three.js', d: 'Three.js and a custom voxel engine. The world is split into 64×64 chunks so the GPU only draws what is near. On weak devices the graphics drop automatically to keep it smooth.', tags: ['Three.js r128', '64×64 chunks', 'auto quality', 'one file'], f: [['Drawn', 'only nearby chunks'], ['Weak device', 'graphics drop by themselves'], ['Install', 'none']], v: 'Visible chunks follow the camera' },
+        { k: 'room', ic: 'duo', n: 'Room', s: 'WebSocket · up to 32', d: 'A WebSocket room for up to 32 players: positions, chat, hits and PvP. Honest co-op: the fight leader stays put, boss health is shared, effects are mirrored for everyone.', tags: ['WebSocket', '32 players', 'shared boss health', 'mirrored effects'], f: [['Players', 'up to 32'], ['Fight leader', 'never switches mid-fight'], ['Boss health', 'shared']], v: 'Players join a room, the fight is shared' },
+        { k: 'server', ic: 'house', n: 'Server', s: 'Node.js · REST API', d: 'Its own Node.js server with no third-party dependencies. Only Node 18+ is required. It hosts the rooms and serves the boards and the map catalogue.', tags: ['Node.js 18+', '0 dependencies', 'REST', 'WebSocket'], f: [['Dependencies', 'zero'], ['Start', 'node server/server.js'], ['Endpoints', '/api/health · scores · maps']], v: 'A live request log' },
+        { k: 'data', ic: 'trophy', n: 'Data', s: 'boards · maps', d: 'A REST API for leaderboards (races, hunters, PvP, achievements, authors) and Workshop maps with likes and stars. The server keeps everything in its own file and writes it atomically.', tags: ['leaderboards', 'Workshop maps', 'likes and stars', 'atomic writes'], f: [['Storage', 'one file'], ['Writes', 'atomic'], ['Boards', 'races · hunters · PvP · authors']], v: 'Leaderboards update' },
+        { k: 'content', ic: 'star', n: 'Content', s: 'music · bosses · Kumo', d: 'Music is generated from chords in the game, a photo mode with filters, Russian and English. 33 bosses with phases, 12 weapons with combos, Kumo with rarity genetics.', tags: ['music from chords', 'photo mode', 'RU + EN', 'Kumo genetics'], f: [['Bosses', '33 with phases'], ['Weapons', '12 types with combos'], ['Music', 'built from chords in game']], v: 'Music is built from chords' },
+      ],
+      cap: 'Illustration of how the layer works. Click a node of the diagram.',
+    },
+  };
+  const HS = { i: 0, timer: null, auto: null, user: false, vis: false };
+  const clearHV = () => { clearInterval(HS.timer); HS.timer = null };
+  const fmtN = (n, dec) => dec ? n.toFixed(dec).replace('.', lang() === 'ru' ? ',' : '.') : Math.round(n).toLocaleString(lang() === 'ru' ? 'ru-RU' : 'en-US').replace(/ /g, ' ');
+
+  function hoodVisual(k, box, label) {
+    clearHV(); box.innerHTML = ''; const cap = el('small', 'hd-vl'); cap.textContent = label;
+    const stage = el('div', 'hd-v hv-' + k); box.append(stage, cap);
+    if (k === 'client') {
+      const C = 12, R = 7, cells = []; stage.style.setProperty('--c', C);
+      for (let i = 0; i < C * R; i++) { const c = el('i'); stage.appendChild(c); cells.push(c) }
+      let px = 2, py = 3, dx = 1;
+      const draw = () => { cells.forEach((c, i) => { const x = i % C, y = (i / C) | 0, d = Math.abs(x - px) + Math.abs(y - py); c.className = d <= 1 ? 'hot' : d <= 3 ? 'lit' : '' }) };
+      draw(); if (!REDUCED) HS.timer = setInterval(() => { px += dx; if (px >= C - 3 || px <= 2) dx = -dx; py = 3 + Math.round(Math.sin(px) * 1.4); draw() }, 520);
+    } else if (k === 'room') {
+      const dots = []; const grid = el('div', 'hv-dots'); for (let i = 0; i < 32; i++) { const d = el('i'); grid.appendChild(d); dots.push(d) }
+      const hp = el('div', 'hv-hp', '<span></span><em></em>'), cnt = el('b', 'hv-n');
+      stage.append(grid, hp, cnt); let n = 2, hpv = 100;
+      const draw = () => { dots.forEach((d, i) => { d.className = i < n ? 'on' + (i === 0 ? ' lead' : '') : '' }); hp.firstChild.style.width = hpv + '%'; hp.lastChild.textContent = (lang() === 'en' ? 'boss HP' : 'HP босса') + ' ' + hpv + '%'; cnt.textContent = n + ' / 32' };
+      draw(); if (!REDUCED) HS.timer = setInterval(() => { n = n >= 32 ? 2 : n + 3; hpv = hpv <= 8 ? 100 : hpv - 9; draw() }, 600);
+    } else if (k === 'server') {
+      const lines = ['GET  /api/health          200', 'WS   room join            101', 'GET  /api/scores?board=race-0  200', 'POST /api/scores           200', 'GET  /api/maps?sort=popular    200', 'WS   boss hp sync          ok', 'FILE data.json  atomic write  ok'];
+      const log = el('div', 'hv-log'); stage.appendChild(log); let i = 0;
+      const add = () => { const l = el('div', 'hv-line'); l.textContent = '> ' + lines[i++ % lines.length]; log.appendChild(l); while (log.children.length > 7) log.firstChild.remove() };
+      add(); add(); add(); if (!REDUCED) HS.timer = setInterval(add, 700);
+    } else if (k === 'data') {
+      const names = lang() === 'en' ? ['races', 'hunters', 'PvP', 'achievements', 'authors'] : ['забеги', 'охотники', 'PvP', 'достижения', 'авторы'];
+      const rows = names.map(nm => { const row = el('div', 'hv-row', '<span></span><i><u></u></i>'); row.firstChild.textContent = nm; stage.appendChild(row); return row.querySelector('u') });
+      let tt = 0; const draw = () => { rows.forEach((u, r) => { u.style.width = (35 + 60 * Math.abs(Math.sin(tt * .7 + r * 1.3))).toFixed(0) + '%' }) };
+      draw(); if (!REDUCED) HS.timer = setInterval(() => { tt++; draw() }, 900);
+    } else {
+      const eq = el('div', 'hv-eq'); for (let i = 0; i < 18; i++) { const b = el('i'); b.style.setProperty('--d', (i * 83 % 700) + 'ms'); b.style.setProperty('--h', (30 + (i * 37 % 60)) + '%'); eq.appendChild(b) }
+      const ch = el('div', 'hv-ch'); ['Am', 'F', 'C', 'G'].forEach(c => ch.appendChild(el('span', '', c))); stage.append(eq, ch); let q = 0; const draw = () => { [...ch.children].forEach((s, i) => s.classList.toggle('on', i === q)) };
+      draw(); if (!REDUCED) HS.timer = setInterval(() => { q = (q + 1) % 4; draw() }, 900);
+    }
+  }
+
+  function hoodRender() {
+    const root = $('#hoodApp'); if (!root) return; const H = HT[lang()]; clearHV(); clearInterval(HS.auto); root.innerHTML = '';
+    const stats = el('div', 'hd-stats');
+    H.stats.forEach(([n, suf, lab, ic, dec], i) => {
+      const d = el('div', 'hd-stat', '<span class="hd-si"></span><b><em>0</em><u></u></b><small></small>'); d.style.setProperty('--i', i);
+      d.querySelector('.hd-si').innerHTML = pix(ic); d.querySelector('u').textContent = suf; d.querySelector('small').textContent = lab;
+      const out = d.querySelector('em'); d.addEventListener('seen', () => { if (REDUCED || !n) { out.textContent = fmtN(n, dec); return } const t0 = performance.now(); (function f(now) { const k = Math.min(1, (now - t0) / 1300), e = 1 - Math.pow(1 - k, 3); out.textContent = fmtN(n * e, dec); if (k < 1) requestAnimationFrame(f) })(t0) });
+      stats.appendChild(d); watch(d);
+    });
+    root.appendChild(stats);
+
+    const rail = el('div', 'hd-rail'); rail.setAttribute('role', 'tablist');
+    H.nodes.forEach((nd, i) => {
+      if (i) rail.appendChild(el('i', 'hd-link', '<em></em>'));
+      const b = el('button', 'hd-node'); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', i === HS.i);
+      b.innerHTML = '<span class="hd-ni"></span><b></b><small></small>'; b.querySelector('.hd-ni').innerHTML = pix(nd.ic); b.querySelector('b').textContent = nd.n; b.querySelector('small').textContent = nd.s;
+      b.addEventListener('click', () => { HS.user = true; sel(i) }); rail.appendChild(b);
+    });
+    root.appendChild(rail);
+    const panel = el('div', 'hd-panel'); panel.innerHTML = '<div class="hd-info"><span class="hd-pn"></span><h3></h3><p></p><div class="hd-tags"></div><dl class="hd-f"></dl></div><div class="hd-vbox"></div>';
+    root.appendChild(panel);
+    const note = el('p', 'hd-note'); note.textContent = H.cap; root.appendChild(note);
+
+    function sel(i) {
+      HS.i = i; const nd = H.nodes[i];
+      qa('.hd-node', rail).forEach((b, k) => b.setAttribute('aria-selected', k === i));
+      qa('.hd-link', rail).forEach((l, k) => l.classList.toggle('act', k < i));
+      panel.classList.remove('swap'); void panel.offsetWidth; panel.classList.add('swap');
+      panel.querySelector('.hd-pn').textContent = String(i + 1).padStart(2, '0') + ' / ' + String(H.nodes.length).padStart(2, '0');
+      panel.querySelector('h3').textContent = nd.n; panel.querySelector('p').textContent = nd.d;
+      const tg = panel.querySelector('.hd-tags'); tg.innerHTML = ''; nd.tags.forEach(x => { const s = el('span'); s.textContent = x; tg.appendChild(s) });
+      const dl = panel.querySelector('.hd-f'); dl.innerHTML = ''; nd.f.forEach(([a, b]) => { const r = el('div', '', '<dt></dt><dd></dd>'); r.querySelector('dt').textContent = a; r.querySelector('dd').textContent = b; dl.appendChild(r) });
+      hoodVisual(nd.k, panel.querySelector('.hd-vbox'), nd.v);
+    }
+    sel(HS.i);
+    if (!REDUCED) HS.auto = setInterval(() => { if (!HS.user && HS.vis) sel((HS.i + 1) % H.nodes.length) }, 7000);
+    new IntersectionObserver(es => es.forEach(e => { HS.vis = e.isIntersecting }), { threshold: 0.3 }).observe(root);
+  }
+
   /* ---------- boot ---------- */
-  function renderAll() { roadRender(); aboutRender() }
+  function renderAll() { roadRender(); aboutRender(); hoodRender() }
   (async function boot() {
     const [r, p, w, b] = await Promise.all([get('landing/data/roadmap.json'), get('landing/data/patches.json'), get('landing/data/worlds-all.json'), get('landing/data/bosses.json')]);
     ROAD = Array.isArray(r) ? r : []; PATCH = Array.isArray(p) ? p : [];

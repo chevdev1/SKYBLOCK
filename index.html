@@ -283,14 +283,7 @@
   <section id="hood" class="sec" data-cam="about">
     <div class="wrap">
       <div class="sec-head reveal"><p class="eyebrow" data-i18n="hood.eyebrow">Под капотом</p><h2 data-i18n="hood.title">Как это устроено</h2><p class="lead" data-i18n="hood.lead">Hop to Olympus — не прототип на конструкторе. Свой движок поверх Three.js, свой сервер и весь контент — сделаны командой. Игра открывается по ссылке и работает на любом устройстве.</p></div>
-      <div class="hood-nums reveal"><div class="hn"><b data-i18n="hood.v1">1,47 МБ</b><span data-i18n="hood.n1">вся игра в одном файле</span></div><div class="hn"><b>9 900+</b><span data-i18n="hood.n2">строк игрового кода</span></div><div class="hn"><b data-i18n="hood.v3">140 000+</b><span data-i18n="hood.n3">блоков в мирах</span></div><div class="hn"><b>19</b><span data-i18n="hood.n4">регионов в 6 мирах</span></div><div class="hn"><b>33</b><span data-i18n="hood.n5">боссов</span></div><div class="hn"><b>12</b><span data-i18n="hood.n6">видов оружия</span></div><div class="hn"><b>32</b><span data-i18n="hood.n7">игроков в одной комнате</span></div><div class="hn"><b>0</b><span data-i18n="hood.n8">установок</span></div></div>
-      <div class="hood-arch reveal" aria-hidden="true"><div class="ha"><span data-px="cam"></span><b data-i18n="hood.a1">Браузер</b><small data-i18n="hood.a1s">игра · Three.js</small></div><i class="hl"><em></em></i><div class="ha"><span data-px="duo"></span><b data-i18n="hood.a2">Комната</b><small data-i18n="hood.a2s">WebSocket · до 32</small></div><i class="hl"><em></em></i><div class="ha"><span data-px="house"></span><b data-i18n="hood.a3">Сервер</b><small data-i18n="hood.a3s">Node.js · REST API</small></div><i class="hl"><em></em></i><div class="ha"><span data-px="trophy"></span><b data-i18n="hood.a4">Данные</b><small data-i18n="hood.a4s">лидерборды · карты</small></div></div>
-      <div class="hood-grid">
-        <article class="card dark hc reveal"><h3 data-i18n="hood.c1t">Клиент</h3><p data-i18n="hood.c1d">Three.js и свой воксельный движок. Мир разбит на чанки 64×64: видеокарта рисует только то, что рядом. Если устройство слабое, графика снижается сама, чтобы игра шла плавно.</p></article>
-        <article class="card dark hc reveal"><h3 data-i18n="hood.c2t">Сеть</h3><p data-i18n="hood.c2d">Свой сервер на Node.js без сторонних зависимостей. Комната по WebSocket до 32 игроков: позиции, чат, удары и PvP. Честный кооп: ведущий боя не меняется на лету, здоровье боссов общее, эффекты зеркалятся у всех.</p></article>
-        <article class="card dark hc reveal"><h3 data-i18n="hood.c3t">Данные</h3><p data-i18n="hood.c3d">REST API для лидербордов (забеги, охотники, PvP, достижения, авторы) и карт Мастерской с лайками и звёздами. Сервер хранит всё в своём файле и пишет его атомарно.</p></article>
-        <article class="card dark hc reveal"><h3 data-i18n="hood.c4t">Контент</h3><p data-i18n="hood.c4d">Музыка собирается из аккордов прямо в игре, фото-режим с фильтрами, русский и английский. 33 босса с фазами, 12 видов оружия с комбо, Кумо с генетикой редкости.</p></article>
-      </div>
+      <div id="hoodApp" class="hd"></div>
     </div>
   </section>
 
