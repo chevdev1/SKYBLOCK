@@ -357,5 +357,258 @@
    "ru": "Кампания на Kickstarter и разговор об игре. Сроки уточняются.",
    "en": "A Kickstarter campaign and talks about the game. Timing is being confirmed."
   }
+ },
+ {
+  "status": "progress",
+  "title": {
+   "ru": "Проработка RPG-лора",
+   "en": "Deepening the RPG lore"
+  },
+  "text": {
+   "ru": "Истории миров, богов и героев становятся глубже: связные арки, записки и характеры.",
+   "en": "The stories of worlds, gods and heroes get deeper: connected arcs, notes and characters."
+  },
+  "id": "r18",
+  "icon": "book",
+  "pct": 30,
+  "area": {
+   "ru": "Лор и сюжет",
+   "en": "Lore and story"
+  },
+  "detail": {
+   "ru": "Мы расширяем лор: у каждого мира появляется своя история, у боссов мотивы, у жителей характеры и задания, а акты связываются в единый сюжет. Часть уже описана в документах проекта.",
+   "en": "We are expanding the lore: every world gets its own history, bosses get motives, residents get personalities and quests, and the acts tie into one story. Part of it is already written down in the project docs."
+  }
+ },
+ {
+  "status": "next",
+  "title": {
+   "ru": "Королевства",
+   "en": "Kingdoms"
+  },
+  "text": {
+   "ru": "Основай своё королевство на облачных землях: подданные, постройки, оборона и казна.",
+   "en": "Found your own kingdom on the cloud lands: subjects, buildings, defences and a treasury."
+  },
+  "id": "r19",
+  "icon": "crown",
+  "area": {
+   "ru": "Новые механики",
+   "en": "New mechanics"
+  },
+  "detail": {
+   "ru": "Новая уникальная механика: из острова вырастает королевство. Ты собираешь подданных, ставишь стены и башни, договариваешься с соседями и защищаешься от набегов. Идея на стадии проработки: состав и сроки уточняются.",
+   "en": "A new unique mechanic: your island grows into a kingdom. You gather subjects, raise walls and towers, strike deals with neighbours and defend against raids. The idea is being developed: scope and timing are being confirmed."
+  }
+ },
+ {
+  "status": "next",
+  "title": {
+   "ru": "Обширный открытый мир",
+   "en": "A vast open world"
+  },
+  "text": {
+   "ru": "Новые регионы и острова, которые можно исследовать без загрузочных границ между ярусами.",
+   "en": "New regions and isles to explore without hard borders between tiers."
+  },
+  "id": "r20",
+  "icon": "map",
+  "area": {
+   "ru": "Мир",
+   "en": "World"
+  },
+  "detail": {
+   "ru": "Мы расширяем мир вширь: новые острова, материки в небе и секретные области. Цель — чтобы путешествие между мирами ощущалось одним большим приключением. Идея на стадии проработки: состав и сроки уточняются.",
+   "en": "We are growing the world outward: new isles, sky continents and secret areas. The goal is for travel between worlds to feel like one big adventure. The idea is being developed: scope and timing are being confirmed."
+  }
+ },
+ {
+  "status": "next",
+  "title": {
+   "ru": "Новые миры и акты",
+   "en": "New worlds and acts"
+  },
+  "text": {
+   "ru": "Следующие акты сюжета с новыми биомами, боссами и снаряжением.",
+   "en": "The next story acts with new biomes, bosses and gear."
+  },
+  "id": "r21",
+  "icon": "portal",
+  "area": {
+   "ru": "Мир",
+   "en": "World"
+  },
+  "detail": {
+   "ru": "После Хорая история продолжается: новые акты, новые боссы с фазами и легендарная добыча. Каждый мир приносит свои механики. Идея на стадии проработки: состав и сроки уточняются.",
+   "en": "After Horai the story goes on: new acts, new bosses with phases and legendary loot. Every world brings its own mechanics. The idea is being developed: scope and timing are being confirmed."
+  }
+ },
+ {
+  "status": "next",
+  "title": {
+   "ru": "Классы и древо навыков",
+   "en": "Classes and skill trees"
+  },
+  "text": {
+   "ru": "Выбирай путь героя: воин, охотник, маг, странник. Свои навыки и стиль боя.",
+   "en": "Pick your hero path: warrior, hunter, mage, wanderer. Your own skills and combat style."
+  },
+  "id": "r22",
+  "icon": "star",
+  "area": {
+   "ru": "Новые механики",
+   "en": "New mechanics"
+  },
+  "detail": {
+   "ru": "RPG-прокачка выходит на новый уровень: ветки навыков, специализации и билды, которые меняют то, как ты бьёшь, летаешь и сражаешься в связке с Кумо. Идея на стадии проработки: состав и сроки уточняются.",
+   "en": "RPG progression goes further: skill branches, specialisations and builds that change how you strike, fly and fight alongside Kumo. The idea is being developed: scope and timing are being confirmed."
+  }
+ },
+ {
+  "status": "next",
+  "title": {
+   "ru": "Квесты и сюжетные кампании",
+   "en": "Quests and story campaigns"
+  },
+  "text": {
+   "ru": "Цепочки заданий от жителей миров, выборы и награды за них.",
+   "en": "Quest chains from world residents, choices and rewards."
+  },
+  "id": "r23",
+  "icon": "eye",
+  "area": {
+   "ru": "Лор и сюжет",
+   "en": "Lore and story"
+  },
+  "detail": {
+   "ru": "Больше заданий от NPC: связанные цепочки, решения с последствиями и награды, которые открывают новые места и снаряжение. Идея на стадии проработки: состав и сроки уточняются.",
+   "en": "More quests from NPCs: connected chains, choices with consequences and rewards that unlock new places and gear. The idea is being developed: scope and timing are being confirmed."
+  }
+ },
+ {
+  "status": "later",
+  "title": {
+   "ru": "Гильдии и осады",
+   "en": "Guilds and sieges"
+  },
+  "text": {
+   "ru": "Объединяйся в гильдии, строй общие крепости и штурмуй вместе.",
+   "en": "Join guilds, build shared fortresses and storm them together."
+  },
+  "id": "r24",
+  "icon": "sword",
+  "area": {
+   "ru": "Новые механики",
+   "en": "New mechanics"
+  },
+  "detail": {
+   "ru": "Групповая механика поверх кооператива: гильдии, общие крепости и осады, где побеждает слаженная команда. Идея на стадии проработки: состав и сроки уточняются.",
+   "en": "A group mechanic on top of co-op: guilds, shared fortresses and sieges where a coordinated team wins. The idea is being developed: scope and timing are being confirmed."
+  }
+ },
+ {
+  "status": "later",
+  "title": {
+   "ru": "Рейды на боссов",
+   "en": "Boss raids"
+  },
+  "text": {
+   "ru": "Большие бои для групп с особыми механиками и редкой добычей.",
+   "en": "Big group fights with special mechanics and rare loot."
+  },
+  "id": "r25",
+  "icon": "shield",
+  "area": {
+   "ru": "Геймплей",
+   "en": "Gameplay"
+  },
+  "detail": {
+   "ru": "Рейды: мега-боссы для больших команд, у которых фазы требуют распределения ролей и общей тактики. Идея на стадии проработки: состав и сроки уточняются.",
+   "en": "Raids: mega bosses for big teams whose phases demand roles and shared tactics. The idea is being developed: scope and timing are being confirmed."
+  }
+ },
+ {
+  "status": "later",
+  "title": {
+   "ru": "Случайные подземелья",
+   "en": "Procedural dungeons"
+  },
+  "text": {
+   "ru": "Подземелья, которые каждый раз собираются заново: комнаты, ловушки и сундуки.",
+   "en": "Dungeons built anew each time: rooms, traps and chests."
+  },
+  "id": "r26",
+  "icon": "portal",
+  "area": {
+   "ru": "Геймплей",
+   "en": "Gameplay"
+  },
+  "detail": {
+   "ru": "Процедурные подземелья с модификаторами и наградами. Развитие идеи Восхождения: каждый забег не похож на прошлый. Идея на стадии проработки: состав и сроки уточняются.",
+   "en": "Procedural dungeons with modifiers and rewards. A step beyond Ascension: no two runs look alike. The idea is being developed: scope and timing are being confirmed."
+  }
+ },
+ {
+  "status": "later",
+  "title": {
+   "ru": "Погода, сезоны и события мира",
+   "en": "Weather, seasons and world events"
+  },
+  "text": {
+   "ru": "Миры оживают: грозы, смена сезонов и редкие события, которые меняют острова.",
+   "en": "Worlds come alive: storms, changing seasons and rare events that reshape the isles."
+  },
+  "id": "r27",
+  "icon": "clock",
+  "area": {
+   "ru": "Мир",
+   "en": "World"
+  },
+  "detail": {
+   "ru": "Динамический мир: погода влияет на полёт и бой, сезоны меняют облик островов, а мировые события собирают игроков вместе. Идея на стадии проработки: состав и сроки уточняются.",
+   "en": "A dynamic world: weather affects flight and combat, seasons change the look of the isles, and world events bring players together. The idea is being developed: scope and timing are being confirmed."
+  }
+ },
+ {
+  "status": "later",
+  "title": {
+   "ru": "Профессии и торговля игроков",
+   "en": "Professions and player trade"
+  },
+  "text": {
+   "ru": "Кузнец, повар, садовник: ремесла, мастерские и обмен между игроками.",
+   "en": "Smith, cook, gardener: crafts, workshops and trading between players."
+  },
+  "id": "r28",
+  "icon": "hook",
+  "area": {
+   "ru": "Экономика",
+   "en": "Economy"
+  },
+  "detail": {
+   "ru": "Профессии расширяют крафт: у ремёсел свои рецепты и уровни, а игроки обмениваются результатами труда. Идея на стадии проработки: состав и сроки уточняются.",
+   "en": "Professions extend crafting: every craft has its own recipes and levels, and players exchange what they make. The idea is being developed: scope and timing are being confirmed."
+  }
+ },
+ {
+  "status": "later",
+  "title": {
+   "ru": "Ездовые Кумо",
+   "en": "Rideable Kumo"
+  },
+  "text": {
+   "ru": "Взрослые Кумо превращаются в скакунов: летай и скачи верхом.",
+   "en": "Adult Kumo become mounts: fly and ride on their backs."
+  },
+  "id": "r29",
+  "icon": "wings",
+  "area": {
+   "ru": "Кумо",
+   "en": "Kumo"
+  },
+  "detail": {
+   "ru": "Крупные Кумо смогут нести героя: быстрые перелёты между островами и особые способности скакуна. Идея на стадии проработки: состав и сроки уточняются.",
+   "en": "Large Kumo will carry the hero: fast flights between isles and special mount abilities. The idea is being developed: scope and timing are being confirmed."
+  }
  }
 ]
