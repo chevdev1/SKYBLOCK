@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Документация — Hop to Olympus</title>
+<meta name="description" content="Документация Hop to Olympus: управление, механики, техники, миры, боссы, арсенал, Кумо, кооп, Мастерская и API сервера. С поиском и на двух языках.">
+<meta name="theme-color" content="#141a3c">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Документация — Hop to Olympus">
+<meta property="og:description" content="Всё об игре в одном месте: механики, боссы, арсенал, Кумо, кооп, Мастерская и API.">
+<meta property="og:image" content="landing/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='3' y='5' width='10' height='8' fill='%23f4f8ff'/%3E%3Crect x='5' y='3' width='6' height='3' fill='%23f4f8ff'/%3E%3Crect x='5' y='8' width='2' height='2' fill='%23141a3c'/%3E%3Crect x='9' y='8' width='2' height='2' fill='%23141a3c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Pixelify+Sans:wght@500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="landing/tokens.css">
+<link rel="stylesheet" href="landing/docs.css">
+</head>
+<body>
+<div class="dx-progress" aria-hidden="true"><i></i></div>
+
+<header class="dx-top">
+  <button type="button" class="dx-menu" id="menuBtn" aria-label="Меню" aria-expanded="false"><i></i><i></i><i></i></button>
+  <a class="dx-logo" href="./">Hop to <b>Olympus</b><span id="docWord">Документация</span></a>
+  <div class="dx-search">
+    <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="Поиск по документации" aria-label="Поиск по документации" aria-controls="results">
+    <kbd>/</kbd>
+    <div class="dx-results" id="results" role="listbox" hidden></div>
+  </div>
+  <div class="dx-tools">
+    <a class="dx-back" href="./" id="backLink">На сайт</a>
+    <button type="button" class="dx-lang" id="lang">EN</button>
+    <a class="dx-play" href="play/"><span id="playWord">Играть</span><i>▶</i></a>
+  </div>
+</header>
+
+<div class="dx-shell">
+  <aside class="dx-side" id="side"><nav id="toc" aria-label="Содержание"></nav></aside>
+  <div class="dx-scrim" id="scrim"></div>
+  <main class="dx-main" id="doc"></main>
+</div>
+
+<dialog id="lb" class="dx-lb"><button type="button" class="dx-lbx" id="lbx" aria-label="Закрыть">×</button><img id="lbi" alt=""><p id="lbc"></p></dialog>
+<script src="landing/docs.js"></script>
+</body>
+</html>

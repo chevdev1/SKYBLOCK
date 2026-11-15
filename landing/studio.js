@@ -316,7 +316,7 @@
   }
 
   /* ---------- boot ---------- */
-  function renderAll() { roadRender(); aboutRender(); hoodRender() }
+  function renderAll() { roadRender(); aboutRender(); hoodRender(); ['navDocs', 'footDocs'].forEach(i => { const n = document.getElementById(i); if (n) n.textContent = lang() === 'en' ? 'Docs' : 'Документация' }) }
   (async function boot() {
     const [r, p, w, b] = await Promise.all([get('landing/data/roadmap.json'), get('landing/data/patches.json'), get('landing/data/worlds-all.json'), get('landing/data/bosses.json')]);
     ROAD = Array.isArray(r) ? r : []; PATCH = Array.isArray(p) ? p : [];
