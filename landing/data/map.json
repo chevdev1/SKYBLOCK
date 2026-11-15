@@ -1,0 +1,58 @@
+{
+  "worlds": [
+    { "id": "isles", "theme": "islands", "ru": "Обычный мир", "en": "Overworld", "c": "#5cc23a",
+      "regions": [
+        { "ru": "Цветущие острова", "en": "Blooming Isles", "c": "#5cc23a", "d": { "ru": "Здесь начинается подъём. Говорят, на самой вершине неба спит Звёздное сердце.", "en": "The climb starts here. They say the Star Heart sleeps at the very top of the sky." } },
+        { "ru": "Земляные облака", "en": "Earth Clouds", "c": "#a0703f", "d": { "ru": "Куски земли, которые когда-то унёс ветер. На них растёт трава, а внутри живут кротики.", "en": "Chunks of earth the wind once carried off. Grass still grows on them and moles live inside." } },
+        { "ru": "Скайблок", "en": "Skyblock", "c": "#7f8089", "d": { "ru": "Кто-то строил отсюда лестницу из блоков. Островки крошечные — берегись летучек.", "en": "Someone built a staircase of blocks from here. The islets are tiny — mind the bats." } },
+        { "ru": "Небесный сад", "en": "Sky Garden", "c": "#ffcc3a", "d": { "ru": "Мраморные сады над облаками. Тихо, светло и пасутся облачные барашки.", "en": "Marble gardens above the clouds. Quiet, bright, with cloud sheep grazing." } },
+        { "ru": "Космос", "en": "Space", "c": "#7a5cff", "d": { "ru": "Воздух кончился, прыжки стали длиннее. Звёздное сердце уже совсем рядом.", "en": "The air is gone and jumps get longer. The Star Heart is very close now." } }
+      ],
+      "bosses": ["jelly", "guard", "seraph", "karkin"],
+      "places": [
+        { "ru": "Ярмарка", "en": "The Fair", "d": { "ru": "Пух-бокс, «Пол — это лава», куриные догонялки и билеты.", "en": "Puffy Boxing, The Floor Is Lava, Hen Chase and tickets." } },
+        { "ru": "Свой остров", "en": "Your island", "d": { "ru": "Ферма, питомцы, уют и портал Восхождения.", "en": "A farm, pets, cosiness and the Ascension portal." } },
+        { "ru": "Облачный сад", "en": "Cloud Garden", "d": { "ru": "Здесь вылупляются и растут Кумо.", "en": "Kumo hatch and grow here." } },
+        { "ru": "Небесный кит Кето", "en": "Keto the sky whale", "d": { "ru": "Проплывает раз в 12 минут. На палубе — Каркин.", "en": "Drifts by every 12 minutes. Karkinos waits on deck." } }
+      ] },
+    { "id": "gods", "theme": "olympus", "ru": "Царство богов", "en": "Realm of the Gods", "c": "#ffc23c",
+      "regions": [
+        { "ru": "Врата Олимпа", "en": "Gates of Olympus", "c": "#e8dcc0", "d": { "ru": "Мраморные руины первых богов. Скелеты-гоплиты держат строй, над колоннами кружат гарпии.", "en": "Marble ruins of the first gods. Hoplite skeletons hold the line, harpies circle the columns." } },
+        { "ru": "Сады Гесперид", "en": "Hesperides Gardens", "c": "#7ad07a", "d": { "ru": "Здесь росли золотые яблоки бессмертия. Сад сторожат полубоги.", "en": "The golden apples of immortality grew here. Demigods guard the garden." } },
+        { "ru": "Кузня Гефеста", "en": "Hephaestus' Forge", "c": "#e0542a", "d": { "ru": "Внизу кипит лава, на наковальнях ковали молнии. Огненные духи и бронзовые големы ещё на смене.", "en": "Lava boils below; lightning was forged on these anvils. Fire spirits and bronze golems are still on shift." } },
+        { "ru": "Чертог Зевса", "en": "Zeus' Hall", "c": "#6a6ab8", "d": { "ru": "Грозовые облака и вечные молнии. Где-то наверху стоит Трон богов.", "en": "Storm clouds and endless lightning. Somewhere above stands the Throne of the Gods." } }
+      ],
+      "bosses": ["zeus", "heracles"],
+      "places": [ { "ru": "Арена героев", "en": "Hero Arena", "d": { "ru": "Колизей на краю Чертога: волны врагов и Геракл.", "en": "A colosseum at the edge of the Hall: waves of foes and Heracles." } } ] },
+    { "id": "chaos", "theme": "chaos", "ru": "Разлом Хаоса", "en": "Chaos Rift", "c": "#b070ff",
+      "regions": [
+        { "ru": "Сумеречный разлом", "en": "Twilight Rift", "c": "#7a3aaa", "d": { "ru": "Небо над Олимпом было клеткой. За ней Разлом, где сумерки стали плотью.", "en": "The sky above Olympus was a cage. Beyond it lies the Rift, where twilight became flesh." } },
+        { "ru": "Пустошь Кроноса", "en": "Kronos Wastes", "c": "#c09040", "d": { "ru": "Время сломано. Шестерни размером с остров перемалывают прошлое.", "en": "Time is broken. Island-sized gears grind the past." } },
+        { "ru": "Тартар", "en": "Tartarus", "c": "#b0202a", "d": { "ru": "Тюрьма титанов треснула. Цепи висят в пустоте.", "en": "The titans' prison has cracked. Chains hang in the void." } }
+      ],
+      "bosses": ["ophion", "gryphon", "alecto", "kronos", "hyperion", "oceanus"],
+      "places": [ { "ru": "Трон времени", "en": "Throne of Time", "d": { "ru": "Арена-циферблат Кроноса.", "en": "Kronos' clock-face arena." } } ] },
+    { "id": "dome", "theme": "dome", "ru": "Звёздный купол", "en": "Star Dome", "c": "#9fb8ff",
+      "regions": [
+        { "ru": "Звёздный купол", "en": "Star Dome", "c": "#9fb8ff", "d": { "ru": "Острова здесь — созвездия, и в каждом живёт тот, кого боги подняли на небо.", "en": "The isles here are constellations, each home to someone the gods raised to the sky." } },
+        { "ru": "Прялка судеб", "en": "Loom of Fate", "c": "#e0c8ff", "d": { "ru": "Вершина купола. Три сестры-Мойры прядут нить каждой жизни.", "en": "The top of the dome. Three Fates spin the thread of every life." } }
+      ],
+      "bosses": ["atalanta", "castor", "pollux", "medusa", "stheno", "euryale", "clotho", "lachesis", "atropos"],
+      "places": [ { "ru": "Кузня купола", "en": "Dome forge", "d": { "ru": "Только здесь куётся Звездолом.", "en": "The only place the Starbreaker can be forged." } } ] },
+    { "id": "abyss", "theme": "abyss", "ru": "Бездна", "en": "The Abyss", "c": "#5a1a8a",
+      "regions": [
+        { "ru": "Порог Эреба", "en": "Threshold of Erebus", "c": "#3a2050", "d": { "ru": "Здесь кончается свет. Острова висят без верха и низа.", "en": "Here the light ends. The isles hang with no up or down." } },
+        { "ru": "Перевёрнутый лес", "en": "Upside-down Forest", "c": "#5a1a8a", "d": { "ru": "Деревья растут вниз, в чёрное небо. Над ними ждёт Эреб.", "en": "Trees grow down into a black sky. Erebus waits above them." } }
+      ],
+      "bosses": ["nyx", "erebus", "ahlis", "lamia", "empusa", "mormo"],
+      "places": [ { "ru": "Логово кошмаров", "en": "Lair of Nightmares", "d": { "ru": "Мост с костяными фонарями ведёт к трём кошмарам.", "en": "A bridge of bone lanterns leads to three nightmares." } } ] },
+    { "id": "horai", "theme": "horai", "ru": "Хорай", "en": "Horai", "c": "#22e6ff",
+      "regions": [
+        { "ru": "Облачная гавань", "en": "Cloud Harbour", "c": "#ff4a8a", "d": { "ru": "Джонки с красными парусами швартуются прямо к облакам. Ниже шумит Рынок фонарей.", "en": "Junks with red sails moor right at the clouds. The Lantern Market bustles below." } },
+        { "ru": "Квартал Неона", "en": "Neon Quarter", "c": "#22e6ff", "d": { "ru": "Башни в кандзи и вечный дождь. Клинки Пепла учатся по записям твоих боёв.", "en": "Kanji towers and endless rain. The Ash Blades learn from recordings of your fights." } },
+        { "ru": "Нефритовый дворец", "en": "Jade Palace", "c": "#2fae80", "d": { "ru": "Вершина Хорая. Дворец стережёт печать, под которой спят восемь голов.", "en": "The top of Horai. The palace guards a seal beneath which eight heads sleep." } }
+      ],
+      "bosses": ["ryujin", "kiyo", "kagemaru", "onimusha"],
+      "places": [ { "ru": "Небесная башня", "en": "Sky Tower", "d": { "ru": "На крыше — дуэли с Кагэмару.", "en": "Duels with Kagemaru on the roof." } } ] }
+  ]
+}

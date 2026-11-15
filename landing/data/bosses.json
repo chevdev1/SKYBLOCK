@@ -115,7 +115,8 @@
    "d": {
     "ru": "Летает над ареной, мечет молнии и обрушивается с неба. Бей, когда он устанет.",
     "en": "Flies over the arena, hurls lightning and crashes down. Strike when he tires."
-   }
+   },
+   "img": "zeus"
   },
   {
    "act": 3,
@@ -129,7 +130,8 @@
    "d": {
     "ru": "Его коса режет сами секунды. Перепрыгивай волны, лучи и стрелки часов.",
     "en": "His scythe cuts the seconds themselves. Jump waves, beams and clock hands."
-   }
+   },
+   "img": "kronos"
   },
   {
    "act": 3,
@@ -338,7 +340,8 @@
    "d": {
     "ru": "Её боялся сам Зевс. Прячется среди своих теней и бьёт лучом тьмы.",
     "en": "Even Zeus feared her. Hides among her shadows and fires a beam of darkness."
-   }
+   },
+   "img": "nyx"
   },
   {
    "act": 5,
@@ -473,6 +476,21 @@
    "d": {
     "ru": "«Я видел все твои бои». Тень учится твоим рывкам и отвечает тем же.",
     "en": "\"I have seen all your fights.\" The shadow learns your dashes and answers in kind."
+   }
+  },
+  {
+   "act": 6,
+   "id": "onimusha",
+   "img": "onimusha",
+   "ru": "Они-муся",
+   "en": "Oni-musha",
+   "ar": {
+    "ru": "Нефритовый дворец",
+    "en": "Jade Palace"
+   },
+   "d": {
+    "ru": "Страж Нефритового дворца на вершине Хорая. С него падает Райкири.",
+    "en": "Guardian of the Jade Palace atop Horai. Drops Raikiri."
    }
   },
   {

@@ -9,7 +9,40 @@
   "text": {
    "ru": "Ритм-прыжки, крылья, рывок и крюк-кошка. Чем точнее ритм, тем выше полёт.",
    "en": "Rhythm jumps, wings, dashes and a grappling hook. The better your rhythm, the higher you fly."
-  }
+  },
+  "kicker": {
+   "ru": "Движение",
+   "en": "Movement"
+  },
+  "list": [
+   {
+    "px": "jump",
+    "ru": "Ритм-прыжки: каждый прыжок серии +5% к скорости, пятый — мега-прыжок",
+    "en": "Rhythm jumps: +5% speed per jump in a streak, the fifth is a mega jump"
+   },
+   {
+    "px": "wings",
+    "ru": "Три вида крыльев: серафима, Гесперид и ночи — полёт до трёх раз дольше",
+    "en": "Three kinds of wings: Seraph, Hesperides and Night — up to three times longer flight"
+   },
+   {
+    "px": "hook",
+    "ru": "Крюк-кошка, двойное сальто Сапог Гермеса и бег по стенам в Кагэ-таби",
+    "en": "A grappling hook, the double flip of Hermes boots and wall runs in Kage-tabi"
+   }
+  ],
+  "stats": [
+   {
+    "n": "19",
+    "ru": "регионов вверх",
+    "en": "regions up"
+   },
+   {
+    "n": "3",
+    "ru": "вида крыльев",
+    "en": "kinds of wings"
+   }
+  ]
  },
  {
   "id": "fight",
@@ -21,7 +54,40 @@
   "text": {
    "ru": "Мечи, катаны, косы и кулаки. Удар, удар, пауза — и выходит особый приём.",
    "en": "Swords, katanas, scythes and fists. Strike, strike, pause — and a special move comes out."
-  }
+  },
+  "kicker": {
+   "ru": "Бой",
+   "en": "Combat"
+  },
+  "list": [
+   {
+    "px": "sword",
+    "ru": "12 видов оружия, у каждого своя связка и особый третий удар",
+    "en": "12 weapon types, each with its own string and special third strike"
+   },
+   {
+    "px": "star",
+    "ru": "Комбо с паузой: Цубамэ-гаэси, Сакура-ран, Райко и Каминари-гурума",
+    "en": "Pause combos: Tsubame-gaeshi, Sakura-ran, Raiko and Kaminari-guruma"
+   },
+   {
+    "px": "pvp",
+    "ru": "Аниме-бой: скрещивание клинков и идеальное уклонение с замедлением времени",
+    "en": "Anime combat: blade clashes and perfect dodges that slow time"
+   }
+  ],
+  "stats": [
+   {
+    "n": "12",
+    "ru": "видов оружия",
+    "en": "weapon types"
+   },
+   {
+    "n": "4",
+    "ru": "приёма с паузой",
+    "en": "pause moves"
+   }
+  ]
  },
  {
   "id": "boss",
@@ -31,9 +97,42 @@
    "en": "Defeat gods and titans"
   },
   "text": {
-   "ru": "Каждый акт заканчивается боссом из мифов. Уже в игре 32 босса — от Желейного короля до Кроноса, Никты, Рюдзина и Геракла. Нажми, чтобы посмотреть всех.",
-   "en": "Every act ends with a boss from myth. 32 bosses are already in the game — from the Jelly King to Kronos, Nyx, Ryujin and Heracles. Click to see them all."
-  }
+   "ru": "Каждый акт заканчивается боссом из мифов — со своими фазами, ареной и легендарной добычей.",
+   "en": "Every act ends with a boss from myth — with its own phases, arena and legendary loot."
+  },
+  "kicker": {
+   "ru": "Боссы",
+   "en": "Bosses"
+  },
+  "list": [
+   {
+    "px": "crown",
+    "ru": "33 босса: от Желейного короля до Кроноса, Рюдзина и Геракла",
+    "en": "33 bosses: from the Jelly King to Kronos, Ryujin and Heracles"
+   },
+   {
+    "px": "portal",
+    "ru": "У каждого фазы: Ламия зарывается под остров, Эмпуса мечется телепортами",
+    "en": "Each has phases: Lamia burrows under the isle, Empusa blinks around you"
+   },
+   {
+    "px": "trophy",
+    "ru": "С боссов падает легендарное: Коса Кроноса, Лук Артемиды, Райкири",
+    "en": "Bosses drop legendary gear: the Scythe of Kronos, the Bow of Artemis, Raikiri"
+   }
+  ],
+  "stats": [
+   {
+    "n": "33",
+    "ru": "босса",
+    "en": "bosses"
+   },
+   {
+    "n": "7",
+    "ru": "глав",
+    "en": "chapters"
+   }
+  ]
  },
  {
   "id": "craft",
@@ -45,7 +144,40 @@
   "text": {
    "ru": "Добыча с мобов превращается в броню, крылья и легендарное оружие. Кузнец начинает в простой куртке — и выходит из кузни в новом доспехе.",
    "en": "Loot from mobs becomes armour, wings and legendary weapons. The smith starts in a plain jacket and walks out in new armour."
-  }
+  },
+  "kicker": {
+   "ru": "Снаряжение",
+   "en": "Gear"
+  },
+  "list": [
+   {
+    "px": "shield",
+    "ru": "Броня растёт: Черепашья → Облачение тени → Доспех Эреба",
+    "en": "Armour grows: Turtle → Shadow Garb → Armour of Erebus"
+   },
+   {
+    "px": "map",
+    "ru": "Материалы падают с мобов: перья гарпий, ядра огненных духов, песок времени",
+    "en": "Materials drop from mobs: harpy feathers, fire spirit cores, time sand"
+   },
+   {
+    "px": "star",
+    "ru": "Звездолом куётся только в Звёздном куполе, Мурамаса — только в Хорае",
+    "en": "The Starbreaker is forged only in the Star Dome, Muramasa only in Horai"
+   }
+  ],
+  "stats": [
+   {
+    "n": "32",
+    "ru": "предмета",
+    "en": "items"
+   },
+   {
+    "n": "8",
+    "ru": "реликвий",
+    "en": "relics"
+   }
+  ]
  },
  {
   "id": "home",
@@ -57,7 +189,40 @@
   "text": {
    "ru": "Грядки, зверюшки, питомцы и Ярмарка с мини-играми. Остров растёт вместе с тобой.",
    "en": "Garden beds, farm animals, pets and a Fair with mini-games. Your island grows with you."
-  }
+  },
+  "kicker": {
+   "ru": "Свой остров",
+   "en": "Your island"
+  },
+  "list": [
+   {
+    "px": "house",
+    "ru": "Огород, рыбалка, кухня, мебель и лоу-фай радио",
+    "en": "A garden, fishing, a kitchen, furniture and lo-fi radio"
+   },
+   {
+    "px": "heart",
+    "ru": "Десять уровней уюта, питомцы и Облачный сад для Кумо",
+    "en": "Ten cosiness levels, pets and the Cloud Garden for Kumo"
+   },
+   {
+    "px": "portal",
+    "ru": "Портал Восхождения прямо на острове — рогалик на 15 минут",
+    "en": "The Ascension portal right on the isle — a 15-minute roguelite"
+   }
+  ],
+  "stats": [
+   {
+    "n": "10",
+    "ru": "уровней уюта",
+    "en": "cosiness levels"
+   },
+   {
+    "n": "6",
+    "ru": "Кумо в саду",
+    "en": "Kumo in the garden"
+   }
+  ]
  },
  {
   "id": "coop",
@@ -69,6 +234,39 @@
   "text": {
    "ru": "Кооп по сети: общие боссы, Пух-бокс на ринге и прогулки за руку.",
    "en": "Online co-op: shared bosses, puffy boxing in the ring and walks hand in hand."
-  }
+  },
+  "kicker": {
+   "ru": "Вдвоём",
+   "en": "Together"
+  },
+  "list": [
+   {
+    "px": "duo",
+    "ru": "Общие мобы и боссы: все видят одно и то же, лут и опыт обоим",
+    "en": "Shared mobs and bosses: everyone sees the same thing, both get loot and XP"
+   },
+   {
+    "px": "glove",
+    "ru": "Пух-бокс, «Пол — это лава» и куриные догонялки на Ярмарке",
+    "en": "Puffy Boxing, The Floor Is Lava and Hen Chase at the Fair"
+   },
+   {
+    "px": "heart",
+    "ru": "За руки, обняться, дать пять — анимации для двоих",
+    "en": "Hold hands, hug, high-five — animations for two"
+   }
+  ],
+  "stats": [
+   {
+    "n": "32",
+    "ru": "игрока в комнате",
+    "en": "players per room"
+   },
+   {
+    "n": "8",
+    "ru": "режимов вдвоём",
+    "en": "modes for two"
+   }
+  ]
  }
 ]

@@ -29,6 +29,7 @@
     <a href="#worlds" data-go="worlds" data-i18n="nav.worlds">Миры</a>
     <a href="#mechanics" data-go="mechanics" data-i18n="nav.mech">Механики</a>
     <a href="#modes" data-go="modes" data-i18n="nav.modes">Режимы</a>
+    <a href="#map" data-go="map" data-i18n="nav.map">Карта</a>
     <a href="#creators" data-go="creators" data-i18n="nav.creators">Создателям</a>
     <a href="#kumo" data-go="kumo" data-i18n="nav.kumo">Кумо</a>
     <a href="#roadmap" data-go="roadmap" data-i18n="nav.road">Роадмап</a>
@@ -59,7 +60,7 @@
     <button class="scroll-hint" data-go="dive"><span data-i18n="hero.scroll">Спускайся вниз</span><i></i></button>
   </section>
 
-  <div class="ticker" aria-label="Факты об игре"><div class="tk-track"><div class="tk-row"><span data-i18n="tk.1">6 актов сюжета</span><i>✦</i><span data-i18n="tk.2">11 видов оружия</span><i>✦</i><span data-i18n="tk.3">9 режимов</span><i>✦</i><span data-i18n="tk.4">Кооп и PvP</span><i>✦</i><span data-i18n="tk.5">ПК · планшет · телефон · геймпад</span><i>✦</i><span data-i18n="tk.6">Сверхредкие Кумо — 1%</span><i>✦</i><span data-i18n="tk.7">Без установки</span><i>✦</i><span data-i18n="tk.8">Своя Мастерская карт</span><i>✦</i></div><div class="tk-row" aria-hidden="true"><span data-i18n="tk.1">6 актов сюжета</span><i>✦</i><span data-i18n="tk.2">11 видов оружия</span><i>✦</i><span data-i18n="tk.3">9 режимов</span><i>✦</i><span data-i18n="tk.4">Кооп и PvP</span><i>✦</i><span data-i18n="tk.5">ПК · планшет · телефон · геймпад</span><i>✦</i><span data-i18n="tk.6">Сверхредкие Кумо — 1%</span><i>✦</i><span data-i18n="tk.7">Без установки</span><i>✦</i><span data-i18n="tk.8">Своя Мастерская карт</span><i>✦</i></div></div></div>
+  <div class="ticker" aria-label="Факты об игре"><div class="tk-track"><div class="tk-row"><span data-i18n="tk.1">6 актов сюжета</span><i>✦</i><span data-i18n="tk.2">12 видов оружия</span><i>✦</i><span data-i18n="tk.3">9 режимов</span><i>✦</i><span data-i18n="tk.4">Кооп и PvP</span><i>✦</i><span data-i18n="tk.5">ПК · планшет · телефон · геймпад</span><i>✦</i><span data-i18n="tk.6">Сверхредкие Кумо — 1%</span><i>✦</i><span data-i18n="tk.7">Без установки</span><i>✦</i><span data-i18n="tk.8">Своя Мастерская карт</span><i>✦</i></div><div class="tk-row" aria-hidden="true"><span data-i18n="tk.1">6 актов сюжета</span><i>✦</i><span data-i18n="tk.2">12 видов оружия</span><i>✦</i><span data-i18n="tk.3">9 режимов</span><i>✦</i><span data-i18n="tk.4">Кооп и PvP</span><i>✦</i><span data-i18n="tk.5">ПК · планшет · телефон · геймпад</span><i>✦</i><span data-i18n="tk.6">Сверхредкие Кумо — 1%</span><i>✦</i><span data-i18n="tk.7">Без установки</span><i>✦</i><span data-i18n="tk.8">Своя Мастерская карт</span><i>✦</i></div></div></div>
 
   <section id="dive" class="sec short" data-cam="dive">
     <div class="wrap"><p class="dive-line reveal" data-i18n="dive.line">Под облаками — целые миры.</p></div>
@@ -103,12 +104,42 @@
     </div>
   </section>
 
+
+  <section id="duo" class="sec" data-cam="modes">
+    <div class="wrap">
+      <div class="sec-head reveal"><p class="eyebrow" data-i18n="duo.eyebrow">Для двоих</p><h2 data-i18n="duo.title">Всё лучше вдвоём</h2><p class="lead" data-i18n="duo.lead">Кооп работает по сети прямо в браузере: заходите на один сервер — и вы в одном мире. Боссы, лут и опыт общие, а сеть честная: удары не теряются, бой не откатывается.</p></div>
+      <div class="duo-steps reveal"><span><i>1</i><b data-i18n="duo.s1">Открой игру</b></span><span><i>2</i><b data-i18n="duo.s2">Друг заходит на тот же сервер</b></span><span><i>3</i><b data-i18n="duo.s3">До 32 игроков в одном мире, чат и PvP</b></span></div>
+      <div class="duo-grid" id="duoGrid">
+        <article class="card duo-c reveal-c"><span class="duo-ic" data-px="duo"></span><h3 data-i18n="duo.1t">Кооп-прохождение</h3><p data-i18n="duo.1d">Шесть актов вдвоём. Общие мобы и боссы: все видят одно и то же, лут и опыт получают оба.</p></article>
+        <article class="card duo-c reveal-c"><span class="duo-ic" data-px="heart"></span><h3 data-i18n="duo.2t">Приди на помощь</h3><p data-i18n="duo.2d">Напарник дерётся рядом? Вступаешь в его бой с тем же здоровьем босса. Если ведущий упал, бой продолжает второй.</p></article>
+        <article class="card duo-c reveal-c"><span class="duo-ic" data-px="crown"></span><h3 data-i18n="duo.3t">Боссы на двоих</h3><p data-i18n="duo.3d">Кастор и Поллукс делят одну жизнь — добивать нужно почти одновременно. Каркин и Эреб — с общим здоровьем на всех.</p></article>
+        <article class="card duo-c reveal-c"><span class="duo-ic" data-px="pvp"></span><h3 data-i18n="duo.4t">PvP-дуэли</h3><p data-i18n="duo.4d">Включи PvP в любом мире: удары отбрасывают, сильные приёмы — дальше. Победы идут в таблицу.</p></article>
+        <article class="card duo-c reveal-c"><span class="duo-ic" data-px="glove"></span><h3 data-i18n="duo.5t">Пух-бокс</h3><p data-i18n="duo.5d">Ринг на Ярмарке, надувные перчатки, лучший из трёх раундов и гонг.</p></article>
+        <article class="card duo-c reveal-c"><span class="duo-ic" data-px="house"></span><h3 data-i18n="duo.6t">Мини-игры Ярмарки</h3><p data-i18n="duo.6d">«Пол — это лава» и куриные догонялки — вдвоём за билеты.</p></article>
+        <article class="card duo-c reveal-c"><span class="duo-ic" data-px="duo"></span><h3 data-i18n="duo.7t">Действия пары</h3><p data-i18n="duo.7d">Возьмитесь за руки, обнимитесь, дайте пять — анимации для двоих.</p></article>
+        <article class="card duo-c reveal-c"><span class="duo-ic" data-px="house"></span><h3 data-i18n="duo.8t">Общий дом</h3><p data-i18n="duo.8d">Друг видит твой остров, ферму, питомцев и Кумо. В работе.</p></article>
+      </div>
+    </div>
+  </section>
+
   <section id="ui" class="sec" data-cam="ui">
     <div class="wrap">
       <div class="sec-head reveal"><p class="eyebrow" data-i18n="ui.eyebrow">Интерфейс игры</p><h2 data-i18n="ui.title">Загляни внутрь</h2><p class="lead" data-i18n="ui.lead">Настоящие экраны из игры: карта, крафт, сумка и Кумо. Нажми на скриншот, чтобы открыть его целиком.</p></div>
       <div class="ui-wrap reveal">
         <button class="ui-main" id="uiMain" aria-label="Открыть скриншот"><img id="uiImg" alt="" loading="lazy"><span class="ui-zoom">⤢</span></button>
         <div class="ui-side"><h3 id="uiTitle"></h3><p id="uiText"></p><div class="ui-thumbs" id="uiThumbs"></div></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="map" class="sec" data-cam="ui">
+    <div class="wrap">
+      <div class="sec-head reveal"><p class="eyebrow" data-i18n="map.eyebrow">Карта мира</p><h2 data-i18n="map.title">Шесть миров, одна вертикаль</h2><p class="lead" data-i18n="map.lead">Это настоящий мир из игры, блок в блок: острова, постройки, неон и лава. Жёлтые флажки — телепорты, красные — боссы, фиолетовые — жители с заданиями. Крути мышкой, приближай кнопками и нажимай на маркеры.</p></div>
+      <div class="mv reveal">
+        <div class="mv-top"><div class="mv-tabs" id="mvTabs" role="tablist"></div><div class="mv-zoom"><button id="mvIn" aria-label="+">+</button><button id="mvOut" aria-label="−">−</button></div></div>
+        <div class="mv-stage" id="mvStage"><div class="mv-labels" id="mvLabels"></div><aside class="mv-card" id="mvCard" hidden><button class="mv-x" id="mvX" aria-label="×">×</button><div class="mv-img" id="mvImg"></div><em id="mvSub"></em><h3 id="mvT"></h3><p id="mvD"></p></aside><span class="mv-hint" data-i18n="map.hint">Нажми на маркер</span></div>
+        <div class="mv-leg"><span><i style="--c:#ffc23c"></i><b data-i18n="map.l1">флажок · телепорт</b></span><span><i style="--c:#ff5a6a"></i><b data-i18n="map.l2">босс</b></span><span><i style="--c:#c48aff"></i><b data-i18n="map.l3">житель с заданием</b></span><span class="mv-stat" id="mvStat"></span></div>
       </div>
     </div>
   </section>
@@ -249,6 +280,21 @@
     </div>
   </section>
 
+
+  <section id="hood" class="sec" data-cam="about">
+    <div class="wrap">
+      <div class="sec-head reveal"><p class="eyebrow" data-i18n="hood.eyebrow">Под капотом</p><h2 data-i18n="hood.title">Как это устроено</h2><p class="lead" data-i18n="hood.lead">Hop to Olympus — не прототип на конструкторе. Свой движок поверх Three.js, свой сервер и весь контент — сделаны командой. Игра открывается по ссылке и работает на любом устройстве.</p></div>
+      <div class="hood-nums reveal"><div class="hn"><b data-i18n="hood.v1">1,47 МБ</b><span data-i18n="hood.n1">вся игра в одном файле</span></div><div class="hn"><b>9 900+</b><span data-i18n="hood.n2">строк игрового кода</span></div><div class="hn"><b data-i18n="hood.v3">140 000+</b><span data-i18n="hood.n3">блоков в мирах</span></div><div class="hn"><b>19</b><span data-i18n="hood.n4">регионов в 6 мирах</span></div><div class="hn"><b>33</b><span data-i18n="hood.n5">боссов</span></div><div class="hn"><b>12</b><span data-i18n="hood.n6">видов оружия</span></div><div class="hn"><b>32</b><span data-i18n="hood.n7">игроков в одной комнате</span></div><div class="hn"><b>0</b><span data-i18n="hood.n8">установок</span></div></div>
+      <div class="hood-arch reveal" aria-hidden="true"><div class="ha"><span data-px="cam"></span><b data-i18n="hood.a1">Браузер</b><small data-i18n="hood.a1s">игра · Three.js</small></div><i class="hl"><em></em></i><div class="ha"><span data-px="duo"></span><b data-i18n="hood.a2">Комната</b><small data-i18n="hood.a2s">WebSocket · до 32</small></div><i class="hl"><em></em></i><div class="ha"><span data-px="house"></span><b data-i18n="hood.a3">Сервер</b><small data-i18n="hood.a3s">Node.js · REST API</small></div><i class="hl"><em></em></i><div class="ha"><span data-px="trophy"></span><b data-i18n="hood.a4">Данные</b><small data-i18n="hood.a4s">лидерборды · карты</small></div></div>
+      <div class="hood-grid">
+        <article class="card dark hc reveal"><h3 data-i18n="hood.c1t">Клиент</h3><p data-i18n="hood.c1d">Three.js и свой воксельный движок. Мир разбит на чанки 64×64: видеокарта рисует только то, что рядом. Если устройство слабое, графика снижается сама, чтобы игра шла плавно.</p></article>
+        <article class="card dark hc reveal"><h3 data-i18n="hood.c2t">Сеть</h3><p data-i18n="hood.c2d">Свой сервер на Node.js без сторонних зависимостей. Комната по WebSocket до 32 игроков: позиции, чат, удары и PvP. Честный кооп: ведущий боя не меняется на лету, здоровье боссов общее, эффекты зеркалятся у всех.</p></article>
+        <article class="card dark hc reveal"><h3 data-i18n="hood.c3t">Данные</h3><p data-i18n="hood.c3d">REST API для лидербордов (забеги, охотники, PvP, достижения, авторы) и карт Мастерской с лайками и звёздами. Сервер хранит всё в своём файле и пишет его атомарно.</p></article>
+        <article class="card dark hc reveal"><h3 data-i18n="hood.c4t">Контент</h3><p data-i18n="hood.c4d">Музыка собирается из аккордов прямо в игре, фото-режим с фильтрами, русский и английский. 33 босса с фазами, 12 видов оружия с комбо, Кумо с генетикой редкости.</p></article>
+      </div>
+    </div>
+  </section>
+
   <section id="faq" class="sec" data-cam="faq">
     <div class="wrap">
       <div class="sec-head reveal"><p class="eyebrow" data-i18n="faq.eyebrow">FAQ</p><h2 data-i18n="faq.title">Частые вопросы</h2></div>
@@ -298,7 +344,8 @@
   </div>
 </footer>
 
-<dialog id="bossDlg" aria-labelledby="bdT"><div class="bd-in"><header class="bd-head"><div><p class="eyebrow" data-i18n="boss.eyebrow">Бестиарий</p><h2 id="bdT" data-i18n="boss.title">32 босса уже в игре</h2></div><button class="round close" id="bdClose" aria-label="Закрыть">×</button></header><div class="bd-acts" id="bdActs" role="tablist"></div><div class="bd-body"><div class="bd-grid" id="bdGrid"></div><aside class="bd-det" id="bdDet"><div class="bd-pic" id="bdPic"></div><span class="bd-act" id="bdAct"></span><h3 id="bdName"></h3><p class="bd-ar" id="bdAr"></p><p class="bd-d" id="bdD"></p></aside></div></div></dialog>
+<dialog id="arDlg" aria-labelledby="arT"><div class="bd-in"><header class="bd-head"><div><p class="eyebrow" data-i18n="ar.eyebrow">Арсенал</p><h2 id="arT" data-i18n="ar.title">Всё снаряжение из игры</h2></div><button class="round close" id="arClose" aria-label="Закрыть">×</button></header><div class="bd-acts ar-cats" id="arCats" role="tablist"></div><div class="ar-body"><div class="ar-main"><div class="ar-stage" id="arStage"><span class="tv-rec"><i></i><span data-i18n="ar.live">живой показ</span></span></div><div class="ar-info"><span class="ar-tag" id="arCat"></span><h3 id="arName"></h3><div class="ar-tags" id="arTags"></div><p class="ar-d" id="arD"></p><p class="ar-how"><b data-i18n="ar.how">Где взять</b> <span id="arHow"></span></p></div></div><div class="ar-grid" id="arGrid"></div></div></div></dialog>
+<dialog id="bossDlg" aria-labelledby="bdT"><div class="bd-in"><header class="bd-head"><div><p class="eyebrow" data-i18n="boss.eyebrow">Бестиарий</p><h2 id="bdT" data-i18n="boss.title">33 босса уже в игре</h2></div><button class="round close" id="bdClose" aria-label="Закрыть">×</button></header><div class="bd-acts" id="bdActs" role="tablist"></div><div class="bd-body"><div class="bd-grid" id="bdGrid"></div><aside class="bd-det" id="bdDet"><div class="bd-pic" id="bdPic"></div><span class="bd-act" id="bdAct"></span><h3 id="bdName"></h3><p class="bd-ar" id="bdAr"></p><p class="bd-d" id="bdD"></p></aside></div></div></dialog>
 <dialog id="lightbox"><button class="round close" id="lbClose" aria-label="Закрыть">×</button><img id="lbImg" alt=""><p id="lbCap"></p></dialog>
 <dialog id="trailer"><button class="round close" id="trailerClose" aria-label="Закрыть">×</button><video id="trailerVid" src="docs/video/horai_fight.mp4" controls playsinline preload="none"></video></dialog>
 <noscript><style>#pre{display:none}</style></noscript>
@@ -315,6 +362,8 @@
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="landing/voxel.js"></script>
 <script src="landing/techview.js"></script>
+<script src="landing/arsenal.js"></script>
+<script src="landing/mapview.js"></script>
 <script src="landing/app.js"></script>
 </body>
 </html>
