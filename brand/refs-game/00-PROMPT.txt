@@ -1,0 +1,35 @@
+HIGGSFIELD: ПРОМТ ДЛЯ СЦЕНЫ "ГЕРОЙ ПРЫГАЕТ ПО ОБЛАЧКАМ, ЗА НИМ КУМО"
+
+КАК ПОДАВАТЬ ЭТАЛОНЫ (все из игры, без интерфейса):
+  Стартовый кадр:  02-hero-jump-from-behind.jpg
+  Персонаж (герой): 01-hero-front.png
+  Персонаж (Кумо):  05-kumo-in-game.png
+  Стиль, мир:       03-world-style-islands.jpg
+Если модель принимает только один референс, подавай 02, остальное уже описано в промте.
+
+=========================== ПРОМТ (8 секунд, 16:9) ===========================
+
+Stylized 3D cartoon, Minecraft-like voxel world with pixelated block textures, exactly matching the reference game look. A small blocky voxel hero with an orange-yellow block cap, light blue shirt, brown belt, white legs and red boots hops rhythmically from one floating grass island to the next, over a sea of fluffy white blocky clouds. Third-person chase camera from behind and slightly above. Right behind him a small white blocky cloud-bunny creature named Kumo (cube-shaped fluffy body, two black square eyes with a tiny white highlight, pink blush cheeks, tiny feet) bounces after him one beat behind, in sync. Five hops, each one higher and faster, the last one a big leap upward. On every landing: small puffs of cloud dust and pink flower petals. Warm golden-hour sunset light, soft pink and yellow sky, gentle bloom glow, god-rays. Smooth cinematic follow camera with slight energy, gentle push-in on the final jump. Keep the blocky voxel shapes and pixelated textures sharp, characters keep the exact same proportions and colors in every frame.
+
+=========================== НЕГАТИВ (если есть поле) =========================
+
+no text, no UI, no HUD, no logo, no realistic human, no extra characters, no morphing or melting of characters, no smooth rounded organic shapes, no change of outfit or colors, no camera cut
+
+=========================== ПРОДОЛЖЕНИЯ (по 5-6 секунд) ======================
+
+1) КУМО ДОГОНЯЕТ:
+Close-up, low angle: the small white blocky cloud-bunny Kumo lands on a floating voxel island and bounces forward, long ears flopping, blush cheeks, black square eyes shining; behind it a blocky hero hops away into a sunset sky full of floating islands. Stylized 3D cartoon, voxel pixel textures, warm golden light, soft depth of field.
+
+2) МЕГА-ПРЫЖОК ВВЕРХ:
+The blocky voxel hero makes a huge final leap off a floating island, camera follows and tilts up to reveal a golden temple glowing at the top of the sky in a god-ray beam, a white blocky cloud-bunny jumping right behind him. Stylized 3D cartoon, voxel pixel textures, sunset bloom, epic but cute.
+
+3) ЗОЛОТЫЕ КРЫЛЬЯ:
+In mid-air the blocky voxel hero unfolds golden blocky wings and glides through bright clouds, small white cloud-bunny creature riding on his shoulder, sun rays, smooth motion, joyful. Stylized 3D cartoon, voxel pixel textures.
+
+=========================== СОВЕТЫ ===========================================
+
+1. Всегда стартуй с кадра из игры (02), а не с текста.
+2. Клип 4-8 секунд, один план, без склеек внутри.
+3. Текст и логотип не просить: название и "Открытый альфа-тест" ставим в монтаже.
+4. Если герой сменил одежду или цвет: генерируй заново с тем же стартовым кадром и добавь "keep the exact outfit from the reference".
+5. Делай 2-3 попытки и выбирай лучшую.
