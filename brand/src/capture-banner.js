@@ -15,19 +15,20 @@ async function shot(browser, name, opts) {
     t = t.replace('const W = {};', 'const W = {}; window.__W = W; window.__cam = cam;');
     await r.fulfill({ response: res, body: t });
   });
-  await p.goto('http://localhost:8080/', { waitUntil: 'load' }); await p.waitForTimeout(6500);
+  await p.goto('http://localhost:8080/', { waitUntil: 'load' });
+  await p.waitForFunction('window.__W && window.__W.hero && window.__W.kHero && window.__W.heroIsle', null, { timeout: 60000 }); await p.waitForTimeout(6000);
   await p.addStyleTag({ content: 'main,.nav,.foot,#pre,.dress-btn,dialog{display:none!important}' });
-  await p.evaluate(h => { const W = window.__W; if (!h.hero) W.hero.G.visible = false; if (!h.kumo) W.kHero.G.visible = false }, opts);
+  await p.evaluate(h => { const W = window.__W; W.heroIsle.position.x += h.dx || 0; if (!h.hero) W.hero.G.visible = false; if (!h.kumo) W.kHero.G.visible = false }, opts);
   await p.waitForTimeout(1800);
   await p.screenshot({ path: path.join(out, name), clip: { x: 0, y: opts.y, width: 1500, height: 500 } });
   await ctx.close();
 }
 (async () => {
   const b = await pw.chromium.launch({ executablePath: CHROME, args: ['--use-gl=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
-  const Y = +(process.env.BANNER_Y || 235);
-  await shot(b, 'island-banner-1500x500.png', { dpr: 1, y: Y, hero: false, kumo: false });
-  await shot(b, 'island-banner-3000x1000.png', { dpr: 2, y: Y, hero: false, kumo: false });
-  await shot(b, 'island-hero-banner-1500x500.png', { dpr: 1, y: Y - 30, hero: true, kumo: true });
-  await shot(b, 'island-hero-banner-3000x1000.png', { dpr: 2, y: Y - 30, hero: true, kumo: true });
+  const Y = +(process.env.BANNER_Y || 235), DX = +(process.env.BANNER_DX || 0);
+  await shot(b, 'island-only-banner-1500x500.png', { dpr: 1, y: Y, hero: false, kumo: false, dx: DX });
+  await shot(b, 'island-only-banner-3000x1000.png', { dpr: 2, y: Y, hero: false, kumo: false, dx: DX });
+  await shot(b, 'island-banner-1500x500.png', { dpr: 1, y: Y - 30, hero: true, kumo: true, dx: DX });
+  await shot(b, 'island-banner-3000x1000.png', { dpr: 2, y: Y - 30, hero: true, kumo: true, dx: DX });
   await b.close(); console.log('done');
 })();

@@ -1,0 +1,27 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Banner with marketing copy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&family=Pixelify+Sans:wght@600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#000}
+#b{position:relative;width:1500px;height:500px;overflow:hidden;background:#f6a0c0 url(base/island-banner-3000x1000.png) center/1500px 500px no-repeat}
+.t{position:absolute;left:0;top:96px;width:1500px;text-align:center}
+.row{display:flex;align-items:center;justify-content:center;gap:12px;white-space:nowrap}
+.tag{display:inline-flex;align-items:center;gap:10px;padding:9px 13px;background:#ffc23c;color:#141a3c;border:4px solid #141a3c;border-radius:8px;box-shadow:5px 5px 0 #141a3c;font-family:'Press Start 2P',monospace;font-size:13px;line-height:1}
+.tag i{width:10px;height:10px;border-radius:50%;background:#2fbf4a;box-shadow:0 0 0 3px rgba(47,191,74,.3)}
+.h{margin-top:20px;font-family:'Pixelify Sans',sans-serif;font-weight:700;font-size:92px;line-height:.95;color:#fff;letter-spacing:0;text-shadow:-3px -3px 0 #141a3c,3px -3px 0 #141a3c,-3px 3px 0 #141a3c,3px 3px 0 #141a3c,0 8px 0 #141a3c}
+.h b{color:#ffc23c;font-weight:700}
+.s{display:inline-block;margin-top:24px;padding:10px 15px;background:#141a3c;color:#fff;border-radius:7px;box-shadow:5px 5px 0 rgba(20,26,60,.35);font-family:'Nunito',sans-serif;font-weight:900;font-size:23px;line-height:1.3;max-width:600px}
+.s em{font-style:normal;color:#ffc23c}
+.n{display:inline-block;padding:7px 12px;background:#fff;color:#141a3c;border:3px solid #141a3c;border-radius:7px;box-shadow:4px 4px 0 #141a3c;font-family:'Nunito',sans-serif;font-weight:900;font-size:15px}
+</style></head><body>
+<div id="b"><div class="t"><div class="row"><span class="tag"><i></i><span id="tag"></span></span><div class="n" id="n"></div></div><div class="h" id="h"></div><div class="s" id="s"></div></div></div>
+<script>
+const L = new URLSearchParams(location.search).get('lang') === 'ru' ? 'ru' : 'en';
+const C = {
+  en: { tag: 'OPEN ALPHA TEST', h: 'CLIMB TO<br><b>THE GODS</b>', s: 'A voxel action RPG <em>in your browser.</em>', n: '6 worlds · 33 bosses · one Kumo · no install' },
+  ru: { tag: 'ОТКРЫТЫЙ АЛЬФА-ТЕСТ', h: 'ПРЫГАЙ<br><b>К БОГАМ</b>', s: 'Воксельная экшн-RPG <em>прямо в браузере.</em>', n: '6 миров · 33 босса · твой Кумо · без установки' },
+}[L];
+document.getElementById('tag').textContent = C.tag; document.getElementById('h').innerHTML = C.h; document.getElementById('s').innerHTML = C.s; document.getElementById('n').textContent = C.n;
+document.fonts.ready.then(() => { window.__ready = true });
+</script></body></html>
