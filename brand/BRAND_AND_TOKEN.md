@@ -21,6 +21,7 @@
 | `banner-clean-*.png` | 1500×500, 3000×1000 | тот же кадр без текста |
 | `banner-island-only-*.png` | 1500×500, 3000×1000 | пустой остров, без героя и Кумо |
 | `preview-avatar-sizes.png` | — | проверка читаемости аватарок в круге 200/120/64/40 px |
+| `logo/kumo-logo-full.png`, `kumo-logo-512/256/128/64.png`, `kumo-icon-512.png` | разные | **Кумо без фона** (прозрачный PNG): логотип сайта, стикеры, нашивки, шаблоны. Те же файлы лежат в `landing/img/brand/` вместе с иконками `kumo-icon-32/64/180/192.png` для фавикона |
 | `src/` | — | исходники: `avatar-cute.html`, `scene.js` (рендер 3D-Кумо и «милый» проход по лицу), `capture-banner.js` (снимает кадр с живого сайта), `banner-text.html` (текст поверх кадра), `base/` (исходные кадры) |
 
 Как пересобрать: запусти `node server/server.js`, открой `http://localhost:8080/brand/src/avatar-cute.html` (параметры `?halo=1` для нимба, `?t=sky` для голубого фона) и сделай скриншот элемента `#a`. Кадр для баннера снимает `BANNER_DX=7.3 node src/capture-banner.js brand/src/base` (нужны `playwright-core`, Chrome и запущенный сервер; `BANNER_DX` двигает остров вправо). Текст добавляет `banner-text.html?lang=en|ru`.

@@ -182,3 +182,5 @@ kbd.k{display:inline-block;min-width:26px;padding:2px 7px;margin:0 2px;text-alig
 .hit{animation:dxHit 1.8s;border-radius:6px}
 @keyframes dxHit{0%,70%{outline:4px solid var(--gold);outline-offset:4px;background:#fff0c4}100%{outline:4px solid transparent;outline-offset:4px}}
 @media (max-width:1100px){.dx-side{background:#141a3c}}
+
+.dx-logo{align-items:center}.dx-logo .dx-k{display:block;height:36px;width:auto;margin:-4px 0;filter:drop-shadow(0 3px 0 rgba(0,0,0,.35));transition:transform .25s}.dx-logo:hover .dx-k{transform:translateY(-3px) rotate(-6deg)}.dx-t{white-space:nowrap}.dx-t b{color:var(--gold)}

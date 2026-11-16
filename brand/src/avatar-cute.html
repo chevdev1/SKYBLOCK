@@ -3,6 +3,8 @@
 <style>
 html,body{margin:0;background:#000}
 #a{position:relative;width:1024px;height:1024px;overflow:hidden;background:radial-gradient(circle at 50% 42%,#ffe9d2 0,#ffc4d6 46%,#f58db4 100%)}
+#a.clear{background:transparent}
+#a.clear .sd{display:none}
 #a.sky{background:radial-gradient(circle at 50% 42%,#f2fbff 0,#bfe3ff 48%,#7fb6ff 100%)}
 #a img.k{position:absolute;inset:0;width:100%;height:100%}
 .sd{position:absolute;left:27%;width:46%;top:78.5%;height:7%;background:radial-gradient(ellipse,rgba(150,60,110,.42),transparent 70%)}
@@ -25,6 +27,6 @@ const res = KSCENE.render(document.createElement('canvas'), {
     m.rotation.x = Math.PI / 2 - 0.2; m.position.set(0.02, 1.82 * S + 0.12, 0); s.add(m);
   }] : [],
 });
-document.getElementById('k').src = res.url;
+document.getElementById('k').src = res.url; window.__url = res.url;
 window.__ready = true;
 </script></body></html>

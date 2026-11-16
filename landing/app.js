@@ -6,7 +6,7 @@
   const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches, MOBILE = innerWidth < 860 || matchMedia('(pointer:coarse)').matches;
   if (REDUCED) document.documentElement.classList.add('reduced');
   let LANG = (localStorage.getItem('hto-lang') || (navigator.language || 'ru').slice(0, 2)) === 'en' ? 'en' : 'ru';
-  const pre = { n: 0, set(v) { this.n = Math.max(this.n, v); $('preN').textContent = Math.round(this.n) } };
+  const pre = { n: 0, set(v) { this.n = Math.max(this.n, v); $('preN').textContent = Math.round(this.n); const pb = document.getElementById('preBar'); if (pb) pb.style.width = Math.round(this.n) + '%' } };
 
   /* ---------- texts ---------- */
   const I18N = {
