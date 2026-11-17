@@ -1,0 +1,49 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Post 29: versus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b0f2c;--gold:#ffc23c;--white:#fff}
+html,body{margin:0;background:#000}
+#c{position:relative;width:1600px;height:900px;overflow:hidden;background:#141a3c;color:#fff}
+#c::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,10,30,.9) 0,rgba(8,10,30,.62) 36%,rgba(8,10,30,.08) 62%,rgba(8,10,30,0) 74%)}
+#c::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 66% 52%,transparent 52%,rgba(8,10,30,.42) 100%)}
+.mono{font-family:'Space Mono',monospace;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+/* corner brackets (editing viewfinder) */
+.br{position:absolute;width:46px;height:46px;border:3px solid rgba(255,255,255,.85);z-index:3}
+.br.a{left:44px;top:44px;border-right:0;border-bottom:0}.br.b{right:44px;top:44px;border-left:0;border-bottom:0}
+.br.c{left:44px;bottom:44px;border-right:0;border-top:0}.br.d{right:44px;bottom:44px;border-left:0;border-top:0}
+.top{position:absolute;left:112px;right:112px;top:62px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:19px}
+.top .l{display:flex;align-items:center;gap:14px}
+.top img{height:52px;width:auto;filter:drop-shadow(0 3px 0 rgba(0,0,0,.45))}
+.top .r{display:flex;align-items:center;gap:12px;color:var(--gold);padding:10px 16px;background:rgba(8,10,30,.78)}
+.top .r i{width:13px;height:13px;border-radius:50%;background:#2fbf4a;box-shadow:0 0 0 5px rgba(47,191,74,.28)}
+.hd{position:absolute;left:104px;top:196px;z-index:3;transform:skewX(-7deg);transform-origin:0 100%}
+.hd div{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;line-height:.86;letter-spacing:-.01em}
+.hd .o{font-size:150px;color:transparent;-webkit-text-stroke:5px #fff;text-shadow:0 10px 0 rgba(8,10,30,.55)}
+.hd .g{font-size:224px;color:var(--gold);text-shadow:0 12px 0 #8a4a00,0 22px 40px rgba(0,0,0,.45);margin-top:-8px}
+.sub{position:absolute;left:112px;top:604px;z-index:3;font-size:25px;line-height:1.5;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.sub b{color:var(--gold)}
+.stats{position:absolute;left:112px;top:698px;z-index:3;display:flex;gap:34px;font-size:21px}
+.stats div{display:flex;flex-direction:column;gap:6px;padding-left:16px;border-left:4px solid var(--gold)}
+.stats b{font-family:'Oswald',sans-serif;font-size:46px;line-height:1;letter-spacing:0}
+.stats span{font-size:15px;color:#d9defa}
+.bot{position:absolute;left:112px;right:112px;bottom:62px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:18px}
+.bot .l{padding:10px 16px;background:var(--gold);color:var(--ink)}
+.bot .r{color:#fff;padding:10px 16px;background:rgba(8,10,30,.78)}
+
+#c{background:#141a3c}
+#c::before{background:none}
+.hl{position:absolute;left:0;top:0;width:900px;height:900px;background:linear-gradient(#7fc4ff,#cfeaff);clip-path:polygon(0 0,100% 0,720px 100%,0 100%)}
+.hr2{position:absolute;right:0;top:0;width:900px;height:900px;background:linear-gradient(#ff8fd0,#ffe0a0);clip-path:polygon(180px 0,100% 0,100% 100%,0 100%)}
+.hl img,.hr2 img{position:absolute;width:760px;top:130px}
+.hl img{left:20px}.hr2 img{right:20px}
+.lab{position:absolute;z-index:5;top:600px;font-family:'Oswald',sans-serif;font-weight:700;font-size:80px;letter-spacing:.03em;color:#fff;-webkit-text-stroke:3px #141a3c;paint-order:stroke fill;text-shadow:0 6px 0 #141a3c}
+.vs{position:absolute;z-index:6;left:700px;top:330px;width:200px;height:200px;border-radius:50%;background:#ffc23c;border:8px solid #141a3c;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-weight:700;font-size:92px;color:#141a3c;box-shadow:0 12px 0 #141a3c}
+.q{position:absolute;z-index:6;left:0;right:0;top:46px;text-align:center;font-family:'Oswald',sans-serif;font-weight:700;font-size:58px;color:#141a3c;letter-spacing:.04em}
+
+</style></head><body>
+<div id="c">
+<div class="hl"><img src="cast-girl.png" alt=""></div><div class="hr2"><img src="cast-sergio.png" alt=""></div><i style="border-color:#141a3c" class="br a"></i><i style="border-color:#141a3c" class="br b"></i><i style="border-color:#141a3c" class="br c"></i><i style="border-color:#141a3c" class="br d"></i><div class="q">WOULD YOU RATHER...</div><div class="lab" style="left:110px">SPEAR</div><div class="lab" style="right:110px">TWIN BLADES</div><div class="vs">VS</div><div class="bot mono"><span class="l">Comment your side</span><span class="r">12 weapon types in the alpha</span></div>
+</div>
+<script>document.fonts.ready.then(()=>{window.__ready=true})</script></body></html>

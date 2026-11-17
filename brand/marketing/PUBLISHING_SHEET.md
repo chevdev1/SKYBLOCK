@@ -36,6 +36,11 @@
 | День 26 | `post-25-achievements-en-1600x900.png` | Achievements | 140 из 280 |
 | День 27 | `post-26-patchnotes-en-1600x900.png` | Patch notes | 275 из 280 |
 | День 28 | `post-27-receipt-en-1600x900.png` | Craft receipt | 168 из 280 |
+| День 29 | `post-29-versus-en-1600x900.png` | Would you rather | 139 из 280 |
+| День 30 | `post-30-loading-en-1600x900.png` | Loading tip | 134 из 280 |
+| День 31 | `post-31-roadmap-en-1600x900.png` | Roadmap | 280 из 280 |
+| День 32 | `post-32-bossquiz-en-1600x900.png` | Boss quiz | 147 из 280 |
+| День 33 | `post-33-polaroids-en-1600x900.png` | Screenshots | 131 из 280 |
 
 Лучшее время: будни, 15:00-17:00 UTC. Закреп: пост 1 до выхода всей серии.
 
@@ -390,6 +395,70 @@ Your craft receipt 🧾
 3 mole claws + 5 slime = 1 grappling hook. Mobs drop materials, recipes turn them into gear: 32 items and 8 relics.
 
 What would you craft first? 👇
+```
+
+### 29. Would you rather
+
+**Файл:** `post-29-versus-en-1600x900.png`
+
+```
+Would you rather...
+
+Spear or twin blades? 12 weapon types are waiting in the alpha, each with its own fighting style.
+
+Comment your side 👇
+```
+
+### 30. Loading tip
+
+**Файл:** `post-30-loading-en-1600x900.png`
+
+```
+Loading tip ☁️
+
+Hop on the beat: every jump in a streak is faster, and the fifth one is a mega jump.
+
+Which tip should we show next? 👇
+```
+
+### 31. Roadmap
+
+**Файл:** `post-31-roadmap-en-1600x900.png`
+
+```
+Where we are 🗺️
+
+Shipped: the Cloud Isles, Chaos Rift, Star Dome, Horai, your island and Kumo.
+In progress: a shared home for two, the alpha test, deeper RPG lore.
+Next: Kumo cloud races, leaderboards, kingdoms, a vast open world.
+
+Plans can change, and your feedback shapes them.
+```
+
+### 32. Boss quiz
+
+**Файл:** `post-32-bossquiz-en-1600x900.png`
+
+```
+Who's that boss? 👀
+
+He sits on a cloud and throws lightning. One of 33 bosses.
+
+A) Kronos  B) Zeus  C) Medusa  D) Oceanus
+
+Answer in the comments 👇
+```
+
+### 33. Screenshots
+
+**Файл:** `post-33-polaroids-en-1600x900.png`
+
+```
+Screenshot Saturday 📸
+
+The Gates of Olympus, above the clouds, neon Horai and inside the Star Dome.
+
+Which one is your favourite? 👇
 ```
 
 ## Запасные картинки и форматы
