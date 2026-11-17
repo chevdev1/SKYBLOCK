@@ -4,18 +4,19 @@
 
 Правила: один пост = одна картинка и один призыв, хэштегов не больше двух, ничего не обещаем про доход и токен. Режим альфы везде «скоро» (`Alpha test: opening soon`). Если решите открыть альфу сразу, замените эту фразу на `Alpha test: open now`.
 
-## Порядок выхода (9 постов)
+## Порядок выхода
 
 | День | Файл в проводнике | Тема | Знаков |
 |---|---|---|---|
 | День 1 | `post-01-v4-sergio-en-1600x900.png` | Pinned intro post | 212 из 280 |
 | День 2 | `post-02-worlds-en-1600x900.png` | Worlds | 145 из 280 |
-| День 3 | `post-04-movement-en-1600x900.png` | Movement | 196 из 280 |
-| День 4 | `cute-kumo-16x9-en-1600x900.png` | Kumo (feed, 16:9) | 179 из 280 |
-| День 5 | `post-03-tech-en-1600x900.png` | Tech: size | 179 из 280 |
-| День 6 | `post-05-cross-en-1600x900.png` | Cross-platform | 164 из 280 |
-| День 7 | `post-06-coop32-en-1600x900.png` | Co-op | 182 из 280 |
-| День 8 | `post-07-scratch-en-1600x900.png` | Tech: own stack | 198 из 280 |
+| День 3 | `post-08-mobs-en-1600x900.png` | Bosses and mobs | 172 из 280 |
+| День 4 | `post-04-movement-en-1600x900.png` | Movement | 196 из 280 |
+| День 5 | `cute-kumo-16x9-en-1600x900.png` | Kumo (feed, 16:9) | 179 из 280 |
+| День 6 | `post-03-tech-en-1600x900.png` | Tech: size | 179 из 280 |
+| День 7 | `post-05-cross-en-1600x900.png` | Cross-platform | 164 из 280 |
+| День 8 | `post-06-coop32-en-1600x900.png` | Co-op | 182 из 280 |
+| День 9 | `post-07-scratch-en-1600x900.png` | Tech: own stack | 198 из 280 |
 
 Лучшее время: будни, 15:00-17:00 UTC. Закреп: пост 1 до выхода всей серии.
 
@@ -47,7 +48,19 @@ From the Cloud Isles to neon Horai: 19 regions and 33 bosses wait on the way up.
 Which world do you want to see first? 👇
 ```
 
-### 3. Movement
+### 3. Bosses and mobs
+
+**Файл:** `post-08-mobs-en-1600x900.png`
+
+```
+Not a single clone.
+
+Gryphons, titans, gorgons, nightmares and neon dragons: 33 bosses with their own phases, arenas and legendary loot.
+
+Which one would you fight first? 👇
+```
+
+### 4. Movement
 
 **Файл:** `post-04-movement-en-1600x900.png`
 
@@ -59,7 +72,7 @@ Hop on the beat: every jump in a streak is faster, and the fifth one is a mega j
 Skill beats stats here. #indiegame
 ```
 
-### 4. Kumo (feed, 16:9)
+### 5. Kumo (feed, 16:9)
 
 **Файл:** `cute-kumo-16x9-en-1600x900.png`
 
@@ -73,7 +86,7 @@ Ultra-rare form: 1% chance, and the odds are public.
 What would you name yours? 👇
 ```
 
-### 5. Tech: size
+### 6. Tech: size
 
 **Файл:** `post-03-tech-en-1600x900.png`
 
@@ -85,7 +98,7 @@ That's the whole game: one file, zero installs. A custom voxel engine on Three.j
 Alpha test: opening soon. #buildinpublic
 ```
 
-### 6. Cross-platform
+### 7. Cross-platform
 
 **Файл:** `post-05-cross-en-1600x900.png`
 
@@ -97,7 +110,7 @@ Play on desktop, tablet or phone: keyboard and mouse, touch controls, or a gamep
 No download. No sign-up.
 ```
 
-### 7. Co-op
+### 8. Co-op
 
 **Файл:** `post-06-coop32-en-1600x900.png`
 
@@ -109,7 +122,7 @@ Shared bosses, shared loot and XP. Honest co-op: the fight leader stays put, bos
 Who are you bringing? 👇
 ```
 
-### 8. Tech: own stack
+### 9. Tech: own stack
 
 **Файл:** `post-07-scratch-en-1600x900.png`
 
