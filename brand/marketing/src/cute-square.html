@@ -1,0 +1,55 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Cute: Meet Kumo square</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@800;900&family=Nunito:wght@800;900&display=swap" rel="stylesheet">
+<style>
+:root{--pink:#ff5d8a;--pinkd:#d93a6c;--ink:#3a1f4d;--cream:#fff6ea}
+html,body{margin:0;background:#000}
+#c{position:relative;width:1080px;height:1080px;overflow:hidden;background:#ffc6d8;color:var(--ink);font-family:'Nunito',sans-serif}
+.bg{position:absolute;inset:-30px;background:url(bg-islands-cute.jpg) center/cover;filter:blur(9px) saturate(1.15) brightness(1.08)}
+.tint{position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,160,196,.82) 0,rgba(255,196,206,.7) 46%,rgba(255,232,196,.55) 100%)}
+.glow{position:absolute;right:120px;top:90px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.85),rgba(255,255,255,0) 66%)}
+.br{position:absolute;width:40px;height:40px;border:4px solid #fff;z-index:3;border-radius:12px}
+.br.a{left:34px;top:34px;border-right:0;border-bottom:0}.br.b{right:34px;top:34px;border-left:0;border-bottom:0}
+.br.c{left:34px;bottom:34px;border-right:0;border-top:0}.br.d{right:34px;bottom:34px;border-left:0;border-top:0}
+.glow{left:140px;top:300px;width:800px;height:800px}
+.top{position:absolute;left:84px;right:84px;top:50px;display:flex;justify-content:space-between;align-items:center;z-index:3}
+.top .l{display:flex;align-items:center;gap:12px;font-weight:900;font-size:21px;letter-spacing:.06em;text-transform:uppercase;color:#fff;text-shadow:0 3px 0 var(--pinkd)}
+.top img{height:46px;width:auto}
+.pill{display:inline-flex;align-items:center;gap:9px;padding:9px 16px;background:#fff;color:var(--pinkd);border-radius:999px;font-weight:900;font-size:16px;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 4px 0 rgba(217,58,108,.35)}
+.pill i{width:11px;height:11px;border-radius:50%;background:#2fbf4a;box-shadow:0 0 0 4px rgba(47,191,74,.25)}
+.hd{position:absolute;left:0;right:0;top:122px;text-align:center;z-index:3;transform:rotate(-2deg)}
+.hd div{font-family:'Rubik',sans-serif;font-weight:900;text-transform:uppercase;line-height:.9;paint-order:stroke fill}
+.hd .o{font-size:104px;color:transparent;-webkit-text-stroke:6px #fff;text-shadow:0 7px 0 rgba(217,58,108,.55)}
+.hd .g{font-size:210px;color:#fff;-webkit-text-stroke:14px var(--pink);text-shadow:0 12px 0 var(--pinkd);margin-top:-4px}
+.kumo{position:absolute;left:50%;transform:translateX(-50%);bottom:150px;height:500px;width:auto;z-index:2;filter:drop-shadow(0 18px 0 rgba(217,58,108,.28))}
+.shadow{position:absolute;left:50%;margin-left:-190px;bottom:128px;width:380px;height:34px;border-radius:50%;background:radial-gradient(ellipse,rgba(217,58,108,.38),transparent 70%);z-index:1}
+.sub{position:absolute;left:84px;right:84px;top:auto;bottom:92px;max-width:none;text-align:center;padding:12px 20px;background:#fff;border-radius:20px;font-weight:900;font-size:25px;line-height:1.28;box-shadow:0 6px 0 rgba(217,58,108,.35);z-index:3}
+.sub b{color:var(--pinkd)}
+.chips{display:none}
+.sp{position:absolute;z-index:2;background:#fff}
+.bot{position:absolute;left:0;right:0;bottom:34px;display:flex;justify-content:center;z-index:3}
+.bot .pill.s{background:var(--pink);color:#fff;box-shadow:0 4px 0 var(--pinkd)}
+.ru .hd .o{font-size:80px}
+</style></head><body>
+<div id="c"><div class="bg"></div><div class="tint"></div><div class="glow"></div>
+<i class="br a"></i><i class="br b"></i><i class="br c"></i><i class="br d"></i>
+<div class="top"><div class="l"><img src="kumo-logo-256.png" alt=""><span>Hop to Olympus</span></div><span class="pill"><i></i><span id="st"></span></span></div>
+<div class="hd"><div class="o" id="h1"></div><div class="g" id="h2"></div></div>
+<div class="sub" id="sub"></div><div class="chips" id="ch"></div>
+<div class="shadow"></div><img class="kumo" src="kumo-full.png" alt="">
+<div id="sps"></div>
+<div class="bot"><span class="pill s" id="bl"></span></div></div>
+<script>
+const L = new URLSearchParams(location.search).get('lang') === 'ru' ? 'ru' : 'en';
+const C = {
+  en: { st: 'Alpha test // opening soon', h1: 'MEET', h2: 'KUMO', sub: 'A cloud buddy that <b>hatches, grows</b> and joins your adventures.', ch: ['Hatches from an egg', '1% ultra-rare', 'Joins your journey'], bl: 'Follow to hear first' },
+  ru: { st: 'Альфа-тест // скоро', h1: 'ЗНАКОМЬСЯ:', h2: 'КУМО', sub: 'Облачный друг, который <b>вылупляется, растёт</b> и ходит с тобой в приключения.', ch: ['Вылупляется из яйца', '1% сверхредкий', 'Ходит с тобой'], bl: 'Подпишись, чтобы узнать первым' },
+}[L];
+const $ = id => document.getElementById(id); document.getElementById('c').classList.add(L);
+$('st').textContent = C.st; $('h1').textContent = C.h1; $('h2').textContent = C.h2; $('sub').innerHTML = C.sub; $('bl').textContent = C.bl;
+$('ch').innerHTML = C.ch.map(x => '<span>' + x + '</span>').join('');
+/* tiny pixel sparkles around Kumo */
+$('sps').innerHTML = [[150,430,9],[930,400,12],[880,300,7],[190,640,8],[960,640,10]].map(([x,y,z]) => '<i class="sp" style="left:' + (x - z / 2) + 'px;top:' + (y - z * 1.5) + 'px;width:' + z + 'px;height:' + z * 3 + 'px"></i><i class="sp" style="left:' + (x - z * 1.5) + 'px;top:' + (y - z / 2) + 'px;width:' + z * 3 + 'px;height:' + z + 'px"></i>').join('');
+document.fonts.ready.then(() => { window.__ready = true });
+</script></body></html>
