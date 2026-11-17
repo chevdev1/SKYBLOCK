@@ -1,45 +1,53 @@
 <!doctype html>
-<html><head><meta charset="utf-8"><title>Post 01: Meet Hop to Olympus</title>
+<html><head><meta charset="utf-8"><title>Post 01: Enter Olympus (montage type)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&family=Pixelify+Sans:wght@600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#141a3c;--gold:#ffc23c;--pink:#ff5d8a}
+:root{--ink:#0b0f2c;--gold:#ffc23c;--white:#fff}
 html,body{margin:0;background:#000}
-#c{position:relative;width:1600px;height:900px;overflow:hidden;background:#6aa8e8 url(bg-game-start.jpg) center/cover no-repeat;font-family:'Nunito',sans-serif}
-#c::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,26,60,.82) 0,rgba(20,26,60,.55) 34%,rgba(20,26,60,0) 62%)}
-#c::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 62%,rgba(20,26,60,.28) 100%)}
-.in{position:absolute;left:84px;top:70px;width:760px;z-index:2;color:#fff}
-.brand{display:flex;align-items:center;gap:14px}
-.brand img{height:74px;width:auto;filter:drop-shadow(0 4px 0 rgba(10,12,36,.5))}
-.brand span{font-family:'Pixelify Sans',sans-serif;font-weight:700;font-size:34px;text-shadow:0 4px 0 var(--ink)}
-.brand b{color:var(--gold)}
-.tag{display:inline-flex;align-items:center;gap:12px;margin-top:34px;padding:13px 18px;background:var(--gold);color:var(--ink);border:5px solid var(--ink);border-radius:10px;box-shadow:6px 6px 0 var(--ink);font-family:'Press Start 2P',monospace;font-size:19px;line-height:1}
-.tag i{width:14px;height:14px;border-radius:50%;background:#2fbf4a;box-shadow:0 0 0 4px rgba(47,191,74,.35)}
-h1{margin:30px 0 0;font-family:'Pixelify Sans',sans-serif;font-weight:700;font-size:128px;line-height:.94;letter-spacing:0;color:#fff;text-shadow:-4px -4px 0 var(--ink),4px -4px 0 var(--ink),-4px 4px 0 var(--ink),4px 4px 0 var(--ink),0 11px 0 var(--ink)}
-h1 b{color:var(--gold);font-weight:700}
-.sub{display:inline-block;margin-top:30px;padding:14px 20px;background:var(--ink);border-radius:9px;box-shadow:6px 6px 0 rgba(10,12,36,.4);font-weight:900;font-size:33px;line-height:1.28}
-.sub em{font-style:normal;color:var(--gold)}
-.chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
-.chips span{padding:10px 16px;background:#fff;color:var(--ink);border:4px solid var(--ink);border-radius:8px;box-shadow:4px 4px 0 var(--ink);font-weight:900;font-size:24px}
-.foot{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:0 84px;height:92px;background:linear-gradient(180deg,rgba(20,26,60,0),rgba(20,26,60,.78))}
-.foot .l{font-family:'Press Start 2P',monospace;font-size:17px;color:var(--gold);text-shadow:0 3px 0 var(--ink)}
-.foot .r{font-weight:900;font-size:26px;color:#fff;text-shadow:0 3px 0 rgba(10,12,36,.8)}
+#c{position:relative;width:1600px;height:900px;overflow:hidden;background:#4a8a3a url(bg-hero-armor.jpg) center/cover no-repeat;color:#fff}
+#c::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,10,30,.9) 0,rgba(8,10,30,.62) 36%,rgba(8,10,30,.08) 62%,rgba(8,10,30,0) 74%)}
+#c::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 66% 52%,transparent 52%,rgba(8,10,30,.42) 100%)}
+.mono{font-family:'Space Mono',monospace;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+/* corner brackets (editing viewfinder) */
+.br{position:absolute;width:46px;height:46px;border:3px solid rgba(255,255,255,.85);z-index:3}
+.br.a{left:44px;top:44px;border-right:0;border-bottom:0}.br.b{right:44px;top:44px;border-left:0;border-bottom:0}
+.br.c{left:44px;bottom:44px;border-right:0;border-top:0}.br.d{right:44px;bottom:44px;border-left:0;border-top:0}
+.top{position:absolute;left:112px;right:112px;top:62px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:19px}
+.top .l{display:flex;align-items:center;gap:14px}
+.top img{height:52px;width:auto;filter:drop-shadow(0 3px 0 rgba(0,0,0,.45))}
+.top .r{display:flex;align-items:center;gap:12px;color:var(--gold);padding:10px 16px;background:rgba(8,10,30,.78)}
+.top .r i{width:13px;height:13px;border-radius:50%;background:#2fbf4a;box-shadow:0 0 0 5px rgba(47,191,74,.28)}
+.hd{position:absolute;left:104px;top:196px;z-index:3;transform:skewX(-7deg);transform-origin:0 100%}
+.hd div{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;line-height:.86;letter-spacing:-.01em}
+.hd .o{font-size:150px;color:transparent;-webkit-text-stroke:5px #fff;text-shadow:0 10px 0 rgba(8,10,30,.55)}
+.hd .g{font-size:224px;color:var(--gold);text-shadow:0 12px 0 #8a4a00,0 22px 40px rgba(0,0,0,.45);margin-top:-8px}
+.sub{position:absolute;left:112px;top:604px;z-index:3;font-size:25px;line-height:1.5;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.sub b{color:var(--gold)}
+.stats{position:absolute;left:112px;top:698px;z-index:3;display:flex;gap:34px;font-size:21px}
+.stats div{display:flex;flex-direction:column;gap:6px;padding-left:16px;border-left:4px solid var(--gold)}
+.stats b{font-family:'Oswald',sans-serif;font-size:46px;line-height:1;letter-spacing:0}
+.stats span{font-size:15px;color:#d9defa}
+.bot{position:absolute;left:112px;right:112px;bottom:62px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:18px}
+.bot .l{padding:10px 16px;background:var(--gold);color:var(--ink)}
+.bot .r{color:#fff;padding:10px 16px;background:rgba(8,10,30,.78)}
 </style></head><body>
-<div id="c"><div class="in">
-  <div class="brand"><img src="kumo-logo-256.png" alt=""><span>Hop to <b>Olympus</b></span></div>
-  <div class="tag"><i></i><span id="tag"></span></div>
-  <h1 id="h"></h1>
-  <div class="sub" id="s"></div>
-  <div class="chips" id="ch"></div>
+<div id="c">
+  <i class="br a"></i><i class="br b"></i><i class="br c"></i><i class="br d"></i>
+  <div class="top mono"><div class="l"><img src="kumo-logo-256.png" alt=""><span>Hop to Olympus</span></div><div class="r"><i></i><span id="st"></span></div></div>
+  <div class="hd"><div class="o" id="h1"></div><div class="g" id="h2"></div></div>
+  <div class="sub mono" id="sub"></div>
+  <div class="stats mono" id="stats"></div>
+  <div class="bot mono"><span class="l" id="bl"></span><span class="r" id="br"></span></div>
 </div>
-<div class="foot"><span class="l" id="fl"></span><span class="r" id="fr"></span></div></div>
 <script>
 const L = new URLSearchParams(location.search).get('lang') === 'ru' ? 'ru' : 'en';
 const C = {
-  en: { tag: 'ALPHA TEST · OPENING SOON', h: 'MEET<br><b>OLYMPUS</b>', s: 'A voxel action RPG <em>in your browser.</em>', ch: ['6 worlds', '33 bosses', 'Co-op', 'Raise a Kumo'], fl: 'NO DOWNLOAD · NO SIGN-UP', fr: 'Follow to hear first' },
-  ru: { tag: 'АЛЬФА-ТЕСТ · СКОРО ОТКРОЕМ', h: 'ЗНАКОМЬСЯ:<br><b>ОЛИМП</b>', s: 'Воксельная экшн-RPG <em>прямо в браузере.</em>', ch: ['6 миров', '33 босса', 'Кооп', 'Расти Кумо'], fl: 'БЕЗ УСТАНОВКИ · БЕЗ РЕГИСТРАЦИИ', fr: 'Подпишись, чтобы узнать первым' },
+  en: { st: 'Alpha test // opening soon', h1: 'ENTER', h2: 'OLYMPUS', sub: 'A voxel action <b>RPG</b><br>in your browser.', stats: [['06', 'Worlds'], ['33', 'Bosses'], ['x32', 'Co-op']], bl: 'Follow to hear first', br: 'No download / No sign-up' },
+  ru: { st: 'Альфа-тест // скоро', h1: 'ВОЙДИ В', h2: 'ОЛИМП', sub: 'Воксельная экшн-<b>RPG</b><br>прямо в браузере.', stats: [['06', 'Миров'], ['33', 'Босса'], ['x32', 'Кооп']], bl: 'Подпишись, чтобы узнать первым', br: 'Без установки / Без регистрации' },
 }[L];
-document.getElementById('tag').textContent = C.tag; document.getElementById('h').innerHTML = C.h; document.getElementById('s').innerHTML = C.s;
-document.getElementById('ch').innerHTML = C.ch.map(x => '<span>' + x + '</span>').join(''); document.getElementById('fl').textContent = C.fl; document.getElementById('fr').textContent = C.fr;
+const $ = id => document.getElementById(id);
+$('st').textContent = C.st; $('h1').textContent = C.h1; $('h2').textContent = C.h2; $('sub').innerHTML = C.sub;
+$('stats').innerHTML = C.stats.map(([n, t]) => '<div><b>' + n + '</b><span>' + t + '</span></div>').join(''); $('bl').textContent = C.bl; $('br').textContent = C.br;
 document.fonts.ready.then(() => { window.__ready = true });
 </script></body></html>
