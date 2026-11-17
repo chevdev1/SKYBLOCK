@@ -19,7 +19,8 @@
     "text": {
       "ru": "Мобы роняют материалы своего мира. Из них по рецептам куются оружие, броня, крылья, сапоги и трофеи.",
       "en": "Monsters drop their world's materials. Recipes turn them into weapons, armour, wings, boots and trophies."
-    }
+    },
+    "img_en": "landing/img/ui/en-craft.jpg"
   },
   {
     "img": "landing/img/ui/3-craft-oruzhie.jpg",
@@ -52,7 +53,8 @@
     "text": {
       "ru": "36 ячеек, быстрые слоты, снаряжение по слотам: тело, голова, ноги, крылья.",
       "en": "36 slots, quick slots and gear by slot: body, head, feet, wings."
-    }
+    },
+    "img_en": "landing/img/ui/en-bag.jpg"
   },
   {
     "img": "landing/img/ui/7-menu-kniga.jpg",
@@ -63,7 +65,8 @@
     "text": {
       "ru": "Задания жителей, лор миров и достижения.",
       "en": "Villagers' quests, world lore and achievements."
-    }
+    },
+    "img_en": "landing/img/ui/en-menu.jpg"
   },
   {
     "img": "landing/img/ui/kumo_card.jpg",

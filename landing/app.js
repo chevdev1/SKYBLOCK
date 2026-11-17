@@ -454,12 +454,12 @@
   const UIS = { i: 0 };
   function uiShow(i) {
     if (!UI.length || !$('uiThumbs')) return; UIS.i = (i + UI.length) % UI.length; const u = UI[UIS.i], img = $('uiImg');
-    img.style.opacity = 0; setTimeout(() => { img.src = u.img; img.alt = u.title[LANG]; img.onload = () => img.style.opacity = 1 }, 120);
+    img.style.opacity = 0; setTimeout(() => { img.src = (u['img_' + LANG] || u.img); img.alt = u.title[LANG]; img.onload = () => img.style.opacity = 1 }, 120);
     $('uiTitle').textContent = u.title[LANG]; $('uiText').textContent = u.text[LANG];
-    const th = $('uiThumbs'); if (th.children.length !== UI.length) { th.innerHTML = ''; UI.forEach((x, k) => { const b = document.createElement('button'); b.innerHTML = '<img loading="lazy" alt="">'; b.querySelector('img').src = x.img; b.onclick = () => { uiShow(k); tone(700 + k * 60, 0.08) }; th.appendChild(b) }) }
+    const th = $('uiThumbs'); if (th.children.length !== UI.length) { th.innerHTML = ''; UI.forEach((x, k) => { const b = document.createElement('button'); b.innerHTML = '<img loading="lazy" alt="">'; b.querySelector('img').src = (x['img_' + LANG] || x.img); b.onclick = () => { uiShow(k); tone(700 + k * 60, 0.08) }; th.appendChild(b) }) }
     [...th.children].forEach((b, k) => { b.setAttribute('aria-selected', k === UIS.i); b.setAttribute('aria-label', UI[k].title[LANG]) });
   }
-  const lb = $('lightbox'); if (lb) { $('uiMain').onclick = () => { const u = UI[UIS.i]; if (!u) return; $('lbImg').src = u.img; $('lbCap').textContent = u.title[LANG] + ' — ' + u.text[LANG]; lb.showModal() }; $('lbClose').onclick = () => lb.close(); lb.addEventListener('click', e => { if (e.target === lb) lb.close() }); addEventListener('keydown', e => { if (!lb.open) return; if (e.key === 'ArrowRight') { uiShow(UIS.i + 1); $('lbImg').src = UI[UIS.i].img } if (e.key === 'ArrowLeft') { uiShow(UIS.i - 1); $('lbImg').src = UI[UIS.i].img } }) }
+  const lb = $('lightbox'); if (lb) { $('uiMain').onclick = () => { const u = UI[UIS.i]; if (!u) return; $('lbImg').src = (u['img_' + LANG] || u.img); $('lbCap').textContent = u.title[LANG] + ' — ' + u.text[LANG]; lb.showModal() }; $('lbClose').onclick = () => lb.close(); lb.addEventListener('click', e => { if (e.target === lb) lb.close() }); addEventListener('keydown', e => { if (!lb.open) return; if (e.key === 'ArrowRight') { uiShow(UIS.i + 1); $('lbImg').src = (UI[UIS.i]['img_' + LANG] || UI[UIS.i].img) } if (e.key === 'ArrowLeft') { uiShow(UIS.i - 1); $('lbImg').src = (UI[UIS.i]['img_' + LANG] || UI[UIS.i].img) } }) }
 
   /* ---------- worlds carousel ---------- */
   const WC = { idx: 0, f: 0, drag: null };
