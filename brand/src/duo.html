@@ -1,0 +1,24 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Cute cast</title>
+<style>html,body{margin:0;background:transparent}#a{width:1600px;height:1000px}</style></head><body>
+<div id="a"><canvas id="cv"></canvas></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="../../landing/voxel.js"></script>
+<script src="scene.js"></script>
+<script>
+const q = new URLSearchParams(location.search), v = q.get('v') || 'trio';
+function place(id, x, z, ry, wave) {
+  return (s, T) => {
+    const h = VX.hero(id); h.G.position.set(x, 0, z); h.G.rotation.y = ry; h.G.scale.setScalar(1.15);
+    if (wave) { h.armR.rotation.z = wave; }
+    s.add(h.G);
+  };
+}
+let extra = [], kumos = [];
+if (v === 'trio') { extra = [place('rina', -1.45, 0, 0.32, 2.5), place('ryzhik', 1.45, 0, -0.32, 0)]; kumos = [{ stage: 2, parts: ['bunny'], scale: 1.25, pos: [0, 0, 1.3], ry: 0 }]; }
+if (v === 'duo') { extra = [place('rina', -0.9, 0, 0.3, 2.5)]; kumos = [{ stage: 2, parts: ['bunny'], scale: 1.3, pos: [1.15, 0, 0.9], ry: -0.25 }]; }
+if (v === 'rina') { extra = [place('rina', 0, 0, 0.2, 2.5)]; }
+if (v === 'ryzhik') { extra = [place('ryzhik', 0, 0, -0.2, 0)]; }
+const res = KSCENE.render(document.getElementById('cv'), { w: 1600, h: 1000, dpr: 1.5, cute: true, cam: { fov: 24, pos: [0, 1.7, 12], look: [0, 1.15, 0] }, hemi: 0.9, sun: 0.6, ground: 0xe6a8cc, rimColor: 0xffffff, rim: 0.4, kumos, extra });
+window.__url = res.url;
+</script></body></html>

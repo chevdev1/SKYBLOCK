@@ -41,6 +41,8 @@
 | День 31 | `post-31-roadmap-en-1600x900.png` | Roadmap | 280 из 280 |
 | День 32 | `post-32-bossquiz-en-1600x900.png` | Boss quiz | 147 из 280 |
 | День 33 | `post-33-polaroids-en-1600x900.png` | Screenshots | 131 из 280 |
+| День 34 | `post-34-bestfriends-en-1600x900.png` | Best friends (cute) | 164 из 280 |
+| День 35 | `post-35-rinakumo-en-1600x900.png` | Rina and Kumo (cute) | 188 из 280 |
 
 Лучшее время: будни, 15:00-17:00 UTC. Закреп: пост 1 до выхода всей серии.
 
@@ -459,6 +461,32 @@ Screenshot Saturday 📸
 The Gates of Olympus, above the clouds, neon Horai and inside the Star Dome.
 
 Which one is your favourite? 👇
+```
+
+### 34. Best friends (cute)
+
+**Файл:** `post-34-bestfriends-en-1600x900.png`
+
+```
+Best friends ☁️💗
+
+Pick a hero, hatch a Kumo and bring a friend along: up to 32 players in one room.
+
+No download. Alpha test: opening soon.
+
+Who are you bringing? 👇
+```
+
+### 35. Rina and Kumo (cute)
+
+**Файл:** `post-35-rinakumo-en-1600x900.png`
+
+```
+Meet Rina and Kumo 💗
+
+A cloud buddy that hatches from an egg, grows with you and evolves. One in a hundred hatches is ultra-rare, and the odds are public.
+
+What would you name your Kumo? 👇
 ```
 
 ## Запасные картинки и форматы

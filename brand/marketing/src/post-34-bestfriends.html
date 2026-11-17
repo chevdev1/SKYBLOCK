@@ -1,0 +1,58 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Post 34: best friends</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b0f2c;--gold:#ffc23c;--white:#fff}
+html,body{margin:0;background:#000}
+#c{position:relative;width:1600px;height:900px;overflow:hidden;background:#141a3c;color:#fff}
+#c::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,10,30,.9) 0,rgba(8,10,30,.62) 36%,rgba(8,10,30,.08) 62%,rgba(8,10,30,0) 74%)}
+#c::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 66% 52%,transparent 52%,rgba(8,10,30,.42) 100%)}
+.mono{font-family:'Space Mono',monospace;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+/* corner brackets (editing viewfinder) */
+.br{position:absolute;width:46px;height:46px;border:3px solid rgba(255,255,255,.85);z-index:3}
+.br.a{left:44px;top:44px;border-right:0;border-bottom:0}.br.b{right:44px;top:44px;border-left:0;border-bottom:0}
+.br.c{left:44px;bottom:44px;border-right:0;border-top:0}.br.d{right:44px;bottom:44px;border-left:0;border-top:0}
+.top{position:absolute;left:112px;right:112px;top:62px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:19px}
+.top .l{display:flex;align-items:center;gap:14px}
+.top img{height:52px;width:auto;filter:drop-shadow(0 3px 0 rgba(0,0,0,.45))}
+.top .r{display:flex;align-items:center;gap:12px;color:var(--gold);padding:10px 16px;background:rgba(8,10,30,.78)}
+.top .r i{width:13px;height:13px;border-radius:50%;background:#2fbf4a;box-shadow:0 0 0 5px rgba(47,191,74,.28)}
+.hd{position:absolute;left:104px;top:196px;z-index:3;transform:skewX(-7deg);transform-origin:0 100%}
+.hd div{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;line-height:.86;letter-spacing:-.01em}
+.hd .o{font-size:150px;color:transparent;-webkit-text-stroke:5px #fff;text-shadow:0 10px 0 rgba(8,10,30,.55)}
+.hd .g{font-size:224px;color:var(--gold);text-shadow:0 12px 0 #8a4a00,0 22px 40px rgba(0,0,0,.45);margin-top:-8px}
+.sub{position:absolute;left:112px;top:604px;z-index:3;font-size:25px;line-height:1.5;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.sub b{color:var(--gold)}
+.stats{position:absolute;left:112px;top:698px;z-index:3;display:flex;gap:34px;font-size:21px}
+.stats div{display:flex;flex-direction:column;gap:6px;padding-left:16px;border-left:4px solid var(--gold)}
+.stats b{font-family:'Oswald',sans-serif;font-size:46px;line-height:1;letter-spacing:0}
+.stats span{font-size:15px;color:#d9defa}
+.bot{position:absolute;left:112px;right:112px;bottom:62px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:18px}
+.bot .l{padding:10px 16px;background:var(--gold);color:var(--ink)}
+.bot .r{color:#fff;padding:10px 16px;background:rgba(8,10,30,.78)}
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@900&family=Nunito:wght@800;900&display=swap');
+#c{background:linear-gradient(#ffe6f0,#ffd0e4 60%,#ffc0da)}
+#c::before,#c::after{background:none!important;box-shadow:none!important}
+.cl{position:absolute;background:#fff;border-radius:60px;opacity:.9;box-shadow:inset 0 -10px 0 rgba(255,150,200,.25)}
+.cl::before,.cl::after{content:'';position:absolute;background:#fff;border-radius:50%}
+.h1{position:absolute;z-index:6;font-family:'Rubik',sans-serif;font-weight:900;color:#ff4f94;letter-spacing:.01em;line-height:.95;-webkit-text-stroke:0;text-shadow:0 8px 0 #fff,0 12px 0 rgba(180,40,100,.25)}
+.sb{position:absolute;z-index:6;font-family:'Nunito',sans-serif;font-weight:900;color:#7a2a55}
+.st{position:absolute;z-index:7;padding:12px 22px;background:#fff;border:5px solid #ff7fb0;border-radius:40px;font-family:'Nunito',sans-serif;font-weight:900;font-size:26px;color:#c0306f;box-shadow:0 8px 0 #ff7fb0}
+.st.y{background:#fff3b0;border-color:#ffc23c;box-shadow:0 8px 0 #ffc23c;color:#8a5a00}
+.st.b{background:#dff3ff;border-color:#7fc4ff;box-shadow:0 8px 0 #7fc4ff;color:#1d5a9a}
+.hearts{position:absolute;z-index:3;font-size:46px;color:#ff7fb0;opacity:.8}
+.cast{position:absolute;z-index:5}
+.bub{position:absolute;z-index:8;padding:14px 24px;background:#fff;border:5px solid #ff7fb0;border-radius:30px;font-family:'Rubik',sans-serif;font-weight:900;font-size:34px;color:#ff4f94;box-shadow:0 8px 0 #ff7fb0}
+.bub::after{content:'';position:absolute;left:34px;bottom:-22px;border:14px solid transparent;border-top:20px solid #ff7fb0}
+.ftr{position:absolute;z-index:9;left:0;right:0;bottom:36px;text-align:center;font-family:'Nunito',sans-serif;font-weight:900;font-size:22px;letter-spacing:.12em;color:#b0457f}
+.tag2{position:absolute;z-index:9;right:70px;top:56px;padding:10px 20px;background:#ff4f94;color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;letter-spacing:.1em;border-radius:30px}
+.lg{position:absolute;z-index:9;left:70px;top:48px;display:flex;align-items:center;gap:12px;font-family:'Nunito',sans-serif;font-weight:900;font-size:22px;color:#b0457f;letter-spacing:.1em}
+.lg img{height:52px}
+.cast{left:540px;top:190px;width:1080px}
+</style></head><body>
+<div id="c">
+<i class="cl" style="left:90px;top:210px;width:240px;height:70px"></i><i class="cl" style="right:120px;top:330px;width:300px;height:80px"></i><i class="cl" style="left:480px;top:760px;width:340px;height:90px"></i><span class="hearts" style="left:170px;top:520px">♥</span><span class="hearts" style="right:260px;top:210px;font-size:34px">♥</span><span class="hearts" style="right:150px;top:640px">♥</span><span class="hearts" style="left:560px;top:120px;font-size:30px">♥</span><div class="lg"><img src="kumo-logo-256.png" alt="">HOP TO OLYMPUS</div><div class="tag2">ALPHA TEST · OPENING SOON</div><div class="h1" style="left:80px;top:300px;font-size:124px">BEST<br>FRIENDS</div><div class="sb" style="left:84px;top:560px;font-size:32px">Pick a hero, hatch a Kumo,<br>and bring a friend along.</div><img class="cast" src="cast-trio.png" alt=""><div class="bub" style="left:930px;top:200px">hop hop!</div><div class="st" style="left:84px;top:690px">up to 32 players</div><div class="st y" style="left:380px;top:690px">no download</div><div class="st b" style="left:640px;top:700px;display:none">x</div><div class="ftr">FOLLOW TO HEAR FIRST ☁</div>
+</div>
+<script>document.fonts.ready.then(()=>{window.__ready=true})</script></body></html>
