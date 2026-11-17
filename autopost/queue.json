@@ -182,5 +182,29 @@
     "text": "Your boarding pass to Olympus ✈️☁️\n\nNo download. No sign-up. Any screen. Co-op for up to 32 players.\n\nAlpha test: opening soon. Follow to hear first.",
     "approved": false,
     "postedAt": null
+  },
+  {
+    "id": 24,
+    "file": "post-23-herocards-en-1600x900.png",
+    "role": "Heroes (cards)",
+    "text": "Pick your hero.\n\nGinger, Rina or Sergio: three heroes, 12 weapon types and the same mega jump on every fifth hop.\n\nWho are you playing? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 25,
+    "file": "post-24-kumomenu-en-1600x900.png",
+    "role": "Kumo menu",
+    "text": "Today on the cloud: Kumo ☁️\n\nHatch an egg, feed and care for your Kumo, and watch it grow into one of six adult forms. One in a hundred hatches is ultra-rare, and the odds are public.\n\nWhich one are you hatching? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 26,
+    "file": "post-25-achievements-en-1600x900.png",
+    "role": "Achievements",
+    "text": "Achievement unlocked.\n\nMega jump, Cloud rhythm, Free fall: skill beats stats in Hop to Olympus.\n\nWhich achievement would you go for first? 👇",
+    "approved": false,
+    "postedAt": null
   }
 ]

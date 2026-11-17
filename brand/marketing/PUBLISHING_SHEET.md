@@ -31,6 +31,9 @@
 | День 21 | `post-20-together-en-1600x900.png` | Co-op (heroes) | 170 из 280 |
 | День 22 | `post-21-wanted-en-1600x900.png` | Bosses (wanted) | 204 из 280 |
 | День 23 | `post-22-boarding-en-1600x900.png` | Boarding pass | 149 из 280 |
+| День 24 | `post-23-herocards-en-1600x900.png` | Heroes (cards) | 137 из 280 |
+| День 25 | `post-24-kumomenu-en-1600x900.png` | Kumo menu | 214 из 280 |
+| День 26 | `post-25-achievements-en-1600x900.png` | Achievements | 140 из 280 |
 
 Лучшее время: будни, 15:00-17:00 UTC. Закреп: пост 1 до выхода всей серии.
 
@@ -320,6 +323,42 @@ Your boarding pass to Olympus ✈️☁️
 No download. No sign-up. Any screen. Co-op for up to 32 players.
 
 Alpha test: opening soon. Follow to hear first.
+```
+
+### 24. Heroes (cards)
+
+**Файл:** `post-23-herocards-en-1600x900.png`
+
+```
+Pick your hero.
+
+Ginger, Rina or Sergio: three heroes, 12 weapon types and the same mega jump on every fifth hop.
+
+Who are you playing? 👇
+```
+
+### 25. Kumo menu
+
+**Файл:** `post-24-kumomenu-en-1600x900.png`
+
+```
+Today on the cloud: Kumo ☁️
+
+Hatch an egg, feed and care for your Kumo, and watch it grow into one of six adult forms. One in a hundred hatches is ultra-rare, and the odds are public.
+
+Which one are you hatching? 👇
+```
+
+### 26. Achievements
+
+**Файл:** `post-25-achievements-en-1600x900.png`
+
+```
+Achievement unlocked.
+
+Mega jump, Cloud rhythm, Free fall: skill beats stats in Hop to Olympus.
+
+Which achievement would you go for first? 👇
 ```
 
 ## Запасные картинки и форматы

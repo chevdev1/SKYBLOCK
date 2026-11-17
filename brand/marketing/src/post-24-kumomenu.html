@@ -1,0 +1,53 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Post 24: Kumo menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b0f2c;--gold:#ffc23c;--white:#fff}
+html,body{margin:0;background:#000}
+#c{position:relative;width:1600px;height:900px;overflow:hidden;background:#141a3c;color:#fff}
+#c::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,10,30,.9) 0,rgba(8,10,30,.62) 36%,rgba(8,10,30,.08) 62%,rgba(8,10,30,0) 74%)}
+#c::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 66% 52%,transparent 52%,rgba(8,10,30,.42) 100%)}
+.mono{font-family:'Space Mono',monospace;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+/* corner brackets (editing viewfinder) */
+.br{position:absolute;width:46px;height:46px;border:3px solid rgba(255,255,255,.85);z-index:3}
+.br.a{left:44px;top:44px;border-right:0;border-bottom:0}.br.b{right:44px;top:44px;border-left:0;border-bottom:0}
+.br.c{left:44px;bottom:44px;border-right:0;border-top:0}.br.d{right:44px;bottom:44px;border-left:0;border-top:0}
+.top{position:absolute;left:112px;right:112px;top:62px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:19px}
+.top .l{display:flex;align-items:center;gap:14px}
+.top img{height:52px;width:auto;filter:drop-shadow(0 3px 0 rgba(0,0,0,.45))}
+.top .r{display:flex;align-items:center;gap:12px;color:var(--gold);padding:10px 16px;background:rgba(8,10,30,.78)}
+.top .r i{width:13px;height:13px;border-radius:50%;background:#2fbf4a;box-shadow:0 0 0 5px rgba(47,191,74,.28)}
+.hd{position:absolute;left:104px;top:196px;z-index:3;transform:skewX(-7deg);transform-origin:0 100%}
+.hd div{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;line-height:.86;letter-spacing:-.01em}
+.hd .o{font-size:150px;color:transparent;-webkit-text-stroke:5px #fff;text-shadow:0 10px 0 rgba(8,10,30,.55)}
+.hd .g{font-size:224px;color:var(--gold);text-shadow:0 12px 0 #8a4a00,0 22px 40px rgba(0,0,0,.45);margin-top:-8px}
+.sub{position:absolute;left:112px;top:604px;z-index:3;font-size:25px;line-height:1.5;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.sub b{color:var(--gold)}
+.stats{position:absolute;left:112px;top:698px;z-index:3;display:flex;gap:34px;font-size:21px}
+.stats div{display:flex;flex-direction:column;gap:6px;padding-left:16px;border-left:4px solid var(--gold)}
+.stats b{font-family:'Oswald',sans-serif;font-size:46px;line-height:1;letter-spacing:0}
+.stats span{font-size:15px;color:#d9defa}
+.bot{position:absolute;left:112px;right:112px;bottom:62px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:18px}
+.bot .l{padding:10px 16px;background:var(--gold);color:var(--ink)}
+.bot .r{color:#fff;padding:10px 16px;background:rgba(8,10,30,.78)}
+
+#c{background:#ffe9f1}
+#c::before{background:none}
+.pk{position:absolute;inset:0;background:repeating-linear-gradient(45deg,#ffe0ec 0 40px,#ffd3e3 40px 80px)}
+.menu{position:absolute;z-index:4;left:150px;top:150px;width:1300px;height:600px;background:#fffaf0;border:10px solid #ff7fb0;border-radius:28px;box-shadow:0 26px 40px rgba(120,30,70,.35);font-family:'Space Mono',monospace;color:#5a1d3a;text-align:center}
+.menu h1{font-family:'Rubik','Oswald',sans-serif;font-weight:900;font-size:76px;margin:20px 0 0;color:#ff5c9a;letter-spacing:.02em}
+.menu .s{font-size:16px;letter-spacing:.2em;font-weight:700;margin-top:2px}
+.row{display:flex;justify-content:center;gap:18px;margin:24px 34px 0}
+.it{flex:1;background:#fff;border:4px solid #ffb3d1;border-radius:18px;padding:12px 6px 14px}
+.it img{height:170px;display:block;margin:0 auto}
+.it b{display:block;font-family:'Rubik',sans-serif;font-weight:900;font-size:25px;margin-top:6px;color:#5a1d3a}
+.it span{display:block;font-size:12px;margin-top:4px;font-weight:700;letter-spacing:.06em;color:#b0577f}
+.it.rr{background:linear-gradient(#fff,#ffe9a8);border-color:#ffc23c}
+.sp{font-size:15px;letter-spacing:.14em;margin-top:22px;font-weight:700}
+
+</style></head><body>
+<div id="c">
+<div class="pk"></div><i style="border-color:#ff5c9a" class="br a"></i><i style="border-color:#ff5c9a" class="br b"></i><i style="border-color:#ff5c9a" class="br c"></i><i style="border-color:#ff5c9a" class="br d"></i><div class="menu"><h1>KUMO MENU</h1><div class="s">TODAY ON THE CLOUD · HATCH, GROW, EVOLVE</div><div class="row"><div class="it"><img src="kumo/egg.png" alt=""><b>EGG</b><span>Where it starts</span></div><div class="it"><img src="kumo/baby.png" alt=""><b>BABY</b><span>Feed and care</span></div><div class="it"><img src="kumo/teen.png" alt=""><b>TEEN</b><span>Growing fast</span></div><div class="it"><img src="kumo/twilight.png" alt=""><b>TWILIGHT</b><span>Adult form</span></div><div class="it"><img src="kumo/starry.png" alt=""><b>STARRY</b><span>Adult form</span></div><div class="it rr"><img src="kumo/rare.png" alt=""><b>ULTRA-RARE</b><span>1% chance, public odds</span></div></div><div class="sp">SIX ADULT FORMS · ONE IN A HUNDRED HATCHES IS ULTRA-RARE · NO SIGN-UP</div></div><div class="bot mono"><span class="l">Follow to hear first</span><span class="r">Alpha test // opening soon</span></div>
+</div>
+<script>document.fonts.ready.then(()=>{window.__ready=true})</script></body></html>
