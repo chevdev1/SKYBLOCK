@@ -1,0 +1,58 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Post 17: neon Horai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b0f2c;--gold:#ffc23c;--white:#fff}
+html,body{margin:0;background:#000}
+#c{position:relative;width:1600px;height:900px;overflow:hidden;background:#141a3c;color:#fff}
+#c::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,10,30,.9) 0,rgba(8,10,30,.62) 36%,rgba(8,10,30,.08) 62%,rgba(8,10,30,0) 74%)}
+#c::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 66% 52%,transparent 52%,rgba(8,10,30,.42) 100%)}
+.mono{font-family:'Space Mono',monospace;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+/* corner brackets (editing viewfinder) */
+.br{position:absolute;width:46px;height:46px;border:3px solid rgba(255,255,255,.85);z-index:3}
+.br.a{left:44px;top:44px;border-right:0;border-bottom:0}.br.b{right:44px;top:44px;border-left:0;border-bottom:0}
+.br.c{left:44px;bottom:44px;border-right:0;border-top:0}.br.d{right:44px;bottom:44px;border-left:0;border-top:0}
+.top{position:absolute;left:112px;right:112px;top:62px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:19px}
+.top .l{display:flex;align-items:center;gap:14px}
+.top img{height:52px;width:auto;filter:drop-shadow(0 3px 0 rgba(0,0,0,.45))}
+.top .r{display:flex;align-items:center;gap:12px;color:var(--gold);padding:10px 16px;background:rgba(8,10,30,.78)}
+.top .r i{width:13px;height:13px;border-radius:50%;background:#2fbf4a;box-shadow:0 0 0 5px rgba(47,191,74,.28)}
+.hd{position:absolute;left:104px;top:196px;z-index:3;transform:skewX(-7deg);transform-origin:0 100%}
+.hd div{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;line-height:.86;letter-spacing:-.01em}
+.hd .o{font-size:150px;color:transparent;-webkit-text-stroke:5px #fff;text-shadow:0 10px 0 rgba(8,10,30,.55)}
+.hd .g{font-size:224px;color:var(--gold);text-shadow:0 12px 0 #8a4a00,0 22px 40px rgba(0,0,0,.45);margin-top:-8px}
+.sub{position:absolute;left:112px;top:604px;z-index:3;font-size:25px;line-height:1.5;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.sub b{color:var(--gold)}
+.stats{position:absolute;left:112px;top:698px;z-index:3;display:flex;gap:34px;font-size:21px}
+.stats div{display:flex;flex-direction:column;gap:6px;padding-left:16px;border-left:4px solid var(--gold)}
+.stats b{font-family:'Oswald',sans-serif;font-size:46px;line-height:1;letter-spacing:0}
+.stats span{font-size:15px;color:#d9defa}
+.bot{position:absolute;left:112px;right:112px;bottom:62px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:18px}
+.bot .l{padding:10px 16px;background:var(--gold);color:var(--ink)}
+.bot .r{color:#fff;padding:10px 16px;background:rgba(8,10,30,.78)}
+
+#c::before{background:linear-gradient(90deg,rgba(8,10,30,0.95) 0,rgba(8,10,30,.86) 40%,rgba(8,10,30,.1) 64%,rgba(8,10,30,0) 76%)}
+#c{background-color:#1b2150}
+.scene{position:absolute;left:300px;top:-28px;width:1700px;height:956px;background:url(g-horai.png) center/cover no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 24%);mask-image:linear-gradient(90deg,transparent 0,#000 24%)}
+
+
+.scene{transform-origin:62% 55%;animation:zoom 6s cubic-bezier(.3,.1,.3,1) both}
+@keyframes zoom{from{transform:scale(1.14) translateX(40px)}to{transform:scale(1) translateX(0)}}
+.hd .o{animation:up .8s .25s cubic-bezier(.2,.9,.2,1) both}
+.hd .g{animation:up .9s .45s cubic-bezier(.2,.9,.2,1) both}
+@keyframes up{from{opacity:0;transform:translateY(46px)}to{opacity:1;transform:none}}
+.sub{animation:fade .7s 1.2s both}
+.stats>div{animation:up .6s both}
+.stats>div:nth-child(1){animation-delay:1.7s}.stats>div:nth-child(2){animation-delay:1.9s}.stats>div:nth-child(3){animation-delay:2.1s}
+.top,.bot{animation:fade .8s .1s both}
+.br{animation:brk .9s both}
+@keyframes brk{from{opacity:0;transform:scale(1.5)}to{opacity:1;transform:none}}
+.bot .l{animation:pulse 1.2s 3s 2 both}
+@keyframes pulse{50%{filter:brightness(1.35)}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+</style></head><body>
+<div id="c">
+<div class="scene"></div><i class="br a"></i><i class="br b"></i><i class="br c"></i><i class="br d"></i><div class="top mono"><div class="l"><img src="kumo-logo-256.png" alt=""><span>Hop to Olympus</span></div><div class="r"><i></i><span>Alpha test // opening soon</span></div></div><div class="hd"><div class="o" style="font-size:120px">NEON</div><div class="g" style="font-size:200px">HORAI</div></div><div class="sub mono">The last world glows.<br>Neon quarters, <b>fresh dangers.</b></div><div class="stats mono"><div><b>3</b><span>Neon regions</span></div><div><b>19</b><span>Regions total</span></div><div><b>33</b><span>Bosses</span></div></div><div class="bot mono"><span class="l">Follow to hear first</span><span class="r">Cloud Harbor, Neon Quarter, Jade Palace</span></div>
+</div>
+<script>document.fonts.ready.then(()=>{window.__ready=true})</script></body></html>

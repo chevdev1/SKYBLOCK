@@ -28,6 +28,7 @@
 | День 18 | `post-17-horai-en-1600x900.png` | Neon Horai | 127 из 280 |
 | День 19 | `post-18-dome-en-1600x900.png` | Star Dome | 127 из 280 |
 | День 20 | `post-19-action-en-1600x900.png` | Action | 134 из 280 |
+| День 21 | `post-20-together-en-1600x900.png` | Co-op (heroes) | 170 из 280 |
 
 Лучшее время: будни, 15:00-17:00 UTC. Закреп: пост 1 до выхода всей серии.
 
@@ -281,6 +282,18 @@ Swing. Dash. Repeat.
 12 weapon types, plus hops, dashes and a mega jump on every fifth hop. Pick your style.
 
 Which weapon are you? 👇
+```
+
+### 21. Co-op (heroes)
+
+**Файл:** `post-20-together-en-1600x900.png`
+
+```
+Play together.
+
+Up to 32 players in one room: shared bosses, shared loot and XP, and one shared boss health bar. Pick your hero and jump in.
+
+Who is your co-op partner? 👇
 ```
 
 ## Запасные картинки и форматы
