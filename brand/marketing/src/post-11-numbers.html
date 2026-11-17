@@ -1,0 +1,52 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Post 11: by the numbers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b0f2c;--gold:#ffc23c;--white:#fff}
+html,body{margin:0;background:#000}
+#c{position:relative;width:1600px;height:900px;overflow:hidden;background:#141a3c;color:#fff}
+#c::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,10,30,.9) 0,rgba(8,10,30,.62) 36%,rgba(8,10,30,.08) 62%,rgba(8,10,30,0) 74%)}
+#c::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 66% 52%,transparent 52%,rgba(8,10,30,.42) 100%)}
+.mono{font-family:'Space Mono',monospace;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+/* corner brackets (editing viewfinder) */
+.br{position:absolute;width:46px;height:46px;border:3px solid rgba(255,255,255,.85);z-index:3}
+.br.a{left:44px;top:44px;border-right:0;border-bottom:0}.br.b{right:44px;top:44px;border-left:0;border-bottom:0}
+.br.c{left:44px;bottom:44px;border-right:0;border-top:0}.br.d{right:44px;bottom:44px;border-left:0;border-top:0}
+.top{position:absolute;left:112px;right:112px;top:62px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:19px}
+.top .l{display:flex;align-items:center;gap:14px}
+.top img{height:52px;width:auto;filter:drop-shadow(0 3px 0 rgba(0,0,0,.45))}
+.top .r{display:flex;align-items:center;gap:12px;color:var(--gold);padding:10px 16px;background:rgba(8,10,30,.78)}
+.top .r i{width:13px;height:13px;border-radius:50%;background:#2fbf4a;box-shadow:0 0 0 5px rgba(47,191,74,.28)}
+.hd{position:absolute;left:104px;top:196px;z-index:3;transform:skewX(-7deg);transform-origin:0 100%}
+.hd div{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;line-height:.86;letter-spacing:-.01em}
+.hd .o{font-size:150px;color:transparent;-webkit-text-stroke:5px #fff;text-shadow:0 10px 0 rgba(8,10,30,.55)}
+.hd .g{font-size:224px;color:var(--gold);text-shadow:0 12px 0 #8a4a00,0 22px 40px rgba(0,0,0,.45);margin-top:-8px}
+.sub{position:absolute;left:112px;top:604px;z-index:3;font-size:25px;line-height:1.5;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.sub b{color:var(--gold)}
+.stats{position:absolute;left:112px;top:698px;z-index:3;display:flex;gap:34px;font-size:21px}
+.stats div{display:flex;flex-direction:column;gap:6px;padding-left:16px;border-left:4px solid var(--gold)}
+.stats b{font-family:'Oswald',sans-serif;font-size:46px;line-height:1;letter-spacing:0}
+.stats span{font-size:15px;color:#d9defa}
+.bot{position:absolute;left:112px;right:112px;bottom:62px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:18px}
+.bot .l{padding:10px 16px;background:var(--gold);color:var(--ink)}
+.bot .r{color:#fff;padding:10px 16px;background:rgba(8,10,30,.78)}
+
+#c::before{background:radial-gradient(ellipse at 20% 0,rgba(110,60,220,.55),rgba(20,16,70,0) 60%);display:block}
+#c::after{display:none}
+.head{position:absolute;left:112px;top:116px;z-index:3;font-family:'Oswald',sans-serif;font-weight:700;font-size:66px;line-height:1;text-transform:uppercase;transform:skewX(-7deg);transform-origin:0 100%}
+.head b{color:#ffc23c}
+.grid{position:absolute;z-index:3;left:112px;right:112px;top:206px;bottom:116px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:14px}
+.t{position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:14px 18px;border:3px solid #fff;border-radius:6px;color:#141a3c;overflow:hidden}
+.t b{font-family:'Oswald',sans-serif;font-weight:700;font-size:92px;line-height:.9;letter-spacing:-.01em}
+.t span{margin-top:6px;font-family:'Space Mono',monospace;font-weight:700;font-size:15px;letter-spacing:.12em;text-transform:uppercase}
+.t.big{grid-column:span 2;grid-row:span 2}.t.big b{font-size:250px}.t.big span{font-size:20px}
+.g{background:#ffc23c}.p{background:#ff5d8a;color:#fff}.w{background:#fff}.i{background:#141a3c;color:#fff;border-color:#ffc23c}.v{background:#7a46d8;color:#fff}.cy{background:#5cc8ff}
+.neonT{background:linear-gradient(135deg,#39ff14,#ffee00 35%,#ff1493 70%,#9d00ff)}
+.t.i b{color:#ffc23c}
+
+</style></head><body>
+<div id="c">
+<i class="br a"></i><i class="br b"></i><i class="br c"></i><i class="br d"></i><div class="top mono"><div class="l"><img src="kumo-logo-256.png" alt=""><span>Hop to Olympus</span></div><div class="r"><i></i><span>Alpha test // opening soon</span></div></div><div class="head mono" style="font-family:Oswald">Hop to Olympus <b>by the numbers</b></div><div class="grid"><div class="t big g"><b>33</b><span>Bosses with phases</span></div><div class="t p"><b>06</b><span>Worlds</span></div><div class="t w"><b>19</b><span>Regions</span></div><div class="t cy"><b>12</b><span>Weapon types</span></div><div class="t v"><b>x32</b><span>Players per room</span></div><div class="t neonT"><b>1%</b><span>Ultra-rare Kumo, public odds</span></div><div class="t i"><b>1.47<small style="font-size:.4em"> MB</small></b><span>The whole game</span></div><div class="t w"><b>x5</b><span>Mega jump on the 5th hop</span></div><div class="t g"><b>0</b><span>Installs</span></div></div><div class="bot mono"><span class="l">Follow to hear first</span><span class="r">No download / No sign-up</span></div>
+</div>
+<script>document.fonts.ready.then(()=>{window.__ready=true})</script></body></html>

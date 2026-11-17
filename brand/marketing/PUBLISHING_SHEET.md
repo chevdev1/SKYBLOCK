@@ -4,7 +4,7 @@
 
 Правила: один пост = одна картинка и один призыв, хэштегов не больше двух, ничего не обещаем про доход и токен. Режим альфы везде «скоро» (`Alpha test: opening soon`). Если решите открыть альфу сразу, замените эту фразу на `Alpha test: open now`.
 
-## Порядок выхода
+## Порядок выхода (12 постов)
 
 | День | Файл в проводнике | Тема | Знаков |
 |---|---|---|---|
@@ -13,10 +13,13 @@
 | День 3 | `post-08-mobs-en-1600x900.png` | Bosses and mobs | 172 из 280 |
 | День 4 | `post-04-movement-en-1600x900.png` | Movement | 196 из 280 |
 | День 5 | `cute-kumo-16x9-en-1600x900.png` | Kumo (feed, 16:9) | 179 из 280 |
-| День 6 | `post-03-tech-en-1600x900.png` | Tech: size | 179 из 280 |
-| День 7 | `post-05-cross-en-1600x900.png` | Cross-platform | 164 из 280 |
-| День 8 | `post-06-coop32-en-1600x900.png` | Co-op | 182 из 280 |
-| День 9 | `post-07-scratch-en-1600x900.png` | Tech: own stack | 198 из 280 |
+| День 6 | `post-09-evolution-en-1600x900.png` | Kumo evolution | 183 из 280 |
+| День 7 | `post-10-odds-en-1600x900.png` | Honest odds | 163 из 280 |
+| День 8 | `post-03-tech-en-1600x900.png` | Tech: size | 179 из 280 |
+| День 9 | `post-05-cross-en-1600x900.png` | Cross-platform | 164 из 280 |
+| День 10 | `post-06-coop32-en-1600x900.png` | Co-op | 182 из 280 |
+| День 11 | `post-07-scratch-en-1600x900.png` | Tech: own stack | 198 из 280 |
+| День 12 | `post-11-numbers-en-1600x900.png` | By the numbers | 159 из 280 |
 
 Лучшее время: будни, 15:00-17:00 UTC. Закреп: пост 1 до выхода всей серии.
 
@@ -86,7 +89,31 @@ Ultra-rare form: 1% chance, and the odds are public.
 What would you name yours? 👇
 ```
 
-### 6. Tech: size
+### 6. Kumo evolution
+
+**Файл:** `post-09-evolution-en-1600x900.png`
+
+```
+From egg to legend.
+
+Feed it, care for it and watch your Kumo change: baby, teen, then one of six adult forms. And once in a hundred hatches, an ultra-rare.
+
+Which form do you want? 👇
+```
+
+### 7. Honest odds
+
+**Файл:** `post-10-odds-en-1600x900.png`
+
+```
+99% vs 1%.
+
+Every Kumo hatch has a 1% chance to be ultra-rare. The odds are public, and every ultra-rare gets its own unique number.
+
+No fog, no tricks. #indiegame
+```
+
+### 8. Tech: size
 
 **Файл:** `post-03-tech-en-1600x900.png`
 
@@ -98,7 +125,7 @@ That's the whole game: one file, zero installs. A custom voxel engine on Three.j
 Alpha test: opening soon. #buildinpublic
 ```
 
-### 7. Cross-platform
+### 9. Cross-platform
 
 **Файл:** `post-05-cross-en-1600x900.png`
 
@@ -110,7 +137,7 @@ Play on desktop, tablet or phone: keyboard and mouse, touch controls, or a gamep
 No download. No sign-up.
 ```
 
-### 8. Co-op
+### 10. Co-op
 
 **Файл:** `post-06-coop32-en-1600x900.png`
 
@@ -122,7 +149,7 @@ Shared bosses, shared loot and XP. Honest co-op: the fight leader stays put, bos
 Who are you bringing? 👇
 ```
 
-### 9. Tech: own stack
+### 11. Tech: own stack
 
 **Файл:** `post-07-scratch-en-1600x900.png`
 
@@ -132,6 +159,24 @@ Built from scratch.
 Our own voxel engine on Three.js, our own Node.js server with zero dependencies, and a 64×64 chunk world that keeps your device smooth.
 
 Small studio, big island. #buildinpublic
+```
+
+### 12. By the numbers
+
+**Файл:** `post-11-numbers-en-1600x900.png`
+
+```
+Hop to Olympus by the numbers:
+
+33 bosses
+6 worlds
+19 regions
+12 weapon types
+32 players per room
+1.47 MB: the whole game
+0 installs
+
+Alpha test: opening soon.
 ```
 
 ## Запасные картинки и форматы

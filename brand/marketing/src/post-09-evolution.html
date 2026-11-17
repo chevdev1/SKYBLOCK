@@ -1,0 +1,56 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Post 09: from egg to legend</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b0f2c;--gold:#ffc23c;--white:#fff}
+html,body{margin:0;background:#000}
+#c{position:relative;width:1600px;height:900px;overflow:hidden;background:#141a3c;color:#fff}
+#c::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,10,30,.9) 0,rgba(8,10,30,.62) 36%,rgba(8,10,30,.08) 62%,rgba(8,10,30,0) 74%)}
+#c::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 66% 52%,transparent 52%,rgba(8,10,30,.42) 100%)}
+.mono{font-family:'Space Mono',monospace;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+/* corner brackets (editing viewfinder) */
+.br{position:absolute;width:46px;height:46px;border:3px solid rgba(255,255,255,.85);z-index:3}
+.br.a{left:44px;top:44px;border-right:0;border-bottom:0}.br.b{right:44px;top:44px;border-left:0;border-bottom:0}
+.br.c{left:44px;bottom:44px;border-right:0;border-top:0}.br.d{right:44px;bottom:44px;border-left:0;border-top:0}
+.top{position:absolute;left:112px;right:112px;top:62px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:19px}
+.top .l{display:flex;align-items:center;gap:14px}
+.top img{height:52px;width:auto;filter:drop-shadow(0 3px 0 rgba(0,0,0,.45))}
+.top .r{display:flex;align-items:center;gap:12px;color:var(--gold);padding:10px 16px;background:rgba(8,10,30,.78)}
+.top .r i{width:13px;height:13px;border-radius:50%;background:#2fbf4a;box-shadow:0 0 0 5px rgba(47,191,74,.28)}
+.hd{position:absolute;left:104px;top:196px;z-index:3;transform:skewX(-7deg);transform-origin:0 100%}
+.hd div{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;line-height:.86;letter-spacing:-.01em}
+.hd .o{font-size:150px;color:transparent;-webkit-text-stroke:5px #fff;text-shadow:0 10px 0 rgba(8,10,30,.55)}
+.hd .g{font-size:224px;color:var(--gold);text-shadow:0 12px 0 #8a4a00,0 22px 40px rgba(0,0,0,.45);margin-top:-8px}
+.sub{position:absolute;left:112px;top:604px;z-index:3;font-size:25px;line-height:1.5;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.sub b{color:var(--gold)}
+.stats{position:absolute;left:112px;top:698px;z-index:3;display:flex;gap:34px;font-size:21px}
+.stats div{display:flex;flex-direction:column;gap:6px;padding-left:16px;border-left:4px solid var(--gold)}
+.stats b{font-family:'Oswald',sans-serif;font-size:46px;line-height:1;letter-spacing:0}
+.stats span{font-size:15px;color:#d9defa}
+.bot{position:absolute;left:112px;right:112px;bottom:62px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:18px}
+.bot .l{padding:10px 16px;background:var(--gold);color:var(--ink)}
+.bot .r{color:#fff;padding:10px 16px;background:rgba(8,10,30,.78)}
+
+#c::before{background:radial-gradient(ellipse at 50% 100%,rgba(255,93,138,.35),rgba(20,16,70,0) 60%),radial-gradient(ellipse at 15% 0,rgba(110,60,220,.55),rgba(20,16,70,0) 55%);display:block}
+#c::after{display:none}
+.stars{position:absolute;inset:0;background-image:radial-gradient(#fff 1.4px,transparent 1.6px),radial-gradient(#cfd6ff 1px,transparent 1.2px);background-size:97px 83px,53px 61px;background-position:0 0,23px 31px;opacity:.3}
+.hd{position:absolute;left:104px;top:112px;z-index:3;transform:skewX(-7deg);transform-origin:0 100%}
+.hd div{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;line-height:.86}
+.hd .o{font-size:112px;color:transparent;-webkit-text-stroke:5px #fff;text-shadow:0 10px 0 rgba(8,10,30,.55)}
+.hd .g{font-size:150px;color:#ffc23c;text-shadow:0 10px 0 #8a4a00;margin-top:-6px}
+.sub{position:absolute;left:880px;top:200px;z-index:3;font-size:24px;line-height:1.5;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.sub b{color:#ffc23c}
+.row{position:absolute;z-index:4;left:112px;right:112px;bottom:136px;display:flex;align-items:flex-end;gap:10px}
+.it{flex:1;display:flex;flex-direction:column;align-items:center;position:relative}
+.it img{display:block;width:auto;filter:drop-shadow(0 12px 0 rgba(0,0,0,.35))}
+.it i{display:block;width:84%;height:20px;margin-top:-6px;background:#f4f8ff;border:3px solid #fff;border-radius:3px;box-shadow:0 8px 0 #bcc8e8}
+.it span{margin-top:14px;padding:6px 10px;font-size:14px;background:#141a3c;color:#fff;border:2px solid #fff;white-space:nowrap}
+.it:last-child span{background:#ffc23c;color:#141a3c;border-color:#141a3c}
+.it+.it::before{content:'';position:absolute;left:-16px;top:44%;width:14px;height:14px;border-top:5px solid #ffc23c;border-right:5px solid #ffc23c;transform:rotate(45deg)}
+
+</style></head><body>
+<div id="c">
+<i class="br a"></i><i class="br b"></i><i class="br c"></i><i class="br d"></i><div class="stars"></div><div class="top mono"><div class="l"><img src="kumo-logo-256.png" alt=""><span>Hop to Olympus</span></div><div class="r"><i></i><span>Alpha test // opening soon</span></div></div><div class="hd"><div class="o">FROM EGG</div><div class="g">TO LEGEND</div></div><div class="sub mono">Feed it. Care for it.<br><b>Six adult forms,</b><br>one ultra-rare.</div><div class="row"><div class="it" style="margin-bottom:0px"><img src="kumo/egg.png" style="height:150px" alt=""><i></i><span class="mono">Egg</span></div><div class="it" style="margin-bottom:16px"><img src="kumo/baby.png" style="height:140px" alt=""><i></i><span class="mono">Baby</span></div><div class="it" style="margin-bottom:32px"><img src="kumo/teen.png" style="height:190px" alt=""><i></i><span class="mono">Teen</span></div><div class="it" style="margin-bottom:48px"><img src="kumo/twilight.png" style="height:220px" alt=""><i></i><span class="mono">Adult // Twilight</span></div><div class="it" style="margin-bottom:64px"><img src="kumo/starry.png" style="height:240px" alt=""><i></i><span class="mono">Adult // Starry</span></div><div class="it" style="margin-bottom:80px"><img src="kumo/rare.png" style="height:290px" alt=""><i></i><span class="mono">Ultra-rare</span></div></div><div class="bot mono"><span class="l">Follow to hear first</span><span class="r">Every Kumo grows differently</span></div>
+</div>
+<script>document.fonts.ready.then(()=>{window.__ready=true})</script></body></html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Post 10: 99% vs 1%</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b0f2c;--gold:#ffc23c;--white:#fff}
+html,body{margin:0;background:#000}
+#c{position:relative;width:1600px;height:900px;overflow:hidden;background:#141a3c;color:#fff}
+#c::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,10,30,.9) 0,rgba(8,10,30,.62) 36%,rgba(8,10,30,.08) 62%,rgba(8,10,30,0) 74%)}
+#c::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 66% 52%,transparent 52%,rgba(8,10,30,.42) 100%)}
+.mono{font-family:'Space Mono',monospace;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+/* corner brackets (editing viewfinder) */
+.br{position:absolute;width:46px;height:46px;border:3px solid rgba(255,255,255,.85);z-index:3}
+.br.a{left:44px;top:44px;border-right:0;border-bottom:0}.br.b{right:44px;top:44px;border-left:0;border-bottom:0}
+.br.c{left:44px;bottom:44px;border-right:0;border-top:0}.br.d{right:44px;bottom:44px;border-left:0;border-top:0}
+.top{position:absolute;left:112px;right:112px;top:62px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:19px}
+.top .l{display:flex;align-items:center;gap:14px}
+.top img{height:52px;width:auto;filter:drop-shadow(0 3px 0 rgba(0,0,0,.45))}
+.top .r{display:flex;align-items:center;gap:12px;color:var(--gold);padding:10px 16px;background:rgba(8,10,30,.78)}
+.top .r i{width:13px;height:13px;border-radius:50%;background:#2fbf4a;box-shadow:0 0 0 5px rgba(47,191,74,.28)}
+.hd{position:absolute;left:104px;top:196px;z-index:3;transform:skewX(-7deg);transform-origin:0 100%}
+.hd div{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;line-height:.86;letter-spacing:-.01em}
+.hd .o{font-size:150px;color:transparent;-webkit-text-stroke:5px #fff;text-shadow:0 10px 0 rgba(8,10,30,.55)}
+.hd .g{font-size:224px;color:var(--gold);text-shadow:0 12px 0 #8a4a00,0 22px 40px rgba(0,0,0,.45);margin-top:-8px}
+.sub{position:absolute;left:112px;top:604px;z-index:3;font-size:25px;line-height:1.5;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.sub b{color:var(--gold)}
+.stats{position:absolute;left:112px;top:698px;z-index:3;display:flex;gap:34px;font-size:21px}
+.stats div{display:flex;flex-direction:column;gap:6px;padding-left:16px;border-left:4px solid var(--gold)}
+.stats b{font-family:'Oswald',sans-serif;font-size:46px;line-height:1;letter-spacing:0}
+.stats span{font-size:15px;color:#d9defa}
+.bot{position:absolute;left:112px;right:112px;bottom:62px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:18px}
+.bot .l{padding:10px 16px;background:var(--gold);color:var(--ink)}
+.bot .r{color:#fff;padding:10px 16px;background:rgba(8,10,30,.78)}
+
+#c::before,#c::after{display:none}
+.L{position:absolute;inset:0;background:linear-gradient(135deg,#ffd6e4,#ffe9d2);clip-path:polygon(0 0,57% 0,43% 100%,0 100%)}
+.R{position:absolute;inset:0;background:radial-gradient(ellipse at 74% 55%,#6a2fd0 0,#2a1a78 42%,#120c3a 100%);clip-path:polygon(57% 0,100% 0,100% 100%,43% 100%)}
+.stars{position:absolute;inset:0;clip-path:polygon(57% 0,100% 0,100% 100%,43% 100%);background-image:radial-gradient(#fff 1.4px,transparent 1.6px),radial-gradient(#cfd6ff 1px,transparent 1.2px);background-size:97px 83px,53px 61px;background-position:0 0,23px 31px;opacity:.4}
+.neon{position:absolute;right:60px;top:150px;width:700px;height:700px;border-radius:50%;background:conic-gradient(from 0deg,#39ff14,#ffee00,#ff1493,#9d00ff,#39ff14);filter:blur(90px);opacity:.55}
+.edge{position:absolute;left:795px;top:-60px;width:12px;height:1020px;background:#ffc23c;transform:rotate(14deg);z-index:2;box-shadow:0 0 0 4px #141a3c}
+.k1,.k2{position:absolute;z-index:4;width:auto}
+.k1{left:140px;bottom:118px;height:440px;filter:drop-shadow(0 18px 0 rgba(217,58,108,.25))}
+.k2{right:100px;bottom:118px;height:440px;filter:drop-shadow(0 0 30px rgba(255,93,216,.55))}
+.num{position:absolute;z-index:3;top:150px;font-family:'Oswald',sans-serif;font-weight:700;line-height:.9;transform:skewX(-7deg);paint-order:stroke fill;-webkit-text-stroke:7px #141a3c;text-shadow:0 12px 0 #141a3c}
+.n1{left:112px;font-size:250px;color:#fff}
+.n2{right:150px;font-size:312px;color:#ffc23c;text-shadow:0 12px 0 #141a3c,0 0 50px rgba(255,93,216,.8)}
+.lab{position:absolute;z-index:5;top:122px;padding:8px 14px;font-size:17px;background:#141a3c;color:#fff}
+.lab.a{left:112px}.lab.b{right:112px;color:#ffc23c}
+.top .l{color:#141a3c;text-shadow:none}
+
+</style></head><body>
+<div id="c">
+<i class="br a"></i><i class="br b"></i><i class="br c"></i><i class="br d"></i><div class="L"></div><div class="R"></div><div class="stars"></div><div class="neon"></div><div class="edge"></div><div class="top mono"><div class="l"><img src="kumo-logo-256.png" alt=""><span>Hop to Olympus</span></div><div class="r"><i></i><span>Alpha test // opening soon</span></div></div><span class="lab mono a">Regular Kumo</span><span class="lab mono b">Ultra-rare Kumo</span><div class="num n1">99%</div><div class="num n2">1%</div><img class="k1" src="kumo/teen.png" alt=""><img class="k2" src="kumo/rare.png" alt=""><div class="bot mono"><span class="l">Follow to hear first</span><span class="r">Public odds / Unique numbers</span></div>
+</div>
+<script>document.fonts.ready.then(()=>{window.__ready=true})</script></body></html>
