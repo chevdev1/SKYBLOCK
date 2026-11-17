@@ -18,7 +18,7 @@ const token = process.env.TG_BOT_TOKEN, chat = process.env.TG_CHAT || '@HopToOly
   const left = q.filter(i => i.approved && !i.postedAt).length;
   if (!next) { console.log('Nothing to post: no approved, unposted items with an image.'); return; }
   console.log(`Next: #${next.id} ${next.file} (${left} approved left)`);
-  if (next.text.length > 1024) throw new Error('Caption longer than 1024 characters');
+  if (next.text.replace(/<[^>]+>/g, '').length > 1024) throw new Error('Caption longer than 1024 characters');
   if (dry) { console.log('--- DRY RUN ---\n' + next.text); return; }
   if (!token) throw new Error('TG_BOT_TOKEN is not set');
   const rd = f => new Blob([fs.readFileSync(path.join(__dirname, 'img', f))], { type: 'image/png' });
@@ -26,9 +26,9 @@ const token = process.env.TG_BOT_TOKEN, chat = process.env.TG_CHAT || '@HopToOly
   let method = 'sendPhoto';
   if (next.files && next.files.length > 1) {
     method = 'sendMediaGroup';
-    fd.append('media', JSON.stringify(next.files.map((f, k) => ({ type: 'photo', media: 'attach://p' + k, ...(k === 0 ? { caption: next.text } : {}) }))));
+    fd.append('media', JSON.stringify(next.files.map((f, k) => ({ type: 'photo', media: 'attach://p' + k, ...(k === 0 ? { caption: next.text, parse_mode: 'HTML' } : {}) }))));
     next.files.forEach((f, k) => fd.append('p' + k, rd(f), f));
-  } else { fd.append('caption', next.text); fd.append('photo', rd(next.file), next.file); }
+  } else { fd.append('caption', next.text); fd.append('parse_mode', 'HTML'); fd.append('photo', rd(next.file), next.file); }
   const res = await fetch(`https://api.telegram.org/bot${token}/${method}`, { method: 'POST', body: fd });
   const j = await res.json();
   if (!j.ok) throw new Error('Telegram error: ' + (j.description || res.status));
