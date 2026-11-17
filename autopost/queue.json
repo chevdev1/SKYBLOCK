@@ -166,5 +166,21 @@
     "text": "Play together.\n\nUp to 32 players in one room: shared bosses, shared loot and XP, and one shared boss health bar. Pick your hero and jump in.\n\nWho is your co-op partner? 👇",
     "approved": false,
     "postedAt": null
+  },
+  {
+    "id": 22,
+    "file": "post-21-wanted-en-1600x900.png",
+    "role": "Bosses (wanted)",
+    "text": "33 bosses. All wanted.\n\nZeus, Medusa, Kronos and 30 more are waiting on the way up, each with its own arena and legendary loot. Hunt them solo or with up to 32 players.\n\nWhich boss is your first target? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 23,
+    "file": "post-22-boarding-en-1600x900.png",
+    "role": "Boarding pass",
+    "text": "Your boarding pass to Olympus ✈️☁️\n\nNo download. No sign-up. Any screen. Co-op for up to 32 players.\n\nAlpha test: opening soon. Follow to hear first.",
+    "approved": false,
+    "postedAt": null
   }
 ]

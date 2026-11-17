@@ -1,0 +1,65 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Post 22: boarding pass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b0f2c;--gold:#ffc23c;--white:#fff}
+html,body{margin:0;background:#000}
+#c{position:relative;width:1600px;height:900px;overflow:hidden;background:#141a3c;color:#fff}
+#c::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,10,30,.9) 0,rgba(8,10,30,.62) 36%,rgba(8,10,30,.08) 62%,rgba(8,10,30,0) 74%)}
+#c::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 66% 52%,transparent 52%,rgba(8,10,30,.42) 100%)}
+.mono{font-family:'Space Mono',monospace;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+/* corner brackets (editing viewfinder) */
+.br{position:absolute;width:46px;height:46px;border:3px solid rgba(255,255,255,.85);z-index:3}
+.br.a{left:44px;top:44px;border-right:0;border-bottom:0}.br.b{right:44px;top:44px;border-left:0;border-bottom:0}
+.br.c{left:44px;bottom:44px;border-right:0;border-top:0}.br.d{right:44px;bottom:44px;border-left:0;border-top:0}
+.top{position:absolute;left:112px;right:112px;top:62px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:19px}
+.top .l{display:flex;align-items:center;gap:14px}
+.top img{height:52px;width:auto;filter:drop-shadow(0 3px 0 rgba(0,0,0,.45))}
+.top .r{display:flex;align-items:center;gap:12px;color:var(--gold);padding:10px 16px;background:rgba(8,10,30,.78)}
+.top .r i{width:13px;height:13px;border-radius:50%;background:#2fbf4a;box-shadow:0 0 0 5px rgba(47,191,74,.28)}
+.hd{position:absolute;left:104px;top:196px;z-index:3;transform:skewX(-7deg);transform-origin:0 100%}
+.hd div{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;line-height:.86;letter-spacing:-.01em}
+.hd .o{font-size:150px;color:transparent;-webkit-text-stroke:5px #fff;text-shadow:0 10px 0 rgba(8,10,30,.55)}
+.hd .g{font-size:224px;color:var(--gold);text-shadow:0 12px 0 #8a4a00,0 22px 40px rgba(0,0,0,.45);margin-top:-8px}
+.sub{position:absolute;left:112px;top:604px;z-index:3;font-size:25px;line-height:1.5;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.sub b{color:var(--gold)}
+.stats{position:absolute;left:112px;top:698px;z-index:3;display:flex;gap:34px;font-size:21px}
+.stats div{display:flex;flex-direction:column;gap:6px;padding-left:16px;border-left:4px solid var(--gold)}
+.stats b{font-family:'Oswald',sans-serif;font-size:46px;line-height:1;letter-spacing:0}
+.stats span{font-size:15px;color:#d9defa}
+.bot{position:absolute;left:112px;right:112px;bottom:62px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:18px}
+.bot .l{padding:10px 16px;background:var(--gold);color:var(--ink)}
+.bot .r{color:#fff;padding:10px 16px;background:rgba(8,10,30,.78)}
+
+#c{background:#1b2150}
+#c::before{background:rgba(8,10,30,.55)}
+.bgp{position:absolute;inset:-30px;background:url(bg-sergio-v4.jpg) center/cover;filter:blur(7px) saturate(1.1) brightness(.6)}
+.tk{position:absolute;z-index:4;left:110px;top:200px;width:1380px;height:500px;display:flex;filter:drop-shadow(0 28px 40px rgba(0,0,0,.55));font-family:'Space Mono',monospace;color:#141a3c}
+.tk .m{flex:1;background:#fff8e6;border-radius:26px 0 0 26px;padding:30px 40px;position:relative;
+  background-image:radial-gradient(circle at 100% 0,transparent 0 22px,#fff8e6 23px),radial-gradient(circle at 100% 100%,transparent 0 22px,#fff8e6 23px);background-repeat:no-repeat}
+.tk .s{width:330px;background:#ffc23c;border-radius:0 26px 26px 0;padding:30px 28px;border-left:5px dashed #141a3c;position:relative}
+.bar{height:8px;background:repeating-linear-gradient(90deg,#141a3c 0 14px,#ffc23c 14px 28px);margin:0 0 18px}
+.air{font-family:'Oswald',sans-serif;font-weight:700;font-size:26px;letter-spacing:.14em;display:flex;justify-content:space-between;align-items:center}
+.air img{height:44px;vertical-align:middle;margin-right:12px}
+.route{display:flex;align-items:center;gap:22px;margin:16px 0 6px;font-family:'Oswald',sans-serif;font-weight:700}
+.route .c{font-size:66px;line-height:1;letter-spacing:.02em;white-space:nowrap}
+.route .n{font-family:'Space Mono',monospace;font-size:14px;letter-spacing:.14em;display:block;font-weight:700;color:#555d8a}
+.route .ar{font-size:44px;color:#ffa31a}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 22px;margin-top:20px}
+.grid div{border-top:3px solid #141a3c;padding-top:6px;font-size:13px;color:#555d8a;letter-spacing:.12em}
+.grid b{display:block;font-family:'Oswald',sans-serif;font-size:27px;white-space:nowrap;color:#141a3c;letter-spacing:.02em;margin-top:2px}
+.hr{position:absolute;right:28px;top:22px;width:130px;height:150px;border:5px solid #141a3c;border-radius:12px;overflow:hidden;background:linear-gradient(#7fc4ff,#d6efff)}
+.hr img{position:absolute;width:260px;left:-68px;top:-52px}
+.s .sd{font-family:'Oswald',sans-serif;font-weight:700;font-size:26px;letter-spacing:.12em}
+.s .seat{font-family:'Oswald',sans-serif;font-weight:700;font-size:120px;line-height:1;margin:40px 0 0}
+.s .seat span{font-size:46px}
+.s .sm{font-size:13px;letter-spacing:.12em;font-weight:700;margin-top:6px}
+.code{position:absolute;left:28px;right:28px;bottom:30px;height:84px;background:repeating-linear-gradient(90deg,#141a3c 0 4px,transparent 4px 7px,#141a3c 7px 9px,transparent 9px 14px,#141a3c 14px 20px,transparent 20px 23px)}
+.stamp{position:absolute;right:40px;bottom:16px;border:4px solid #c0392b;color:#c0392b;font-family:'Oswald',sans-serif;font-weight:700;font-size:26px;letter-spacing:.1em;padding:6px 16px;transform:rotate(-8deg);opacity:.9}
+
+</style></head><body>
+<div id="c">
+<div class="bgp"></div><i class="br a"></i><i class="br b"></i><i class="br c"></i><i class="br d"></i><div class="top mono"><div class="l"><img src="kumo-logo-256.png" alt=""><span>Hop to Olympus</span></div><div class="r"><i></i><span>Alpha test // opening soon</span></div></div><div class="tk"><div class="m"><div class="bar"></div><div class="air"><span><img src="kumo-logo-256.png" alt="">KUMO AIR · BOARDING PASS</span><span style="font-size:16px;letter-spacing:.1em">FLIGHT HTO-001</span></div><div class="route"><div><span class="n">FROM</span><span class="c">CLOUD ISLES</span></div><span class="ar">&#9654;</span><div><span class="n">TO</span><span class="c" style="color:#c97a00">OLYMPUS</span></div></div><div class="grid"><div>PASSENGER<b>YOU</b></div><div>CLASS<b>CO-OP / 32</b></div><div>BAGGAGE<b>NONE</b></div><div>CHECK-IN<b>NO SIGN-UP</b></div><div>DOWNLOAD<b>NOT NEEDED</b></div><div>DEVICE<b>ANY SCREEN</b></div><div>WEAPONS<b>12 TYPES</b></div><div>BOSSES ON ROUTE<b>33</b></div></div><div class="stamp">ALPHA SOON</div></div><div class="s"><div class="hr"><img src="cast-sergio.png" alt=""></div><div class="sd">GATE</div><div class="seat">1<span>/32</span></div><div class="sm">ALPHA TEST // OPENING SOON</div><div class="sm" style="margin-top:14px">FOLLOW TO HEAR FIRST</div><div class="code"></div></div></div><div class="bot mono"><span class="l">Follow to hear first</span><span class="r">Your seat is waiting</span></div>
+</div>
+<script>document.fonts.ready.then(()=>{window.__ready=true})</script></body></html>
