@@ -43,6 +43,7 @@
 | День 33 | `post-33-polaroids-en-1600x900.png` | Screenshots | 131 из 280 |
 | День 34 | `post-34-bestfriends-en-1600x900.png` | Best friends (cute) | 164 из 280 |
 | День 35 | `post-35-rinakumo-en-1600x900.png` | Rina and Kumo (cute) | 188 из 280 |
+| День 36 | `post-36-gearladder-en-1600x900.png` | Upgrade ladder | 200 из 280 |
 
 Лучшее время: будни, 15:00-17:00 UTC. Закреп: пост 1 до выхода всей серии.
 
@@ -487,6 +488,20 @@ Meet Rina and Kumo 💗
 A cloud buddy that hatches from an egg, grows with you and evolves. One in a hundred hatches is ultra-rare, and the odds are public.
 
 What would you name your Kumo? 👇
+```
+
+### 36. Upgrade ladder
+
+**Файл:** `post-36-gearladder-en-1600x900.png`
+
+```
+Upgrade your gear ⬆️
+
+Turtle Armor: 3 armor hearts.
+Shadow Garb: 5 armor hearts and +10% run speed.
+Erebus Armor: 7 armor hearts and +15% run speed.
+
+Loot it. Craft it. Wear it. Which look is yours? 👇
 ```
 
 ## Запасные картинки и форматы
