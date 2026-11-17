@@ -127,3 +127,8 @@
 - [ ] Нет обещаний дохода и выдуманных цифр
 - [ ] Файлы названы `post-NN-vN-<lang>-<WxH>.png`
 - [ ] Закоммичено и запушено
+
+## Batch 3: higher floors (posts 15-19)
+- Frames are captured per tier with `tier.js` (save with `cp`/`at`, tier gear, UI hidden, labels hidden). Checkpoint map: 5 Space, 6 Gates of Olympus, 9 Zeus Hall, 15 Star Dome (cp 14-17), 20 Cloud Harbor (Horai), 21 Neon Quarter, 22 Jade Palace.
+- Layout: same montage style, full-bleed scene shifted right (left 300px, 1700x956) with a left dark gradient; hero stays on the right third.
+- Weak frames (race countdowns in Star Dome / Abyss starts) were skipped; use the idle frame (`-0`) rather than mid-race ones.

@@ -4,7 +4,7 @@
 
 Правила: один пост = одна картинка и один призыв, хэштегов не больше двух, ничего не обещаем про доход и токен. Режим альфы везде «скоро» (`Alpha test: opening soon`). Если решите открыть альфу сразу, замените эту фразу на `Alpha test: open now`.
 
-## Порядок выхода (15 постов)
+## Порядок выхода
 
 | День | Файл в проводнике | Тема | Знаков |
 |---|---|---|---|
@@ -23,6 +23,11 @@
 | День 13 | `post-06-coop32-en-1600x900.png` | Co-op | 182 из 280 |
 | День 14 | `post-07-scratch-en-1600x900.png` | Tech: own stack | 198 из 280 |
 | День 15 | `post-11-numbers-en-1600x900.png` | By the numbers | 159 из 280 |
+| День 16 | `post-15-olympus-en-1600x900.png` | Olympus | 149 из 280 |
+| День 17 | `post-16-space-en-1600x900.png` | Space | 99 из 280 |
+| День 18 | `post-17-horai-en-1600x900.png` | Neon Horai | 127 из 280 |
+| День 19 | `post-18-dome-en-1600x900.png` | Star Dome | 127 из 280 |
+| День 20 | `post-19-action-en-1600x900.png` | Action | 134 из 280 |
 
 Лучшее время: будни, 15:00-17:00 UTC. Закреп: пост 1 до выхода всей серии.
 
@@ -216,6 +221,66 @@ Hop to Olympus by the numbers:
 0 installs
 
 Alpha test: opening soon.
+```
+
+### 16. Olympus
+
+**Файл:** `post-15-olympus-en-1600x900.png`
+
+```
+The Gates of Olympus.
+
+Marble, gold and portals: the climb gets serious up here. 19 regions, 33 bosses, 6 worlds.
+
+What is waiting behind the gate? 👇
+```
+
+### 17. Space
+
+**Файл:** `post-16-space-en-1600x900.png`
+
+```
+Above the clouds.
+
+Keep climbing past the sky: the stars are a floor too.
+
+No download. No sign-up.
+```
+
+### 18. Neon Horai
+
+**Файл:** `post-17-horai-en-1600x900.png`
+
+```
+Neon Horai.
+
+The last world glows: Cloud Harbor, the Neon Quarter and the Jade Palace.
+
+Which world do you want to see first? 👇
+```
+
+### 19. Star Dome
+
+**Файл:** `post-18-dome-en-1600x900.png`
+
+```
+Inside the Star Dome.
+
+The Starbreaker, one of 8 relics, can only be forged here. Bring a plan.
+
+Which relic would you chase? 👇
+```
+
+### 20. Action
+
+**Файл:** `post-19-action-en-1600x900.png`
+
+```
+Swing. Dash. Repeat.
+
+12 weapon types, plus hops, dashes and a mega jump on every fifth hop. Pick your style.
+
+Which weapon are you? 👇
 ```
 
 ## Запасные картинки и форматы
