@@ -206,5 +206,35 @@
     "text": "Achievement unlocked.\n\nMega jump, Cloud rhythm, Free fall: skill beats stats in Hop to Olympus.\n\nWhich achievement would you go for first? 👇",
     "approved": false,
     "postedAt": null
+  },
+  {
+    "id": 27,
+    "file": "post-26-patchnotes-en-1600x900.png",
+    "role": "Patch notes",
+    "text": "Patch notes: what is already in the build ☁️\n\n+ Horai, a neon megacity\n+ New boss: Kiyohime, the Serpent Bride\n+ Ultra-rare Kumo with unique numbers\n+ Xbox, PlayStation and Switch Pro gamepads\n+ Time trials with a ghost\n+ Workshop for your own maps\n\nAlpha test: opening soon.",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 28,
+    "file": "post-27-receipt-en-1600x900.png",
+    "role": "Craft receipt",
+    "text": "Your craft receipt 🧾\n\n3 mole claws + 5 slime = 1 grappling hook. Mobs drop materials, recipes turn them into gear: 32 items and 8 relics.\n\nWhat would you craft first? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 29,
+    "file": "post-28-carousel-1-en-1600x900.png",
+    "files": [
+      "post-28-carousel-1-en-1600x900.png",
+      "post-28-carousel-2-en-1600x900.png",
+      "post-28-carousel-3-en-1600x900.png",
+      "post-28-carousel-4-en-1600x900.png"
+    ],
+    "role": "Carousel (4 slides)",
+    "text": "Hop to Olympus in 4 swipes ➡️\n\n1. Hop on the beat\n2. Dash, wall-run, hook, fly\n3. 12 weapons, 33 bosses\n4. Up to 32 players\n\nNo download. No sign-up. Alpha test: opening soon.",
+    "approved": false,
+    "postedAt": null
   }
 ]

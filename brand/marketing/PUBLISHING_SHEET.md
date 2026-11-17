@@ -34,6 +34,8 @@
 | День 24 | `post-23-herocards-en-1600x900.png` | Heroes (cards) | 137 из 280 |
 | День 25 | `post-24-kumomenu-en-1600x900.png` | Kumo menu | 214 из 280 |
 | День 26 | `post-25-achievements-en-1600x900.png` | Achievements | 140 из 280 |
+| День 27 | `post-26-patchnotes-en-1600x900.png` | Patch notes | 275 из 280 |
+| День 28 | `post-27-receipt-en-1600x900.png` | Craft receipt | 168 из 280 |
 
 Лучшее время: будни, 15:00-17:00 UTC. Закреп: пост 1 до выхода всей серии.
 
@@ -359,6 +361,35 @@ Achievement unlocked.
 Mega jump, Cloud rhythm, Free fall: skill beats stats in Hop to Olympus.
 
 Which achievement would you go for first? 👇
+```
+
+### 27. Patch notes
+
+**Файл:** `post-26-patchnotes-en-1600x900.png`
+
+```
+Patch notes: what is already in the build ☁️
+
++ Horai, a neon megacity
++ New boss: Kiyohime, the Serpent Bride
++ Ultra-rare Kumo with unique numbers
++ Xbox, PlayStation and Switch Pro gamepads
++ Time trials with a ghost
++ Workshop for your own maps
+
+Alpha test: opening soon.
+```
+
+### 28. Craft receipt
+
+**Файл:** `post-27-receipt-en-1600x900.png`
+
+```
+Your craft receipt 🧾
+
+3 mole claws + 5 slime = 1 grappling hook. Mobs drop materials, recipes turn them into gear: 32 items and 8 relics.
+
+What would you craft first? 👇
 ```
 
 ## Запасные картинки и форматы
