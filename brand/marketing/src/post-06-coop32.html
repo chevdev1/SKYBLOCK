@@ -1,0 +1,67 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Post 06: 32 players</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b0f2c;--gold:#ffc23c;--white:#fff}
+html,body{margin:0;background:#000}
+#c{position:relative;width:1600px;height:900px;overflow:hidden;background:#4a8a3a url(bg-game-start.jpg) center/cover no-repeat;color:#fff}
+#c::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,10,30,.9) 0,rgba(8,10,30,.62) 36%,rgba(8,10,30,.08) 62%,rgba(8,10,30,0) 74%)}
+#c::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 66% 52%,transparent 52%,rgba(8,10,30,.42) 100%)}
+.mono{font-family:'Space Mono',monospace;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+/* corner brackets (editing viewfinder) */
+.br{position:absolute;width:46px;height:46px;border:3px solid rgba(255,255,255,.85);z-index:3}
+.br.a{left:44px;top:44px;border-right:0;border-bottom:0}.br.b{right:44px;top:44px;border-left:0;border-bottom:0}
+.br.c{left:44px;bottom:44px;border-right:0;border-top:0}.br.d{right:44px;bottom:44px;border-left:0;border-top:0}
+.top{position:absolute;left:112px;right:112px;top:62px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:19px}
+.top .l{display:flex;align-items:center;gap:14px}
+.top img{height:52px;width:auto;filter:drop-shadow(0 3px 0 rgba(0,0,0,.45))}
+.top .r{display:flex;align-items:center;gap:12px;color:var(--gold);padding:10px 16px;background:rgba(8,10,30,.78)}
+.top .r i{width:13px;height:13px;border-radius:50%;background:#2fbf4a;box-shadow:0 0 0 5px rgba(47,191,74,.28)}
+.hd{position:absolute;left:104px;top:196px;z-index:3;transform:skewX(-7deg);transform-origin:0 100%}
+.hd div{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;line-height:.86;letter-spacing:-.01em}
+.hd .o{font-size:150px;color:transparent;-webkit-text-stroke:5px #fff;text-shadow:0 10px 0 rgba(8,10,30,.55)}
+.hd .g{font-size:148px;color:var(--gold);text-shadow:0 12px 0 #8a4a00,0 22px 40px rgba(0,0,0,.45);margin-top:-8px}
+.sub{position:absolute;left:112px;top:604px;z-index:3;font-size:25px;line-height:1.5;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.sub b{color:var(--gold)}
+.stats{position:absolute;left:112px;top:698px;z-index:3;display:flex;gap:34px;font-size:21px}
+.stats div{display:flex;flex-direction:column;gap:6px;padding-left:16px;border-left:4px solid var(--gold)}
+.stats b{font-family:'Oswald',sans-serif;font-size:46px;line-height:1;letter-spacing:0}
+.stats span{font-size:15px;color:#d9defa}
+.bot{position:absolute;left:112px;right:112px;bottom:62px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:18px}
+.bot .l{padding:10px 16px;background:var(--gold);color:var(--ink)}
+.bot .r{color:#fff;padding:10px 16px;background:rgba(8,10,30,.78)}
+
+.room{position:absolute;z-index:4;right:96px;top:176px;width:560px;padding:22px 24px;background:rgba(8,10,30,.82);border:3px solid #fff;border-radius:6px}
+.room h4{margin:0 0 14px;font-family:'Space Mono',monospace;font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:#ffc23c;display:flex;justify-content:space-between}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:9px}
+.grid i{display:block;aspect-ratio:1;background:#5cc8ff;border:3px solid #fff;border-radius:3px}
+.grid i:nth-child(3n){background:#ffc23c}.grid i:nth-child(3n+1){background:#ff5d8a}
+.grid i.lead{background:#8ee04a;box-shadow:0 0 0 4px #0b0f2c,0 0 0 7px #ffc23c}
+.hp{margin-top:18px;height:26px;background:#1a2150;border:3px solid #fff;position:relative}
+.hp span{position:absolute;inset:0 38% 0 0;background:repeating-linear-gradient(-45deg,#ff5d8a 0 10px,#ff8aa8 10px 20px)}
+.hp em{position:absolute;inset:0;display:grid;place-items:center;font-style:normal;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.12em;color:#fff;text-transform:uppercase;text-shadow:0 1px 0 #0b0f2c}
+.cap{margin-top:12px;font-size:14px;color:#cfd6ff;letter-spacing:.1em}
+
+</style></head><body>
+<div id="c">
+  <i class="br a"></i><i class="br b"></i><i class="br c"></i><i class="br d"></i>
+  <div class="top mono"><div class="l"><img src="kumo-logo-256.png" alt=""><span>Hop to Olympus</span></div><div class="r"><i></i><span id="st"></span></div></div>
+  <div class="hd"><div class="o" id="h1"></div><div class="g" id="h2"></div></div>
+  <div class="sub mono" id="sub"></div>
+  <div class="stats mono" id="stats"></div>
+  <div class="room mono"><h4><span>Room // WebSocket</span><span>32 / 32</span></h4><div class="grid" id="gr"></div><div class="hp"><span></span><em>Boss health // shared</em></div><div class="cap">Leader (green) stays put. Hits are never dropped.</div></div>
+  <script>document.getElementById('gr').innerHTML=Array.from({length:32},(_,i)=>'<i'+(i===0?' class="lead"':'')+'></i>').join('')</script>
+  <div class="bot mono"><span class="l" id="bl"></span><span class="r" id="br"></span></div>
+</div>
+<script>
+const L = new URLSearchParams(location.search).get('lang') === 'ru' ? 'ru' : 'en';
+const C = {
+  en: { st: 'Alpha test // opening soon', h1: 'ONE ROOM', h2: '32 PLAYERS', sub: 'Shared bosses. Shared loot.<br><b>Honest netcode.</b>', stats: [['x32', 'Per room'], ['WS', 'Real-time'], ['ALL', 'Share the loot']], bl: 'Follow to hear first', br: 'Co-op that stays fair' },
+  ru: { st: 'Альфа-тест // скоро', h1: 'ВОЙДИ В', h2: 'ОЛИМП', sub: 'Воксельная экшн-<b>RPG</b><br>прямо в браузере.', stats: [['06', 'Миров'], ['33', 'Босса'], ['x32', 'Кооп']], bl: 'Подпишись, чтобы узнать первым', br: 'Без установки / Без регистрации' },
+}[L];
+const $ = id => document.getElementById(id);
+$('st').textContent = C.st; $('h1').textContent = C.h1; $('h2').textContent = C.h2; $('sub').innerHTML = C.sub;
+$('stats').innerHTML = C.stats.map(([n, t]) => '<div><b>' + n + '</b><span>' + t + '</span></div>').join(''); $('bl').textContent = C.bl; $('br').textContent = C.br;
+document.fonts.ready.then(() => { window.__ready = true });
+</script></body></html>
