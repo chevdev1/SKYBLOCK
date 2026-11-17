@@ -1,0 +1,36 @@
+name: Telegram autopost
+on:
+  schedule:
+    - cron: '0 9,17 * * *'   # twice a day, 09:00 and 17:00 UTC
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (print only, do not post)'
+        type: boolean
+        default: true
+permissions:
+  contents: write
+concurrency: autopost
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Post next approved item
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT: '@HopToOlympus'
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '0' }}
+        run: node autopost/post-next.js
+      - name: Save posted state
+        run: |
+          if [ -n "$(git status --porcelain autopost/queue.json)" ]; then
+            git config user.name "autopost-bot"
+            git config user.email "autopost-bot@users.noreply.github.com"
+            git add autopost/queue.json
+            git commit -m "autopost: mark item as posted"
+            git push
+          fi

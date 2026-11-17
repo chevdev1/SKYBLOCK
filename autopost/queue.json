@@ -1,0 +1,170 @@
+[
+  {
+    "id": 1,
+    "file": "post-01-v4-sergio-en-1600x900.png",
+    "role": "Pinned intro post",
+    "text": "Meet Hop to Olympus ☁️\n\nA voxel action RPG in your browser. Hop across floating islands, fight gods and titans, raise a Kumo of your own.\n\nNo download. No sign-up.\n\nAlpha test: opening soon. Follow to hear first.",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 2,
+    "file": "post-02-worlds-en-1600x900.png",
+    "role": "Worlds",
+    "text": "Six worlds. One climb.\n\nFrom the Cloud Isles to neon Horai: 19 regions and 33 bosses wait on the way up.\n\nWhich world do you want to see first? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 3,
+    "file": "post-08-mobs-en-1600x900.png",
+    "role": "Bosses and mobs",
+    "text": "Not a single clone.\n\nGryphons, titans, gorgons, nightmares and neon dragons: 33 bosses with their own phases, arenas and legendary loot.\n\nWhich one would you fight first? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 4,
+    "file": "post-04-movement-en-1600x900.png",
+    "role": "Movement",
+    "text": "Movement is the weapon.\n\nHop on the beat: every jump in a streak is faster, and the fifth one is a mega jump. Add a dash, wall-runs, a grappling hook and wings.\n\nSkill beats stats here. #indiegame",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 5,
+    "file": "post-14-ghost-en-1600x900.png",
+    "role": "Time trials",
+    "text": "Race your ghost.\n\nFive time trial tracks, a ghost of your best run and shared leaderboards. Hops and dashes decide everything.\n\nCan you beat yourself? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 6,
+    "file": "cute-kumo-16x9-en-1600x900.png",
+    "role": "Kumo (feed, 16:9)",
+    "text": "Meet Kumo ☁️\n\nA cloud buddy that hatches from an egg, grows, evolves and joins your adventures.\n\nUltra-rare form: 1% chance, and the odds are public.\n\nWhat would you name yours? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 7,
+    "file": "post-09-evolution-en-1600x900.png",
+    "role": "Kumo evolution",
+    "text": "From egg to legend.\n\nFeed it, care for it and watch your Kumo change: baby, teen, then one of six adult forms. And once in a hundred hatches, an ultra-rare.\n\nWhich form do you want? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 8,
+    "file": "post-10-odds-en-1600x900.png",
+    "role": "Honest odds",
+    "text": "99% vs 1%.\n\nEvery Kumo hatch has a 1% chance to be ultra-rare. The odds are public, and every ultra-rare gets its own unique number.\n\nNo fog, no tricks. #indiegame",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 9,
+    "file": "post-12-craft-en-1600x900.png",
+    "role": "Crafting",
+    "text": "Loot it. Craft it. Equip it.\n\nMobs drop materials, and you forge armour, wings and legendary weapons: 32 items and 8 relics. The Starbreaker can only be forged in the Star Dome.\n\nWhat would you craft first? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 10,
+    "file": "post-13-workshop-en-1600x900.png",
+    "role": "Workshop",
+    "text": "Build your own map.\n\nPlace the start, finish and checkpoints, publish it, and earn creator stars: +1 for a new player, +2 for every finish, +5 for a like. Every map has its own leaderboard.\n\nWhat would you build? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 11,
+    "file": "post-03-tech-en-1600x900.png",
+    "role": "Tech: size",
+    "text": "1.47 MB.\n\nThat's the whole game: one file, zero installs. A custom voxel engine on Three.js and 140,000+ blocks, running in your browser.\n\nAlpha test: opening soon. #buildinpublic",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 12,
+    "file": "post-05-cross-en-1600x900.png",
+    "role": "Cross-platform",
+    "text": "One game. Any screen.\n\nPlay on desktop, tablet or phone: keyboard and mouse, touch controls, or a gamepad (Xbox, PlayStation, Switch Pro).\n\nNo download. No sign-up.",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 13,
+    "file": "post-06-coop32-en-1600x900.png",
+    "role": "Co-op",
+    "text": "Up to 32 players in one room.\n\nShared bosses, shared loot and XP. Honest co-op: the fight leader stays put, boss health is shared and hits are never dropped.\n\nWho are you bringing? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 14,
+    "file": "post-07-scratch-en-1600x900.png",
+    "role": "Tech: own stack",
+    "text": "Built from scratch.\n\nOur own voxel engine on Three.js, our own Node.js server with zero dependencies, and a 64×64 chunk world that keeps your device smooth.\n\nSmall studio, big island. #buildinpublic",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 15,
+    "file": "post-11-numbers-en-1600x900.png",
+    "role": "By the numbers",
+    "text": "Hop to Olympus by the numbers:\n\n33 bosses\n6 worlds\n19 regions\n12 weapon types\n32 players per room\n1.47 MB: the whole game\n0 installs\n\nAlpha test: opening soon.",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 16,
+    "file": "post-15-olympus-en-1600x900.png",
+    "role": "Olympus",
+    "text": "The Gates of Olympus.\n\nMarble, gold and portals: the climb gets serious up here. 19 regions, 33 bosses, 6 worlds.\n\nWhat is waiting behind the gate? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 17,
+    "file": "post-16-space-en-1600x900.png",
+    "role": "Space",
+    "text": "Above the clouds.\n\nKeep climbing past the sky: the stars are a floor too.\n\nNo download. No sign-up.",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 18,
+    "file": "post-17-horai-en-1600x900.png",
+    "role": "Neon Horai",
+    "text": "Neon Horai.\n\nThe last world glows: Cloud Harbor, the Neon Quarter and the Jade Palace.\n\nWhich world do you want to see first? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 19,
+    "file": "post-18-dome-en-1600x900.png",
+    "role": "Star Dome",
+    "text": "Inside the Star Dome.\n\nThe Starbreaker, one of 8 relics, can only be forged here. Bring a plan.\n\nWhich relic would you chase? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 20,
+    "file": "post-19-action-en-1600x900.png",
+    "role": "Action",
+    "text": "Swing. Dash. Repeat.\n\n12 weapon types, plus hops, dashes and a mega jump on every fifth hop. Pick your style.\n\nWhich weapon are you? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 21,
+    "file": "post-20-together-en-1600x900.png",
+    "role": "Co-op (heroes)",
+    "text": "Play together.\n\nUp to 32 players in one room: shared bosses, shared loot and XP, and one shared boss health bar. Pick your hero and jump in.\n\nWho is your co-op partner? 👇",
+    "approved": false,
+    "postedAt": null
+  }
+]

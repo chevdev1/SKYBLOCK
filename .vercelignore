@@ -4,3 +4,4 @@ node_modules/
 *.log
 play/index.dev.html
 .git/
+autopost/
