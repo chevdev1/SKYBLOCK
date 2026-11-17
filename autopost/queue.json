@@ -17,30 +17,6 @@
   },
   {
     "id": 3,
-    "file": "post-08-mobs-en-1600x900.png",
-    "role": "Bosses and mobs",
-    "text": "Not a single clone.\n\nGryphons, titans, gorgons, nightmares and neon dragons: 33 bosses with their own phases, arenas and legendary loot.\n\nWhich one would you fight first? 👇",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 4,
-    "file": "post-04-movement-en-1600x900.png",
-    "role": "Movement",
-    "text": "Movement is the weapon.\n\nHop on the beat: every jump in a streak is faster, and the fifth one is a mega jump. Add a dash, wall-runs, a grappling hook and wings.\n\nSkill beats stats here. #indiegame",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 5,
-    "file": "post-14-ghost-en-1600x900.png",
-    "role": "Time trials",
-    "text": "Race your ghost.\n\nFive time trial tracks, a ghost of your best run and shared leaderboards. Hops and dashes decide everything.\n\nCan you beat yourself? 👇",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 6,
     "file": "cute-kumo-16x9-en-1600x900.png",
     "role": "Kumo (feed, 16:9)",
     "text": "Meet Kumo ☁️\n\nA cloud buddy that hatches from an egg, grows, evolves and joins your adventures.\n\nUltra-rare form: 1% chance, and the odds are public.\n\nWhat would you name yours? 👇",
@@ -48,237 +24,23 @@
     "postedAt": null
   },
   {
-    "id": 7,
-    "file": "post-09-evolution-en-1600x900.png",
-    "role": "Kumo evolution",
-    "text": "From egg to legend.\n\nFeed it, care for it and watch your Kumo change: baby, teen, then one of six adult forms. And once in a hundred hatches, an ultra-rare.\n\nWhich form do you want? 👇",
+    "id": 4,
+    "file": "post-08-mobs-en-1600x900.png",
+    "role": "Bosses and mobs",
+    "text": "Not a single clone.\n\nGryphons, titans, gorgons, nightmares and neon dragons: 33 bosses with their own phases, arenas and legendary loot.\n\nWhich one would you fight first? 👇",
     "approved": false,
     "postedAt": null
   },
   {
-    "id": 8,
-    "file": "post-10-odds-en-1600x900.png",
-    "role": "Honest odds",
-    "text": "99% vs 1%.\n\nEvery Kumo hatch has a 1% chance to be ultra-rare. The odds are public, and every ultra-rare gets its own unique number.\n\nNo fog, no tricks. #indiegame",
+    "id": 5,
+    "file": "post-04-movement-en-1600x900.png",
+    "role": "Movement",
+    "text": "Movement is the weapon.\n\nHop on the beat: every jump in a streak is faster, and the fifth one is a mega jump. Add a dash, wall-runs, a grappling hook and wings.\n\nSkill beats stats here. #indiegame",
     "approved": false,
     "postedAt": null
   },
   {
-    "id": 9,
-    "file": "post-12-craft-en-1600x900.png",
-    "role": "Crafting",
-    "text": "Loot it. Craft it. Equip it.\n\nMobs drop materials, and you forge armour, wings and legendary weapons: 32 items and 8 relics. The Starbreaker can only be forged in the Star Dome.\n\nWhat would you craft first? 👇",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 10,
-    "file": "post-13-workshop-en-1600x900.png",
-    "role": "Workshop",
-    "text": "Build your own map.\n\nPlace the start, finish and checkpoints, publish it, and earn creator stars: +1 for a new player, +2 for every finish, +5 for a like. Every map has its own leaderboard.\n\nWhat would you build? 👇",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 11,
-    "file": "post-03-tech-en-1600x900.png",
-    "role": "Tech: size",
-    "text": "1.47 MB.\n\nThat's the whole game: one file, zero installs. A custom voxel engine on Three.js and 140,000+ blocks, running in your browser.\n\nAlpha test: opening soon. #buildinpublic",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 12,
-    "file": "post-05-cross-en-1600x900.png",
-    "role": "Cross-platform",
-    "text": "One game. Any screen.\n\nPlay on desktop, tablet or phone: keyboard and mouse, touch controls, or a gamepad (Xbox, PlayStation, Switch Pro).\n\nNo download. No sign-up.",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 13,
-    "file": "post-06-coop32-en-1600x900.png",
-    "role": "Co-op",
-    "text": "Up to 32 players in one room.\n\nShared bosses, shared loot and XP. Honest co-op: the fight leader stays put, boss health is shared and hits are never dropped.\n\nWho are you bringing? 👇",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 14,
-    "file": "post-07-scratch-en-1600x900.png",
-    "role": "Tech: own stack",
-    "text": "Built from scratch.\n\nOur own voxel engine on Three.js, our own Node.js server with zero dependencies, and a 64×64 chunk world that keeps your device smooth.\n\nSmall studio, big island. #buildinpublic",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 15,
-    "file": "post-11-numbers-en-1600x900.png",
-    "role": "By the numbers",
-    "text": "Hop to Olympus by the numbers:\n\n33 bosses\n6 worlds\n19 regions\n12 weapon types\n32 players per room\n1.47 MB: the whole game\n0 installs\n\nAlpha test: opening soon.",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 16,
-    "file": "post-15-olympus-en-1600x900.png",
-    "role": "Olympus",
-    "text": "The Gates of Olympus.\n\nMarble, gold and portals: the climb gets serious up here. 19 regions, 33 bosses, 6 worlds.\n\nWhat is waiting behind the gate? 👇",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 17,
-    "file": "post-16-space-en-1600x900.png",
-    "role": "Space",
-    "text": "Above the clouds.\n\nKeep climbing past the sky: the stars are a floor too.\n\nNo download. No sign-up.",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 18,
-    "file": "post-17-horai-en-1600x900.png",
-    "role": "Neon Horai",
-    "text": "Neon Horai.\n\nThe last world glows: Cloud Harbor, the Neon Quarter and the Jade Palace.\n\nWhich world do you want to see first? 👇",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 19,
-    "file": "post-18-dome-en-1600x900.png",
-    "role": "Star Dome",
-    "text": "Inside the Star Dome.\n\nThe Starbreaker, one of 8 relics, can only be forged here. Bring a plan.\n\nWhich relic would you chase? 👇",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 20,
-    "file": "post-19-action-en-1600x900.png",
-    "role": "Action",
-    "text": "Swing. Dash. Repeat.\n\n12 weapon types, plus hops, dashes and a mega jump on every fifth hop. Pick your style.\n\nWhich weapon are you? 👇",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 21,
-    "file": "post-20-together-en-1600x900.png",
-    "role": "Co-op (heroes)",
-    "text": "Play together.\n\nUp to 32 players in one room: shared bosses, shared loot and XP, and one shared boss health bar. Pick your hero and jump in.\n\nWho is your co-op partner? 👇",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 22,
-    "file": "post-21-wanted-en-1600x900.png",
-    "role": "Bosses (wanted)",
-    "text": "33 bosses. All wanted.\n\nZeus, Medusa, Kronos and 30 more are waiting on the way up, each with its own arena and legendary loot. Hunt them solo or with up to 32 players.\n\nWhich boss is your first target? 👇",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 23,
-    "file": "post-22-boarding-en-1600x900.png",
-    "role": "Boarding pass",
-    "text": "Your boarding pass to Olympus ✈️☁️\n\nNo download. No sign-up. Any screen. Co-op for up to 32 players.\n\nAlpha test: opening soon. Follow to hear first.",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 24,
-    "file": "post-23-herocards-en-1600x900.png",
-    "role": "Heroes (cards)",
-    "text": "Pick your hero.\n\nGinger, Rina or Sergio: three heroes, 12 weapon types and the same mega jump on every fifth hop.\n\nWho are you playing? 👇",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 25,
-    "file": "post-24-kumomenu-en-1600x900.png",
-    "role": "Kumo menu",
-    "text": "Today on the cloud: Kumo ☁️\n\nHatch an egg, feed and care for your Kumo, and watch it grow into one of six adult forms. One in a hundred hatches is ultra-rare, and the odds are public.\n\nWhich one are you hatching? 👇",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 26,
-    "file": "post-25-achievements-en-1600x900.png",
-    "role": "Achievements",
-    "text": "Achievement unlocked.\n\nMega jump, Cloud rhythm, Free fall: skill beats stats in Hop to Olympus.\n\nWhich achievement would you go for first? 👇",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 27,
-    "file": "post-26-patchnotes-en-1600x900.png",
-    "role": "Patch notes",
-    "text": "Patch notes: what is already in the build ☁️\n\n+ Horai, a neon megacity\n+ New boss: Kiyohime, the Serpent Bride\n+ Ultra-rare Kumo with unique numbers\n+ Xbox, PlayStation and Switch Pro gamepads\n+ Time trials with a ghost\n+ Workshop for your own maps\n\nAlpha test: opening soon.",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 28,
-    "file": "post-27-receipt-en-1600x900.png",
-    "role": "Craft receipt",
-    "text": "Your craft receipt 🧾\n\n3 mole claws + 5 slime = 1 grappling hook. Mobs drop materials, recipes turn them into gear: 32 items and 8 relics.\n\nWhat would you craft first? 👇",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 29,
-    "file": "post-28-carousel-1-en-1600x900.png",
-    "files": [
-      "post-28-carousel-1-en-1600x900.png",
-      "post-28-carousel-2-en-1600x900.png",
-      "post-28-carousel-3-en-1600x900.png",
-      "post-28-carousel-4-en-1600x900.png"
-    ],
-    "role": "Carousel (4 slides)",
-    "text": "Hop to Olympus in 4 swipes ➡️\n\n1. Hop on the beat\n2. Dash, wall-run, hook, fly\n3. 12 weapons, 33 bosses\n4. Up to 32 players\n\nNo download. No sign-up. Alpha test: opening soon.",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 30,
-    "file": "post-29-versus-en-1600x900.png",
-    "role": "Would you rather",
-    "text": "Would you rather...\n\nSpear or twin blades? 12 weapon types are waiting in the alpha, each with its own fighting style.\n\nComment your side 👇",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 31,
-    "file": "post-30-loading-en-1600x900.png",
-    "role": "Loading tip",
-    "text": "Loading tip ☁️\n\nHop on the beat: every jump in a streak is faster, and the fifth one is a mega jump.\n\nWhich tip should we show next? 👇",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 32,
-    "file": "post-31-roadmap-en-1600x900.png",
-    "role": "Roadmap",
-    "text": "Where we are 🗺️\n\nShipped: the Cloud Isles, Chaos Rift, Star Dome, Horai, your island and Kumo.\nIn progress: a shared home for two, the alpha test, deeper RPG lore.\nNext: Kumo cloud races, leaderboards, kingdoms, a vast open world.\n\nPlans can change, and your feedback shapes them.",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 33,
-    "file": "post-32-bossquiz-en-1600x900.png",
-    "role": "Boss quiz",
-    "text": "Who's that boss? 👀\n\nHe sits on a cloud and throws lightning. One of 33 bosses.\n\nA) Kronos  B) Zeus  C) Medusa  D) Oceanus\n\nAnswer in the comments 👇",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 34,
-    "file": "post-33-polaroids-en-1600x900.png",
-    "role": "Screenshots",
-    "text": "Screenshot Saturday 📸\n\nThe Gates of Olympus, above the clouds, neon Horai and inside the Star Dome.\n\nWhich one is your favourite? 👇",
-    "approved": false,
-    "postedAt": null
-  },
-  {
-    "id": 35,
+    "id": 6,
     "file": "post-34-bestfriends-en-1600x900.png",
     "role": "Best friends (cute)",
     "text": "Best friends ☁️💗\n\nPick a hero, hatch a Kumo and bring a friend along: up to 32 players in one room.\n\nNo download. Alpha test: opening soon.\n\nWho are you bringing? 👇",
@@ -286,15 +48,15 @@
     "postedAt": null
   },
   {
-    "id": 36,
-    "file": "post-35-rinakumo-en-1600x900.png",
-    "role": "Rina and Kumo (cute)",
-    "text": "Meet Rina and Kumo 💗\n\nA cloud buddy that hatches from an egg, grows with you and evolves. One in a hundred hatches is ultra-rare, and the odds are public.\n\nWhat would you name your Kumo? 👇",
+    "id": 7,
+    "file": "post-12-craft-en-1600x900.png",
+    "role": "Crafting",
+    "text": "Loot it. Craft it. Equip it.\n\nMobs drop materials, and you forge armour, wings and legendary weapons: 32 items and 8 relics. The Starbreaker can only be forged in the Star Dome.\n\nWhat would you craft first? 👇",
     "approved": false,
     "postedAt": null
   },
   {
-    "id": 37,
+    "id": 8,
     "file": "post-36-gearladder-en-1600x900.png",
     "role": "Upgrade ladder",
     "text": "Upgrade your gear ⬆️\n\nTurtle Armor: 3 armor hearts.\nShadow Garb: 5 armor hearts and +10% run speed.\nErebus Armor: 7 armor hearts and +15% run speed.\n\nLoot it. Craft it. Wear it. Which look is yours? 👇",
@@ -302,7 +64,103 @@
     "postedAt": null
   },
   {
-    "id": 38,
+    "id": 9,
+    "file": "post-06-coop32-en-1600x900.png",
+    "role": "Co-op",
+    "text": "Up to 32 players in one room.\n\nShared bosses, shared loot and XP. Honest co-op: the fight leader stays put, boss health is shared and hits are never dropped.\n\nWho are you bringing? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 10,
+    "file": "post-21-wanted-en-1600x900.png",
+    "role": "Bosses (wanted)",
+    "text": "33 bosses. All wanted.\n\nZeus, Medusa, Kronos and 30 more are waiting on the way up, each with its own arena and legendary loot. Hunt them solo or with up to 32 players.\n\nWhich boss is your first target? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 11,
+    "file": "post-09-evolution-en-1600x900.png",
+    "role": "Kumo evolution",
+    "text": "From egg to legend.\n\nFeed it, care for it and watch your Kumo change: baby, teen, then one of six adult forms. And once in a hundred hatches, an ultra-rare.\n\nWhich form do you want? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 12,
+    "file": "post-22-boarding-en-1600x900.png",
+    "role": "Boarding pass",
+    "text": "Your boarding pass to Olympus ✈️☁️\n\nNo download. No sign-up. Any screen. Co-op for up to 32 players.\n\nAlpha test: opening soon. Follow to hear first.",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 13,
+    "file": "post-19-action-en-1600x900.png",
+    "role": "Action",
+    "text": "Swing. Dash. Repeat.\n\n12 weapon types, plus hops, dashes and a mega jump on every fifth hop. Pick your style.\n\nWhich weapon are you? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 14,
+    "file": "post-29-versus-en-1600x900.png",
+    "role": "Would you rather",
+    "text": "Would you rather...\n\nSpear or twin blades? 12 weapon types are waiting in the alpha, each with its own fighting style.\n\nComment your side 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 15,
+    "file": "post-10-odds-en-1600x900.png",
+    "role": "Honest odds",
+    "text": "99% vs 1%.\n\nEvery Kumo hatch has a 1% chance to be ultra-rare. The odds are public, and every ultra-rare gets its own unique number.\n\nNo fog, no tricks. #indiegame",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 16,
+    "file": "post-17-horai-en-1600x900.png",
+    "role": "Neon Horai",
+    "text": "Neon Horai.\n\nThe last world glows: Cloud Harbor, the Neon Quarter and the Jade Palace.\n\nWhich world do you want to see first? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 17,
+    "file": "post-23-herocards-en-1600x900.png",
+    "role": "Heroes (cards)",
+    "text": "Pick your hero.\n\nGinger, Rina or Sergio: three heroes, 12 weapon types and the same mega jump on every fifth hop.\n\nWho are you playing? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 18,
+    "file": "post-14-ghost-en-1600x900.png",
+    "role": "Time trials",
+    "text": "Race your ghost.\n\nFive time trial tracks, a ghost of your best run and shared leaderboards. Hops and dashes decide everything.\n\nCan you beat yourself? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 19,
+    "file": "post-31-roadmap-en-1600x900.png",
+    "role": "Roadmap",
+    "text": "Where we are 🗺️\n\nShipped: the Cloud Isles, Chaos Rift, Star Dome, Horai, your island and Kumo.\nIn progress: a shared home for two, the alpha test, deeper RPG lore.\nNext: Kumo cloud races, leaderboards, kingdoms, a vast open world.\n\nPlans can change, and your feedback shapes them.",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 20,
+    "file": "post-24-kumomenu-en-1600x900.png",
+    "role": "Kumo menu",
+    "text": "Today on the cloud: Kumo ☁️\n\nHatch an egg, feed and care for your Kumo, and watch it grow into one of six adult forms. One in a hundred hatches is ultra-rare, and the odds are public.\n\nWhich one are you hatching? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 21,
     "file": "post-37-gear1-en-1600x900.png",
     "files": [
       "post-37-gear1-en-1600x900.png",
@@ -311,6 +169,94 @@
     ],
     "role": "Armor upgrades (3-slide album)",
     "text": "Three armor upgrades, swipe through ➡️\n\n1. Turtle Armor\n2. Shadow Garb\n3. Erebus Armor\n\nMore armor is on the way. Alpha test: opening soon.",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 22,
+    "file": "post-13-workshop-en-1600x900.png",
+    "role": "Workshop",
+    "text": "Build your own map.\n\nPlace the start, finish and checkpoints, publish it, and earn creator stars: +1 for a new player, +2 for every finish, +5 for a like. Every map has its own leaderboard.\n\nWhat would you build? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 23,
+    "file": "post-30-loading-en-1600x900.png",
+    "role": "Loading tip",
+    "text": "Loading tip ☁️\n\nHop on the beat: every jump in a streak is faster, and the fifth one is a mega jump.\n\nWhich tip should we show next? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 24,
+    "file": "post-03-tech-en-1600x900.png",
+    "role": "Tech: size",
+    "text": "1.47 MB.\n\nThat's the whole game: one file, zero installs. A custom voxel engine on Three.js and 140,000+ blocks, running in your browser.\n\nAlpha test: opening soon. #buildinpublic",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 25,
+    "file": "post-20-together-en-1600x900.png",
+    "role": "Co-op (heroes)",
+    "text": "Play together.\n\nUp to 32 players in one room: shared bosses, shared loot and XP, and one shared boss health bar. Pick your hero and jump in.\n\nWho is your co-op partner? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 26,
+    "file": "post-27-receipt-en-1600x900.png",
+    "role": "Craft receipt",
+    "text": "Your craft receipt 🧾\n\n3 mole claws + 5 slime = 1 grappling hook. Mobs drop materials, recipes turn them into gear: 32 items and 8 relics.\n\nWhat would you craft first? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 27,
+    "file": "post-32-bossquiz-en-1600x900.png",
+    "role": "Boss quiz",
+    "text": "Who's that boss? 👀\n\nHe sits on a cloud and throws lightning. One of 33 bosses.\n\nA) Kronos  B) Zeus  C) Medusa  D) Oceanus\n\nAnswer in the comments 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 28,
+    "file": "post-05-cross-en-1600x900.png",
+    "role": "Cross-platform",
+    "text": "One game. Any screen.\n\nPlay on desktop, tablet or phone: keyboard and mouse, touch controls, or a gamepad (Xbox, PlayStation, Switch Pro).\n\nNo download. No sign-up.",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 29,
+    "file": "post-26-patchnotes-en-1600x900.png",
+    "role": "Patch notes",
+    "text": "Patch notes: what is already in the build ☁️\n\n+ Horai, a neon megacity\n+ New boss: Kiyohime, the Serpent Bride\n+ Ultra-rare Kumo with unique numbers\n+ Xbox, PlayStation and Switch Pro gamepads\n+ Time trials with a ghost\n+ Workshop for your own maps\n\nAlpha test: opening soon.",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 30,
+    "file": "post-33-polaroids-en-1600x900.png",
+    "role": "Screenshots",
+    "text": "Screenshot Saturday 📸\n\nThe Gates of Olympus, above the clouds, neon Horai and inside the Star Dome.\n\nWhich one is your favourite? 👇",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 31,
+    "file": "post-07-scratch-en-1600x900.png",
+    "role": "Tech: own stack",
+    "text": "Built from scratch.\n\nOur own voxel engine on Three.js, our own Node.js server with zero dependencies, and a 64×64 chunk world that keeps your device smooth.\n\nSmall studio, big island. #buildinpublic",
+    "approved": false,
+    "postedAt": null
+  },
+  {
+    "id": 32,
+    "file": "post-11-numbers-en-1600x900.png",
+    "role": "By the numbers",
+    "text": "Hop to Olympus by the numbers:\n\n33 bosses\n6 worlds\n19 regions\n12 weapon types\n32 players per room\n1.47 MB: the whole game\n0 installs\n\nAlpha test: opening soon.",
     "approved": false,
     "postedAt": null
   }

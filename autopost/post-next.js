@@ -7,6 +7,7 @@
    Rules: only items with "approved": true and an existing image are posted, in order,
    and each item is posted once (postedAt is written back into queue.json). */
 const fs = require('fs'), path = require('path');
+try { for (const l of fs.readFileSync(path.join(__dirname, '.env'), 'utf8').split(/\r?\n/)) { const m = l.match(/^\s*([A-Z_]+)\s*=\s*(.*?)\s*$/); if (m && !l.trim().startsWith('#') && process.env[m[1]] === undefined) process.env[m[1]] = m[2].replace(/^["']|["']$/g, ''); } } catch (e) { }
 const QUEUE = path.join(__dirname, 'queue.json');
 const dry = process.env.DRY_RUN === '1' || process.argv.includes('--dry');
 const token = process.env.TG_BOT_TOKEN, chat = process.env.TG_CHAT || '@HopToOlympus';

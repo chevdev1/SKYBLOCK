@@ -1,11 +1,37 @@
-# Telegram autopost
+# Hop to Olympus: Telegram autopost bot
 
-Posts the next **approved** item from `queue.json` to the channel, with the image from `img/`.
+Постит в канал картинки с подписями из `queue.json`: 2 поста в день, по порядку, каждый один раз.
+Зависимостей нет, нужен только Node.js 18 или новее.
 
-- Add or remove posts: edit `queue.json`; delete an image from `img/` to skip that post.
-- Approve a post: set `"approved": true`. Nothing unapproved is ever posted.
-- Order: top to bottom. Each post goes out once (`postedAt` is written back).
-- Schedule: `.github/workflows/autopost.yml` (2 posts a day, 09:00 and 17:00 UTC).
-- Secret: `TG_BOT_TOKEN` in GitHub, Settings, Secrets and variables, Actions. Never commit the token.
-- Test without posting: `DRY_RUN=1 node autopost/post-next.js`, or run the workflow manually with "Dry run" on.
-- Own server instead of GitHub: `TG_BOT_TOKEN=... TG_CHAT=@HopToOlympus node autopost/post-next.js` from cron, twice a day.
+## Запуск на хосте (VPS или любой сервер с Node)
+
+1. Распаковать архив в папку, например `/opt/hop-autopost`.
+2. Скопировать `.env.example` в `.env` и вписать токен бота:
+   ```
+   TG_BOT_TOKEN=токен_от_BotFather
+   TG_CHAT=@HopToOlympus
+   POST_TIMES=09:00,17:00
+   ```
+   `POST_TIMES` это время в UTC (московское время минус 3 часа).
+3. Бот должен быть админом канала с правом «Публиковать сообщения».
+4. Проверка без публикации: `node approve.js 1` затем `DRY_RUN=1 node post-next.js` (покажет текст первого поста).
+5. Одобрить посты: `node approve.js all` (или `node approve.js 1 2 3`). Пока пост не одобрен, он не уйдёт.
+6. Запустить постоянно:
+   - `npm start` или `node scheduler.js` (держит процесс и постит в заданное время);
+   - чтобы не падал после перезагрузки: `npm i -g pm2 && pm2 start scheduler.js --name hop-autopost && pm2 save && pm2 startup`.
+   - либо вместо scheduler поставить cron: `0 9,17 * * * cd /opt/hop-autopost && node post-next.js >> log.txt 2>&1`.
+
+## Команды
+
+- `node approve.js list` показать очередь (одобрено, опубликовано).
+- `node approve.js all | none | 3 4 5` одобрить всё, снять одобрение, одобрить по номерам.
+- `node post-next.js` отправить следующий одобренный пост прямо сейчас.
+- `DRY_RUN=1 node post-next.js` показать, что отправилось бы, ничего не отправляя.
+
+## Как менять посты
+
+В `queue.json`: `text` это подпись (до 1024 символов), `file` картинка из папки `img/`. Порядок сверху вниз. Если у поста есть `files`, он уйдёт альбомом. Чтобы убрать пост, удалите запись или картинку. Опубликованные посты помечаются `postedAt`, повторно не отправляются.
+
+## Безопасность
+
+Токен хранится только в `.env` на сервере и никуда не коммитится. Если токен кто-то видел, перевыпустите его в @BotFather (`/revoke`) и обновите `.env`.

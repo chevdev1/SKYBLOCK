@@ -1,0 +1,1 @@
+{ "name": "hop-autopost", "version": "1.0.0", "private": true, "scripts": { "start": "node scheduler.js", "once": "node post-next.js", "dry": "node post-next.js --dry", "approve": "node approve.js all" }, "engines": { "node": ">=18" } }
