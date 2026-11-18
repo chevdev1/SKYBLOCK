@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:transparent}</style></head><body><canvas id="cv"></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="../../landing/voxel.js"></script><script src="scene.js"></script>
+<script>
+const q=new URLSearchParams(location.search), mode=q.get('m')||'test';
+const ids=['sword','gsword','katana','spear','scythe','bow'];
+let extra=[];
+if(mode==='test'){extra=[(s,T)=>{ids.forEach((id,i)=>{const w=VX.WEAPONS[id]();w.rotation.set(0.5,Math.PI/2+0.7,0.2);w.position.set((i%3)*4-4,(i<3?1.8:-1.8),0);w.scale.setScalar(1.4);const lb=w;s.add(w)})}]}
+if(mode==='fan'){extra=[(s,T)=>{
+ // pivot at origin; each weapon: [id, angle(deg), scale, offsetX, offsetY]
+ const cfg=JSON.parse(q.get('cfg'));
+ cfg.forEach(([id,ang,sc,x,y,tilt])=>{const g=new T.Group();const w=VX.WEAPONS[id]();w.rotation.set(0.5,Math.PI/2+0.7,0.2);g.add(w);g.rotation.z=ang*Math.PI/180;g.scale.setScalar(sc);g.position.set(x,y,0);s.add(g)})}]}
+const res=KSCENE.render(document.getElementById('cv'),{w:+(q.get('w')||1600),h:+(q.get('h')||1000),dpr:+(q.get('dpr')||1.5),cute:false,cam:{fov:24,pos:[0,0,16],look:[0,0,0]},hemi:1.0,sun:0.8,ground:0xffffff,rimColor:0xffffff,rim:0.5,kumos:[],extra});
+window.__url=res.url;
+</script></body></html>
