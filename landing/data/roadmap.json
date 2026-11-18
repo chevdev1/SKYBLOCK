@@ -154,8 +154,8 @@
    "en": "Kumo marketplace"
   },
   "text": {
-   "ru": "Обмен и торговля Кумо между игроками. [УТОЧНИТЬ: сроки]",
-   "en": "Trading Kumo between players. [TO CONFIRM: timing]"
+   "ru": "Обмен и торговля Кумо между игроками.",
+   "en": "Trading Kumo between players."
   },
   "id": "r8",
   "icon": "star",
@@ -239,8 +239,8 @@
    "en": "The token and its tiers"
   },
   "text": {
-   "ru": "Запуск [TOKEN] и градация по этапам роста сообщества. [УТОЧНИТЬ: этапы и условия]",
-   "en": "[TOKEN] launch with tiers that unlock as the community grows. [TO CONFIRM: tiers and terms]"
+   "ru": "Запуск и градация по этапам роста сообщества.",
+   "en": " launch with tiers that unlock as the community grows."
   },
   "id": "r12",
   "icon": "crown",
@@ -260,8 +260,8 @@
    "en": "Community fund 5K"
   },
   "text": {
-   "ru": "После этапа 5K средства идут на подарки и награды: активным участникам сообщества и покупателям токена. [УТОЧНИТЬ: условия, проверка юристом]",
-   "en": "After the 5K tier, funds go to gifts and rewards for active community members and token buyers. [TO CONFIRM: terms, legal review]"
+   "ru": "После этапа 5K средства идут на подарки и награды: активным участникам сообщества и покупателям токена.",
+   "en": "After the 5K tier, funds go to gifts and rewards for active community members and token buyers."
   },
   "id": "r13",
   "icon": "heart",
@@ -302,8 +302,8 @@
    "en": "Creator monetization"
   },
   "text": {
-   "ru": "Авторы карт, модов и Кумо смогут зарабатывать на своём контенте. [УТОЧНИТЬ]",
-   "en": "Authors of maps, mods and Kumo will be able to earn from their content. [TO CONFIRM]"
+   "ru": "Авторы карт, модов и Кумо смогут зарабатывать на своём контенте.",
+   "en": "Authors of maps, mods and Kumo will be able to earn from their content."
   },
   "id": "r15",
   "icon": "hook",
@@ -344,8 +344,8 @@
    "en": "Kickstarter"
   },
   "text": {
-   "ru": "Кампания на Kickstarter и выступления с игрой. [УТОЧНИТЬ: сроки]",
-   "en": "A Kickstarter campaign and talks about the game. [TO CONFIRM: timing]"
+   "ru": "Кампания на Kickstarter и выступления с игрой.",
+   "en": "A Kickstarter campaign and talks about the game."
   },
   "id": "r17",
   "icon": "map",

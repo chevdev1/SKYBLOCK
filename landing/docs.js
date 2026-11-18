@@ -3,7 +3,7 @@
   'use strict';
   const $ = (s, r) => (r || document).querySelector(s), qa = (s, r) => [...(r || document).querySelectorAll(s)];
   const get = async u => { try { const r = await fetch(u); return r.ok ? await r.json() : null } catch (e) { return null } };
-  let LANG = 'ru'; try { LANG = (localStorage.getItem('hto-lang') || (navigator.language || 'ru').slice(0, 2)) === 'en' ? 'en' : 'ru' } catch (e) { }
+  let LANG = 'en'; try { LANG = (localStorage.getItem('hto-lang') || 'en') === 'ru' ? 'ru' : 'en' } catch (e) { }
   const T = (ru, en) => (LANG === 'en' ? en : ru);
   const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const md = s => esc(s).replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/\[\[([^\]]+)\]\]/g, '<kbd class="k">$1</kbd>').replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a class="x" href="$2">$1</a>');
@@ -107,7 +107,7 @@
       after: () => { const r = $('#rm'); const cols = [['done', T('Готово', 'Done'), '#8ee04a'], ['progress', T('В работе', 'In progress'), '#ffc23c'], ['next', T('Дальше', 'Next'), '#5cc8ff'], ['later', T('Позже', 'Later'), '#c48aff']]; cols.forEach(([s, name, col]) => { const items = (D.road || []).filter(x => x.status === s); const d = document.createElement('div'); d.style.borderColor = col; d.innerHTML = '<h4></h4><ul></ul>'; d.querySelector('h4').textContent = name + ' · ' + items.length; items.forEach(x => { const li = document.createElement('li'); li.textContent = x.title[LANG]; d.querySelector('ul').appendChild(li) }); r.appendChild(d) }) } },
 
     { id: 'changelog', g: 'news', t: ['Патч-ноты', 'Patch notes'], lead: ['История обновлений альфы.', 'The history of alpha updates.'], html: () => (LANG === 'en' ? CO('', 'Patch notes are written in Russian.') : '') + '<div id="pn"></div>',
-      after: () => { const r = $('#pn'); (D.patch || []).forEach((p, i) => { const d = document.createElement('details'); d.className = 'ac'; if (i === 0) d.open = true; d.innerHTML = '<summary><em></em><span></span></summary><div><ul></ul></div>'; d.querySelector('em').textContent = 'v' + p.v; d.querySelector('span').textContent = p.t; (p.b || []).forEach(x => { const li = document.createElement('li'); li.textContent = x; d.querySelector('ul').appendChild(li) }); r.appendChild(d) }) } },
+      after: () => { const r = $('#pn'); (D.patch || []).forEach((p, i) => { const d = document.createElement('details'); d.className = 'ac'; if (i === 0) d.open = true; d.innerHTML = '<summary><em></em><span></span></summary><div><ul></ul></div>'; d.querySelector('em').textContent = 'v' + p.v; d.querySelector('span').textContent = (LANG === 'en' && p.te) || p.t; ((LANG === 'en' && p.be) || p.b || []).forEach(x => { const li = document.createElement('li'); li.textContent = x; d.querySelector('ul').appendChild(li) }); r.appendChild(d) }) } },
 
     { id: 'architecture', g: 'dev', t: ['Архитектура', 'Architecture'], lead: ['Из чего собрана игра и сайт.', 'What the game and the site are built from.'],
       html: () => TB([T('Слой', 'Layer'), T('Как устроен', 'How it works')], [

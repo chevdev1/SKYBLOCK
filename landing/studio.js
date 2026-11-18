@@ -24,7 +24,7 @@
         p2: 'Hop to Olympus сейчас в альфе. Это живая сборка: что-то ломается, что-то меняется, а контента становится больше с каждым обновлением. Играя сейчас, ты влияешь на то, какой игра станет.',
         stats: ['миров', 'боссов', 'обновлений альфы', 'издателей'],
         vals: [['Душа в деталях', 'Каждый остров, моб и Кумо сделан вручную.', 'Мы сами расставляем острова, рисуем мобов и придумываем характер каждому Кумо.'], ['Честно с игроками', 'Шансы открыты. Никаких обещаний доходности.', 'Шансы вылупления публичны, номер сверхредкого уникален. Мы не обещаем доход.'], ['Слушаем комьюнити', 'Идеи игроков попадают в обновления.', 'Предложения игроков попадают в патч-ноты. Есть идея — расскажи нам.']],
-        flip: 'Нажми, чтобы перевернуть', team: 'Команда', you: 'Ты?', confirm: '[УТОЧНИТЬ: состав команды, роли и фото]',
+        flip: 'Нажми, чтобы перевернуть', team: 'Команда', you: 'Ты?', confirm: '',
         alpha: 'Это альфа-версия', alphaT: 'Игра в стадии тестирования: возможны баги и изменения баланса. Дальше игра будет только развиваться и наполняться контентом. Делитесь идеями и багами в чате комьюнити.',
         log: 'Свежие обновления', way: 'Путь к бете', play: 'Играть', notes: 'Патч-ноты',
       },
@@ -43,7 +43,7 @@
         p2: 'Hop to Olympus is in alpha. It is a living build: things break, things change, and every update adds more content. Playing now, you shape what the game becomes.',
         stats: ['worlds', 'bosses', 'alpha updates', 'publishers'],
         vals: [['Soul in the details', 'Every isle, mob and Kumo is handmade.', 'We place the isles, draw the mobs and invent the personality of every Kumo ourselves.'], ['Honest with players', 'Public odds. No promises of profit.', 'Hatch odds are public and an ultra-rare number is unique. We promise no profit.'], ['We listen', 'Player ideas make it into updates.', 'Player suggestions land in the patch notes. Got an idea? Tell us.']],
-        flip: 'Tap to flip', team: 'Team', you: 'You?', confirm: '[TO CONFIRM: team, roles and photos]',
+        flip: 'Tap to flip', team: 'Team', you: 'You?', confirm: '',
         alpha: 'This is an alpha', alphaT: 'The game is in testing: expect bugs and balance changes. From here it only grows and fills with content. Share ideas and bugs in the community chat.',
         log: 'Latest updates', way: 'Road to beta', play: 'Play', notes: 'Patch notes',
       },
@@ -196,7 +196,7 @@
     const team = main.querySelector('.ab-team');
     team.innerHTML = '<span class="ab-tl"></span><div class="ab-av"><i></i><i></i><i></i><i></i><button type="button" class="ab-you"><b>+</b></button></div><small></small>';
     team.querySelector('.ab-tl').textContent = A.team; team.querySelector('.ab-you').title = A.you; team.querySelector('.ab-you').append(document.createTextNode(A.you));
-    team.querySelector('.ab-you').addEventListener('click', () => goto('creators')); team.querySelector('small').textContent = A.confirm;
+    team.querySelector('.ab-you').addEventListener('click', () => goto('creators')); team.querySelector('small').hidden = true;
     grid.appendChild(main);
 
     /* alpha terminal */
@@ -204,7 +204,7 @@
     term.innerHTML = '<div class="ab-tape2"></div><div class="ab-tbody"><div class="ab-tt"><span class="al-tag"></span><span class="ab-live"><i></i>LIVE</span></div><h3></h3><p></p><div class="ab-log"><small></small><ul></ul></div><div class="ab-way"><span></span><b></b></div><div class="al-meter"><i></i></div><div class="ab-cta"></div></div>';
     term.querySelector('.al-tag').textContent = 'α ' + (PATCH[0] ? PATCH[0].v : '5.4'); term.querySelector('h3').textContent = A.alpha; term.querySelector('p').textContent = A.alphaT;
     term.querySelector('.ab-log small').textContent = A.log;
-    const ul = term.querySelector('.ab-log ul'); PATCH.slice(0, 3).forEach(p => { const li = el('li', '', '<em></em><span></span>'); li.querySelector('em').textContent = 'v' + p.v; li.querySelector('span').textContent = p.t; ul.appendChild(li) });
+    const ul = term.querySelector('.ab-log ul'); PATCH.slice(0, 3).forEach(p => { const li = el('li', '', '<em></em><span></span>'); li.querySelector('em').textContent = 'v' + p.v; li.querySelector('span').textContent = (lang() === 'en' && p.te) || p.t; ul.appendChild(li) });
     const pct = Math.round(alphaFrac() * 100); term.querySelector('.ab-way span').textContent = A.way; term.querySelector('.ab-way b').textContent = pct + '%';
     const mi = term.querySelector('.al-meter i'); mi.style.width = '0%'; term.addEventListener('seen', () => { mi.style.width = pct + '%' }); if (REDUCED) mi.style.width = pct + '%';
     const cta = term.querySelector('.ab-cta');
@@ -318,8 +318,8 @@
 
   /* ================= FOOTER + OPEN ALPHA CALL ================= */
   const FX = {
-    ru: { tag: 'ОТКРЫТЫЙ АЛЬФА-ТЕСТ', title: 'Мы ценим мнение комьюнити и строим игру вместе с вами', text: 'Делитесь идеями и багами в чате комьюнити. Ваши отзывы напрямую влияют на то, какой станет игра.', chat: 'В чат комьюнити', notes: 'Патч-ноты', tagline: 'Воксельная экшн-RPG в браузере. Прыгай, сражайся, строй свой остров и расти Кумо.', b1: 'В браузере', b2: 'Без установки', h1: 'Игра', h2: 'Игрокам', h3: 'Сообщество', l_worlds: 'Миры', l_mech: 'Механики', l_modes: 'Режимы', l_map: 'Карта мира', l_kumo: 'Кумо', l_play: 'Играть', l_docs: 'Документация', l_road: 'Роадмап', l_news: 'Патч-ноты', l_faq: 'Частые вопросы', l_chat: 'Чат комьюнити', l_press: 'Пресс-кит', soon: 'скоро', alpha: 'Альфа-версия. Игра в стадии тестирования и будет развиваться и наполняться контентом.', todo: '[УТОЧНИТЬ: ссылки на сообщество]', top: 'Наверх', open: 'ОТКРЫТЫЙ АЛЬФА-ТЕСТ', openT: 'Мы ценим отзывы комьюнити и строим игру вместе с вами. Делитесь идеями и багами в чате комьюнити.' },
-    en: { tag: 'OPEN ALPHA TEST', title: 'We value the community and build the game together with you', text: 'Share ideas and bugs in the community chat. Your feedback directly shapes what the game becomes.', chat: 'Join the community chat', notes: 'Patch notes', tagline: 'A voxel action RPG in your browser. Jump, fight, build your island and raise Kumo.', b1: 'In the browser', b2: 'No install', h1: 'Game', h2: 'Players', h3: 'Community', l_worlds: 'Worlds', l_mech: 'Mechanics', l_modes: 'Modes', l_map: 'World map', l_kumo: 'Kumo', l_play: 'Play', l_docs: 'Documentation', l_road: 'Roadmap', l_news: 'Patch notes', l_faq: 'FAQ', l_chat: 'Community chat', l_press: 'Press kit', soon: 'soon', alpha: 'Alpha version. The game is in testing and will keep growing and filling with content.', todo: '[TO CONFIRM: community links]', top: 'Back to top', open: 'OPEN ALPHA TEST', openT: 'We value community feedback and build the game together with you. Share ideas and bugs in the community chat.' },
+    ru: { tag: 'ОТКРЫТЫЙ АЛЬФА-ТЕСТ', title: 'Мы ценим мнение комьюнити и строим игру вместе с вами', text: 'Делитесь идеями и багами в чате комьюнити. Ваши отзывы напрямую влияют на то, какой станет игра.', chat: 'В чат комьюнити', notes: 'Патч-ноты', tagline: 'Воксельная экшн-RPG в браузере. Прыгай, сражайся, строй свой остров и расти Кумо.', b1: 'В браузере', b2: 'Без установки', h1: 'Игра', h2: 'Игрокам', h3: 'Сообщество', l_worlds: 'Миры', l_mech: 'Механики', l_modes: 'Режимы', l_map: 'Карта мира', l_kumo: 'Кумо', l_play: 'Играть', l_docs: 'Документация', l_road: 'Роадмап', l_news: 'Патч-ноты', l_faq: 'Частые вопросы', l_chat: 'Чат комьюнити', l_press: 'Пресс-кит', soon: 'скоро', alpha: 'Альфа-версия. Игра в стадии тестирования и будет развиваться и наполняться контентом.', todo: '', top: 'Наверх', open: 'ОТКРЫТЫЙ АЛЬФА-ТЕСТ', openT: 'Мы ценим отзывы комьюнити и строим игру вместе с вами. Делитесь идеями и багами в чате комьюнити.' },
+    en: { tag: 'OPEN ALPHA TEST', title: 'We value the community and build the game together with you', text: 'Share ideas and bugs in the community chat. Your feedback directly shapes what the game becomes.', chat: 'Join the community chat', notes: 'Patch notes', tagline: 'A voxel action RPG in your browser. Jump, fight, build your island and raise Kumo.', b1: 'In the browser', b2: 'No install', h1: 'Game', h2: 'Players', h3: 'Community', l_worlds: 'Worlds', l_mech: 'Mechanics', l_modes: 'Modes', l_map: 'World map', l_kumo: 'Kumo', l_play: 'Play', l_docs: 'Documentation', l_road: 'Roadmap', l_news: 'Patch notes', l_faq: 'FAQ', l_chat: 'Community chat', l_press: 'Press kit', soon: 'soon', alpha: 'Alpha version. The game is in testing and will keep growing and filling with content.', todo: '', top: 'Back to top', open: 'OPEN ALPHA TEST', openT: 'We value community feedback and build the game together with you. Share ideas and bugs in the community chat.' },
   };
   function footRender() {
     const F = FX[lang()]; qa('[data-fx]').forEach(e => { const v = F[e.dataset.fx]; if (typeof v === 'string') e.textContent = v });

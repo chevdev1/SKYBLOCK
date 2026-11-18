@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -26,7 +26,7 @@
 
 <header class="nav">
   <a class="logo" href="#hero" data-go="hero"><img class="logo-k" src="landing/img/brand/kumo-logo-64.png" alt=""><span>Hop to <b>Olympus</b></span></a>
-  <nav class="links" aria-label="Разделы">
+  <nav class="links" aria-label="Sections">
     <a href="#worlds" data-go="worlds" data-i18n="nav.worlds">Миры</a>
     <a href="#mechanics" data-go="mechanics" data-i18n="nav.mech">Механики</a>
     <a href="#modes" data-go="modes" data-i18n="nav.modes">Режимы</a>
@@ -40,7 +40,7 @@
   <div class="tools">
     <a class="docs-btn" id="docsBtn" href="docs.html" title="Документация"><span class="db-ic"></span><span class="db-t">Документация</span></a>
     <button class="chip" id="lang" aria-label="Language">EN</button>
-    <button class="chip" id="sound" aria-pressed="false" aria-label="Звук" data-i18n-aria="sound">♪</button>
+    <button class="chip" id="sound" aria-pressed="false" aria-label="Sound" data-i18n-aria="sound">♪</button>
     <a class="btn btn-play sm" href="play/" data-i18n="cta.play">Играть</a>
   </div>
 </header>
@@ -62,7 +62,7 @@
     <button class="scroll-hint" data-go="dive"><span data-i18n="hero.scroll">Спускайся вниз</span><i></i></button>
   </section>
 
-  <div class="ticker" aria-label="Факты об игре"><div class="tk-track"><div class="tk-row"><span data-i18n="tk.1">6 актов сюжета</span><i>✦</i><span data-i18n="tk.2">12 видов оружия</span><i>✦</i><span data-i18n="tk.3">9 режимов</span><i>✦</i><span data-i18n="tk.4">Кооп и PvP</span><i>✦</i><span data-i18n="tk.5">ПК · планшет · телефон · геймпад</span><i>✦</i><span data-i18n="tk.6">Сверхредкие Кумо — 1%</span><i>✦</i><span data-i18n="tk.7">Без установки</span><i>✦</i><span data-i18n="tk.8">Своя Мастерская карт</span><i>✦</i></div><div class="tk-row" aria-hidden="true"><span data-i18n="tk.1">6 актов сюжета</span><i>✦</i><span data-i18n="tk.2">12 видов оружия</span><i>✦</i><span data-i18n="tk.3">9 режимов</span><i>✦</i><span data-i18n="tk.4">Кооп и PvP</span><i>✦</i><span data-i18n="tk.5">ПК · планшет · телефон · геймпад</span><i>✦</i><span data-i18n="tk.6">Сверхредкие Кумо — 1%</span><i>✦</i><span data-i18n="tk.7">Без установки</span><i>✦</i><span data-i18n="tk.8">Своя Мастерская карт</span><i>✦</i></div></div></div>
+  <div class="ticker" aria-label="Game facts"><div class="tk-track"><div class="tk-row"><span data-i18n="tk.1">6 актов сюжета</span><i>✦</i><span data-i18n="tk.2">12 видов оружия</span><i>✦</i><span data-i18n="tk.3">9 режимов</span><i>✦</i><span data-i18n="tk.4">Кооп и PvP</span><i>✦</i><span data-i18n="tk.5">ПК · планшет · телефон · геймпад</span><i>✦</i><span data-i18n="tk.6">Сверхредкие Кумо — 1%</span><i>✦</i><span data-i18n="tk.7">Без установки</span><i>✦</i><span data-i18n="tk.8">Своя Мастерская карт</span><i>✦</i></div><div class="tk-row" aria-hidden="true"><span data-i18n="tk.1">6 актов сюжета</span><i>✦</i><span data-i18n="tk.2">12 видов оружия</span><i>✦</i><span data-i18n="tk.3">9 режимов</span><i>✦</i><span data-i18n="tk.4">Кооп и PvP</span><i>✦</i><span data-i18n="tk.5">ПК · планшет · телефон · геймпад</span><i>✦</i><span data-i18n="tk.6">Сверхредкие Кумо — 1%</span><i>✦</i><span data-i18n="tk.7">Без установки</span><i>✦</i><span data-i18n="tk.8">Своя Мастерская карт</span><i>✦</i></div></div></div>
 
   <section id="dive" class="sec short" data-cam="dive">
     <div class="wrap"><p class="dive-line reveal" data-i18n="dive.line">Под облаками — целые миры.</p></div>
@@ -75,12 +75,12 @@
         <p class="w-biome" id="wBiome"></p><h3 id="wName"></h3><p class="w-desc" id="wDesc"></p><ul class="w-feat" id="wFeat"></ul>
       </div>
       <div class="w-ctrl reveal">
-        <button class="round" id="wPrev" aria-label="Предыдущий мир">←</button>
+        <button class="round" id="wPrev" aria-label="Previous world">←</button>
         <div class="w-dots" id="wDots" role="tablist"></div>
-        <button class="round" id="wNext" aria-label="Следующий мир">→</button>
+        <button class="round" id="wNext" aria-label="Next world">→</button>
       </div>
     </div>
-    <div class="drag-zone" id="dragZone" tabindex="0" aria-label="Крути острова: перетаскивай или используй стрелки" data-i18n-aria="worlds.drag"></div>
+    <div class="drag-zone" id="dragZone" tabindex="0" aria-label="Spin the islands: drag or use the arrow keys" data-i18n-aria="worlds.drag"></div>
   </section>
 
   <section id="mechanics" class="sec-group">
@@ -128,7 +128,7 @@
     <div class="wrap">
       <div class="sec-head reveal"><p class="eyebrow" data-i18n="ui.eyebrow">Интерфейс игры</p><h2 data-i18n="ui.title">Загляни внутрь</h2><p class="lead" data-i18n="ui.lead">Настоящие экраны из игры: карта, крафт, сумка и Кумо. Нажми на скриншот, чтобы открыть его целиком.</p></div>
       <div class="ui-wrap reveal">
-        <button class="ui-main" id="uiMain" aria-label="Открыть скриншот"><img id="uiImg" alt="" loading="lazy"><span class="ui-zoom">⤢</span></button>
+        <button class="ui-main" id="uiMain" aria-label="Open screenshot"><img id="uiImg" alt="" loading="lazy"><span class="ui-zoom">⤢</span></button>
         <div class="ui-side"><h3 id="uiTitle"></h3><p id="uiText"></p><div class="ui-thumbs" id="uiThumbs"></div></div>
       </div>
     </div>
@@ -220,7 +220,6 @@
           </div>
         </article>
       </div>
-      <p class="disclaimer">[TOKEN] · [ЮРИДИЧЕСКИЙ ТЕКСТ — УТОЧНИТЬ]</p>
     </div>
   </section>
 
@@ -233,7 +232,7 @@
         <article class="card cr cr-tube reveal"><span class="cr-ic" data-px="cam"></span><h3 data-i18n="cr.2t">Контент-мейкерам</h3><p data-i18n="cr.2d">Стримишь или снимаешь ролики? Ранний доступ к обновлениям, свой промокод, значок создателя в игре и бонус за приглашённых игроков.</p><ul class="cr-perks"><li data-i18n="cr.p1">Ранний доступ</li><li data-i18n="cr.p2">Свой промокод</li><li data-i18n="cr.p3">Значок создателя</li><li data-i18n="cr.p4">Бонус за друзей</li></ul></article>
         <article class="card cr cr-test reveal"><span class="cr-ic" data-px="bug"></span><h3 data-i18n="cr.4t">Тестерам альфы</h3><p data-i18n="cr.4d">Нашёл баг или придумал механику — расскажи нам. Самые активные тестеры получат значок первопроходца и место в титрах.</p></article>
       </div>
-      <p class="disclaimer" data-i18n="cr.note">Проценты, награды и условия программ уточняются и будут объявлены до запуска маркетплейса. [TOKEN] · [УТОЧНИТЬ]</p>
+      <p class="disclaimer" data-i18n="cr.note">Проценты, награды и условия программ уточняются и будут объявлены до запуска маркетплейса.</p>
     </div>
   </section>
 
@@ -247,7 +246,7 @@
         <ol class="lb-list" id="lbList"></ol>
         <p class="lb-live"><i></i><span data-i18n="lb.live">живые данные с сервера</span></p>
       </div>
-      <div class="lb-rew reveal"><span data-px="trophy"></span><b data-i18n="lb.r1">Значки и титулы</b><b data-i18n="lb.r2">Имя в зале славы</b><b data-i18n="lb.r3">Сезонные призы [УТОЧНИТЬ]</b><small data-i18n="lb.note">Награды игрокам в планах — условия объявим в каналах сообщества.</small></div>
+      <div class="lb-rew reveal"><span data-px="trophy"></span><b data-i18n="lb.r1">Значки и титулы</b><b data-i18n="lb.r2">Имя в зале славы</b><b data-i18n="lb.r3">Сезонные призы</b><small data-i18n="lb.note">Награды игрокам в планах — условия объявим в каналах сообщества.</small></div>
     </div>
   </section>
 
@@ -312,8 +311,7 @@
         <div class="join-txt">
           <p class="eyebrow" data-i18n="join.eyebrow">Сообщество</p><h2 data-i18n="join.title">Залетай к нам</h2><p class="join-lead" data-i18n="join.lead">Новости обновлений первыми, голосования за новые механики, тесты альфы и общение с командой.</p>
           <div class="join-perks"><span data-i18n="join.p1">Новости первыми</span><span data-i18n="join.p2">Голосования</span><span data-i18n="join.p3">Тесты альфы</span></div>
-          <div class="join-btns"><a class="jbtn tg" href="#" data-todo><span data-px="tg"></span><b data-i18n="join.tg">Telegram</b></a><a class="jbtn xx" href="#" data-todo><span data-px="xlogo"></span><b data-i18n="join.x">X (Twitter)</b></a></div>
-          <small class="join-todo" data-i18n="join.todo">[УТОЧНИТЬ: ссылки]</small>
+          <div class="join-btns"><a class="jbtn tg" href="https://t.me/HopToOlympus" target="_blank" rel="noopener"><span data-px="tg"></span><b data-i18n="join.tg">Telegram</b></a><a class="jbtn dc" href="https://discord.gg/MVgbHH7gd" target="_blank" rel="noopener"><span data-px="dc"></span><b data-i18n="join.dc">Discord</b></a></div>
         </div>
       </div>
     </div>
@@ -333,7 +331,7 @@
     <div class="fx-band">
       <div class="fx-tag"><i></i><span data-fx="tag">ОТКРЫТЫЙ АЛЬФА-ТЕСТ</span></div>
       <div class="fx-msg"><h3 data-fx="title">Мы ценим мнение комьюнити и строим игру вместе с вами</h3><p data-fx="text">Делитесь идеями и багами в чате комьюнити. Ваши отзывы напрямую влияют на то, какой станет игра.</p></div>
-      <div class="fx-cta"><a class="fx-btn pri" href="#join" data-go="join"><span data-fx="chat">В чат комьюнити</span><i>→</i></a><a class="fx-btn" href="#news" data-go="news"><span data-fx="notes">Патч-ноты</span></a></div>
+      <div class="fx-cta"><a class="fx-btn pri" href="https://t.me/HopToOlympus" target="_blank" rel="noopener"><span data-fx="chat">В чат комьюнити</span><i>→</i></a><a class="fx-btn" href="#news" data-go="news"><span data-fx="notes">Патч-ноты</span></a></div>
     </div>
     <div class="fx-grid">
       <div class="fx-brand">
@@ -341,26 +339,25 @@
         <p data-fx="tagline">Воксельная экшн-RPG в браузере. Прыгай, сражайся, строй свой остров и расти Кумо.</p>
         <div class="fx-badges"><span id="fxVer">α 5.4</span><span data-fx="b1">В браузере</span><span data-fx="b2">Без установки</span></div>
       </div>
-      <nav class="fx-col" aria-label="Игра"><h4 data-fx="h1">Игра</h4>
+      <nav class="fx-col" aria-label="Game"><h4 data-fx="h1">Игра</h4>
         <a href="#worlds" data-go="worlds" data-fx="l_worlds">Миры</a><a href="#mechanics" data-go="mechanics" data-fx="l_mech">Механики</a><a href="#modes" data-go="modes" data-fx="l_modes">Режимы</a><a href="#map" data-go="map" data-fx="l_map">Карта мира</a><a href="#kumo" data-go="kumo" data-fx="l_kumo">Кумо</a></nav>
-      <nav class="fx-col" aria-label="Игрокам"><h4 data-fx="h2">Игрокам</h4>
+      <nav class="fx-col" aria-label="For players"><h4 data-fx="h2">Игрокам</h4>
         <a href="play/" data-fx="l_play">Играть</a><a class="hot" id="footDocs" href="docs.html" data-fx="l_docs">Документация</a><a href="#roadmap" data-go="roadmap" data-fx="l_road">Роадмап</a><a href="#news" data-go="news" data-fx="l_news">Патч-ноты</a><a href="#faq" data-go="faq" data-fx="l_faq">Частые вопросы</a></nav>
-      <nav class="fx-col" aria-label="Сообщество"><h4 data-fx="h3">Сообщество</h4>
-        <a class="hot" href="#join" data-go="join" data-fx="l_chat">Чат комьюнити</a><a href="#join" data-go="join">Telegram</a><a href="#join" data-go="join">X (Twitter)</a><a href="#" data-todo><span data-fx="l_press">Пресс-кит</span><em data-fx="soon">скоро</em></a></nav>
+      <nav class="fx-col" aria-label="Community"><h4 data-fx="h3">Сообщество</h4>
+        <a class="hot" href="https://t.me/HopToOlympus" target="_blank" rel="noopener" data-fx="l_chat">Чат комьюнити</a><a href="https://t.me/HopToOlympus" target="_blank" rel="noopener">Telegram</a><a href="https://discord.gg/MVgbHH7gd" target="_blank" rel="noopener">Discord</a><a href="#" data-todo><span data-fx="l_press">Пресс-кит</span><em data-fx="soon">скоро</em></a></nav>
     </div>
     <div class="fx-bottom">
       <span class="copy">© 2026 Hop to Olympus</span>
       <p class="foot-alpha" data-fx="alpha">Альфа-версия. Игра в стадии тестирования и будет развиваться и наполняться контентом.</p>
-      <small class="fx-todo" data-fx="todo">[УТОЧНИТЬ: ссылки на сообщество]</small>
       <a class="fx-top" href="#hero" data-go="hero"><i>↑</i><span data-fx="top">Наверх</span></a>
     </div>
   </div>
 </footer>
 
-<dialog id="arDlg" aria-labelledby="arT"><div class="bd-in"><header class="bd-head"><div><p class="eyebrow" data-i18n="ar.eyebrow">Арсенал</p><h2 id="arT" data-i18n="ar.title">Всё снаряжение из игры</h2></div><button class="round close" id="arClose" aria-label="Закрыть">×</button></header><div class="bd-acts ar-cats" id="arCats" role="tablist"></div><div class="ar-body"><div class="ar-main"><div class="ar-stage" id="arStage"><span class="tv-rec"><i></i><span data-i18n="ar.live">живой показ</span></span></div><div class="ar-info"><span class="ar-tag" id="arCat"></span><h3 id="arName"></h3><div class="ar-tags" id="arTags"></div><p class="ar-d" id="arD"></p><p class="ar-how"><b data-i18n="ar.how">Где взять</b> <span id="arHow"></span></p></div></div><div class="ar-grid" id="arGrid"></div></div></div></dialog>
-<dialog id="bossDlg" aria-labelledby="bdT"><div class="bd-in"><header class="bd-head"><div><p class="eyebrow" data-i18n="boss.eyebrow">Бестиарий</p><h2 id="bdT" data-i18n="boss.title">33 босса уже в игре</h2></div><button class="round close" id="bdClose" aria-label="Закрыть">×</button></header><div class="bd-acts" id="bdActs" role="tablist"></div><div class="bd-body"><div class="bd-grid" id="bdGrid"></div><aside class="bd-det" id="bdDet"><div class="bd-pic" id="bdPic"></div><span class="bd-act" id="bdAct"></span><h3 id="bdName"></h3><p class="bd-ar" id="bdAr"></p><p class="bd-d" id="bdD"></p></aside></div></div></dialog>
-<dialog id="lightbox"><button class="round close" id="lbClose" aria-label="Закрыть">×</button><img id="lbImg" alt=""><p id="lbCap"></p></dialog>
-<dialog id="trailer"><button class="round close" id="trailerClose" aria-label="Закрыть">×</button><video id="trailerVid" src="landing/video/horai_fight.mp4" controls playsinline preload="none"></video></dialog>
+<dialog id="arDlg" aria-labelledby="arT"><div class="bd-in"><header class="bd-head"><div><p class="eyebrow" data-i18n="ar.eyebrow">Арсенал</p><h2 id="arT" data-i18n="ar.title">Всё снаряжение из игры</h2></div><button class="round close" id="arClose" aria-label="Close">×</button></header><div class="bd-acts ar-cats" id="arCats" role="tablist"></div><div class="ar-body"><div class="ar-main"><div class="ar-stage" id="arStage"><span class="tv-rec"><i></i><span data-i18n="ar.live">живой показ</span></span></div><div class="ar-info"><span class="ar-tag" id="arCat"></span><h3 id="arName"></h3><div class="ar-tags" id="arTags"></div><p class="ar-d" id="arD"></p><p class="ar-how"><b data-i18n="ar.how">Где взять</b> <span id="arHow"></span></p></div></div><div class="ar-grid" id="arGrid"></div></div></div></dialog>
+<dialog id="bossDlg" aria-labelledby="bdT"><div class="bd-in"><header class="bd-head"><div><p class="eyebrow" data-i18n="boss.eyebrow">Бестиарий</p><h2 id="bdT" data-i18n="boss.title">33 босса уже в игре</h2></div><button class="round close" id="bdClose" aria-label="Close">×</button></header><div class="bd-acts" id="bdActs" role="tablist"></div><div class="bd-body"><div class="bd-grid" id="bdGrid"></div><aside class="bd-det" id="bdDet"><div class="bd-pic" id="bdPic"></div><span class="bd-act" id="bdAct"></span><h3 id="bdName"></h3><p class="bd-ar" id="bdAr"></p><p class="bd-d" id="bdD"></p></aside></div></div></dialog>
+<dialog id="lightbox"><button class="round close" id="lbClose" aria-label="Close">×</button><img id="lbImg" alt=""><p id="lbCap"></p></dialog>
+<dialog id="trailer"><button class="round close" id="trailerClose" aria-label="Close">×</button><video id="trailerVid" src="landing/video/horai_fight.mp4" controls playsinline preload="none"></video></dialog>
 <noscript><style>#pre{display:none}</style></noscript>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>

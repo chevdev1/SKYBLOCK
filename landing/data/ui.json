@@ -11,7 +11,7 @@
     }
   },
   {
-    "img": "landing/img/ui/1-craft-recept.jpg",
+    "img": "landing/img/ui/en-craft.jpg",
     "title": {
       "ru": "Крафт",
       "en": "Crafting"
@@ -19,11 +19,10 @@
     "text": {
       "ru": "Мобы роняют материалы своего мира. Из них по рецептам куются оружие, броня, крылья, сапоги и трофеи.",
       "en": "Monsters drop their world's materials. Recipes turn them into weapons, armour, wings, boots and trophies."
-    },
-    "img_en": "landing/img/ui/en-craft.jpg"
+    }
   },
   {
-    "img": "landing/img/ui/3-craft-oruzhie.jpg",
+    "img": "landing/img/ui/en-weapons.jpg",
     "title": {
       "ru": "Оружие",
       "en": "Weapons"
@@ -34,7 +33,7 @@
     }
   },
   {
-    "img": "landing/img/ui/5-craft-nektary.jpg",
+    "img": "landing/img/ui/en-nectars.jpg",
     "title": {
       "ru": "Нектары",
       "en": "Nectars"
@@ -45,7 +44,7 @@
     }
   },
   {
-    "img": "landing/img/ui/6-sumka.jpg",
+    "img": "landing/img/ui/en-bag.jpg",
     "title": {
       "ru": "Сумка",
       "en": "Bag"
@@ -53,11 +52,10 @@
     "text": {
       "ru": "36 ячеек, быстрые слоты, снаряжение по слотам: тело, голова, ноги, крылья.",
       "en": "36 slots, quick slots and gear by slot: body, head, feet, wings."
-    },
-    "img_en": "landing/img/ui/en-bag.jpg"
+    }
   },
   {
-    "img": "landing/img/ui/7-menu-kniga.jpg",
+    "img": "landing/img/ui/en-menu.jpg",
     "title": {
       "ru": "Книга героя",
       "en": "Hero's book"
@@ -65,8 +63,7 @@
     "text": {
       "ru": "Задания жителей, лор миров и достижения.",
       "en": "Villagers' quests, world lore and achievements."
-    },
-    "img_en": "landing/img/ui/en-menu.jpg"
+    }
   },
   {
     "img": "landing/img/ui/kumo_card.jpg",

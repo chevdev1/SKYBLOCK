@@ -9,7 +9,7 @@
    "ru": "Прыгай точно в момент приземления: прыжки идут серией, каждый следующий выше, а скорость бега растёт на 5% за каждый прыжок серии. Пятый — мега-прыжок.",
    "en": "Jump right as you land: jumps chain into a streak, each one higher, and your run speed grows 5% per jump in the streak. The fifth is a mega jump."
   },
-  "keys": "Пробел · A"
+  "keys": "Space · A"
  },
  {
   "icon": "»",
@@ -69,7 +69,7 @@
    "ru": "Удар, удар, пауза, удар — и выходит особый приём. Мурамаса: Цубамэ-гаэси и Сакура-ран. Райкири: Райко и Каминари-гурума.",
    "en": "Strike, strike, pause, strike — and a special move comes out. Muramasa: Tsubame-gaeshi and Sakura-ran. Raikiri: Raiko and Kaminari-guruma."
   },
-  "keys": "ЛКМ · X"
+  "keys": "LMB · X"
  },
  {
   "icon": "⚔",

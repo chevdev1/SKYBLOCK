@@ -168,6 +168,7 @@ const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '
 function serveStatic(req, res, url) {
   let rel = decodeURIComponent(url.pathname);
   if (rel === '/play') { res.writeHead(301, { Location: '/play/' + (url.search || '') }); return res.end(); }
+  if (rel === '/docs') rel = '/docs.html';
   if (rel.endsWith('/')) rel += 'index.html';
   const file = path.resolve(ROOT, '.' + rel);
   const ext = path.extname(file).toLowerCase();

@@ -627,7 +627,7 @@ dialog#bossDlg::backdrop{background:rgba(8,10,34,.8);backdrop-filter:blur(6px)}
 .jbtn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px 12px 12px;border:3px solid var(--ink2);border-radius:8px;text-decoration:none;font-weight:900;font-size:18px;box-shadow:0 6px 0 var(--ink2);transition:transform .15s,box-shadow .15s}
 .jbtn:hover{transform:translateY(-3px);box-shadow:0 9px 0 var(--ink2)}.jbtn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--ink2)}
 .jbtn span{width:34px;height:34px;padding:4px;border-radius:5px;background:#fff;border:2px solid var(--ink2)}.jbtn span svg{display:block;width:100%;height:100%}
-.jbtn.tg{background:#2aa8ff;color:#fff;--acc:#2aa8ff}.jbtn.xx{background:#fff;color:var(--ink2);--acc:#141a3c}
+.jbtn.tg{background:#2aa8ff;color:#fff;--acc:#2aa8ff}.jbtn.dc{background:#5865f2;color:#fff;--acc:#5865f2}.jbtn.xx{background:#fff;color:var(--ink2);--acc:#141a3c}
 .join-todo{display:block;margin-top:10px;font-weight:800;opacity:.8}
 
 /* living device mockups */

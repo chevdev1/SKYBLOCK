@@ -5,6 +5,11 @@
   "b": [
    "Поддержка геймпадов со стандартной раскладкой: Xbox, PlayStation, Switch Pro и большинство USB- и Bluetooth-геймпадов.",
    "При подключении появляется подсказка с раскладкой."
+  ],
+  "te": "Gamepads",
+  "be": [
+   "Support for standard-layout gamepads: Xbox, PlayStation, Switch Pro and most USB and Bluetooth pads.",
+   "A layout hint appears when you connect one."
   ]
  },
  {
@@ -15,6 +20,13 @@
    "Забота. Сытость падает на 4% в час, настроение на 5% в час. Кумо не умирают. Голодный или скучающий Кумо грустит (синяя слезинка), растёт вдвое медленнее и не…",
    "Семья. Два взрослых Кумо с настроением от 50% и сытостью от 40% приносят яйцо раз в сутки. Малыш получает фирменные детали обоих родителей и четверть их навыков. Шанс…",
    "Поход. Любого вылупившегося Кумо можно взять с собой («В поход»): он ходит рядом во всех мирах, F рядом с ним открывает карточку. Сверхредкие сражаются, у каждой…"
+  ],
+  "te": "Kumo card, care, family and adventures",
+  "be": [
+   "A new Kumo card. A big game window instead of a form. On the left is a live 3D portrait on a cloud pedestal: Kumo breathes, blinks, waves and you can spin it with the mouse. The background matches…",
+   "Care. Fullness drops 4% an hour, mood 5% an hour. Kumo never die. A hungry or bored Kumo is sad (a blue tear), grows twice as slowly and does not…",
+   "Family. Two adult Kumo with mood of 50%+ and fullness of 40%+ bring an egg once a day. The baby gets signature parts from both parents and a quarter of their skills. The chance…",
+   "Adventures. Any hatched Kumo can come along (“Take on an adventure”): it walks beside you in all worlds, and F next to it opens its card. Ultra-rare ones fight, each…"
   ]
  },
  {
@@ -25,6 +37,13 @@
    "Внешний вид: кислотный неоновый градиент снизу вверх, у каждой формы свой.",
    "Уникальный номер у каждого Кумо, например «№ UZHY-PFME».",
    "Вылупление сверхредкого: отдельная мелодия, радужный салют, баннер «★ СВЕРХРЕДКИЙ ★» и сообщение в чат всем игрокам на сервере."
+  ],
+  "te": "Ultra-rare Kumo",
+  "be": [
+   "An ultra-rare Kumo drops with a 1% chance on every hatch, including after a rebirth cocoon.",
+   "Look: an acid neon gradient from the bottom up, unique for each form.",
+   "Every Kumo has a unique number, for example “No. UZHY-PFME”.",
+   "Hatching an ultra-rare: its own melody, a rainbow salute, a “★ ULTRA-RARE ★” banner and a chat message to all players on the server."
   ]
  },
  {
@@ -35,6 +54,13 @@
    "Кумо стали живее. Моргают, переваливаются при ходьбе, машут ручкой, когда подходишь, и чирикают каждый своим голосом. Прыгают, когда прыгаешь ты, танцуют, когда…",
    "Мячик в саду можно пинать на бегу, Кумо гоняются за ним и пинают сами.",
    "Дерево: F у ствола — «Потрясти дерево», падают три облачных фрукта, Кумо бегут их есть."
+  ],
+  "te": "Together and lively Kumo",
+  "be": [
+   "Together. Walk up to another player and press F, then “Together”. You can offer to “Hold hands”, “Hug”, “Kiss” or “High five”. The other player sees “♥ … wants …” and…",
+   "Kumo are livelier. They blink, waddle when walking, wave when you approach and chirp, each with its own voice. They jump when you jump, dance when…",
+   "You can kick the ball in the garden while running, and Kumo chase it and kick it themselves.",
+   "Tree: F at the trunk, “Shake the tree”, three cloud fruits fall and the Kumo run to eat them."
   ]
  },
  {
@@ -45,6 +71,13 @@
    "Искорки. Побеждённые мобы с шансом 35% роняют искорку по своей породе: черепашка — панцирь, барашек — ушки, гарпия — крылышки, призрак — хвостик, бесёнок — рожки,…",
    "Кормление. F рядом с Кумо открывает его карточку. Искорка сразу надевает деталь, двигает шкалу своего мира (луговая, громовая, сумрачная, фонарная, звёздная) и…",
    "Рост. После 10 кормлений Кумо становится подростком, после 30 — взрослым. Взрослая форма зависит от самой большой шкалы: Луговой, Громовой, Сумрачный, Фонарный или…"
+  ],
+  "te": "Cloud Garden and Kumo",
+  "be": [
+   "The Cloud Garden. A new islet northwest of home, reached by a little bridge. The garden has a pond, a pink tree with cloud fruits, a ball and a slide. When you first approach…",
+   "Sparks. Defeated mobs drop a spark of their kind with a 35% chance: turtle, a shell; lamb, ears; harpy, wings; ghost, a tail; imp, horns,…",
+   "Feeding. F next to a Kumo opens its card. A spark puts on a part right away, moves the meter of its world (meadow, thunder, twilight, lantern, starry) and…",
+   "Growth. After 10 feedings a Kumo becomes a teen, after 30 an adult. The adult form depends on the largest meter: Meadow, Thunder, Twilight, Lantern or…"
   ]
  },
  {
@@ -55,6 +88,13 @@
    "Ярмарка и Пастбище отодвинуты от дома, чтобы большой остров в них не врезался: Ярмарка и ринг на 3 блока южнее, Пастбище на 7 блоков западнее.",
    "Питомцы ходят за героем во всех мирах, рядом с виспом.",
    "Пол — это лава. Поле 9×9 плиток к востоку от Ярмарки. Плитка под ногами краснеет и через секунду лопается, ещё и случайные плитки лопаются всё чаще. Одному —…"
+  ],
+  "te": "Pets, coziness 10 and mini-games",
+  "be": [
+   "Coziness levels 6–10. Thresholds 1800, 3000, 4500, 6500 and 9000 points. The island grows to radius 20, garden beds grow to 10, then 12. At coziness 6, 7, 8 and 9 pets arrive in…",
+   "The Fair and the Pasture were moved away from the house so the big island does not collide with them: the Fair and the ring are 3 blocks farther south, the Pasture 7 blocks farther west.",
+   "Pets follow the hero in all worlds, next to the wisp.",
+   "The floor is lava. A 9×9 tile field east of the Fair. The tile under your feet turns red and bursts a second later, and random tiles burst more and more often. Alone, last as long as you can…"
   ]
  },
  {
@@ -65,6 +105,13 @@
    "Пух-бокс. Бой в надувных перчатках, урона нет. Каждый пропущенный удар надувает героя (проценты на табло), и следующий удар отбрасывает его дальше. Упал с ринга —…",
    "Сочная ферма. Растение подпрыгивает и лопается, урожай летит дугой в рюкзак. Сбор подряд поднимает тон звука и показывает «Урожай ×N», собрал все грядки — «Весь…",
    "Новые культуры: облачная клубника (15 мин, плодоносит 3 раза), небесный рис (40 мин, уют 2), светлячковый подсолнух (45 мин, уют 3)."
+  ],
+  "te": "The Fair, the farm and the Pasture",
+  "be": [
+   "The Fair. A new islet south of home with a bridge, a gong, a ring sign and an order board. A round ring with ropes and red and blue corners floats nearby. The Fair is available…",
+   "Puff-box. A fight in inflatable gloves, no damage. Every hit you take inflates the hero (percent on the scoreboard), and the next hit sends them flying farther. Fell off the ring…",
+   "A juicy farm. A plant bounces and pops, the harvest flies in an arc into your backpack. Harvesting in a row raises the sound pitch and shows “Harvest ×N”; harvest all beds for “The whole…",
+   "New crops: cloud strawberry (15 min, fruits 3 times), sky rice (40 min, coziness 2), firefly sunflower (45 min, coziness 3)."
   ]
  },
  {
@@ -74,6 +121,12 @@
    "Мир разбит на чанки 64×64. Раньше видеокарта каждый кадр рисовала все 69 тысяч блоков всех миров разом, да ещё второй раз для теней — около 1,8 млн треугольников за…",
    "NPC дальше 70 блоков не рисуются (раньше их скрывала только разница по высоте), жители Хорая дальше 60 блоков не рисуются и не ходят.",
    "Поезд монорельса над Хораем больше не отбрасывает тень (100+ лишних отрисовок за кадр)."
+  ],
+  "te": "Optimization",
+  "be": [
+   "The world is split into 64×64 chunks. Before, the GPU drew all 69 thousand blocks of all worlds at once every frame, and a second time for shadows: about 1.8 million triangles per…",
+   "NPCs farther than 70 blocks are not drawn (before they were hidden only by height difference), Horai residents farther than 60 blocks are neither drawn nor walking.",
+   "The monorail train above Horai no longer casts a shadow (100+ extra draws per frame)."
   ]
  },
  {
@@ -84,6 +137,13 @@
    "Бездна светлее. Рассеянный свет сильнее, туман дальше, вокруг героя всегда есть слабый свет, у обитателей Бездны и Эреба светящийся фиолетовый контур. Висп и лампа…",
    "Звездолом за спиной больше не проходит сквозь героя: висит по диагонали, рукоять у поясницы, клинок над правым плечом.",
    "При смене оружия или снаряжения сбрасывается поза героя, если удар оборвался на середине."
+  ],
+  "te": "Fixes",
+  "be": [
+   "Gear by slot. Before, everything you owned was equipped at once and items overlapped: the Shroud of Nightmares over armor, masks and boots turned the hero into…",
+   "The Abyss is brighter. Ambient light is stronger, fog is farther, there is always a faint light around the hero, and Abyss dwellers and Erebus have a glowing violet outline. The wisp and the lamp…",
+   "The Starbreaker on your back no longer clips through the hero: it hangs diagonally, hilt at the lower back, blade above the right shoulder.",
+   "When you switch weapon or gear, the hero's pose resets if a strike was cut off mid-way."
   ]
  },
  {
@@ -94,6 +154,13 @@
    "Враги выбирают ближайшего игрока, а не только того, у кого они «живут».",
    "Разлом общий: волны вызывает тот, кто открыл разлом, напарник видит тот же разлом, тех же врагов и номер волны, закрытие и награда у всех.",
    "Арена Титанов, слуги боссов и обитатели Бездны тоже общие: у напарника те же враги, а не свои копии."
+  ],
+  "te": "Shared mobs",
+  "be": [
+   "Mobs of the old worlds are shared. Each mob is led by one player: the nearest with the lowest id, or the one who summoned it. They send positions and health 10 times a second, and…",
+   "Enemies pick the nearest player, not only the one they “live” with.",
+   "The Rift is shared: waves are called by whoever opened the rift, a partner sees the same rift, the same enemies and the wave number, and the closing and reward are for everyone.",
+   "The Titan Arena, boss servants and Abyss dwellers are shared too: your partner has the same enemies, not their own copies."
   ]
  },
  {
@@ -103,6 +170,12 @@
    "Комбо с паузой на Мурамасе и Райкири. Быстрые удары, как раньше, дают обычную серию. Если ударить, дождаться блеска на клинке и ударить снова, выйдет особый приём.…",
    "Отброс от удара. Пропущенный удар отбрасывает героя примерно на секунду: он скользит назад, отклоняется, за ним летит пыль, управление возвращается постепенно. С края…",
    "PvP: сила отброса зависит от удара: Иссэн и Райко отбрасывают дальше, чем обычный взмах."
+  ],
+  "te": "Blade rhythm",
+  "be": [
+   "Combo with a pause on Muramasa and Raikiri. Fast hits give the usual series, as before. If you hit, wait for the gleam on the blade and hit again, a special move comes out.…",
+   "Hit knockback. A hit you take knocks the hero back for about a second: you slide back, lean away, dust trails behind and control returns gradually. From the edge…",
+   "PvP: knockback strength depends on the hit: Issen and Raiko knock back farther than a normal swing."
   ]
  },
  {
@@ -113,6 +186,13 @@
    "Враги выбирают цель среди всех игроков, а не только ведущего: на одного игрока навалится не больше пары врагов, остальные пойдут к другим.",
    "Если ведущий ушёл, умер или вышел из игры, бой подхватывает напарник: копии врагов становятся настоящими и продолжают драться с того же места.",
    "Если подойти к уже идущему бою, ты сразу в него вступаешь — и в засаде, и с драконом."
+  ],
+  "te": "Shared Horai",
+  "be": [
+   "Co-op in Horai without desync. Ambush enemies, Kiyohime, Ryujin and the duels with Kagemaru are now shared. The fight is led by whoever started it: their game decides who goes where and whom…",
+   "Enemies choose a target among all players, not only the leader: no more than a couple of enemies pile onto one player, the rest go after others.",
+   "If the leader left, died or quit, a partner picks up the fight: enemy copies become real and keep fighting from the same spot.",
+   "If you walk up to a fight in progress, you join it at once, in an ambush and with the dragon."
   ]
  },
  {
@@ -123,6 +203,13 @@
    "Рюдзин, царь драконов моря — появляется над Облачной гаванью после Киёхимэ.",
    "Дуэли на крыше Небесной башни с Кагэмару, Тенью героя.",
    "Кагэ-таби — сапоги синоби, шьются в Хорае из ткани таби (падает с синоби и тэнгу)."
+  ],
+  "te": "Dragons, shadow and photo mode",
+  "be": [
+   "Kiyohime, the Serpent Bride, is the boss of the bell courtyard by the pagoda.",
+   "Ryujin, king of the sea dragons, appears above Cloud Harbor after Kiyohime.",
+   "Duels on the roof of the Sky Tower with Kagemaru, the Shadow of the Hero.",
+   "Kage-tabi are shinobi boots, sewn in Horai from tabi cloth (dropped by shinobi and tengu)."
   ]
  },
  {
@@ -133,6 +220,13 @@
    "Три новых врага: Кицунэ-оммёдзи (лисий огонь с самонаведением, огненная печать под ногами, двойники-иллюзии, телепорт в листве), Сохэй (вихрь нагинатой, длинный укол,…",
    "Город стал больше: улица Гион с домами-матия, горячий источник-онсэн со снежными обезьянами, Додзё Клинков, 46-этажная Небесная башня с неоновыми карнизами.",
    "Город живой: монорельс вокруг города, аэромобили между небоскрёбами, голо-экран с рекламой, прохожие под зонтиками-вагаса, которые разбегаются от боя, коты."
+  ],
+  "te": "Living Horai",
+  "be": [
+   "Living enemy animations: knees and steps, battle stances for each (low for shinobi, wide for Oni), breathing, a lean when running, shinobi run with arms back, heads follow…",
+   "Three new enemies: Kitsune Onmyoji (homing fox fire, a fire seal under your feet, illusion doubles, teleporting in foliage), Sohei (a naginata whirl, a long thrust,…",
+   "The city got bigger: Gion Street with machiya houses, an onsen hot spring with snow monkeys, the Blades Dojo, a 46-story Sky Tower with neon cornices.",
+   "The city is alive: a monorail around the city, air cars between skyscrapers, a holo-screen with ads, passers-by with wagasa umbrellas who scatter from fights, cats."
   ]
  }
 ]
